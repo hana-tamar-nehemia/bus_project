@@ -11,6 +11,7 @@ namespace dotNet5781_00_8113_5037
         static void Main(string[] args)
         {
             Console.WriteLine();
+           // char
         }
     }
 }
