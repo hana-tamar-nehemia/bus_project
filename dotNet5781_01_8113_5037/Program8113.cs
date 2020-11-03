@@ -36,7 +36,7 @@ namespace dotNet5781_01_8113_5037
             {
                 foreach (Bus i in a)
                 {
-                    if (i.Licens_plate == Licens)//look the right Licens_plate
+                    if (i.Licens_plate == Licens)/./look the right Licens_plate
                     {
                         DateTime date1 = DateTime.Now;
                         TimeSpan N = date1 - i.date_treatment;
