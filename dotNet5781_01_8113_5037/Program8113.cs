@@ -72,7 +72,20 @@ namespace dotNet5781_01_8113_5037
 
                 Console.WriteLine(bus.Licens_plate.Substring(0, 3) + "-" + bus.Licens_plate.Substring(3, 2) + "-" + bus.Licens_plate.Substring(5, 3) + " done " + bus.km_between_treatment + " since the last treatment");
             }
+            public static bool the_bus_exsist(List<Bus> a, string n)//if the bus exsist
+            {
+                foreach (Bus i in a)
+                {
+                    if (n == i.Licens_plate)
+                        return true;
+                }
+                Console.WriteLine("the bus doesnt exsist");
+                return false;
+            }
         }
+        
+    
+
         public static Random r = new Random();
 
         static void Main(string[] args)
@@ -95,13 +108,27 @@ namespace dotNet5781_01_8113_5037
                 {
                     case 0:
                         {
-                            Console.WriteLine("enter a Licens_plate");
-                            string Licens = Console.ReadLine();//enter licens
-                            int num_Licens = int.Parse(Licens);//change to number
-                            Console.WriteLine("enter the date of commencement of activity");
-                            string D = Console.ReadLine();//enter licens
-                            DateTime d;
-                            bool f = DateTime.TryParse(D, out d);
+                            string Licens="";
+                            DateTime d= DateTime.Now;
+                            int num_Licens =0;
+                            bool fv = false;
+                            while (!fv)
+                            {
+                                Console.WriteLine("enter a Licens_plate");
+                                 Licens = Console.ReadLine();//enter licens
+                                num_Licens = int.Parse(Licens);//change to number
+                                if (num_Licens > 999999  &&  num_Licens < 99999999)
+                                {
+                                    Console.WriteLine("enter the date of commencement of activity");
+                                    string D = Console.ReadLine();//enter licens
+                        
+                                    bool f = DateTime.TryParse(D, out d);
+                                    fv = true;
+                                }
+                                else
+                                    Console.WriteLine("worng number- try again");
+                            }
+                        
                             if (Bus.check_the_year_fit_the_digit_number(num_Licens, d))
                             {
                                 Bus n = new Bus(d, Licens);//create a new bus
@@ -125,11 +152,12 @@ namespace dotNet5781_01_8113_5037
                         {
                             Console.WriteLine("enter a Licens plate of the bus:");
                             string Licens = Console.ReadLine();
+                        if (Bus.the_bus_exsist(all_bus , Licens))
+                        {
                             Console.WriteLine("if you need to fuel press 1");
                             Console.WriteLine("for treatment press 2");
                             string n = Console.ReadLine();
                             int f = int.Parse(n);
-
                             if (f == 1)//to fuel
                             {
                                 foreach (Bus i in all_bus)
@@ -153,6 +181,7 @@ namespace dotNet5781_01_8113_5037
                                     }
                                 }
                             }
+                        }
                             break;
 
                         }
@@ -176,10 +205,13 @@ namespace dotNet5781_01_8113_5037
                         }
                     case 4:
                         {
-
+                            
                             break;
                         }
                     default:
+                        {
+                            Console.WriteLine("try again");
+                        }
                         break;
 
                 }
