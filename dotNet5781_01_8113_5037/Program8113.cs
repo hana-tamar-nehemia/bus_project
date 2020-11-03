@@ -115,7 +115,7 @@ namespace dotNet5781_01_8113_5037
                             DateTime d= DateTime.Now;
                             int num_Licens =0;
                             bool flicens = false;
-                            while (!flicens)
+                            while (!flicens)//Check that the number is between seven and eight digits
                             {
                                 Console.WriteLine("enter a Licens_plate");
                                  Licens = Console.ReadLine();//enter licens
@@ -123,7 +123,7 @@ namespace dotNet5781_01_8113_5037
                                 if (num_Licens > 999999  &&  num_Licens < 99999999)
                                 {
                                     bool fdate = false;
-                                    while (!fdate)
+                                    while (!fdate) //Checking that did not give a date that has not yet been set
                                     {
                                         Console.WriteLine("enter the date of commencement of activity");
                                         string D = Console.ReadLine();//enter licens
