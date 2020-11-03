@@ -93,17 +93,20 @@ namespace dotNet5781_01_8113_5037
 
             List<Bus> all_bus = new List<Bus>();
 
-            Console.WriteLine("Enter your choice:");
+            
             Console.WriteLine("enter 0 to add a new bus");
             Console.WriteLine("enter 1 to choose a bus");
             Console.WriteLine("enter 2 to fuel or treatmet");
             Console.WriteLine("enter 3 to check the km of the all buses");
             Console.WriteLine("enter 4 to finish");
 
-            string num1 = Console.ReadLine();
-            int choice = int.Parse(num1);
+            string num1;
+            int choice;
             do
             {
+                Console.WriteLine("Enter your choice:");
+                num1 = Console.ReadLine();
+                choice = int.Parse(num1);
                 switch (choice)
                 {
                     case 0:
@@ -111,22 +114,33 @@ namespace dotNet5781_01_8113_5037
                             string Licens="";
                             DateTime d= DateTime.Now;
                             int num_Licens =0;
-                            bool fv = false;
-                            while (!fv)
+                            bool flicens = false;
+                            while (!flicens)
                             {
                                 Console.WriteLine("enter a Licens_plate");
                                  Licens = Console.ReadLine();//enter licens
                                 num_Licens = int.Parse(Licens);//change to number
                                 if (num_Licens > 999999  &&  num_Licens < 99999999)
                                 {
-                                    Console.WriteLine("enter the date of commencement of activity");
-                                    string D = Console.ReadLine();//enter licens
-                        
-                                    bool f = DateTime.TryParse(D, out d);
-                                    fv = true;
+                                    bool fdate = false;
+                                    while (!fdate)
+                                    {
+                                        Console.WriteLine("enter the date of commencement of activity");
+                                        string D = Console.ReadLine();//enter licens
+                                        bool f = DateTime.TryParse(D, out d);
+                                        if (d <DateTime.Now)
+                                        {
+                                            fdate = true;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("worng date - try again");
+                                        }
+                                    }
+                                    flicens = true;
                                 }
                                 else
-                                    Console.WriteLine("worng number- try again");
+                                    Console.WriteLine("worng number - try again");
                             }
                         
                             if (Bus.check_the_year_fit_the_digit_number(num_Licens, d))
@@ -215,9 +229,8 @@ namespace dotNet5781_01_8113_5037
                         break;
 
                 }
-                Console.WriteLine("Enter your choice:");
-                num1 = Console.ReadLine();
-                choice = int.Parse(num1);
+                
+                 
             } while (choice != 4);
         }
     }
