@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_01_8113_5037
 {
-     class Program
+    class Program
     {
         public class Bus
         {
@@ -60,19 +60,21 @@ namespace dotNet5781_01_8113_5037
                 }
                 Console.WriteLine("the bus dosnt exsist");//the bus doesnt exsist
             }
-        }
 
+
+            public static void print_km7(Bus bus)
+            {
+
+                Console.WriteLine(bus.Licens_plate.Substring(0, 2) + "-" + bus.Licens_plate.Substring(2, 3) + "-" + bus.Licens_plate.Substring(5, 2) + " done " + bus.km_between_treatment + " since the last treatment");
+            }
+            public static void print_km8(Bus bus)
+            {
+
+                Console.WriteLine(bus.Licens_plate.Substring(0, 3) + "-" + bus.Licens_plate.Substring(3, 2) + "-" + bus.Licens_plate.Substring(5, 3) + " done " + bus.km_between_treatment + " since the last treatment");
+            }
+        }
         public static Random r = new Random();
-        public static void print_km7(Bus bus)
-        {
 
-            Console.WriteLine(bus.Licens_plate.Substring(0, 2) + "-" + bus.Licens_plate.Substring(2, 3) + "-" + bus.Licens_plate.Substring(5, 2) + " done " + bus.km_between_treatment + " since the last treatment");
-        }
-        public static void print_km8(Bus bus)
-        {
-
-            Console.WriteLine(bus.Licens_plate.Substring(0, 3) + "-" + bus.Licens_plate.Substring(3, 2) + "-" + bus.Licens_plate.Substring(5, 3) + " done " + bus.km_between_treatment + " since the last treatment");
-        }
         static void Main(string[] args)
         {
 
@@ -162,11 +164,11 @@ namespace dotNet5781_01_8113_5037
 
                                 if (int.Parse(i.Licens_plate) <= 9999999)
                                 {
-                                    print_km7(i);
+                                    Bus.print_km7(i);
                                 }
                                 if (int.Parse(i.Licens_plate) > 9999999)
                                 {
-                                    print_km8(i);
+                                    Bus.print_km8(i);
                                 }
                             }
                             break;
