@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class BusStation
+    class Bus_Station
     {
         
 
