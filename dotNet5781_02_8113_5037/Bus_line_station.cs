@@ -21,6 +21,10 @@ namespace dotNet5781_02_8113_5037
             get { return time_from_last_station; }
             set { time_from_last_station = value; }
         }
+        public string _code()
+        {
+            return base.MyCode;
+        }
     }
         
 }

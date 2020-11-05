@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_8113_5037
 {
 
-    class Bus_line : BusStation
+    class Bus_line : Bus_line_station
     {
         int line_number;
         //****************************************************
@@ -32,23 +32,23 @@ namespace dotNet5781_02_8113_5037
         }
         //****************************************************
 
-        private List<BusStation> Station;
-        public List<BusStation> Push_Bus_Station
+        private List<Bus_line_station> Station;
+        public List<Bus_line_station> Push_Bus_Station
         {
             get { return Station; }
             set { Station = value; }
         }
-        public void ToString()
+        public override ToString()
         {
             Console.WriteLine($"Bus line: {this.line_number}\n Activity area: {this.Area}\n");
             Console.WriteLine("Route:");
-            Station.ForEach(Console.WriteLine($"{MyCode.code}\n"));
+            Station.ForEach(Console.WriteLine($"{_code.code}\n"));
             Console.WriteLine("Route back:");
-            Station.ForEach(Console.WriteLine($"{MyCode.code}\n"));
+            Station.ForEach(Console.WriteLine($"{_code.code}\n"));
 
             for (int i = Station.Count(); i >= 0; i--)
             {
-                Console.WriteLine($"{Station[i].MyCode.code}/n");
+                Console.WriteLine($"{Station[i]._code}/n");
             }
         }
         public void Add_station(string num)
@@ -68,7 +68,7 @@ namespace dotNet5781_02_8113_5037
             for (int k = 0; k != i; k++)
             {
 
-                if (Station.Mycode == num)
+                if (Station[k]._code == num)
                 {
                     Station.Remove(Station[k]);
                     index_remove = k;
@@ -80,13 +80,55 @@ namespace dotNet5781_02_8113_5037
         }
         public bool if_the_station_exsist_in_this_line(string num)
         {
-            for (int i =0 ; i >= Station.Count(); i++)
+            for (int i = 0 ; i <= Station.Count(); i++)
             {
-                if(Station[i].Mycode == num)
+                if(Station[i].MyCode == num)
                 {
                     return true;
                 }
                 return false;
+            }
+        }
+        public int Find_index_station(BusStation a)
+        {
+            string num = a.MyCode;
+            int i = 0;
+            int size = Station.Count();
+            while (i < size && this.Station[i]. != num)
+            {
+                i++;
+            }
+            if (this.Station[i].MyCode == num)
+                return i;
+            return -1;
+        }
+            
+
+
+        
+        public float km_between_2_station (BusStation a, BusStation b)
+        {
+            string staion1 = a.MyCode;
+            string staion2 = b.MyCode;
+            int i = this.Station.Count();
+            float distance = 0;
+            int index2 = this.Find_index_station(staion2);
+            for (int index = this.Find_index_station(staion1); ++index <= index2;)
+            {
+                distance += Station[index].func_km_from_last_station;
+            }
+            return distance;
+        }
+
+        public Bus_line tat_road(Bus_line a, Bus_line b)
+        {
+            string staion1 = a.MyCode;
+            string staion2 = b.MyCode;
+            List<Bus_Station> new1;
+            this.Station.Find_index_station();
+            for (int index = this.;index <= index2;index++)
+            {
+               Station[index].func_km_from_last_station;
             }
         }
     }
