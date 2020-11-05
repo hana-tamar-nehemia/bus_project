@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class Program
+    class BusStation
     {
         
 
@@ -66,8 +66,8 @@ namespace dotNet5781_02_8113_5037
             {
                 
                 double[] arr = new double[2];
-                arr[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;
-                arr[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;
+                arr[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;// קו אורך
+                arr[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;// קו רוחב 
 
 
             }
