@@ -8,7 +8,12 @@ namespace dotNet5781_02_8113_5037
 {
     class Program
     {
-        static void Main(string[] args)
+        public class BusStation
+        {
+            private int code;
+
+        }
+            static void Main(string[] args)
         {
 
         }
