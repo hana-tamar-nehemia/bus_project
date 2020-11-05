@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class Bus_Station
+    class Bus_station
     {
 
 
@@ -25,6 +25,7 @@ namespace dotNet5781_02_8113_5037
                 }
                 set
                 {
+                    
                     bool fcode = false;
                     while (!fcode)
                     {

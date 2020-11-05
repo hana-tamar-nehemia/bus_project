@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-   class Bus_line:Bus_Station
+   class Bus_line:Bus_station
     {
         int line_number;
         //****************************************************

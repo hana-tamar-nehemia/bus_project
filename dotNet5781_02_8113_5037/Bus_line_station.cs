@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class Bus_line_station:Bus_Station
+    class Bus_line_station:Bus_station
     {
         private float km_from_last_station;
         public float func_km_from_last_station
