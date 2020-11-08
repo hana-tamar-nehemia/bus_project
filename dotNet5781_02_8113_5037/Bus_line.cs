@@ -9,7 +9,7 @@ namespace dotNet5781_02_8113_5037
 
     class Bus_line : Bus_line_station
     {
-        int line_number;
+        int  line_number;
         //****************************************************
         string Area = "";
         //****************************************************
@@ -38,18 +38,13 @@ namespace dotNet5781_02_8113_5037
             get { return Station; }
             set { Station = value; }
         }
-        public override ToString()
+        
+        public new string ToString()
         {
             Console.WriteLine($"Bus line: {this.line_number}\n Activity area: {this.Area}\n");
             Console.WriteLine("Route:");
             Station.ForEach(Console.WriteLine($"{_code.code}\n"));
-            Console.WriteLine("Route back:");
-            Station.ForEach(Console.WriteLine($"{_code.code}\n"));
-
-            for (int i = Station.Count(); i >= 0; i--)
-            {
-                Console.WriteLine($"{Station[i]._code}/n");
-            }
+            return "end of route";
         }
         public void Add_station(string num)
         {
