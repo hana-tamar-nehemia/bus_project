@@ -31,17 +31,21 @@ namespace dotNet5781_02_8113_5037
                     {
                         Console.WriteLine("Enter a station code");
                         string string_code = Console.ReadLine();
-                        int num_code = int.Parse(string_code);
-                        if (num_code > 100000 && num_code < 0)
+                        MyCode = int.Parse(string_code);
+                        if (MyCode > 100000 && MyCode < 0)
                             Console.WriteLine("worng station code - try again");
                         else
+                        {
+                            code = MyCode;
                             fcode = true;
+                        }  
+                          
                     }
 
                 }
             }
 
-
+            
             //**************************************************
             private string station_address;
 
@@ -51,7 +55,8 @@ namespace dotNet5781_02_8113_5037
                 set
                 {
                     Console.WriteLine("Enter a station address");
-                    station_address = Console.ReadLine();
+                    My_station_address = Console.ReadLine();
+                    station_address = My_station_address;
                 }
             }
             //****************************************************
@@ -83,6 +88,7 @@ namespace dotNet5781_02_8113_5037
         }
     }
 }
+
 
 
 
