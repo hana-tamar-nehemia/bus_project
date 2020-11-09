@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class Bus_station
+   public class Bus_station
     {
 
 
-        public class BusStation
-        {
-
+      
             private int code;
 
             public int MyCode
@@ -85,7 +83,7 @@ namespace dotNet5781_02_8113_5037
                 return dorest_to_string;
             }
 
-        }
+        
     }
 }
 
