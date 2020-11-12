@@ -12,9 +12,9 @@ namespace dotNet5781_02_8113_5037
 
 
       
-            private int code;
+            private  static int code;
 
-            public int MyCode
+            public static int MyCode
             {
 
                 get
@@ -28,12 +28,13 @@ namespace dotNet5781_02_8113_5037
                     while (!fcode)
                     {
                         Console.WriteLine("Enter a station code");
-                        string string_code = Console.ReadLine();
-                        MyCode = int.Parse(string_code);
-                        if (MyCode > 100000 && MyCode < 0)
+                        string string_coode = Console.ReadLine();
+                         int num_code = int.Parse(string_coode);
+                        if (num_code > 100000 && num_code < 0)
                             Console.WriteLine("worng station code - try again");
                         else
                         {
+                            MyCode = num_code;
                             code = MyCode;
                             fcode = true;
                         }  
