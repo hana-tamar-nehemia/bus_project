@@ -14,7 +14,7 @@ namespace dotNet5781_02_8113_5037
       
             private  static int code;
 
-            public static int MyCode
+            public  int MyCode
             {
 
                 get
