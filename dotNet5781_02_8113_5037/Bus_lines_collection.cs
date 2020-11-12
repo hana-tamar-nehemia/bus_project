@@ -17,7 +17,7 @@ namespace dotNet5781_02_8113_5037
      //**************************************    
         public IEnumerator GetEnumerator()
         {
-            return List.GetEnumerator();
+            return Bus_line_list.GetEnumerator();
         }
      //**************************************
         public void Add_bus_line(Bus_line add_bus )
@@ -29,12 +29,17 @@ namespace dotNet5781_02_8113_5037
      //***************************************
         public void Remove_bus_line(Bus_line remove_bus)
         {
-
-            Bus_line_list.Remove(remove_bus);
-             
+          Bus_line_list.Remove(remove_bus);
         }
      //***************************************
+     public List<Bus_line> List_lines_pass_station(int bus_code)
+     {
+            List<Bus_line> temp = new List<Bus_line>();
+            foreach (Bus_line bus in Bus_line_list)
+            {
 
+            }
+     }
 
 
 
