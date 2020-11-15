@@ -43,11 +43,11 @@ namespace dotNet5781_02_8113_5037
             set { Station = value; }
         }
 
-
+        public double Time_between { get; set; }
 
 
         ////////////////////////////FUNCTION///////////////////////////////////////////////////////////
-      
+
         /// <summary>
         /// 
         /// </summary>
@@ -191,9 +191,9 @@ namespace dotNet5781_02_8113_5037
 
        public int CompareTo(Bus_line other)
         {
-         int one = (int)this.time_between_2_station(this.first_station, this.last_station).TotalMinutes;
-         int two = (int)other.time_between_2_station(other.first_station, other.last_station).TotalMinutes;
-           return one.CompareTo(two);
+            this.Time_between = (double)this.time_between_2_station(this.first_station, this.last_station).TotalMinutes;
+            other.Time_between = (double)other.time_between_2_station(other.first_station, other.last_station).TotalMinutes;
+            return this.Time_between.CompareTo(other.Time_between);
         }
     }
 }
