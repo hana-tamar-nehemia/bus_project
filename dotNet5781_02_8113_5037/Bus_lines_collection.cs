@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    class Bus_lines_collection<Bus_line> : IEnumerable 
+    class Bus_lines_collection : IEnumerable<Bus_line> 
     {
        public List<Bus_line> Bus_line_list { get; set; }
        public Bus_lines_collection ()
