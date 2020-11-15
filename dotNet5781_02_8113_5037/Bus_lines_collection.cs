@@ -19,12 +19,17 @@ namespace dotNet5781_02_8113_5037
         {
             return Bus_line_list.GetEnumerator();
         }
-     //**************************************
+        IEnumerator<Bus_line> IEnumerable<Bus_line>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+        //**************************************
         public void Add_bus_line(Bus_line add_bus )
         {
             if (add_bus != null )
                Bus_line_list.Add(add_bus);
             else// לזרוק שגיאה 
+                
         }
      //***************************************
         public void Remove_bus_line(Bus_line remove_bus)
@@ -34,14 +39,23 @@ namespace dotNet5781_02_8113_5037
      //***************************************
      public List<Bus_line> List_lines_pass_station(int bus_code)
      {
-            List<Bus_line> temp = new List<Bus_line>();
-            foreach (Bus_line bus in Bus_line_list)
-            {
-
-            }
+        List<Bus_line> temp = new List<Bus_line>();
+        foreach (Bus_line bus in Bus_line_list)
+        {
+           for (int i = 0; i < bus.Stations.Count; i++)
+           {
+              if (bus.Stations[i].MyCode == bus_code)
+              {
+                temp.Add(bus);
+                i=bus.Stations.Count;
+              }
+           }
+        }
+            return temp;
      }
-
-
-
+     public List<Bus_line> Sort_bus_line()
+     {
+            return Bus_line_list.Sort();
+     }
     }
 }
