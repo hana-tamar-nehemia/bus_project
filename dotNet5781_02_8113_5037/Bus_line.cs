@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-
-    class Bus_line: IComparable
+    enum Area_Activity {Jerusalem ,Krayot ,  Mercaz ,Shomron , Klali};
+    public class Bus_line: IComparable<Bus_line>
     {
         int line_number;
 
         //****************************************************
 
-        string Area = "";
+        Area_Activity Area;
 
         //*****************************************************
 
-        private Bus_line_station first_station;
-
-        public Bus_line_station Func_first_station
-        {
-            get { return first_station; }
-            set { first_station = value; }
+        Bus_line_station first_station;
+        public Bus_line_station First_station 
+        { 
+            get => first_station;
+            set => first_station = value;
         }
 
         //****************************************************
         private Bus_line_station last_station;
 
-        public Bus_line_station Func_last_station
+        public Bus_line_station Last_station
         {
             get { return last_station; }
             set { last_station = value; }
@@ -36,11 +35,14 @@ namespace dotNet5781_02_8113_5037
         //****************************************************
 
         private List<Bus_line_station> Station;
-        public List<Bus_line_station> Push_Bus_Station
+        public List<Bus_line_station> Stations
         {
             get { return Station; }
             set { Station = value; }
         }
+
+
+
         ////////////////////////////FUNCTION///////////////////////////////////////////////////////////
         int CompareTo(Bus_line bus2)
         {
@@ -77,7 +79,7 @@ namespace dotNet5781_02_8113_5037
             {
                 Station.Insert(index, new_station);
                 int i = Station.Count();
-                first_station = Station[0];
+                First_station = Station[0];
                 last_station = Station[i];
             }
             else
@@ -91,7 +93,7 @@ namespace dotNet5781_02_8113_5037
             int index = this.find_index(num);//find the station to put after the new station
             Station.Remove(Station[index]);
 
-            first_station = Station[1];
+            First_station = Station[1];
             last_station = Station[i - 1];
         }
         /// <summary>
@@ -128,7 +130,7 @@ namespace dotNet5781_02_8113_5037
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public float km_between_2_station (Bus_line_station a, Bus_line_station b)
+        public float km_between_2_station(Bus_line_station a, Bus_line_station b)
         {
             int staion1 = a.MyCode;
             int staion2 = b.MyCode;
@@ -179,8 +181,13 @@ namespace dotNet5781_02_8113_5037
             tat_line.line_number = this.line_number;
             tat_line.Area =this.Area;
             last_station = tat_line.Station[i];
-            first_station=tat_line.Station[0];
+            First_station=tat_line.Station[0];
             return tat_line;
+        }
+
+        int IComparable<Bus_line>.CompareTo(Bus_line other)
+        {
+            throw new NotImplementedException();
         }
     }
 }
