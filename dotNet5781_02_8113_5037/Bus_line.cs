@@ -10,7 +10,7 @@ namespace dotNet5781_02_8113_5037
     public class Bus_line: IComparable<Bus_line>
     {
         int line_number;
-
+        
         public int Line_number { get => line_number; set => line_number = value; }
 
         //****************************************************
