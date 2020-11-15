@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    enum Area_Activity {Jerusalem ,Krayot ,  Mercaz ,Shomron , Klali};
+    enum Area_Activity {Jerusalem ,Krayot , Mercaz ,Shomron , Klali};
     public class Bus_line: IComparable<Bus_line>
     {
         int line_number;
 
+        public int Line_number { get => line_number; set => line_number = value; }
+
         //****************************************************
 
-        Area_Activity Area;
+        string Area;
 
         //*****************************************************
+        private Bus_line_station first_station;
 
-        Bus_line_station first_station;
-        public Bus_line_station First_station 
-        { 
-            get => first_station;
-            set => first_station = value;
+        public Bus_line_station First_station
+        {
+            get { return first_station; }
+            set { first_station = value; }
         }
 
         //****************************************************
@@ -43,12 +45,9 @@ namespace dotNet5781_02_8113_5037
 
 
 
-        ////////////////////////////FUNCTION///////////////////////////////////////////////////////////
-        int CompareTo(Bus_line bus2)
-        {
 
-            return 1;
-        }
+        ////////////////////////////FUNCTION///////////////////////////////////////////////////////////
+      
         /// <summary>
         /// 
         /// </summary>
@@ -96,6 +95,7 @@ namespace dotNet5781_02_8113_5037
             First_station = Station[1];
             last_station = Station[i - 1];
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -134,12 +134,12 @@ namespace dotNet5781_02_8113_5037
         {
             int staion1 = a.MyCode;
             int staion2 = b.MyCode;
-            int index2 = find_index( staion2);
-            int i = this.Station.Count();
+            int index2 = this.find_index(staion2);//find the second station
+            int i = this.Station.Count();//count number of stations
             float distance = 0;
-            for (int index1 = find_index(staion1); ++index1 <= index2;)
+            for (int index1 = this.find_index(staion1); ++index1 <= index2;)//find the first station
             {
-                distance += Station[index1].func_km_from_last_station;
+                distance += Station[index1].func_km_from_last_station;//sum of distance 
             }
             return distance;
         }
@@ -153,9 +153,9 @@ namespace dotNet5781_02_8113_5037
         {
             int staion1 = a.MyCode;
             int staion2 = b.MyCode;
-            int index2 = find_index(staion2);
+            int index2 = this.find_index(staion2);
             int i = this.Station.Count();
-            TimeSpan time= new TimeSpan();
+            TimeSpan time = new TimeSpan();
             for (int index1 = find_index(staion1); ++index1 <= index2;)
             {
                 time.Add(Station[index1].func_time_from_last_station);
@@ -172,22 +172,28 @@ namespace dotNet5781_02_8113_5037
             int staion1 = a.MyCode;
             int staion2 = b.MyCode;
             int index2 = find_index(staion2);
+            int index1 = find_index(staion1);
             Bus_line tat_line = new Bus_line();
-            for (int index1 = find_index(staion1); index1 <= index2; index1++)
+            if (index2 != -1 && index1 != -1)
             {
-                tat_line.Station.Add(this.Station[index1]);
+                for (index1 = find_index(staion1); index1 <= index2; index1++)
+                {
+                    tat_line.Station.Add(this.Station[index1]);
+                }
+                int i = this.Station.Count();//count stations
+                tat_line.line_number = this.line_number;
+                tat_line.Area = this.Area;
+                last_station = tat_line.Station[i];
+                First_station = tat_line.Station[0];
             }
-            int i = this.Station.Count();
-            tat_line.line_number = this.line_number;
-            tat_line.Area =this.Area;
-            last_station = tat_line.Station[i];
-            First_station=tat_line.Station[0];
-            return tat_line;
+            return tat_line;//if there isnt station the list will be empty
         }
 
-        int IComparable<Bus_line>.CompareTo(Bus_line other)
+       public int CompareTo(Bus_line other)
         {
-            throw new NotImplementedException();
+         int one = (int)this.time_between_2_station(this.first_station, this.last_station).TotalMinutes;
+         int two = (int)other.time_between_2_station(other.first_station, other.last_station).TotalMinutes;
+           return one.CompareTo(two);
         }
     }
 }

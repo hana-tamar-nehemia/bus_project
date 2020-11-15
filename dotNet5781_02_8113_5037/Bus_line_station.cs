@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    public static Random r = new Random();
 
-    class Bus_line_station : Bus_station 
+   public class Bus_line_station : Bus_station
     {
         private float km_from_last_station;
 
@@ -29,9 +28,9 @@ namespace dotNet5781_02_8113_5037
             get { return time_from_last_station; }
             set {
 
-                float time = km_from_last_station / 80;
-                int hour = (int)time / 60;
-                int minute= (int)time % 60;
+                float time = km_from_last_station / 80; //in global minute
+                int hour = (int)time / 60;//just hours
+                int minute= (int)time % 60;//just minute
                 time_from_last_station = TimeSpan.FromHours(hour);
                 time_from_last_station = TimeSpan.FromMinutes(minute);
             }
