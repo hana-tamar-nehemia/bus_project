@@ -23,7 +23,7 @@ namespace dotNet5781_02_8113_5037
                         Console.WriteLine("Enter a station code");
                         string string_coode = Console.ReadLine();
                         int num_code = int.Parse(string_coode);
-                        if (num_code > 100000 && num_code < 0)
+                        if (num_code < 100000 && num_code > 0)
                             Console.WriteLine("worng station code - try again");
                         else
                         {
