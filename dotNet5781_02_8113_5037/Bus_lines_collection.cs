@@ -32,7 +32,7 @@ namespace dotNet5781_02_8113_5037
         {
             throw new NotImplementedException();
         }
-        //**************************************
+     //**************************************
         public void Add_bus_line(Bus_line add_bus )
         {
             if (add_bus != null )
@@ -40,12 +40,12 @@ namespace dotNet5781_02_8113_5037
             else// לזרוק שגיאה 
                 
         }
-     //***************************************
+     //*****************************************
         public void Remove_bus_line(Bus_line remove_bus)
         {
           Bus_line_list.Remove(remove_bus);
         }
-     //***************************************
+     //*****************************************
      public List<Bus_line> List_lines_pass_station(int bus_code)
      {
         List<Bus_line> temp = new List<Bus_line>();
@@ -62,10 +62,23 @@ namespace dotNet5781_02_8113_5037
         }
             return temp;
      }
+     //***************************************
      public List<Bus_line> Sort_bus_line()
      {
             return Bus_line_list.Sort();
      }
+     //**************************************
+     public Bus_line this[int code_bus]
+     {
+            get
+            {
+                return Bus_line_list[code_bus];
+            }
+            set
+            {
+                Bus_line_list[code_bus] = value;
+            }
 
+     }
     }
 }

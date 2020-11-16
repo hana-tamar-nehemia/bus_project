@@ -195,6 +195,6 @@ namespace dotNet5781_02_8113_5037
             other.Time_between = (double)other.time_between_2_station(other.first_station, other.last_station).TotalMinutes;
             return this.Time_between.CompareTo(other.Time_between);
         }
+       
     }
-}
        
