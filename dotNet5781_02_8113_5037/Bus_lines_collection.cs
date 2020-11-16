@@ -7,13 +7,22 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 { 
-    class Bus_lines_collection :   Bus_line, IEnumerable<Bus_line> 
+    class Bus_lines_collection : Bus_line , IEnumerable<Bus_line> 
     {
-       public List<Bus_line> Bus_line_list { get; set; }
-       public Bus_lines_collection ()
+       
+        private List<Bus_line> Bus_line_list;
+
+        public List<Bus_line> bus_line_list
         {
-            Bus_line_list = new List<Bus_line>();
+            get { return Bus_line_list; }
+            set { Bus_line_list = value; }
         }
+
+       // public List<Bus_line> Bus_line_list { get; set; }
+       //public Bus_lines_collection ()
+       // {
+       //     Bus_line_list = new List<Bus_line>();
+       // }
      //**************************************    
         public IEnumerator GetEnumerator()
         {
