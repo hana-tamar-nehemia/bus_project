@@ -17,23 +17,11 @@ namespace dotNet5781_02_8113_5037
                 get { return code; }
                 set
                 {
-                    bool fcode = false;
-                    while (!fcode)
-                    {
-                        Console.WriteLine("Enter a station code");
-                        string string_coode = Console.ReadLine();
-                        int num_code = int.Parse(string_coode);
-                        if (num_code > 100000 && num_code < 0)
-                            Console.WriteLine("worng station code - try again");
-                        else
-                        {
-                            MyCode = num_code;
-                            code = MyCode;
-                            fcode = true;
-                        }
-
-                    }
-
+                   int num_code =0 ; 
+                   num_code++;
+                   MyCode = num_code;
+                   code = MyCode;
+                            
                 }
             }
             //**************************************************
