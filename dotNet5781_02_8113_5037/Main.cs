@@ -10,10 +10,12 @@ namespace dotNet5781_02_8113_5037
     {
         static void Main(string[] args)
         {
-            List<Bus_station> _Stations = new List<Bus_station>();
-            for (i = 0;if<= 40;if++)
+            List<Bus_line_station> _Stations = new List<Bus_line_station>();
+            for (int i = 0; i <  4O ; i++)
             {
-                Bus_station add_station = new Bus_station();
+               Bus_station = new 
+            }
+
 
             }
         }
