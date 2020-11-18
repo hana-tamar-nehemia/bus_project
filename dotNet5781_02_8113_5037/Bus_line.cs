@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_8113_5037
 {
-    enum Area_Activity {Jerusalem ,Krayot , Mercaz ,Shomron , Klali};
-    public class Bus_line: IComparable<Bus_line>
+    enum Area_Activity { Jerusalem, Krayot, Mercaz, Shomron, Klali };
+    public class Bus_line : IComparable<Bus_line>
     {
         int line_number;
-        
+
         public int Line_number { get => line_number; set => line_number = value; }
 
         //****************************************************
@@ -189,12 +189,14 @@ namespace dotNet5781_02_8113_5037
             return tat_line;//if there isnt station the list will be empty
         }
 
-       public int CompareTo(Bus_line other)
+        public int CompareTo(Bus_line other)
         {
             this.Time_between = (double)this.time_between_2_station(this.first_station, this.last_station).TotalMinutes;
             other.Time_between = (double)other.time_between_2_station(other.first_station, other.last_station).TotalMinutes;
             return this.Time_between.CompareTo(other.Time_between);
         }
-       
+
     }
+
+}
        
