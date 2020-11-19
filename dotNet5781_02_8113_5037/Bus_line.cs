@@ -16,14 +16,19 @@ namespace dotNet5781_02_8113_5037
             set { line_number = value; }
         }
 
-        private List<Bus_line_station> stations;
-        public List<Bus_line_station> Stations
-        {
-            get { return stations; }
-            set { stations = value; }
-        }
+        private List<Bus_line_station> stations = new List<Bus_line_station>();
 
-        private int go1 = 1;
+    public List<Bus_line_station> MyStations
+    {
+        get { return stations; }
+        set
+        {
+            stations = value;
+        }
+    }
+
+
+    private int go1 = 1;
 
         public int My_go1
         {
@@ -65,16 +70,15 @@ namespace dotNet5781_02_8113_5037
             get { return last_station; }
             set { last_station = value; }
         }
-        //****************************************************
 
 
-        //*****************************************************
-        private TimeSpan Time;
+        
+        private TimeSpan time;
 
-        public TimeSpan MyProperty
+        public TimeSpan MyTime
         {
-            get { return Time; }
-            set { Time = value; }
+            get { return time; }
+            set { time = Time_between_2_station(first_station,Last_station); }
         }
 
 
@@ -104,15 +108,28 @@ namespace dotNet5781_02_8113_5037
         }
         public override string ToString()
         {
-            Console.WriteLine($"Bus line: {this.line_number}\n Activity area: {this.area}\n");
-            Console.WriteLine("the bus line route:");
             int i = stations.Count();
-
-            for (int k = 0; k <= i; k++)
+            Console.WriteLine($"Bus line: {this.line_number}\n Activity area: {this.area}\n");
+            if (My_go1 == 1)
             {
-                Console.WriteLine($"{ stations[k].My_station.MyCode}\n");
+                Console.WriteLine($"{My_line_number} route\n");
+                for (int k = 0; k <= i; k++)
+                {
+                    Console.WriteLine("=>");
+                    Console.WriteLine($"{ stations[k].My_station.MyCode}");
+                }
             }
-            return "end.";
+            Console.WriteLine("\n");
+            if (My_go2 == 1)
+            {
+                Console.WriteLine($"{My_line_number} return :\n");
+                for (int k = i; k > 0; k--)
+                {
+                    Console.WriteLine("=>");
+                    Console.WriteLine($"{ stations[k].My_station.MyCode}");
+                }
+            }
+                return "end.";
         }
 
         public void Add_station(Bus_line_station new_station)
@@ -126,7 +143,7 @@ namespace dotNet5781_02_8113_5037
                 int i = stations.Count();
                 First_station = stations[0];
                 last_station = stations[i];
-                Time = this.time_between_2_station(First_station, last_station);
+                time = this.Time_between_2_station(First_station, last_station);
             }
             else
             {
@@ -142,7 +159,7 @@ namespace dotNet5781_02_8113_5037
                 stations.Remove(stations[index]);
                 First_station = stations[1];
                 last_station = stations[i - 1];
-                Time = this.time_between_2_station(First_station, last_station);
+                time = this.Time_between_2_station(First_station, last_station);
                 Console.WriteLine("removed");
             }
             else
@@ -151,7 +168,7 @@ namespace dotNet5781_02_8113_5037
             }
         }
 
-        public float km_between_2_station(Bus_line_station a, Bus_line_station b)
+        public float Km_between_2_station(Bus_line_station a, Bus_line_station b)
         {
             int staion1 = a.My_station.MyCode;
             int staion2 = b.My_station.MyCode;
@@ -173,7 +190,7 @@ namespace dotNet5781_02_8113_5037
             }
         }
 
-        public TimeSpan time_between_2_station(Bus_line_station a, Bus_line_station b)
+        public TimeSpan Time_between_2_station(Bus_line_station a, Bus_line_station b)
         {
             int staion1 = a.My_station.MyCode;
             int staion2 = b.My_station.MyCode;
@@ -194,7 +211,7 @@ namespace dotNet5781_02_8113_5037
                 throw new MyException("not the two of station exsist in this line");
             }
         }
-        public Bus_line tat_road(int num,int num2)
+        public Bus_line Tat_road(int num,int num2)
         {
             int i1 = this.Find_station(num);
              int i2 = this.Find_station(num2);
@@ -232,13 +249,11 @@ namespace dotNet5781_02_8113_5037
 
         public int CompareTo(Bus_line other)
         {
-            this.Time = this.time_between_2_station(this.first_station, this.last_station);
-            other.Time = other.time_between_2_station(other.first_station, other.last_station);
-            return this.Time.CompareTo(other.Time);
+            this.time = this.Time_between_2_station(this.first_station, this.last_station);
+            other.time = other.Time_between_2_station(other.first_station, other.last_station);
+            return this.time.CompareTo(other.time);
         }
-
-
-        public int Station_in_system(List<Bus_station> a, int num)
+            public int Station_in_system(List<Bus_station> a, int num)
         {
             for (int i = 0; i <= a.Count(); i++)
             {

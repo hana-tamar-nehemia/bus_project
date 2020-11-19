@@ -40,9 +40,9 @@ namespace dotNet5781_02_8113_5037
             set
             {
                 Random r = new Random();
-                double[] arr = new double[2];
-                arr[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;// קו אורך
-                arr[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;// קו רוחב 
+                station_location = new double[2];
+                station_location[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;// קו אורך
+                station_location[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;// קו רוחב 
             }
         }
         //*****************************************************
@@ -69,7 +69,7 @@ namespace dotNet5781_02_8113_5037
         }
         public override string ToString()
         {
-            string dorest_to_string = $" Bus Station Code: {code}, {station_location[1]}°N  {station_location[0]}°E";
+            string dorest_to_string = $" Bus Station Code: {code}, {My_station_location[1]}°N  {My_station_location[0]}°E";
             return dorest_to_string;
         }
         

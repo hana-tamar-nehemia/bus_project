@@ -9,24 +9,17 @@ namespace dotNet5781_02_8113_5037
     [Serializable]
     public class MyException : Exception
     {
-        public int Capacity { get; private set; }
 
         public MyException() : base() { }
         public MyException(string message) : base(message) { }
         public MyException(string message, Exception inner) : base(message, inner) { }
 
-        override public string ToString()
-        { return "MyException:" + Capacity + "\n" + Message; }
     }
+
     class Program
     {
-
-
         static void Main(string[] args)
-        {
-
-
-
+        { 
             Console.WriteLine("enter 0\n to add a new line");
             Console.WriteLine("enter 1\n to add a station to line");
             Console.WriteLine("enter 2\n to remove line");
@@ -34,7 +27,7 @@ namespace dotNet5781_02_8113_5037
             Console.WriteLine("enter 4\n to search line that pass in a spesific station");
             Console.WriteLine("enter 5\n to saerch the all option to drive from the shorter to longer time");
             Console.WriteLine("enter 6\n to print all the line");
-            Console.WriteLine("enter 6\n to print all the station and line");
+            Console.WriteLine("enter 7\n to print all the station and line");
             Console.WriteLine("enter 8\n to finish");
             try
             {
@@ -45,6 +38,7 @@ namespace dotNet5781_02_8113_5037
                     add_station.MyCode = h;
                     Stations.Add(add_station);
                 }
+
                 Bus_lines_collection lines = new Bus_lines_collection();
                 int k = 0;
                 int i = 0;
@@ -52,13 +46,13 @@ namespace dotNet5781_02_8113_5037
                 {
                     for (i = k; i < i + 4; i++)
                     {
-                        Bus_line build_line = new Bus_line();
-                        Bus_line_station build_station = new Bus_line_station();
-                        build_station.My_station = Stations[i];
-                        build_line.Stations.Add(build_station);
+                        Bus_line line = new Bus_line();//bus
+                        Bus_line_station station = new Bus_line_station();//bus stasion 
+                        station.My_station = Stations[i];//station fizi
+                        line.MyStations.Add(station);
                         if (i + 1 == i + 4)//כשזה יהיה לפני היציאה תכניס את הקו
                         {
-                            lines[j] = build_line;
+                            lines[j] = line;
                         }
                     }
                     k = +4;
@@ -70,23 +64,25 @@ namespace dotNet5781_02_8113_5037
                     i++;
                 }
                 string num1;
-                    int choice;
-                    do
+                int choice;
+                do
+                {
+                    Console.WriteLine("Enter your choice:");
+                    num1 = Console.ReadLine();
+                    choice = int.Parse(num1);
+                    switch (choice)
                     {
-                        Console.WriteLine("Enter your choice:");
-                        num1 = Console.ReadLine();
-                        choice = int.Parse(num1);
-                        switch (choice)
-                        {
-                            case 0:
+                        case 0:
                             {
                                 Console.WriteLine("enter the num of the new line:\n");//num of line
                                 int num_line = int.Parse(Console.ReadLine());
                                 if (lines.If_the_line_not_exsist(num_line))//chack if the num line ok
                                     lines.Add_bus_line(Stations);
+                                else
+                                    throw new MyException("the line already");
                                 break;
                             }
-                            case 1:
+                        case 1:
                             {
                                 Console.WriteLine("to what line you would like to add a station?:\n");
                                 int num_line = int.Parse(Console.ReadLine());
@@ -104,7 +100,7 @@ namespace dotNet5781_02_8113_5037
                                         {
                                             Bus_line_station new_station = new Bus_line_station();
                                             new_station.My_station = Stations[y_n];
-                                            lines[index].Stations.Add(new_station);
+                                            lines[index].MyStations.Add(new_station);
                                         }
                                         else
                                             throw new MyException("the station you want to add doesnt exsist in the system");
@@ -118,7 +114,7 @@ namespace dotNet5781_02_8113_5037
                                 break;
                             }
                         case 2:
-                                {
+                            {
                                 Console.WriteLine("which line you want to remove?");
                                 int num = int.Parse(Console.ReadLine());
                                 if (lines.Find_line_bool(num) == true)
@@ -140,7 +136,7 @@ namespace dotNet5781_02_8113_5037
                                 }
                                 break;
                             }
-                            case 4:// to search line that pass in a spesific station
+                        case 4:// to search line that pass in a spesific station
 
                             {
                                 Console.WriteLine("which station you are right now?\n");
@@ -148,7 +144,7 @@ namespace dotNet5781_02_8113_5037
                                 bool f = false;
                                 for (int h = 0; h < lines.bus_line_list.Count; h++)
                                 {
-                                    if (lines.line_pass_in_spesific_station(h, num) != -1)
+                                    if (lines.Line_pass_in_spesific_station(h, num) != -1)
                                     {
                                         Console.WriteLine($"line num{lines[h].My_line_number}");
                                         f = true;
@@ -160,7 +156,7 @@ namespace dotNet5781_02_8113_5037
                                 }
                                 break;
                             }
-                                                           
+
                         case 5:
                             {
                                 Console.WriteLine("which station you are right now?\n");
@@ -173,33 +169,65 @@ namespace dotNet5781_02_8113_5037
                                     int y = Stations[0].The_bus_exsist(Stations, sof);//exsist or not
                                     if (y != -1)//the second station in system
                                     {
-
+                                        lines.Tatim_if_line(moza, sof);
+                                    }
+                                    else
+                                    {
+                                        throw new MyException("no such a station in system");
                                     }
                                 }
                                 else
                                     throw new MyException("no such a station in system");
                                 break;
-                            } 
-                            case 6:
-                                {
-                                break;
                             }
-                            case 7:
+                        case 6:
+                            {
+                                for (int y = 0; y < lines.bus_line_list.Count; y++)
                                 {
-                                break;
-                            }
-                            default:
-                                {
-                                    Console.WriteLine("try again");
+                                    if (lines[y].My_go1 == 1)
+                                    
+                                        lines[y].ToString();
+                                    
+                                    if(lines[y].My_go2==1)
+                                    {
+                                        Console.WriteLine("return route:");
+                                    }
                                 }
                                 break;
+                            }
 
-                        }
+                        case 7:
+                            {
+                                bool f;
+                                for (int print = 0; print < Stations.Count; print++)
+                                {
+                                    f = false;
+                                    Console.WriteLine($"station:{Stations[print].MyCode}");
+                                    for (int line = 0; line < lines.bus_line_list.Count; line++)
+                                    {
+                                      
+                                        if (lines[line].Bool_find(Stations[print].MyCode))
+                                        {
+                                            Console.WriteLine($"{lines[line].My_line_number} / ");
+                                            f = true;
+                                        }
+                                    }
+                                    if (f == false)
+                                        Console.WriteLine("None\n");
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("wrong number please try again");
+                            }
+                            break;
+
+                    }
 
 
-                    } while (choice != 8);
-                }
-
+                } while (choice != 8);
+            }
 
             catch (MyException excep)
             {
@@ -209,9 +237,8 @@ namespace dotNet5781_02_8113_5037
             {
                 Console.WriteLine("General Exc: ");
                 Console.WriteLine(ex);
+
             }
-
-
         }
     }
     
