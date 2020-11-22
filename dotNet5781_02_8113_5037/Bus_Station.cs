@@ -20,8 +20,7 @@ namespace dotNet5781_02_8113_5037
             set
             { code = value; }
         }
-        //**************************************************
-        private string station_address;
+        private string station_address="";
         public string My_station_address
         {
             get { return station_address; }
@@ -30,23 +29,24 @@ namespace dotNet5781_02_8113_5037
                 station_address = value;
             }
         }
-        //****************************************************
 
-        //****************************************************
         private double[] station_location;
         public double[] My_station_location
         {
             get { return station_location; }
-            set
-            {
-                Random r = new Random();
-                station_location = new double[2];
-                station_location[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;// קו אורך
-                station_location[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;// קו רוחב 
-            }
+            set { }
         }
-        //*****************************************************
+         
 
+
+       public Bus_station()
+        {
+            Random r = new Random();
+            station_location = new double[2];
+            station_location[0] = r.NextDouble() * (33.3 - 31.0) + 31.0;// קו אורך
+            station_location[1] = r.NextDouble() * (35.5 - 34.3) + 34.3;// קו רוחב 
+        }
+        
         public bool The_bus_exsist_bool(List<Bus_station> a,int n)
         {
 
@@ -57,6 +57,12 @@ namespace dotNet5781_02_8113_5037
             }
             return false;
         }
+        /// <summary>
+        /// the func check if the station exsist in the system 
+        /// </summary>
+        /// <param name="a">all the stations that exsist in the system</param>
+        /// <param name="num">the station we search</param>
+        /// <returns>return the index of the station and -1 if the statin doesnt exsist</returns>
         public int The_bus_exsist(List<Bus_station> a, int n)
         {
 
@@ -67,6 +73,10 @@ namespace dotNet5781_02_8113_5037
             }
             return -1;
         }
+        /// <summary>
+        /// print the code of station and the location
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string dorest_to_string = $" Bus Station Code: {code}, {My_station_location[1]}°N  {My_station_location[0]}°E";

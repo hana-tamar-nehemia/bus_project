@@ -10,13 +10,14 @@ namespace dotNet5781_02_8113_5037
     class Bus_lines_collection : IEnumerable
     {
 
-        private List<Bus_line> Bus_line_list;
+        private List<Bus_line> Bus_line_list = new List<Bus_line>();
 
         public List<Bus_line> bus_line_list
         {
             get { return Bus_line_list; }
             set { Bus_line_list = value; }
         }
+
         public IEnumerator GetEnumerator()
         {
             return Bus_line_list.GetEnumerator();
@@ -24,7 +25,7 @@ namespace dotNet5781_02_8113_5037
 
         public bool If_the_line_not_exsist(int a)
         {
-           
+
             for (int i = 0; i < bus_line_list.Count; i++)
             {
                 if (bus_line_list[i].My_line_number == a)
@@ -33,20 +34,20 @@ namespace dotNet5781_02_8113_5037
             return true;
         }
 
-        public void Tatim_if_line(int num,int num2)
+        public void Tatim_if_line(int num, int num2)
         {
-            
+
             List<Bus_line> tatim = new List<Bus_line>();
             for (int i = 0; i < Bus_line_list.Count; i++)
             {
                 Bus_line add = new Bus_line();
                 add = bus_line_list[i].Tat_road(num, num2);
-               if (add!=null)
-                { 
+                if (add != null)
+                {
                     tatim.Add(add);
                 }
             }
-            if (tatim!=null)
+            if (tatim != null)
             {
                 tatim.Sort();
                 Console.WriteLine("the line/s you have from the short time to longer:\n");
@@ -59,59 +60,67 @@ namespace dotNet5781_02_8113_5037
             {
                 throw new MyException("there isnt no buses for you");
             }
-            
-            
-        }
 
-        public void Add_bus_line(List<Bus_station> Stations)
+
+        }
+      
+        /// <summary>
+        /// add new line 
+        /// it means to sdd new num of line and 2 station
+        /// </summary>
+        /// <param name="Stations">this all station in system
+        /// <param name="n">num of line</param>
+        public void Add_bus_line(List<Bus_station> Stations, int n)
         {
-            //List<Bus_line> n = new List<Bus_line>();
-            bool f = false;
-            int counter = 0;
-            Console.WriteLine("enter the stations the line go through:\n to stop enter 0\n ");//enter station
+            int index_of_the_station = 0;
+            Bus_line line = new Bus_line();//new line
+            line.My_line_number = n;
+
+            //add the first station//
+            Console.WriteLine("enter the exsit stations");//enter station
             Console.WriteLine("#");
             int station = int.Parse(Console.ReadLine());//enter the first station
-            Console.WriteLine("\n");
-            int index_of_the_station = 0;
-            while(f==false||station!=0)
-
-                {
-                if (station != 0)
-                {
-                    do
-                    {
-                        if (Stations[0].The_bus_exsist_bool(Stations, station))//the station in the system
-                        {   //enter the station//
-                            Bus_line_station line_station = new Bus_line_station();//new staition of line 
-                            line_station.My_station = Stations[index_of_the_station];//put the station in the line
-                            Bus_line line = new Bus_line();//new line
-                            line.MyStations.Add(line_station);
-                            this.Bus_line_list.Add(line);//add the line
-                            counter++;
-                            Console.WriteLine("added");
-
-                            if (counter >= 2) f = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("no exsist try another station\n");//enter station
-                        }
-                        Console.WriteLine("#");
-                        station = int.Parse(Console.ReadLine());//enter the first station
-                        Console.WriteLine("\n");
-
-                    } while (station != 0);//have more station
-                }
-
-                if (counter < 2)
-                {
-                    Console.WriteLine("add more stations not enough station in the new line\n#");
-                    station = int.Parse(Console.ReadLine());//enter the first station
-                }
-
+            while ( !Stations[0].The_bus_exsist_bool(Stations, station))
+            {
+                Console.WriteLine("try another station");
+                Console.WriteLine("#");
+                station = int.Parse(Console.ReadLine());//enter the first station
             }
+            Bus_line_station line_station = new Bus_line_station();//new staition of line 
+            index_of_the_station = Stations[0].The_bus_exsist(Stations, station);
+            line_station.My_station = Stations[index_of_the_station];
+            line.MyStations.Add(line_station);
+            Console.WriteLine("added");
+            int i = station;
+            //last station
+            Console.WriteLine("enter the last stations");//enter station
+            Console.WriteLine("#");
+            station = int.Parse(Console.ReadLine());//enter the first station
+            while ( !Stations[0].The_bus_exsist_bool(Stations, station) || station == i)
+            {
+                Console.WriteLine("try another station");
+                Console.WriteLine("#");
+                station = int.Parse(Console.ReadLine());//enter the first station
+            }
+            Bus_line_station line_station2 = new Bus_line_station();//new staition of line 
+            index_of_the_station = Stations[0].The_bus_exsist(Stations, station);
+            line_station2.My_station = Stations[index_of_the_station];
+            //add the last station///
+            line.MyStations.Add(line_station2);
+            Console.WriteLine("added");
+
+            line.set_last_and_first();
+            this.Bus_line_list.Add(line);//add the line
+            Console.WriteLine("done");
         }
-      public int Find_line(int num)
+
+        /// <summary>
+        /// the func search spesific line in the collection of all the line in the system
+        /// and return the index or 0 if it doesnt exsist
+        /// </summary>
+        /// <param name="num"> the number of line we need to search</param>
+        /// <returns>the index</returns>0 if it doesnt exsist
+        public int Find_line(int num)
         {
             for (int i = 0; i < bus_line_list.Count; i++)
             {
@@ -122,6 +131,12 @@ namespace dotNet5781_02_8113_5037
             }
             return 0;
         }
+        /// <summary>
+        /// the func search spesific line in the collection of all the line in the system
+        /// and return true or false if it doesnt exsist
+        /// </summary>
+        /// <param name="num">the number of line we need to search</param>
+        /// <returns>true if he is found</returns>false if it doesnt exsist
         public bool Find_line_bool(int num)
         {
             for (int i = 0; i < bus_line_list.Count; i++)
@@ -133,12 +148,15 @@ namespace dotNet5781_02_8113_5037
             }
             return false;
         }
+        /// <summary>
+        /// the func remove line fron the system the user can remove one side of the line or the both side
+        /// </summary>
+        /// <param name="num">number of line</param>
         public void Remove_bus_line(int num)
         {
             int index = Find_line(num);
             Console.WriteLine($"enter 1 - to remove line {num} forth\n 2 to remove line {num} back\n 3 to remove both line");
-            bool f = false;
-            while (f == false)
+            while (1==1)
             {
                 int n = int.Parse(Console.ReadLine());//enter the first station
                 if (n == 1 && Bus_line_list[index].My_go2 == 1)
@@ -156,27 +174,42 @@ namespace dotNet5781_02_8113_5037
             }
 
         }
-        public int Line_pass_in_spesific_station(int i, int station)
+        
+        public override string ToString()
         {
-            return bus_line_list[i].Find_station(station);
+            for(int u=0;u<bus_line_list.Count;u++)
+            {
+                Console.WriteLine(bus_line_list[u]);
+            }
+            return "end";
         }
 
-      
 
+        /// <summary>
+        /// sort by the func comper to that i made in bus line class.
+        /// sort the line from the shorter to longer time of drive
+        ///
+        /// </summary>
+        /// <returns>the new sort list of line</returns>
         public List<Bus_line> Sort_line_by_time()
         {
              bus_line_list.Sort();
             return bus_line_list;
         }
         
+        /// <summary>
+        /// indexer return the index of the line and if the line doesnt exsist exception throw
+        /// </summary>
+        /// <param name="line">num of line to search in the system</param>
+        /// <returns></returns>
         public Bus_line this[int line]
         {
             get
             {
-                if (Find_line(line) != -1)
+                if (Find_line_bool(line))
                     return Bus_line_list[Find_line(line)];
                 else
-                    throw new MyException($"line{line}doesnt exsist");
+                    throw new MyException($"line {line} doesnt exsist");
             }
             set
             {

@@ -25,28 +25,29 @@ namespace dotNet5781_02_8113_5037
             get { return km_from_last_station; }
             set
             {
-                Random r = new Random();
-                km_from_last_station = r.Next(7000);
+               
             }
         }
 
-     //*******************************************************************************************
 
         private TimeSpan time_from_last_station;
         public TimeSpan Func_time_from_last_station
         {
             get { return time_from_last_station; }
             set
-            { 
-                float time = km_from_last_station / 80; //in global minute acoording to 80 kamash
-                int hour = (int)time / 60;//the hours
-                int minute= (int)time - 60*hour;//just minute
-                int second = (int)((time - (60 * hour)-minute)*10);//just second
-                time_from_last_station = new TimeSpan(hour, minute, second);
-            }
+            { }
         }
-        
-        
+
+        public Bus_line_station()
+        {
+            Random r = new Random();
+            km_from_last_station = r.Next(7000);
+            float time = km_from_last_station / 80; //in global minute acoording to 80 kamash
+            int hour = (int)time / 60;//the hours
+            int minute = (int)time - 60 * hour;//just minute
+            int second = (int)((time - (60 * hour) - minute) * 10);//just second
+            time_from_last_station = new TimeSpan(hour, minute, second);
+        }
     }
         
 }
