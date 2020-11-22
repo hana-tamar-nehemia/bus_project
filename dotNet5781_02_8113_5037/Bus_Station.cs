@@ -11,15 +11,15 @@ namespace dotNet5781_02_8113_5037
    // {
         public class Bus_station
         {
-            private static int code;
+            private static int code=0;
             public int MyCode
             {
                 get { return code; }
                 set
                 {
-                   int num_code =0 ; 
-                   num_code++;
-                   MyCode = num_code;
+                     
+                    
+                   
                    code = MyCode;
                             
                 }
@@ -31,8 +31,7 @@ namespace dotNet5781_02_8113_5037
                 get { return station_address; }
                 set
                 {
-                    Console.WriteLine("Enter a station address");
-                    My_station_address = Console.ReadLine();
+                    My_station_address = "";
                     station_address = My_station_address;
                 }
             }
