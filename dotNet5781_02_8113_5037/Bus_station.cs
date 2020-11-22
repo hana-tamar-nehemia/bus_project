@@ -11,29 +11,17 @@ namespace dotNet5781_02_8113_5037
    // {
         public class Bus_station
         {
-            private static int code;
+            private static int code=0;
             public int MyCode
             {
                 get { return code; }
                 set
                 {
-                    bool fcode = false;
-                    while (!fcode)
-                    {
-                        Console.WriteLine("Enter a station code");
-                        string string_coode = Console.ReadLine();
-                        int num_code = int.Parse(string_coode);
-                        if (num_code < 100000 && num_code > 0)
-                            Console.WriteLine("worng station code - try again");
-                        else
-                        {
-                            MyCode = num_code;
-                            code = MyCode;
-                            fcode = true;
-                        }
-
-                    }
-
+                     
+                    
+                   
+                   code = MyCode;
+                            
                 }
             }
             //**************************************************
@@ -43,8 +31,7 @@ namespace dotNet5781_02_8113_5037
                 get { return station_address; }
                 set
                 {
-                    Console.WriteLine("Enter a station address");
-                    My_station_address = Console.ReadLine();
+                    My_station_address = "";
                     station_address = My_station_address;
                 }
             }
@@ -69,7 +56,7 @@ namespace dotNet5781_02_8113_5037
                 return dorest_to_string;
             }
 
-     //   }
+  
    }
 }
 
