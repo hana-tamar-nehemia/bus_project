@@ -7,41 +7,46 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_8113_5037
 {
 
-   public class Bus_line_station : Bus_station
+   public class Bus_line_station 
     {
+        private Bus_station station;
+
+        public Bus_station My_station
+        {
+            get { return station; }
+            set { station = value; }
+        }
+
+
         private float km_from_last_station;
 
-        public float func_km_from_last_station
+        public float Func_km_from_last_station
         {
             get { return km_from_last_station; }
             set
             {
-                km_from_last_station = r.Next(7000);
+               
             }
         }
 
-     
 
         private TimeSpan time_from_last_station;
-        public TimeSpan func_time_from_last_station
+        public TimeSpan Func_time_from_last_station
         {
             get { return time_from_last_station; }
-            set {
+            set
+            { }
+        }
 
-                float time = km_from_last_station / 80; //in global minute
-                int hour = (int)time / 60;//just hours
-                int minute= (int)time % 60;//just minute
-                time_from_last_station = TimeSpan.FromHours(hour);
-                time_from_last_station = TimeSpan.FromMinutes(minute);
-            }
-        }
-        public int _code()
+        public Bus_line_station()
         {
-            return base.MyCode;
-        }
-        public override string ToString()
-        {
-            return "";
+            Random r = new Random();
+            km_from_last_station = r.Next(7000);
+            float time = km_from_last_station / 80; //in global minute acoording to 80 kamash
+            int hour = (int)time / 60;//the hours
+            int minute = (int)time - 60 * hour;//just minute
+            int second = (int)((time - (60 * hour) - minute) * 10);//just second
+            time_from_last_station = new TimeSpan(hour, minute, second);
         }
     }
         
