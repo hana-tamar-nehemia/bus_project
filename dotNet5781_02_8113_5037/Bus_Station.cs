@@ -79,7 +79,7 @@ namespace dotNet5781_02_8113_5037
         /// <returns></returns>
         public override string ToString()
         {
-            string dorest_to_string = $" Bus Station Code: {code}, {My_station_location[1]}°N  {My_station_location[0]}°E";
+            string dorest_to_string = $" Bus Station Code: {MyCode}, {My_station_location[1]}°N  {My_station_location[0]}°E";
             return dorest_to_string;
         }
         

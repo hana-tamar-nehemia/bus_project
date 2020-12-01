@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:dotNet5781_03A_8113_5037"
         mc:Ignorable="d"
         Title="Infor_Bus" Height="450" Width="800" Icon="WhatsApp Image 2020-11-30 at 21.07.28.jpeg" Background="#FF160808" FontWeight="Bold" Topmost="True" WindowStartupLocation="Manual">
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Background="#FFFDFAFA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="51*"/>
@@ -19,6 +19,10 @@
         <Grid HorizontalAlignment="Left" Height="100" Margin="32.333,0,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Grid.Column="1"/>
 
         <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto" Margin="0,0,0.334,373.667" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="21*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="179*"/>
                 <ColumnDefinition Width="132*"/>
@@ -26,12 +30,21 @@
                 <ColumnDefinition Width="159*"/>
                 <ColumnDefinition Width="159*"/>
             </Grid.ColumnDefinitions >
-            <Label Content="Area:" Grid.Column="2" HorizontalAlignment="Left" Margin="4.667,0,0,-3" Width="223" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Leelawadee UI Semilight" Background="#FCE6E8C8"/>
-            <Label Content="Bus line number:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="50" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Segoe UI Light" Background="#FCE6E8C8" Margin="0,0,0,-3"/>
+            <Label Content="               Area:" Grid.Column="2" HorizontalAlignment="Left" Margin="5.2,0,0,-16.667" Width="223" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Leelawadee UI Semilight" Background="#FCE6E8C8" Grid.RowSpan="2"/>
+            <Label Content="    Bus line number:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="202" Height="72" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Segoe UI Light" Background="#FCE6E8C8" Margin="-7,0,0,-25.667" Grid.RowSpan="2"/>
         </Grid>
-        <ComboBox x:Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch"  Margin="133,-1,468.333,371.667" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="2" Grid.RowSpan="2"/>
-        <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Height="50" Text="{Binding Path=Area, Mode=OneWay}" Margin="471,-1,0.333,371.667" TextWrapping="Wrap" Grid.Column="2" Grid.RowSpan="2"/>
-        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="354" Margin="10,10.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="773" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch"  Margin="127.6,0,473.033,345" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="2" Grid.RowSpan="2" FontSize="22" FontFamily="SimSun-ExtB"/>
+        <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area, Mode=OneWay}" Margin="469.6,0,-4.967,356" TextWrapping="Wrap" Grid.Column="2" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.347"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.194"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="364" Margin="-7,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="801" Grid.ColumnSpan="3"/>
 
     </Grid>
 
