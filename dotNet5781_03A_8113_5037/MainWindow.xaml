@@ -34,7 +34,7 @@
             <Label Content="    Bus line number:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="202" Height="72" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Segoe UI Light" Background="#FCE6E8C8" Margin="-7,0,0,-25.667" Grid.RowSpan="2"/>
         </Grid>
         <ComboBox x:Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch"  Margin="127.6,0,473.033,345" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="2" Grid.RowSpan="2" FontSize="22" FontFamily="SimSun-ExtB"/>
-        <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area, Mode=OneWay}" Margin="469.6,0,-4.967,356" TextWrapping="Wrap" Grid.Column="2" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+        <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area, Mode=OneWay}" Margin="469.6,0,-4.967,356" TextWrapping="Wrap" Grid.Column="2" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" TextChanged="tbArea_TextChanged">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
