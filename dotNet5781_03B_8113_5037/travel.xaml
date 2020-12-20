@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="travel" Height="200" Width="250">
     <Grid>
-        <TextBox  x:Name="k_m" HorizontalAlignment="Left"  Height="23" Margin="146,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
+        <TextBox  x:Name="k_m" HorizontalAlignment="Left" MaxLength="4"  PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown"  Height="23" Margin="146,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" TextChanged="k_m_TextChanged" />
         <Label  HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="131" Height="23" Content="enter km of the travel:"/>
         <Button Content="go" HorizontalAlignment="Left" Margin="77,106,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 

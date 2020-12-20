@@ -1,0 +1,14 @@
+﻿<Window x:Class="dotNet5781_03B_8113_5037.databus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_8113_5037"
+        mc:Ignorable="d"
+        Title="databus" Height="600" Width="500">
+    <Grid Margin="0,0,0.333,-138.333">
+        <Button Content="reful" HorizontalAlignment="Left" Margin="70,439,0,0" VerticalAlignment="Top" Width="112" Height="35" Click="Button_Click"/>
+        <Button Content="treatment" HorizontalAlignment="Left" Margin="300,439,0,0" VerticalAlignment="Top" Width="117" Height="35" Click="Button_Click_1"/>
+        <TextBox x:Name="data" HorizontalAlignment="Left" Height="340" Margin="70,44,0,0" TextWrapping="Wrap" Text="{Binding Path=ToString}" VerticalAlignment="Top" Width="347"/>
+    </Grid>
+</Window>

@@ -18,7 +18,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Licens plate: " HorizontalAlignment="Center" />
                 <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Path=Licens_plate}" />
-                <Button  Content="travel" VerticalAlignment="Top" Click="Button_Click_2" HorizontalAlignment="Center" Grid.Column="2" IsEnabled="{Binding ElementName=listofbus, Path=SelectedItem}" />
+                <Button  x:Name="travelbuttom" Content="travel" VerticalAlignment="Top" Click="Button_Click_2" HorizontalAlignment="Center" Grid.Column="2"  />
                 <Button  Content="reful" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="3" />
             </Grid>
         </DataTemplate>
