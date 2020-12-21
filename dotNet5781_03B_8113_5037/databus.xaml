@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_8113_5037"
         mc:Ignorable="d"
-        Title="databus" Height="600" Width="500">
-    <Grid Margin="0,0,0.333,-138.333">
-        <Button Content="reful" HorizontalAlignment="Left" Margin="70,439,0,0" VerticalAlignment="Top" Width="112" Height="35" Click="Button_Click"/>
-        <Button Content="treatment" HorizontalAlignment="Left" Margin="300,439,0,0" VerticalAlignment="Top" Width="117" Height="35" Click="Button_Click_1"/>
-        <TextBox x:Name="data" HorizontalAlignment="Left" Height="340" Margin="70,44,0,0" TextWrapping="Wrap" Text="{Binding Path=ToString}" VerticalAlignment="Top" Width="347"/>
+        Title="databus" Height="600" Width="500" Icon="WhatsApp Image 2020-12-17 at 17.18.00.jpeg">
+    <Grid Margin="0,0,0.333,-123.333" Background="#FF89AAEE">
+        <Button Content="reful" HorizontalAlignment="Left" Margin="70,439,0,0" VerticalAlignment="Top" Width="112" Height="35" Click="Button_Click" FontWeight="Bold" FontSize="16"/>
+        <Button Content="treatment" HorizontalAlignment="Left" Margin="300,439,0,0" VerticalAlignment="Top" Width="117" Height="35" Click="Button_Click_1" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="data" HorizontalAlignment="Left" Height="333" Margin="70,83,0,0" VerticalAlignment="Top" Width="347" Content="{Binding }" FontSize="18" FontWeight="Bold"/>
+        <Label Content="details of bus:" HorizontalAlignment="Left" Margin="171,10,0,0" VerticalAlignment="Top" Height="46" Width="174" FontWeight="Bold" FontSize="18"/>
     </Grid>
 </Window>

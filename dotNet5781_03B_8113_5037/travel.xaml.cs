@@ -32,31 +32,32 @@ namespace dotNet5781_03B_8113_5037
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                int a = int.Parse(k_m.Text);
-            if (a + selected.Km < 1200)
+            if (k_m.Text != null)
             {
-                selected.Km += a;
-                int i = a / 80;
-                Thread s = new Thread(onroad);
-                s.Start(i);
+                int a = int.Parse(k_m.Text);
+                if (a + selected.Km < 1200)
+                {
+                    selected.Km += a;
+                    selected.Km_between_treatment += a;
+                    int i = a / 80;
+                    Thread s = new Thread(onroad);
+                    s.Start(i);
+                }
+                else
+                    MessageBox.Show("the bus needs refueling");
             }
-            else
-                MessageBox.Show("the bus needs refueling");
             this.Close();
         }
 
         private void onroad(object i)
         {
             MessageBox.Show("on drive");
-            selected.MyStatus = (Bus.Status)2;
+            selected.MyStatus = (Bus.Status)1;
             Thread.Sleep((int)i*6000);
             selected.MyStatus = 0;
         }
 
-        private void k_m_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+       
 
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
         {

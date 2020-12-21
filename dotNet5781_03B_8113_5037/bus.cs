@@ -100,8 +100,8 @@ namespace dotNet5781_03B_8113_5037
 
 
         public Bus()
-        { }
-        public Bus(DateTime _date, string _Licens_plat)
+        { Licens_plate = "0"; }
+        public Bus(DateTime _date , string _Licens_plat)
         {
             Km_between_treatment = 0;
             Km = 0;
@@ -121,16 +121,16 @@ namespace dotNet5781_03B_8113_5037
             if (MyStatus == (Status)2)
                 str = "at the gas station";
             if (MyStatus == (Status)3)
-                str = "in_treatment";
-            string dorest_to_string = $"Licens plate {Licens_plate}\n\n the bus {str}\n\n date of activity {Date}\n\n km from the last refueling {Km}" +
-                $"\n\n last treatment {Date_treatment}\n\n km from the last treatment {Km_between_treatment}\n\n ";
+                str = "in_treatment"+"!";
+            string dorest_to_string = $"Licens plate: {Licens_plate}\n\n the bus {str}\n\n date of activity: {Date}\n\n km from the last refueling: {Km}" +
+                $"\n\n last treatment: {Date_treatment}\n\n km from the last treatment: {Km_between_treatment}\n\n ";
             return dorest_to_string;
 
         }
         public bool lincegood(string a)
         {
             int a2 = int.Parse(a);
-            return (a2 <= 9999999 && a2 > 9999999);
+            return (a2 <= 100000000 && a2 > 9999999);
 
         }
         public bool kmgood(string a)

@@ -42,7 +42,6 @@ namespace dotNet5781_03B_8113_5037
             buses[i++].Km = 1200;
             DateTime x = new DateTime(2010, 1, 3);
             buses[i].Date_treatment = x;
-            buses[i].MyStatus = (Bus.Status)3;
             listofbus = new ListBox();
             DataContext = buses;
 
@@ -50,45 +49,76 @@ namespace dotNet5781_03B_8113_5037
 
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //MessageBox.Show(((Bus)listofbus.SelectedItem).ToString());
-            //Bus a = sender as Bus;
-            //MessageBox.Show(a.ToString());
-            databus a = new databus((Bus)listofbus.SelectedItem);
-            a.ShowDialog();
-        }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)//add
         {
             //כשילחצו יפתח החלון השני
 
             AddBus newbus = new AddBus(buses);
             newbus.ShowDialog();
+            if (buses[buses.Count()-1].Licens_plate == "0")
+            {
+                buses.Remove(buses[buses.Count()-1]);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)//תדלוק
         {
             Bus b = new Bus();
-            b = ((sender as Button).DataContext as Bus);
-            b.Km = 0;
-            DataContext = b;
-            MessageBox.Show("refueled");
+            b = (sender as Button).DataContext as Bus;
+            if (b.MyStatus == (Bus.Status)2)
+            {
+                b.Km = 0;
+                MessageBox.Show("the container is already full");
+            }
+            else if (b.MyStatus == (Bus.Status)1)
+            {
+                MessageBox.Show("the bus is traveling");
+            }
+            else
+                if (b.MyStatus == (Bus.Status)3)
+            {
+                MessageBox.Show("the bus is in treatment");
+            }
+            else
+            {
+                b.Km = 0;
+                Thread s = new Thread(ongas);
+                s.Start(b);
+            }
+
         }
 
+        private void ongas(object b)
+        {
+            MessageBox.Show("refueling");
+            ((Bus)b).MyStatus = (Bus.Status)2;
+            Thread.Sleep(12000);
+            ((Bus)b).MyStatus = 0;
+        }
+
+       
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
             Bus b = new Bus();
             b = ((sender as Button).DataContext as Bus);
-            if (b.checkDate() == true)
+            if (b.checkDate() == true && b.MyStatus != (Bus.Status)1)
             {
                 travel a = new travel(b);
                 a.ShowDialog();
             }
             else
-                MessageBox.Show("refueled");
+                if(b.checkDate() == false)
+                MessageBox.Show("the bus need a treatment");
+            else
+                MessageBox.Show("the bus is traveling");
+
+        }
+
+        private void listofbus_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            databus a = new databus((Bus)listofbus.SelectedItem);
+            a.ShowDialog();
         }
     }
 }

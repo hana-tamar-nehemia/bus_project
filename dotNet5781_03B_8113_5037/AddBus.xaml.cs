@@ -30,17 +30,20 @@ namespace dotNet5781_03B_8113_5037
         }
 
 
-        private void busListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //private void busListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (newbus.lincegood(licens_plateTextBox.Text))
+            if (newbus.lincegood(licens_plateTextBox.Text)==true)
                 newbus.Licens_plate = licens_plateTextBox.Text;
-
-
+            else
+            {
+                MessageBox.Show("worong licens plate\n enter again");
+                return;
+            }
             string s = kmtreatTextBox.Text;
             int a = int.Parse(s);
 
@@ -57,22 +60,21 @@ namespace dotNet5781_03B_8113_5037
                 newbus.MyStatus = (Bus.Status)0;
             else
                 newbus.MyStatus = (Bus.Status)3;
-
             this.Close();
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
 
-            System.Windows.Data.CollectionViewSource busViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busViewSource.Source = [generic data source]
-            _ = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busViewSource.Source = [generic data source]
-            _ = (System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource"));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busViewSource.Source = [generic data source]
-        }
+        //    System.Windows.Data.CollectionViewSource busViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // busViewSource.Source = [generic data source]
+        //    _ = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // busViewSource.Source = [generic data source]
+        //    _ = (System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource"));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // busViewSource.Source = [generic data source]
+        //}
 
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
         {

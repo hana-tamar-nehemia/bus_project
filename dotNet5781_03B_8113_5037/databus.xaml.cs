@@ -23,37 +23,45 @@ namespace dotNet5781_03B_8113_5037
         Bus selsected;
         public databus(Bus a)
         {
-            data = new TextBox();
+            data = new Label();
             DataContext = a;
-            //data.Text = a.ToString();
+            data.Content = a.ToString();
             selsected = new Bus();
             selsected = a;
             //data.Text = a.ToString();
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)//refuel
         {
             selsected.Km = 0;
-            DataContext = selsected;
-            MessageBox.Show("refueled");
+            data.Content = selsected.ToString();
+            Thread treat = new Thread(ongas);
+            treat.Start();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)//treat
         {
             selsected.Date_treatment = DateTime.Now;
+            data.Content = selsected.ToString();
             Thread treat = new Thread(ontreat);
             treat.Start();
         }
 
         private void ontreat()
         {
-            MessageBox.Show("on treat");
+            MessageBox.Show("on treatment");
             selsected.MyStatus = (Bus.Status)3;
             Thread.Sleep(144000);
             selsected.MyStatus = 0;
         }
-
+        private void ongas()
+        {
+            MessageBox.Show("refueling");
+            selsected.MyStatus = (Bus.Status)2;
+            Thread.Sleep(12000);
+            selsected.MyStatus = 0;
+        }
 
     }
     
