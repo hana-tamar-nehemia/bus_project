@@ -16,27 +16,21 @@ using System.Windows.Shapes;
 
 namespace dotNet5781_03A_8113_5037
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Bus_station> Stations = new List<Bus_station>();
-
+        // 40 stations
+        // 10 lines
         Bus_lines_collection lines = new Bus_lines_collection();
-
         private Bus_line currentDisplayBusLine;
-
-        public Bus_line MyProperty
-        {
-            get { return currentDisplayBusLine; }
-            set { currentDisplayBusLine = value; }
-        }
 
         public MainWindow()
         {
-
             InitializeComponent();
+            List<Bus_station> Stations = new List<Bus_station>();
             for (int h = 1; h <= 40; h++)//40 station
             {
                 Bus_station add_station = new Bus_station();
@@ -64,28 +58,28 @@ namespace dotNet5781_03A_8113_5037
                 lines.bus_line_list.Add(line);
                 k = 0;
             }
+
             cbBusLines.ItemsSource = lines;
-            cbBusLines.DisplayMemberPath = "My_line_number" ; //זהו שם הפרופרטי ממש של מספר הקו
+            cbBusLines.DisplayMemberPath = "My_line_number";
             cbBusLines.SelectedIndex = 0;
+            ShowBusLine(lines.bus_line_list[cbBusLines.SelectedIndex].My_line_number);
+
+
         }
-     
-
-       
-            private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
-            {
-                ShowBusLine((cbBusLines.SelectedValue as Bus_line).My_line_number);
-            }
-
-        private void ShowBusLine(int index)
+        void ShowBusLine(int num_line)
         {
-            currentDisplayBusLine = lines[index];
-
+            currentDisplayBusLine = lines[num_line];
             UpGrid.DataContext = currentDisplayBusLine;
-
             lbBusLineStations.DataContext = currentDisplayBusLine.MyStations;
+            tbArea.Text = currentDisplayBusLine.area;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowBusLine((cbBusLines.SelectedValue as Bus_line).My_line_number); 
+        }
+
+        private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

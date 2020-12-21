@@ -1,51 +1,33 @@
-﻿<Window x:Name="Infor_Bus" x:Class="dotNet5781_03A_8113_5037.MainWindow"
+﻿<Window x:Class="dotNet5781_03A_8113_5037.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03A_8113_5037"
         mc:Ignorable="d"
-        Title="Infor_Bus" Height="450" Width="800" Icon="WhatsApp Image 2020-11-30 at 21.07.28.jpeg" Background="#FF160808" FontWeight="Bold" Topmost="True" WindowStartupLocation="Manual">
-    <Grid Name="MainGrid" Background="#FFFDFAFA">
+        Title="bus-time" Height="640" Width="800" Icon="WhatsApp Image 2020-12-17 at 17.18.00.jpeg">
+    <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="51*"/>
-            <ColumnDefinition Width="728*"/>
+            <ColumnDefinition Width="441*"/>
+            <ColumnDefinition Width="352*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Left" Height="100" Margin="32.333,0,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Grid.Column="1"/>
-
-        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto" Margin="0,0,0.334,373.667" Grid.RowSpan="2" Grid.ColumnSpan="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="26*"/>
-                <RowDefinition Height="21*"/>
-            </Grid.RowDefinitions>
+        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
+            VerticalAlignment="Stretch" Width="auto" Grid.ColumnSpan="2" Margin="0,0,0.334,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="179*"/>
-                <ColumnDefinition Width="132*"/>
-                <ColumnDefinition Width="163*"/>
-                <ColumnDefinition Width="159*"/>
-                <ColumnDefinition Width="159*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <Label Content="               Area:" Grid.Column="2" HorizontalAlignment="Left" Margin="5.2,0,0,-16.667" Width="223" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Leelawadee UI Semilight" Background="#FCE6E8C8" Grid.RowSpan="2"/>
-            <Label Content="    Bus line number:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="202" Height="72" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" FontFamily="Segoe UI Light" Background="#FCE6E8C8" Margin="-7,0,0,-25.667" Grid.RowSpan="2"/>
+            <Label Content="line number:" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,159.333,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Background="#FFE1E1D2" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="18" />
+            <ComboBox Name="cbBusLines"  Grid.Column="1"  HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0"  Width="120" SelectionChanged="cbBusLines_SelectionChanged" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI Semilight" FontStyle="Italic"/>
+            <Label Content="Area:" Grid.Column="1" HorizontalAlignment="Stretch" Margin="159.333,0,39.333,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Background="#FFE1E1D2" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="18"/>
+            <TextBox Name ="tbArea" Grid.Column="2" HorizontalAlignment="Stretch"  Margin="158.333,0,-0.333,0" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Grid.ColumnSpan="2" FontFamily="Yu Gothic UI Semilight" FontSize="18" FontWeight="Bold" FontStyle="Italic" TextDecorations="{x:Null}"/>
         </Grid>
-        <ComboBox x:Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch"  Margin="127.6,0,473.033,345" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="2" Grid.RowSpan="2" FontSize="22" FontFamily="SimSun-ExtB"/>
-        <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Text="{Binding Path=Area, Mode=OneWay}" Margin="469.6,0,-4.967,356" TextWrapping="Wrap" Grid.Column="2" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" TextChanged="tbArea_TextChanged">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="-0.347"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-0.194"/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="364" Margin="-7,9.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="801" Grid.ColumnSpan="3"/>
-
+        <ListBox Name="lbBusLineStations"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="545" Margin="0,0,-6.666,-2.333" Grid.Row="1" VerticalAlignment="Stretch" Width="800" Grid.ColumnSpan="2" SelectionChanged="lbBusLineStations_SelectionChanged"/>
     </Grid>
-
 </Window>
