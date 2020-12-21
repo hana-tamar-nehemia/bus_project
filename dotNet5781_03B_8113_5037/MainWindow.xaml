@@ -5,28 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_8113_5037"
         mc:Ignorable="d"
-        Title="buses" Height="450" Width="800">
+        Title="buses" Height="450" Width="800" Icon="WhatsApp Image 2020-12-17 at 17.18.00.jpeg">
     <Window.Resources>
         <DataTemplate x:Key="MyBus"
             DataType="local:Bus">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Licens plate: " HorizontalAlignment="Center" />
-                <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Path=Licens_plate}" />
-                <Button  Content="travel" VerticalAlignment="Top" Click="Button_Click_2" HorizontalAlignment="Center" Grid.Column="2" IsEnabled="{Binding ElementName=listofbus, Path=SelectedItem}" />
-                <Button  Content="reful" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="3" />
+                <TextBlock Grid.Column="0" Text="Licens plate: " VerticalAlignment="Stretch"  FontWeight="Bold" HorizontalAlignment="Stretch"  />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Licens_plate}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <Button  x:Name="travelbuttom" Content="travel"  FontWeight="Bold" Click="Button_Click_2"  Grid.Column="2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <Button  Content="reful" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="3" />
             </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <ListBox Name="listofbus" ItemTemplate="{StaticResource ResourceKey=MyBus}" HorizontalAlignment="Stretch" Margin="80,55,80.333,99.667" VerticalAlignment="Stretch" 
-                     SelectionChanged="ListBox_SelectionChanged" SelectionMode="Single" ItemsSource="{Binding}" />
-        <Button Content="add bus" IsEnabled="{Binding ElementName=listofbus, Path=SelectedItem}" Click="Button_Click" HorizontalAlignment="Center" Margin="330,350,359.333,0"  VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock Text="list of buses" HorizontalAlignment="Left" Margin="322,10,0,0" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top" FontSize="22" Width="277" FontWeight="Bold" Cursor="ScrollNW" IsEnabled="False"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="WhatsApp Image 2020-12-21 at 11.11.58.jpeg"/>
+        </Grid.Background>
+        <ListBox Name="listofbus" MouseDoubleClick="listofbus_MouseDoubleClick" ItemTemplate="{StaticResource ResourceKey=MyBus}" HorizontalAlignment="Stretch" Margin="136,67,133.333,95.667" VerticalAlignment="Stretch" 
+                     ItemsSource="{Binding}" Background="#FF6C7ED5" />
+        <Button Content="add bus" IsEnabled="True" Click="Button_Click" HorizontalAlignment="Center" Margin="350,351,320.333,0"  VerticalAlignment="Top" Width="123" Height="46" Background="#FF8194EE" FontSize="20" FontWeight="Bold"/>
+        <TextBlock Text="list of buses" HorizontalAlignment="Left" Margin="282,10,0,0" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top" FontSize="36" Width="349" Cursor="ScrollNW" IsEnabled="False" Height="57" FontFamily="Levenim MT" FontWeight="Bold" TextDecorations="{x:Null}" LineHeight="72"/>
     </Grid>
 </Window>

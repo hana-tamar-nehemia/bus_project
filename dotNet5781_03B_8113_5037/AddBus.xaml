@@ -5,32 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_8113_5037"
         mc:Ignorable="d"
-        Title="AddBus" Height="450" Width="400" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Bus}, CreateList=True}"/>
-    </Window.Resources>
-    <Grid x:Name="grid1" DataContext="{StaticResource busViewSource}" HorizontalAlignment="Stretch" Margin="80,155,80,0" VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition Width="97.333"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label Content="date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-        <DatePicker x:Name="dateDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="2.667,3,0,3" Grid.Row="1" SelectedDate="{Binding date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-        <Label Content="date treatment:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-        <DatePicker x:Name="date_treatmentDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="2.667,3,0,3" Grid.Row="2" SelectedDate="{Binding date_treatment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-        <Label Content="km to drive:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="kmTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="2.667,4,0,4" Grid.Row="3" Text="{Binding km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        <Label Content="Licens plate:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="licens_plateTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="2.667,4,0,4" Grid.Row="0" VerticalAlignment="Center" Width="120"/>
-        <Label Content="enter details for the new bus" HorizontalAlignment="Left" Margin="17.333,-118,-13.667,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1" Width="221"/>
-        <Button Content="done" IsEnabled="True" Grid.Column="1" HorizontalAlignment="Left" Margin="68.333,95,0,-63.333" Grid.Row="3" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="Button_Click"/>
+        Title="Add Bus" Height="390" Width="400" Icon="WhatsApp Image 2020-12-17 at 17.18.00.jpeg" >
+    <Grid>
+        <Grid x:Name="grid1"  HorizontalAlignment="Stretch" Margin="34,87,24.333,0" VerticalAlignment="Top" Height="137" Background="#FF6F8BC6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="199.333"/>
+                <ColumnDefinition Width="Auto" MinWidth="159.333"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="32"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="date:" Grid.Column="1" HorizontalAlignment="Left" Margin="2.333,3,0,3" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="36"/>
+            <DatePicker x:Name="dateDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="2,3.333,0,0.333" Grid.Row="1" VerticalAlignment="Center" Height="29" Width="120"/>
+
+            <Label Content="last date treatment:" Grid.Column="1" HorizontalAlignment="Left" Margin="2.333,3,0,3" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="159"/>
+            <DatePicker x:Name="date_treatmentDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="2,4.333,0,0.667" Grid.Row="2" VerticalAlignment="Center" Height="29" Width="120"/>
+
+            <Label Content="km the bus drove from the last treatment:" Grid.Column="1"   HorizontalAlignment="Left" Margin="2.333,5,0,1" Grid.Row="3" VerticalAlignment="Center" FontSize="9" Height="26" Width="187"/>
+            <TextBox x:Name="kmtreatTextBox"  Grid.Column="2" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" HorizontalAlignment="Left" MaxLength="5"  Height="29" Margin="1.667,4,0,34.333" Grid.Row="3" VerticalAlignment="Center" Width="120" Grid.RowSpan="2"/>
+
+            <Label Content="Licens plate:" Grid.Column="1"  HorizontalAlignment="Left" Margin="2.333,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="75"/>
+            <TextBox x:Name="licens_plateTextBox"  MaxLength="8" MinHeight="7"  PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="1.667,3,0,1.667" Grid.Row="0" VerticalAlignment="Center" Width="120"  />
+
+        </Grid>
+        <Label Content="please enter details for the new bus" HorizontalAlignment="Left" Margin="43,22,0,0" VerticalAlignment="Top" Width="299" Height="38" FontWeight="Bold" FontSize="16"/>
+
+        <Button Content="done"  IsEnabled="True"  Margin="128,280,145.333,0" VerticalAlignment="Top" Click="Button_Click" Height="21"  Background="#FF7D97E1" FontWeight="Bold"/>
     </Grid>
 
 </Window>
