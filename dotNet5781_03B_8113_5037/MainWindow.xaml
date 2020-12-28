@@ -27,7 +27,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="WhatsApp Image 2020-12-21 at 11.11.58.jpeg"/>
         </Grid.Background>
-        <ListBox Name="listofbus" MouseDoubleClick="listofbus_MouseDoubleClick" ItemTemplate="{StaticResource ResourceKey=MyBus}" HorizontalAlignment="Stretch" Margin="136,67,133.333,95.667" VerticalAlignment="Stretch" 
+        <ListBox Name="listofbus" MouseDoubleClick="listofbus_MouseDoubleClick" ItemTemplate="{StaticResource ResourceKey=MyBus}" HorizontalAlignment="Stretch" Margin="136,67,124.333,95.667" VerticalAlignment="Stretch" 
                      ItemsSource="{Binding}" Background="#FF6C7ED5" />
         <Button Content="add bus" IsEnabled="True" Click="Button_Click" HorizontalAlignment="Center" Margin="350,351,320.333,0"  VerticalAlignment="Top" Width="123" Height="46" Background="#FF8194EE" FontSize="20" FontWeight="Bold"/>
         <TextBlock Text="list of buses" HorizontalAlignment="Left" Margin="282,10,0,0" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top" FontSize="36" Width="349" Cursor="ScrollNW" IsEnabled="False" Height="57" FontFamily="Levenim MT" FontWeight="Bold" TextDecorations="{x:Null}" LineHeight="72"/>
