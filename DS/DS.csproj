@@ -9,4 +9,8 @@
     <OutputPath>..\bin\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DLAPI.csproj" />
+  </ItemGroup>
+
 </Project>

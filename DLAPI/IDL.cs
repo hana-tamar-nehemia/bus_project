@@ -14,9 +14,9 @@ namespace DLAPI
         //IEnumerable<DO.Person> GetAllPersons();
         //IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate);
         //DO.Person GetPerson(int id);
-        //void AddPerson(DO.Person person);
-        //void UpdatePerson(DO.Person person);
-        //void UpdatePerson(int id, Action<DO.Person> update); //method that knows to updt specific fields in Person
-        //void DeletePerson(int id);
+        void Add_Bus(DO.Bus bus);
+        void UpdatePerson(DO.Person person);
+        void UpdatePerson(int id, Action<DO.Person> update); //method that knows to updt specific fields in Person
+        void DeletePerson(int id);
     }
 }
