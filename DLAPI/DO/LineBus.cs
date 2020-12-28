@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
-namespace DO
+namespace DLAPI.DO
 {
-    class Bus
+    class LineBus
     {
     }
 }
