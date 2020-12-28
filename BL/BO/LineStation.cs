@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BL.BO
+namespace BO
 {
-   public class LineStation
+   public class LineStation : Station
     {
         public int Line_Id { get; set; }
         public int Code { get; set; }
