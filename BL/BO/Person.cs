@@ -10,7 +10,7 @@ namespace BO
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public PersonalStatus PersonalStatus { get; set; }
+        //public PersonalStatus { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
         public string City { get; set; }

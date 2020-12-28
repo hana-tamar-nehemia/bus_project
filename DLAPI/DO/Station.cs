@@ -8,7 +8,8 @@ namespace DO
     {
         public int Code { get; set; }
         public string Station_Name { get; set; }
-        public double Station_Location { get; set; }//אווירי
-   
+        public double Station_Location1 { get; set; }//אווירי
+        public double Station_Location2 { get; set; }
+
     }
 }
