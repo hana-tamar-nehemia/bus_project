@@ -9,12 +9,12 @@ namespace DS
 {
     public class DataSource
     {
-        //public static List<Person> ListPersons;
-        //public static List<Course> ListCourses;
-        //public static List<Student> ListStudents;
-        //public static List<Lecturer> ListLecturers;
-        //public static List<LecturerInCourse> ListLectInCourses;
-        //public static List<StudentInCourse> ListStudInCourses;
+        public static List<> ListPersons;
+        public static List<> ListCourses;
+        public static List<> ListStudents;
+        public static List<> ListLecturers;
+        public static List<> ListLectInCourses;
+        public static List<> ListStudInCourses;
 
         static DataSource()
         {
