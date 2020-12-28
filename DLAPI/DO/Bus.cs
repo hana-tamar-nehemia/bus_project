@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BO
+namespace DO
 {
-    public class Buses
+    class Bus
     {
     }
 }

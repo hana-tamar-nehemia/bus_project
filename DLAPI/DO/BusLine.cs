@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DO
+namespace DLAPI.DO
 {
-    class Buses
+    class BusLine
     {
     }
 }
