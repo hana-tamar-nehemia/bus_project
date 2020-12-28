@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BO
 {
-    public class Buses
+    public class Bus
     {
         public int License_num { get; set; }
         public DateTime Start_data { get; set; }
