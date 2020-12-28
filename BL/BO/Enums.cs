@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public enum PersonalStatus { SINGLE, MARRIED, DEVORSED, WIDOWER }
+    public enum Areas { Galilee, North, South, Jerusalem, Haifa, Krayot, Tiberias }
     public enum Semester { ELUL, A, B, YEAR, SUMMER }
     public enum StudentStatus { ACTIVE, SUSPENDED, ACADEMIC_VACATION, FINISHED }
     public enum StudentGraduate { BSC, MSC, PHD, BA, MA, MD }

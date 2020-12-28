@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DLAPI.DO
+namespace BO
 {
-    class LineBus
+    public class Bus
     {
     }
 }
