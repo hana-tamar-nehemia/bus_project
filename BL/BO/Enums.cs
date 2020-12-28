@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BO
 {
     public enum PersonalStatus { SINGLE, MARRIED, DEVORSED, WIDOWER }
-    public enum Semester { ELUL, A, B, YEAR, SUMMER }
+    public enum Bus_status { DRIVER, AVAILABLE_TRAVEL, TREATMENT, REFUELING }
     public enum StudentStatus { ACTIVE, SUSPENDED, ACADEMIC_VACATION, FINISHED }
     public enum StudentGraduate { BSC, MSC, PHD, BA, MA, MD }
     public enum LecturerStatus { STUFF, SABBATICAL, ADJUNCT, PENSIONER, FIRED, LEFT }

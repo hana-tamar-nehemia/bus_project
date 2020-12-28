@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DO
+namespace BO
 {
-    class BusLine
+   public class BusOnTrip
     {
+
     }
 }
