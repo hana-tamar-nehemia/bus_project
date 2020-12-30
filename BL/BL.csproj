@@ -44,17 +44,10 @@
     <Compile Include="BLAPI\BLFactory.cs" />
     <Compile Include="BLImp.cs" />
     <Compile Include="BO\BusLine.cs" />
-    <Compile Include="BO\Course.cs" />
-    <Compile Include="BO\CourseLecturer.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
-    <Compile Include="BO\Lecturer.cs" />
-    <Compile Include="BO\LecturerCourse.cs" />
     <Compile Include="BO\ListedPerson.cs" />
-    <Compile Include="BO\Person.cs" />
     <Compile Include="BO\Station.cs" />
-    <Compile Include="BO\Student.cs" />
-    <Compile Include="BO\StudentCourse.cs" />
     <Compile Include="BLAPI\IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BO\Tools.cs" />
