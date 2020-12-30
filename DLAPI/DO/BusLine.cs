@@ -8,7 +8,7 @@ namespace DO
 {
     public class BusLine
     {
-        public int Bus_Id { get; set; }//רץ אוטומטי
+        public int Bus_Id { get; set; }//לוחית רישוי
         public int Line_Number { get; set; }
         public Areas Area { get; set; }
         public int First_Station { get; set; }
