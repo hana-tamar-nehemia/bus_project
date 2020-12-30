@@ -28,12 +28,6 @@ namespace DS
         static int code = 11111;
         static int id = 1;
         static int line_number = 1;
-
-
-
-
-
-
         static void InitAllLists()
         {
             #region buses
@@ -205,7 +199,7 @@ namespace DS
             };
             #endregion
 
-            #region  stations//איתחול תחנות
+            #region  stations 
             List_Station = new List<Station>
             {
                 new Station
@@ -624,7 +618,7 @@ namespace DS
         };
             #endregion
 
-
+            #region bus line
             List_Bus_Line = new List<BusLine>
             {
             new BusLine
@@ -634,8 +628,6 @@ namespace DS
                Line_Number=line_number++,
                First_Station=73,
                Last_Station=76,
-
-
 
             },
                 new BusLine
@@ -710,6 +702,7 @@ namespace DS
                Last_Station=106,
             }
         };
+            #endregion
         }
     }
 }
