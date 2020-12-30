@@ -13,6 +13,8 @@ namespace DO
         public string Address { get; set; }
         public double Latitude { get; set; }//אווירי
         public double longitude { get; set; }
+        public bool Act { get; set; }
+
 
     }
 }

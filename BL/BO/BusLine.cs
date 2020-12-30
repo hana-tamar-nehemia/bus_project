@@ -17,7 +17,7 @@ namespace BO
 
         public IEnumerable<LineStation> LineStations { get; set; }
 
-        public IEnumerable<AdjStation> AdjStations { get; set; }
+        //public IEnumerable<AdjStation> AdjStations { get; set; }
 
 
     }
