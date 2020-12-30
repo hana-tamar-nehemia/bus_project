@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BLAPI\BLFactory.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\Course.cs" />
     <Compile Include="BO\CourseLecturer.cs" />
     <Compile Include="BO\Enums.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="BO\LecturerCourse.cs" />
     <Compile Include="BO\ListedPerson.cs" />
     <Compile Include="BO\Person.cs" />
+    <Compile Include="BO\Station.cs" />
     <Compile Include="BO\Student.cs" />
     <Compile Include="BO\StudentCourse.cs" />
     <Compile Include="BLAPI\IBL.cs" />
