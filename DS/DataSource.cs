@@ -11,13 +11,13 @@ namespace DS
     {
         public static List<Bus> List_Bus;
         public static List<Station> List_Station;
-        public static List<User> List_User;
-        public static List<Adjstation> List_Adjstation;
+        //public static List<User> List_User;
+        public static List<AdjStation> List_Adjstation;
         public static List<BusLine> List_Bus_Line;
-        public static List<BusOnTrip> List_Bus_On_Trip;
+       // public static List<BusOnTrip> List_Bus_On_Trip;
         public static List<LineStation> List_Line_Station;
-        public static List<LineTrip> List_Line_Trip;
-        public static List<Trip> List_Trip;
+      //  public static List<LineTrip> List_Line_Trip;
+        //public static List<Trip> List_Trip;
 
 
         static DataSource()
@@ -36,7 +36,7 @@ namespace DS
 
         static void InitAllLists()
         {
-
+            #region buses
             List_Bus = new List<Bus>
             {
               new Bus
@@ -203,13 +203,11 @@ namespace DS
 
 
             };
+            #endregion
 
+            #region  stations//איתחול תחנות
             List_Station = new List<Station>
             {
-
-                 
-            
-                #region Boot stations//איתחול תחנות
                 new Station
                 {
                     Code = 73,
@@ -622,9 +620,10 @@ namespace DS
                 }
 
                 
-                #endregion
             
         };
+            #endregion
+
 
             List_Bus_Line = new List<BusLine>
             {
@@ -633,9 +632,81 @@ namespace DS
                Bus_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-
+               First_Station=73,
+               Last_Station=76,
+            },
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=77,
+               Last_Station=78,
+            } , 
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=83,
+               Last_Station=84,
+            },    new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=85,
+               Last_Station=86,
+            } , 
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=88,
+               Last_Station=89,
+            } , 
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=90,
+               Last_Station=91,
+            } , 
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=93,
+               Last_Station=94,
+            },  
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=95,
+               Last_Station=97,
+            } ,  
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=102,
+               Last_Station=103,
+            }   ,
+                new BusLine
+            {
+               Bus_Id=id++,
+               Area=(Areas)r.Next(7),
+               Line_Number=line_number++,
+               First_Station=105,
+               Last_Station=106,
             }
-            };
+        };
         }
     }
 }

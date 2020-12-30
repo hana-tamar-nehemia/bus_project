@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="BLAPI\BLFactory.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="BO\AdjStation.cs" />
+    <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
+    <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\ListedPerson.cs" />
     <Compile Include="BO\Station.cs" />
     <Compile Include="BLAPI\IBL.cs" />
