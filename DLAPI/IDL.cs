@@ -13,31 +13,31 @@ namespace DLAPI
     public interface IDL
     {
         #region BusLine
-        IEnumerable<DO.Person> GetAllPersons();
-        IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate);
-        DO.Person GetPerson(int id);
-        void AddPerson(DO.Person person);
-        void UpdatePerson(DO.Person person);
-        void UpdatePerson(int id, Action<DO.Person> update); //method that knows to updt specific fields in Person
-        void DeletePerson(int id);
+        IEnumerable<DO.BusLine> GetAllBusLine();
+        IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
+        DO.BusLine GetBusLine(int Bus_Id);
+        void AddBusLine(DO.BusLine BusLine);
+        void UpdateBusLine(DO.BusLine BusLine);
+        void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields in Person
+        void DeleteBusLine(int Bus_Id);
         #endregion
 
         #region BUS
-        DO.Student GetStudent(int id);
-        IEnumerable<DO.Student> GetAllStudents();
-        IEnumerable<object> GetStudentListWithSelectedFields(Func<DO.Student, object> generate);
-        void AddStudent(DO.Student student);
-        void UpdateStudent(DO.Student student);
-        void UpdateStudent(int id, Action<DO.Student> update); //method that knows to updt specific fields in Student
-        void DeleteStudent(int id); // removes only Student, does not remove the appropriate Person...
+        DO.Bus GetSBus(int License_num_Id);
+        IEnumerable<DO.Bus> GetAllBuses();
+        IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
+        void AddBus(DO.Bus Bus);
+        void UpdateFuelBus(DO.Bus Bus);
+        void UpdateFuelBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
+        void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
         #endregion
 
-        #region LineStation
-        IEnumerable<DO.StudentInCourse> GetStudentsInCourseList(Predicate<DO.StudentInCourse> predicate);        
-        void AddStudentInCourse(int perID, int courseID, float grade=0);
-        void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
-        void DeleteStudentInCourse(int perID, int courseID);
-        void DeleteStudentFromAllCourses(int perID);
+        #region LINESTATION
+        IEnumerable<DO.LineStation> GetStudentsInCourseList(Predicate<DO.LineStation> predicate);        
+        void AddLineStation(int code, int line ,int line_index=0);
+        void UpdateLineStation(int code, int line, int line_index = 0);
+        void DeleteLineStation(int code, int line);
+        void DeleteLineStationFromAllBuses(int code);
 
         #endregion
 

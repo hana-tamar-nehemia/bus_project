@@ -14,7 +14,11 @@ namespace BO
         public Areas Area { get; set; }
         public int First_Station { get; set; }
         public int Last_Station { get; set; }
-        public IEnumerable<LineStation> Stations { get; set; }
+
+        public IEnumerable<LineStation> LineStations { get; set; }
+
+        public IEnumerable<AdjStation> AdjStations { get; set; }
+
 
     }
 }
