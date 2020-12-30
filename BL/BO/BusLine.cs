@@ -16,9 +16,5 @@ namespace BO
         public int Last_Station { get; set; }
         public IEnumerable<LineStation> Stations { get; set; }
 
-        //private string GetDebuggerDisplay()
-        //{
-        //    return ToString();
-        //}
     }
 }

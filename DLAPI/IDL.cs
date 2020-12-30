@@ -12,7 +12,7 @@ namespace DLAPI
     // Delete - delete an instance
     public interface IDL
     {
-        #region Person
+        #region BusLine
         IEnumerable<DO.Person> GetAllPersons();
         IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate);
         DO.Person GetPerson(int id);
@@ -22,7 +22,7 @@ namespace DLAPI
         void DeletePerson(int id);
         #endregion
 
-        #region Student
+        #region BUS
         DO.Student GetStudent(int id);
         IEnumerable<DO.Student> GetAllStudents();
         IEnumerable<object> GetStudentListWithSelectedFields(Func<DO.Student, object> generate);
@@ -32,7 +32,7 @@ namespace DLAPI
         void DeleteStudent(int id); // removes only Student, does not remove the appropriate Person...
         #endregion
 
-        #region StudentInCourse
+        #region LineStation
         IEnumerable<DO.StudentInCourse> GetStudentsInCourseList(Predicate<DO.StudentInCourse> predicate);        
         void AddStudentInCourse(int perID, int courseID, float grade=0);
         void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
