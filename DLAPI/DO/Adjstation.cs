@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DO
 {
-     public class Adjstation
+     public class AdjStation
     {
        
         public int Code_station1 { get; set; } // automatic number
