@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="DLConfig.cs" />
     <Compile Include="DLFactory.cs" />
-    <Compile Include="DO\Course.cs" />
+    <Compile Include="DO\AdjStation.cs" />
     <Compile Include="DO\Exceptions.cs" />
-    <Compile Include="DO\Lecturer.cs" />
-    <Compile Include="DO\Person.cs" />
-    <Compile Include="DO\Student.cs" />
-    <Compile Include="DO\LecturerInCourse.cs" />
-    <Compile Include="DO\StudentInCourse.cs" />
+    <Compile Include="DO\Bus.cs" />
+    <Compile Include="DO\BusOnTrip.cs" />
+    <Compile Include="DO\LineStation.cs" />
+    <Compile Include="DO\BusLine.cs" />
+    <Compile Include="DO\LineTrip.cs" />
+    <Compile Include="DO\Station.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DO\Enums.cs" />
