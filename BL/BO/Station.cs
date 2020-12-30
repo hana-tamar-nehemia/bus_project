@@ -8,13 +8,13 @@ namespace BO
 {
     public class Station
     {
-        public int ID_Line { get; set; }
-        public int Num_Line { get; set; }
-        public int Last_Station { get; set; }
-        public IEnumerable<BusLine> Collection_Lines { get; set; }
-        public DateTime Arrival_times { get; set; }
-        
-
-
+        public int Code { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public double Latitude { get; set; }//אווירי
+        public double longitude { get; set; }
+        public IEnumerable<BusLine> Collection_Lines { get; set; }//קווים שעוברים בה
+       // public IEnumerable<DateTime>  Arrival_times { get; set; }
+       
     }
 }
