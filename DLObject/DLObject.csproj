@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DLAPI\DLAPI.csproj" />
-    <ProjectReference Include="..\DS\DS.csproj" />
   </ItemGroup>
 
 </Project>
