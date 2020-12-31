@@ -623,7 +623,8 @@ namespace DS
             {
             new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=1068393,
+               Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=73,
@@ -632,7 +633,8 @@ namespace DS
             },
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=2068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=77,
@@ -640,14 +642,16 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=3068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=83,
                Last_Station=84,
             },    new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=4068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=85,
@@ -655,7 +659,8 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=5068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=88,
@@ -663,7 +668,8 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=6068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=90,
@@ -671,7 +677,8 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=8068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=93,
@@ -679,7 +686,8 @@ namespace DS
             },  
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=7068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=95,
@@ -687,7 +695,8 @@ namespace DS
             } ,  
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=9068393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=102,
@@ -695,13 +704,677 @@ namespace DS
             }   ,
                 new BusLine
             {
-               Bus_Id=id++,
+               Bus_Id=2268393,
+                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=105,
                Last_Station=106,
             }
         };
+            #endregion
+            
+            #region LineStation
+            List_Line_Station = new List<LineStation>
+            {
+               #region 10 station bus 1
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=73,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=76,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=77,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=78,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=83,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=84,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=85,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=86,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=89,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=1,
+                    Code=90,
+                    Line_Station_Index=10,
+
+                },
+                #endregion
+               
+               #region  10 Station bus 2
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=91,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=93,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=94,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=95,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=97,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=102,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=103,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=105,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=106,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=2,
+                    Code=108,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region  10 Station bus 3
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=109,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=110,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=111,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=112,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=113,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=115,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=116,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=117,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=119,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=1485,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region  10 Station bus 4
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1486,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1487,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1488,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1490,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1491,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1492,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1493,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1494,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1510,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=4,
+                    Code=1511,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region  10 Station bus 5
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1512,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1514,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1518,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1522,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1523,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=1524,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=121,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=125,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=122,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=5,
+                    Code=73,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region 10 station bus 6
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=73,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=76,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=77,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=78,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=83,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=84,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=85,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=86,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=89,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=6,
+                    Code=90,
+                    Line_Station_Index=10,
+
+                },
+                #endregion
+
+               #region  10 Station bus 7
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=91,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=93,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=94,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=95,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=97,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=102,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=103,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=105,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=106,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=7,
+                    Code=108,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region  10 Station bus 8
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=109,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=110,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=111,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=112,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=3,
+                    Code=113,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=115,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=116,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=117,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=119,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=8,
+                    Code=1485,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+               #region  10 Station bus 9
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1486,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1487,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1488,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1490,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1491,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1492,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1493,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1494,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1510,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=9,
+                    Code=1511,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
+            };
             #endregion
         }
     }

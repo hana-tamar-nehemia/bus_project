@@ -49,7 +49,6 @@
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\LineStation.cs" />
-    <Compile Include="BO\ListedPerson.cs" />
     <Compile Include="BO\Station.cs" />
     <Compile Include="BLAPI\IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
