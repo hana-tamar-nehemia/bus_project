@@ -1373,6 +1373,79 @@ namespace DS
                 },
                #endregion
 
+               #region  10 Station bus 10
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1512,
+                    Line_Station_Index=1,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1514,
+                    Line_Station_Index=2,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1518,
+                    Line_Station_Index=3,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1522,
+                    Line_Station_Index=4,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1523,
+                    Line_Station_Index=5,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=1524,
+                    Line_Station_Index=6,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=121,
+                    Line_Station_Index=7,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=125,
+                    Line_Station_Index=8,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=122,
+                    Line_Station_Index=9,
+
+                },
+                new LineStation
+                {
+                    Line_Id=10,
+                    Code=76,
+                    Line_Station_Index=10,
+
+                },
+               #endregion
+
             };
             #endregion
         }
