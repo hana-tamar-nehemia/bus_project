@@ -13,29 +13,29 @@ namespace BLAPI
         //Add Person to Course
         //get all courses for student
         //etc...
-        #region Student
-        BO.Student GetStudent(int id);
-        IEnumerable<BO.Student> GetAllStudents();
-        IEnumerable<BO.ListedPerson> GetStudentIDNameList();
+        //#region Student
+        //BO.Student GetStudent(int id);
+        //IEnumerable<BO.Student> GetAllStudents();
+        //IEnumerable<BO.ListedPerson> GetStudentIDNameList();
 
-        IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate);
+        //IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate);
 
-        void UpdateStudentPersonalDetails(BO.Student student);
+        //void UpdateStudentPersonalDetails(BO.Student student);
 
-        void DeleteStudent(int id);
+        //void DeleteStudent(int id);
 
-        #endregion
+        //#endregion
 
-        #region StudentInCourse
-        void AddStudentInCourse(int perID, int courseID, float grade = 0);
-        void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
-        void DeleteStudentInCourse(int perID, int courseID);
+        //#region StudentInCourse
+        //void AddStudentInCourse(int perID, int courseID, float grade = 0);
+        //void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
+        //void DeleteStudentInCourse(int perID, int courseID);
 
-        #endregion
+        //#endregion
 
-        #region Course
-        IEnumerable<BO.Course> GetAllCourses();
-        #endregion
+        //#region Course
+        //IEnumerable<BO.Course> GetAllCourses();
+        //#endregion
 
 
 
