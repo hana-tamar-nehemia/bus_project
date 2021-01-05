@@ -22,7 +22,7 @@ namespace DLAPI
 
         void UpdateBusBusLine(int Bus_Id);
 
-        void DeleteBusLine(int Line_Number, int Line_Id);
+        void DeleteBusLine(  int Line_Id);
         #endregion
 
         #region BUS
@@ -31,7 +31,7 @@ namespace DLAPI
         IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
         void AddBus(DO.Bus Bus);
         void UpdateFuelBus(DO.Bus Bus);
-        void UpdateFuelBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
+        void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
         void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
         #endregion
 

@@ -1448,6 +1448,19 @@ namespace DS
 
             };
             #endregion
+
+            #region AdjStation
+            List_Adjstation = new List<AdjStation>
+            {
+              new AdjStation
+              {
+
+              }
+            
+            
+            };
+            #endregion
+
         }
     }
 }
