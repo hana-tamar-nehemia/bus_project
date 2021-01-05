@@ -323,9 +323,9 @@ namespace DL
             if (bl != null)
             {
                 // UpdateBusLine(Line_Id,DO.BusLine.Act);
-              var a =  from Line_Station in DataSource.List_Line_Station;
-                Where(Line_Station.Line_Id == Line_Id)
-                Select DataSource.List_Line_Station.Remove(Line_Station) 
+              //var a =  from Line_Station in DataSource.List_Line_Station;
+              //  Where(Line_Station.Line_Id == Line_Id)
+              //  Select DataSource.List_Line_Station.Remove(Line_Station) 
             }
             else
                 throw new DO.BadPersonIdException(Line_Id, $"bad bus line id: {Line_Id}");
@@ -333,22 +333,22 @@ namespace DL
         #endregion
 
         #region AdjStation
-        void AddAdjStation(int code, int code1);
-        public void AddAdjStation(int code, int code1)
-        {
-            if (DataSource.List_Adjstation.FirstOrDefault(a => a.Code_station1 == code&& b=> b.Code_station2 == code1) != null)
-                throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
-            DataSource.List_Adjstation.Add(ad.Clone());
-        }
-        IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
-        //DO.AdjStation GetCode1(int Code);
-        //DO.AdjStation GetCode2(int Code);
-        //DO.AdjStation distace(int Code);
-        //DO.AdjStation GetTimeBetween(int Code);
-        DO.AdjStation deledteAdjStation(int Code)
-        {
+        //void AddAdjStation(int code, int code1);
+        //public void AddAdjStation(int code, int code1)
+        //{
+        //    if (DataSource.List_Adjstation.FirstOrDefault(a => a.Code_station1 == code&& b=> b.Code_station2 == code1) != null)
+        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
+        //    DataSource.List_Adjstation.Add(ad.Clone());
+        //}
+        //IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
+        ////DO.AdjStation GetCode1(int Code);
+        ////DO.AdjStation GetCode2(int Code);
+        ////DO.AdjStation distace(int Code);
+        ////DO.AdjStation GetTimeBetween(int Code);
+        //DO.AdjStation deledteAdjStation(int Code)
+        //{
 
-        }
+        //}
 
 
         #endregion
