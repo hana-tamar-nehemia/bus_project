@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DO;
+using System;
 using System.Collections.Generic;
 
 //using DO;
@@ -35,23 +36,32 @@ namespace DLAPI
         void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
         #endregion
 
-        #region LINE STATION
-        IEnumerable<DO.LineStation> GetStudentsInCourseList(Predicate<DO.LineStation> predicate);        
-        void AddLineStation(int code, int line ,int line_index=0);
-        void UpdateLineStation(int code, int line, int line_index = 0);
-        void DeleteLineStation(int code, int line);
-        void DeleteLineStationFromAllBuses(int code);
+        #region line station
+        IEnumerable<DO.LineStation> GetStudentsInCourseList(Predicate<DO.LineStation> predicate);
+         DO.LineStation GetLneStation(int code, BusLine a);
+         IEnumerable<DO.LineStation> GetAllLineStations();
+         DO.Station GetStationOfLineStation(LineStation a);
+         IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
+        void UpdateLineStation(DO.LineStation linestation);
+
+        void AddLineStation(DO.LineStation linestation);
+        void UpdateLineStation(int code, Action<DO.LineStation> update);
+        void DeleteLineStation(int code, BusLine a);
 
         #endregion
 
         #region STATION
         DO.Station GetStation(int Code);
-        DO.Station GetName(int Code);
-        DO.Station GetAddress(int Code);
-        DO.Station GetLocation(int Code);//חישוב אווירי
-        void UpdateNameStation(int code);
+        //DO.Station GetName(int Code);
+        //DO.Station GetAddress(int Code);
+        //DO.Station GetLocation(int Code);//חישוב אווירי
+        DO.Station AddStation(DO.Station station);
+
+        void UpdateStation(DO.Station station);
         void DeleteStation(int code);
         IEnumerable<DO.Station> GetAllStation();
+        void UpdateStation2(int code, Action<DO.Station> update);
+        IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);
 
         #endregion
 
