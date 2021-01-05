@@ -21,7 +21,7 @@ namespace DL
         public static DLObject Instance { get => instance; }// The public Instance property to use
         #endregion
 
-        //Implement IDL methods, CRUD
+        ///Implement IDL methods, CRUD
         #region Person
         public DO.Person GetPerson(int id)
         {
