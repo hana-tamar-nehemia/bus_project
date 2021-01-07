@@ -79,10 +79,10 @@ namespace DL
         {
             throw new NotImplementedException();
         }
-        #endregion Person
+        #endregion Station
 
         #region line station
-        public DO.LineStation GetLneStation(int code ,DO.BusLine a)//תחנה של קו מסויים
+        public DO.LineStation GetLneStation(int code, DO.BusLine a)//תחנה של קו מסויים
         {
             DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
             if (s != null)
@@ -92,7 +92,7 @@ namespace DL
         }
         public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנה לקו מסויים
         {
-            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id==s.Line_Id) != null)
+            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id == s.Line_Id) != null)
                 throw new DO.BadPersonIdException(linestation.Code, "Duplicate line station code");
             if (DataSource.List_Line_Station.FirstOrDefault(p => p.Code == linestation.Code && a.Line_Id == p.Line_Id) == null)
                 throw new DO.BadPersonIdException(linestation.Code, "Missing line station code");
@@ -138,8 +138,8 @@ namespace DL
 
         public void DeleteLineStation(int code, BusLine a)
         {
-            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code== code && a.Bus_Id==p.Line_Id);
- 
+            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
+
             if (s != null)
             {
                 int index = s.Line_Station_Index;
@@ -148,73 +148,6 @@ namespace DL
             }
             else
                 throw new DO.BadPersonIdException(code, $"bad line station code: {code}");
-        }
-        #endregion
-
-        #region זה נהיה בשורות שלי בגלל המיזוג תבדקי שיש לך הכל מפה אצלך
-        public IEnumerable<LineStation> GetStudentsInCourseList(Predicate<LineStation> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddLineStation(int code, int line, int line_index = 0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateLineStation(int code, int line, int line_index = 0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteLineStation(int code, int line)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteLineStationFromAllBuses(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetStation(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetName(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetAddress(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetLocation(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateNameStation(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteStation(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Station> GetAllStation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddAdjStation(int code, int code1)
-        {
-            throw new NotImplementedException();
         }
         #endregion
 
@@ -318,10 +251,10 @@ namespace DL
 
             if (bl != null)
             {
-                // UpdateBusLine(Line_Id,DO.BusLine.Act);
-              //var a =  from Line_Station in DataSource.List_Line_Station;
-              //  Where(Line_Station.Line_Id == Line_Id)
-              //  Select DataSource.List_Line_Station.Remove(Line_Station) 
+                //UpdateBusLine(Line_Id, DO.BusLine.Act);
+                //var a = from Line_Station in DataSource.List_Line_Station;
+                //Where(Line_Station.Line_Id == Line_Id)
+                //Select DataSource.List_Line_Station.Remove(Line_Station)
             }
             else
                 throw new DO.BadPersonIdException(Line_Id, $"bad bus line id: {Line_Id}");
