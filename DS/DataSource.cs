@@ -627,7 +627,7 @@ namespace DS
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
                First_Station=73,
-               Last_Station=76,
+               Last_Station=90,
 
             },
                 new BusLine
@@ -636,8 +636,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=77,
-               Last_Station=78,
+               First_Station=91,
+               Last_Station=108,
             } , 
                 new BusLine
             {
@@ -645,16 +645,17 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=83,
-               Last_Station=84,
-            },    new BusLine
+               First_Station=109,
+               Last_Station=1485,
+            },    
+              new BusLine
             {
                Bus_Id=4068393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=85,
-               Last_Station=86,
+               First_Station=1486,
+               Last_Station=1511,
             } , 
                 new BusLine
             {
@@ -662,8 +663,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=88,
-               Last_Station=89,
+               First_Station=1512,
+               Last_Station=73,
             } , 
                 new BusLine
             {
@@ -671,8 +672,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=90,
-               Last_Station=91,
+               First_Station=73,
+               Last_Station=90,
             } , 
                 new BusLine
             {
@@ -680,8 +681,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=93,
-               Last_Station=94,
+               First_Station=91,
+               Last_Station=108,
             },  
                 new BusLine
             {
@@ -689,8 +690,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=95,
-               Last_Station=97,
+               First_Station=109,
+               Last_Station=1485,
             } ,  
                 new BusLine
             {
@@ -698,8 +699,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=102,
-               Last_Station=103,
+               First_Station=1486,
+               Last_Station=1511,
             }   ,
                 new BusLine
             {
@@ -707,8 +708,8 @@ namespace DS
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
-               First_Station=105,
-               Last_Station=106,
+               First_Station=1512,
+               Last_Station=76,
             }
         };
             #endregion
@@ -1454,7 +1455,10 @@ namespace DS
             {
               new AdjStation
               {
-
+                 Code_station1=90,
+                 Code_station2=73,
+                 Distance=r.Next(0,),
+                 Time_Between
               }
             
             

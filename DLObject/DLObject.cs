@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using DLAPI;
+using DO;
 //using DO;
 using DS;
 
@@ -329,6 +330,116 @@ namespace DL
             }
             else
                 throw new DO.BadPersonIdException(Line_Id, $"bad bus line id: {Line_Id}");
+        }
+
+        public void UpdateBusLine(BusLine BusLine)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusBusLine(int Bus_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineStation> GetStudentsInCourseList(Predicate<LineStation> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStation(int code, int line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStationFromAllBuses(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetStation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetName(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetAddress(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetLocation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNameStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Station> GetAllStation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjStation(int code, int code1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjStation> GetLecturersInCourseList(Predicate<AdjStation> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetCode1(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetCode2(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation distace(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetTimeBetween(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation deledteAdjStation(int Code)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
