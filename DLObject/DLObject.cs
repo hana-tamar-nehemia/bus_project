@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using DLAPI;
 using DO;
-//using DO;
-using DS;
-
+ using DS;
 namespace DL
 {
     sealed class DLObject : IDL    //internal
@@ -152,7 +149,74 @@ namespace DL
             else
                 throw new DO.BadPersonIdException(code, $"bad line station code: {code}");
         }
-        #endregion Student
+        #endregion
+
+        #region זה נהיה בשורות שלי בגלל המיזוג תבדקי שיש לך הכל מפה אצלך
+        public IEnumerable<LineStation> GetStudentsInCourseList(Predicate<LineStation> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStation(int code, int line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStationFromAllBuses(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetStation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetName(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetAddress(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetLocation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNameStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Station> GetAllStation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjStation(int code, int code1)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
         #region BUS
         public DO.Bus GetSBus(int License_num_Id)
@@ -278,66 +342,27 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LineStation> GetStudentsInCourseList(Predicate<LineStation> predicate)
-        {
-            throw new NotImplementedException();
-        }
+       
+        
+        #endregion
 
-        public void AddLineStation(int code, int line, int line_index = 0)
-        {
-            throw new NotImplementedException();
-        }
+        #region AdjStation
+        //void AddAdjStation(int code, int code1);
+        //public void AddAdjStation(int code, int code1)
+        //{
+        //    if (DataSource.List_Adjstation.FirstOrDefault(a => a.Code_station1 == code&& b=> b.Code_station2 == code1) != null)
+        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
+        //    DataSource.List_Adjstation.Add(ad.Clone());
+        //}
+        //IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
+        ////DO.AdjStation GetCode1(int Code);
+        ////DO.AdjStation GetCode2(int Code);
+        ////DO.AdjStation distace(int Code);
+        ////DO.AdjStation GetTimeBetween(int Code);
+        //DO.AdjStation deledteAdjStation(int Code)
+        //{
 
-        public void UpdateLineStation(int code, int line, int line_index = 0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteLineStation(int code, int line)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteLineStationFromAllBuses(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetStation(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetName(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetAddress(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Station GetLocation(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateNameStation(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteStation(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Station> GetAllStation()
-        {
-            throw new NotImplementedException();
-        }
-
+        //}
         public void AddAdjStation(int code, int code1)
         {
             throw new NotImplementedException();
@@ -374,26 +399,8 @@ namespace DL
         }
         #endregion
 
-        #region AdjStation
-        //void AddAdjStation(int code, int code1);
-        //public void AddAdjStation(int code, int code1)
-        //{
-        //    if (DataSource.List_Adjstation.FirstOrDefault(a => a.Code_station1 == code&& b=> b.Code_station2 == code1) != null)
-        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
-        //    DataSource.List_Adjstation.Add(ad.Clone());
-        //}
-        //IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
-        ////DO.AdjStation GetCode1(int Code);
-        ////DO.AdjStation GetCode2(int Code);
-        ////DO.AdjStation distace(int Code);
-        ////DO.AdjStation GetTimeBetween(int Code);
-        //DO.AdjStation deledteAdjStation(int Code)
-        //{
-
-        //}
 
 
-        #endregion
 
     }
 }
