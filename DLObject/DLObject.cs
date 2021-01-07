@@ -22,125 +22,135 @@ namespace DL
         public static DLObject Instance { get => instance; }// The public Instance property to use
         #endregion
 
-        ///Implement IDL methods, CRUD
-        #region Person
-        public DO.Person GetPerson(int id)
+        //Implement IDL methods, CRUD
+        #region Station
+        public DO.Station GetStation(int code)
         {
-            DO.Person per = DataSource.ListPersons.Find(p => p.ID == id);
+            DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
 
             if (per != null)
                 return per.Clone();
             else
-                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
+                throw new DO.BadPersonIdException(code, $"bad station code: {code}");
         }
-        public IEnumerable<DO.Person> GetAllPersons()
+        public IEnumerable<DO.Station> GetAllStation()
         {
-            return from person in DataSource.ListPersons
-                   select person.Clone();
+            return from Station in DataSource.List_Station
+                   select Station.Clone();
         }
-        public IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate)
+        public IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate)
         {
+            return from Station in DataSource.List_Station
+                   where predicate(Station)
+                   select Station.Clone();
             throw new NotImplementedException();
         }
-        public void AddPerson(DO.Person person)
+
+        public void AddStation(DO.Station station)
         {
-            if (DataSource.ListPersons.FirstOrDefault(p => p.ID == person.ID) != null)
-                throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
-            DataSource.ListPersons.Add(person.Clone());
+            if (DataSource.List_Station.FirstOrDefault(p => p.Code == station.Code) != null)
+                throw new DO.BadPersonIdException(station.Code, "Duplicate station code");
+            DataSource.List_Station.Add(station.Clone());
         }
 
-        public void DeletePerson(int id)
+        //public void DeleteStation(int code)
+        //{
+        //    DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
+        //    if (per != null)
+        //    {
+        //        per.Act = false;
+        //        DataSource.List_Station.(per);
+        //    }
+        //    else
+        //        throw new DO.BadPersonIdException(code, $"bad station code: {code}");
+        //}
+
+        public void UpdateStation(DO.Station station)
         {
-            DO.Person per = DataSource.ListPersons.Find(p => p.ID == id);
+            DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
             if (per != null)
             {
-                DataSource.ListPersons.Remove(per);
+                DataSource.List_Station.Remove(per);
+                DataSource.List_Station.Add(per.Clone());
             }
             else
-                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
+                throw new DO.BadPersonIdException(station.Code, $"bad station code: {station.Code}");
         }
 
-        public void UpdatePerson(DO.Person person)
-        {
-            DO.Person per = DataSource.ListPersons.Find(p => p.ID == person.ID);
-
-            if (per != null)
-            {
-                DataSource.ListPersons.Remove(per);
-                DataSource.ListPersons.Add(per.Clone());
-            }
-            else
-                throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
-        }
-
-        public void UpdatePerson(int id, Action<DO.Person> update)
+        public void UpdateStation2(int code, Action<DO.Station> update)
         {
             throw new NotImplementedException();
         }
         #endregion Person
 
-        #region Student
-        public DO.Student GetStudent(int id)
+        #region line station
+        public DO.LineStation GetLneStation(int code ,DO.BusLine a)//תחנה של קו מסויים
         {
-            DO.Student stu = DataSource.ListStudents.Find(p => p.ID == id);
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
-            if (stu != null)
-                return stu.Clone();
+            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
+            if (s != null)
+                return s.Clone();
             else
-                throw new DO.BadPersonIdException(id, $"bad student id: {id}");
+                throw new DO.BadPersonIdException(code, $"no found: {code}");
         }
-        public void AddStudent(DO.Student student)
+        public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנה לקו מסויים
         {
-            if (DataSource.ListStudents.FirstOrDefault(s => s.ID == student.ID) != null)
-                throw new DO.BadPersonIdException(student.ID, "Duplicate student ID");
-            if (DataSource.ListPersons.FirstOrDefault(p => p.ID == student.ID) == null)
-                throw new DO.BadPersonIdException(student.ID, "Missing person ID");
-            DataSource.ListStudents.Add(student.Clone());
+            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id==s.Line_Id) != null)
+                throw new DO.BadPersonIdException(linestation.Code, "Duplicate line station code");
+            if (DataSource.List_Line_Station.FirstOrDefault(p => p.Code == linestation.Code && a.Line_Id == p.Line_Id) == null)
+                throw new DO.BadPersonIdException(linestation.Code, "Missing line station code");
+            DataSource.List_Line_Station.Add(linestation.Clone());
         }
-        public IEnumerable<DO.Student> GetAllStudents()
+        public IEnumerable<DO.LineStation> GetAllLineStations()
         {
-            return from student in DataSource.ListStudents
-                   select student.Clone();
+            return from linestation in DataSource.List_Line_Station
+                   select linestation.Clone();
         }
-        public IEnumerable<object> GetStudentFields(Func<int, string, object> generate)
+        //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
+        //{
+        //    return from linestation in DataSource.List_Line_Station
+        //           select generate(linestation.Code, GetStation(linestation.Code));
+        //}
+
+        public DO.Station GetStationOfLineStation(LineStation a)
         {
-            return from student in DataSource.ListStudents
-                   select generate(student.ID, GetPerson(student.ID).Name);
+            return DataSource.List_Station.Find(s => s.Code == a.Code);
         }
 
-        public IEnumerable<object> GetStudentListWithSelectedFields(Func<DO.Student, object> generate)
+        public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
         {
-            return from student in DataSource.ListStudents
-                   select generate(student);
+            return from linestation in DataSource.List_Line_Station
+                   select generate(linestation);
         }
-        public void UpdateStudent(DO.Student student)
+        public void UpdateLineStation(DO.LineStation linestation)
         {
-            DO.Student stu = DataSource.ListStudents.Find(p => p.ID == student.ID);
+            DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
             if (stu != null)
             {
-                DataSource.ListStudents.Remove(stu);
-                DataSource.ListStudents.Add(stu.Clone());
+                DataSource.List_Line_Station.Remove(stu);
+                DataSource.List_Line_Station.Add(stu.Clone());
             }
             else
-                throw new DO.BadPersonIdException(student.ID, $"bad student id: {student.ID}");
+                throw new DO.BadPersonIdException(linestation.Code, $"bad line station code: {linestation.Code}");
         }
 
-        public void UpdateStudent(int id, Action<DO.Student> update)
+        public void UpdateLineStation(int code, Action<DO.LineStation> update)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteStudent(int id)
+        public void DeleteLineStation(int code, BusLine a)
         {
-            DO.Student stu = DataSource.ListStudents.Find(p => p.ID == id);
-
-            if (stu != null)
+            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code== code && a.Bus_Id==p.Line_Id);
+ 
+            if (s != null)
             {
-                DataSource.ListStudents.Remove(stu);
+                int index = s.Line_Station_Index;
+                DataSource.List_Line_Station.Remove(s);
+                DataSource.List_Line_Station.Where(p => p.Code == code && a.Bus_Id == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index++);
             }
             else
-                throw new DO.BadPersonIdException(id, $"bad student id: {id}");
+                throw new DO.BadPersonIdException(code, $"bad line station code: {code}");
         }
         #endregion Student
 
@@ -220,6 +230,176 @@ namespace DL
             return from sic in DataSource.ListLectInCourses
                    where predicate(sic)
                    select sic.Clone();
+        }
+
+        public IEnumerable<BusLine> GetAllBusLine()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BusLine> GetAllBusLineBy(Predicate<BusLine> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BusLine GetBusLine(int Bus_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddBusLine(BusLine BusLine)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusLine(BusLine BusLine)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusLine(int line_id, Action<BusLine> update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusBusLine(int Bus_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBusLine(int Line_Number, int Line_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Bus GetSBus(int License_num_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Bus> GetAllBuses()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddBus(Bus Bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateFuelBus(Bus Bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateFuelBus(int License_num_Id, Action<Bus> update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBus(int License_num_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineStation> GetStudentsInCourseList(Predicate<LineStation> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineStation(int code, int line, int line_index = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStation(int code, int line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineStationFromAllBuses(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetStation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetName(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetAddress(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Station GetLocation(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNameStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteStation(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Station> GetAllStation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjStation(int code, int code1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjStation> GetLecturersInCourseList(Predicate<AdjStation> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetCode1(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetCode2(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation distace(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation GetTimeBetween(int Code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjStation deledteAdjStation(int Code)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
