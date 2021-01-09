@@ -13,17 +13,20 @@ namespace DLAPI
     // Delete - delete an instance
     public interface IDL
     {
+        
         #region Bus Line
-        IEnumerable<DO.BusLine> GetAllBusLine();
+         DO.BusLine GetBusLine(int Bus_Id);
+
+         IEnumerable<DO.BusLine> GetAllBusLine();
+
         IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
-        DO.BusLine GetBusLine(int Bus_Id);
+
         void AddBusLine(DO.BusLine BusLine);
         void UpdateBusLine(DO.BusLine BusLine);
         void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 
-
-       // void UpdateBusBusLine(int Bus_Id);
-
-        void DeleteBusLine(  int Bus_Id);
+        void DeleteBusLine(int Bus_Id);
+        IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate);
+         
         #endregion
 
         #region BUS
@@ -68,8 +71,8 @@ namespace DLAPI
         //DO.AdjStation GetCode2(int Code);
         //DO.AdjStation distace(int Code);
         //DO.AdjStation GetTimeBetween(int Code);
-        DO.AdjStation deledteAdjStation(int Code,int code1);
-        DO.AdjStation UpdateAdjStation(int Code ,int code1);
+        void deledteAdjStation(int Code,int code1);
+        void UpdateAdjStation(int Code ,int code1);
 
         #endregion
 
