@@ -239,7 +239,7 @@ namespace DL
             return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
                                              where predicate(BusLine) && BusLine.Act==true
                                           select Station.Clone(BusLine));
-            throw new BadBusLineCodeException();
+            throw new NotImplementedException();
         }
         public void AddBusLine(DO.BusLine BusLine)
         {
@@ -316,7 +316,7 @@ namespace DL
                 DataSource.List_Adjstation.Add(adj.Clone());
                  
             }
-            throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
 
         }
         public void deledteAdjStation(int code, int code1)
@@ -326,7 +326,7 @@ namespace DL
             {
                 DataSource.List_Adjstation.Remove(adj);
              }
-            throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
         }
 
         void IDL.UpdateBusLine(BusLine BusLine)

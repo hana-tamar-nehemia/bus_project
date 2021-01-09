@@ -47,7 +47,7 @@ namespace DO
     {
         public int CODE;
         public BadBusAdjStationException(int code, int crsID) : base() { CODE = code; }
-        public BadBusAdjStationException(int code, string message) :
+        public BadBusAdjStationException(int code, int code1, string message) :
             base(message)
         { CODE = code; }
         //public BadLineStationCodeException(int perID, int crsID, string message, Exception innerException) :
@@ -55,4 +55,16 @@ namespace DO
 
         public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
     }
-}
+    public class BadBusException : Exception
+    {
+        public int CODE;
+        public BadBusException(int code, int crsID) : base() { CODE = code; }
+        public BadBusException(int code, string message) :
+            base(message)
+        { CODE = code; }
+        //public BadLineStationCodeException(int perID, int crsID, string message, Exception innerException) :
+        //    base(message, innerException) { personID = perID; courseID = crsID; }
+
+        public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
+    }
+ }
