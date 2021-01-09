@@ -9,7 +9,7 @@ using DO;
  using DS;
 namespace DL
 {
-    sealed class DLObject : IDL    //internal
+    sealed class DLObject : IDL    //internall
 
     {
         #region singelton
