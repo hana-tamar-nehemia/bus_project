@@ -226,7 +226,7 @@ namespace DL
             if (bl != null && bl.Act == true)
                 return bl.Clone();
             else
-                throw new DO.BadPersonIdException(Bus_Id, $"bad bus line id: {Bus_Id}");
+                throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
         public IEnumerable<DO.BusLine> GetAllBusLine()
         {
@@ -239,12 +239,12 @@ namespace DL
             return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
                                              where predicate(BusLine) && BusLine.Act==true
                                           select Station.Clone(BusLine));
-            throw new NotImplementedException();
+            throw new BadBusLineCodeException();
         }
         public void AddBusLine(DO.BusLine BusLine)
         {
             if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == BusLine.Bus_Id) != null)
-                throw new DO.BadPersonIdException(BusLine.Bus_Id, "Duplicate bus line Id");
+                throw new DO.BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
             DataSource.List_Bus_Line.Add(BusLine.Clone());
         }
        void UpdateBusLine(DO.BusLine BusLine)
@@ -255,7 +255,7 @@ namespace DL
                 DataSource.List_Bus_Line.Remove(bl);
                 DataSource.List_Bus_Line.Add(bl.Clone());
             }
-            throw new BadPersonIdException(BusLine.Bus_Id, "Duplicate bus line Id");
+            throw new BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
         }
 
        public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 
@@ -276,7 +276,7 @@ namespace DL
                 DataSource.List_Bus_Line.Add(bl.Clone());
             }
             else
-                throw new DO.BadPersonIdException(Bus_Id, $"bad bus line id: {Bus_Id}");
+                throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
 
          
@@ -307,7 +307,7 @@ namespace DL
                    select Station.Clone(AdjStation));
             throw new NotImplementedException();
         }
-        public DO.AdjStation UpdateAdjStation(int code , int code1)
+        public void UpdateAdjStation(int code , int code1)
         {
             AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
             if (adj != null)
@@ -319,7 +319,7 @@ namespace DL
             throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
 
         }
-        DO.AdjStation deledteAdjStation(int code, int code1)
+        public void deledteAdjStation(int code, int code1)
         {
             AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
             if (adj != null)
@@ -327,6 +327,11 @@ namespace DL
                 DataSource.List_Adjstation.Remove(adj);
              }
             throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+        }
+
+        void IDL.UpdateBusLine(BusLine BusLine)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
