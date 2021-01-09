@@ -19,11 +19,11 @@ namespace DLAPI
         DO.BusLine GetBusLine(int Bus_Id);
         void AddBusLine(DO.BusLine BusLine);
         void UpdateBusLine(DO.BusLine BusLine);
-        void UpdateBusLine(int line_id, Action<DO.BusLine> update); //method that knows to updt specific fields 
+        void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 
 
-        void UpdateBusBusLine(int Bus_Id);
+       // void UpdateBusBusLine(int Bus_Id);
 
-        void DeleteBusLine(  int Line_Id);
+        void DeleteBusLine(  int Bus_Id);
         #endregion
 
         #region BUS
@@ -32,7 +32,7 @@ namespace DLAPI
         IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
         void AddBus(DO.Bus Bus);
         void UpdateFuelBus(DO.Bus Bus);
-        void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
+        //void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
         void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
         #endregion
 
@@ -68,13 +68,13 @@ namespace DLAPI
         #region AdjStation
         void AddAdjStation(int code, int code1);
 
-        IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
-        DO.AdjStation GetCode1(int Code);
-        DO.AdjStation GetCode2(int Code);
-        DO.AdjStation distace(int Code);
-        DO.AdjStation GetTimeBetween(int Code);
-        DO.AdjStation deledteAdjStation(int Code);
-
+        IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate);
+        //DO.AdjStation GetCode1(int Code);
+        //DO.AdjStation GetCode2(int Code);
+        //DO.AdjStation distace(int Code);
+        //DO.AdjStation GetTimeBetween(int Code);
+        DO.AdjStation deledteAdjStation(int Code,int code1);
+        DO.AdjStation UpdateAdjStation(int Code ,int code1);
 
         #endregion
 

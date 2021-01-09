@@ -156,7 +156,7 @@ namespace DL
         {
             DO.Bus b = DataSource.List_Bus.Find(p => p.License_num == License_num_Id);
 
-            if (b != null)
+            if (b != null && b.Act==true)
                 return b.Clone();
             else
                 throw new DO.BadPersonIdException(License_num_Id, $" bad bus: {License_num_Id}");
@@ -164,6 +164,7 @@ namespace DL
         public IEnumerable<DO.Bus> GetAllBuses()
         {
             return from Bus in DataSource.List_Bus
+                   where Bus.Act==true
                    select Bus.Clone();
         }
         //public IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate)
@@ -175,7 +176,7 @@ namespace DL
         {
             //Returns deferred query + clone:
             return from b in DataSource.List_Bus
-                   where predicate(b)
+                   where predicate(b) && b.Act == true
                    select b.Clone();
         }
         public void AddBus(DO.Bus Bus)
@@ -187,7 +188,7 @@ namespace DL
         public void UpdateFuelBus(DO.Bus Bus)
         {
             DO.Bus b = DataSource.List_Bus.Find(p => Bus.License_num == Bus.License_num);
-            if (b != null)
+            if (b != null&& b.Act==true)
             {
                 DataSource.List_Bus.Remove(b);
                 DataSource.List_Bus.Add(b.Clone());
@@ -195,17 +196,16 @@ namespace DL
             else
                 throw new DO.BadPersonIdException(Bus.License_num, $"bad Bus license num: {Bus.License_num}");
         }
-        public void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update)
-        {
-            throw new NotImplementedException();
-        }
+       
         public void DeleteBus(int License_num_Id)
         {
             DO.Bus b = DataSource.List_Bus.Find(bus => bus.License_num  == License_num_Id);
 
             if (b != null)
             {
+                b.Act = false;
                 DataSource.List_Bus.Remove(b);
+                DataSource.List_Bus.Add(b);
             }
             else
                 throw new DO.BadPersonIdException(License_num_Id, $"bad bus license number: {License_num_Id}");
@@ -217,7 +217,7 @@ namespace DL
         {
             DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
 
-            if (bl != null)
+            if (bl != null && bl.Act == true)
                 return bl.Clone();
             else
                 throw new DO.BadPersonIdException(Bus_Id, $"bad bus line id: {Bus_Id}");
@@ -225,10 +225,14 @@ namespace DL
         public IEnumerable<DO.BusLine> GetAllBusLine()
         {
             return from BusLine in DataSource.List_Bus_Line
+                   where BusLine.Act== true
                    select BusLine.Clone();
         }
         public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
         {
+            return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
+                                             where predicate(BusLine) && BusLine.Act==true
+                                          select Station.Clone(BusLine));
             throw new NotImplementedException();
         }
         public void AddBusLine(DO.BusLine BusLine)
@@ -237,39 +241,39 @@ namespace DL
                 throw new DO.BadPersonIdException(BusLine.Bus_Id, "Duplicate bus line Id");
             DataSource.List_Bus_Line.Add(BusLine.Clone());
         }
-       //void UpdateBusLine(DO.BusLine BusLine);
-       public void UpdateBusLine(int line_id, Action<DO.BusLine> update) //method that knows to updt specific fields 
+       void UpdateBusLine(DO.BusLine BusLine)
+        {
+            BusLine bl= DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);
+            if (bl != null && bl.Act==true)
+            {
+                DataSource.List_Bus_Line.Remove(bl);
+                DataSource.List_Bus_Line.Add(bl.Clone());
+            }
+            throw new BadPersonIdException(BusLine.Bus_Id, "Duplicate bus line Id");
+        }
+
+       public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 
        {
             throw new NotImplementedException();
        }
-        //void UpdateBusBusLine(int Bus_Id);
+         
 
-        public void DeleteBusLine( int Line_Id)
+        public void DeleteBusLine( int Bus_Id)
         {
 
-            DO.BusLine bl = DataSource.List_Bus_Line.Find(b=> b.Line_Id == Line_Id );
+            DO.BusLine bl = DataSource.List_Bus_Line.Find(b=> b.Bus_Id == Bus_Id);
 
             if (bl != null)
             {
-                //UpdateBusLine(Line_Id, DO.BusLine.Act);
-                //var a = from Line_Station in DataSource.List_Line_Station;
-                //Where(Line_Station.Line_Id == Line_Id)
-                //Select DataSource.List_Line_Station.Remove(Line_Station)
+                bl.Act = false;
+                DataSource.List_Bus_Line.Remove(bl);
+                DataSource.List_Bus_Line.Add(bl.Clone());
             }
             else
-                throw new DO.BadPersonIdException(Line_Id, $"bad bus line id: {Line_Id}");
+                throw new DO.BadPersonIdException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
 
-        public void UpdateBusLine(BusLine BusLine)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateBusBusLine(int Bus_Id)
-        {
-            throw new NotImplementedException();
-        }
-
+         
         public IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate)
         {
             throw new NotImplementedException();
@@ -280,58 +284,46 @@ namespace DL
         #endregion
 
         #region AdjStation
-        //void AddAdjStation(int code, int code1);
-        //public void AddAdjStation(int code, int code1)
-        //{
-        //    if (DataSource.List_Adjstation.FirstOrDefault(a => a.Code_station1 == code&& b=> b.Code_station2 == code1) != null)
-        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
-        //    DataSource.List_Adjstation.Add(ad.Clone());
-        //}
-        //IEnumerable<DO.AdjStation> GetLecturersInCourseList(Predicate<DO.AdjStation> predicate);
-        ////DO.AdjStation GetCode1(int Code);
-        ////DO.AdjStation GetCode2(int Code);
-        ////DO.AdjStation distace(int Code);
-        ////DO.AdjStation GetTimeBetween(int Code);
-        //DO.AdjStation deledteAdjStation(int Code)
-        //{
-
-        //}
+         
         public void AddAdjStation(int code, int code1)
         {
+            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
+            if (adj == null)
+            {
+                throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            }
+            DataSource.List_Adjstation.Add(adj.Clone());
+        }
+        public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
+        {
+            return (IEnumerable<AdjStation>)(from AdjStation in DataSource.List_Adjstation
+                   where predicate(AdjStation)
+                   select Station.Clone(AdjStation));
             throw new NotImplementedException();
+        }
+        public DO.AdjStation UpdateAdjStation(int code , int code1)
+        {
+            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
+            if (adj != null)
+            {
+                DataSource.List_Adjstation.Remove(adj);
+                DataSource.List_Adjstation.Add(adj.Clone());
+                 
+            }
+            throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+
+        }
+        DO.AdjStation deledteAdjStation(int code, int code1)
+        {
+            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
+            if (adj != null)
+            {
+                DataSource.List_Adjstation.Remove(adj);
+             }
+            throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
         }
 
-        public IEnumerable<AdjStation> GetLecturersInCourseList(Predicate<AdjStation> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjStation GetCode1(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjStation GetCode2(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjStation distace(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjStation GetTimeBetween(int Code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjStation deledteAdjStation(int Code)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
-
 
 
 

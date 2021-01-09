@@ -15,6 +15,14 @@ namespace DO
         public double longitude { get; set; }
         public bool Act { get; set; }
 
+        public static object Clone(AdjStation adjStation)
+        {
+            throw new NotImplementedException();
+        }
 
+        public static object Clone(BusLine busLine)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
