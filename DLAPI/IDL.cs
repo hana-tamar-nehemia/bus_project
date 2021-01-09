@@ -37,31 +37,26 @@ namespace DLAPI
         #endregion
 
         #region line station
-        IEnumerable<DO.LineStation> GetStudentsInCourseList(Predicate<DO.LineStation> predicate);
-         DO.LineStation GetLneStation(int code, BusLine a);
-         IEnumerable<DO.LineStation> GetAllLineStations();
-         DO.Station GetStationOfLineStation(LineStation a);
-         IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
-        void UpdateLineStation(DO.LineStation linestation);
-
-        void AddLineStation(DO.LineStation linestation);
-        void UpdateLineStation(int code, Action<DO.LineStation> update);
-        void DeleteLineStation(int code, BusLine a);
+        //get
+        DO.LineStation GetLineStation(int code, DO.BusLine a);// מחזיר רשימת תחנות של קו מסויים
+        IEnumerable<DO.LineStation> GetAllLineStations();//מחזיר רשימת כל התחנות קווים
+        DO.Station GetStationOfLineStation(LineStation a);//מחזיר תחנה פיזית של תחנה לוגית
+        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
+        void AddLineStation(DO.LineStation linestation, DO.BusLine a);//להוסיף תחנת קו 
+        void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
+        void DeleteLineStation(int code, BusLine a);//מחיקת תחנת קו וסידור התחנות הבאות אחריה
 
         #endregion
 
         #region STATION
-        DO.Station GetStation(int Code);
-        //DO.Station GetName(int Code);
-        //DO.Station GetAddress(int Code);
-        //DO.Station GetLocation(int Code);//חישוב אווירי
-        DO.Station AddStation(DO.Station station);
-
-        void UpdateStation(DO.Station station);
-        void DeleteStation(int code);
-        IEnumerable<DO.Station> GetAllStation();
-        void UpdateStation2(int code, Action<DO.Station> update);
-        IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);
+        // get
+        DO.Station GetStation(int code);//מחזיר תחנת אוטובוס פיזית
+        IEnumerable<DO.Station> GetAllStation();//מחזיר רשימת תחנות אוטובוס 
+        IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);//מחזיר רשימת תחנות אטטובוס לפי פרדיקט
+        //add
+        void AddStation(DO.Station station);//מוסיף תחנה פיזית
+        //update
+        void UpdateStation(DO.Station station);//מעדכן תחנה קיימת
 
         #endregion
 

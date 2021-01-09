@@ -21,94 +21,91 @@ namespace DL
 
         //Implement IDL methods, CRUD
         #region Station
+        //get
         public DO.Station GetStation(int code)
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
 
             if (per != null)
+                if(per.Act==true)
                 return per.Clone();
             else
-                throw new DO.BadPersonIdException(code, $"bad station code: {code}");
+                    throw new DO.BadStaionCodeException(code, $" station code: {code} no act");
+
+            else
+                throw new DO.BadStaionCodeException(code, $"bad station code: {code}");
         }
         public IEnumerable<DO.Station> GetAllStation()
         {
             return from Station in DataSource.List_Station
+                   where (Station.Act==true)
                    select Station.Clone();
         }
         public IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate)
         {
             return from Station in DataSource.List_Station
-                   where predicate(Station)
+                   where predicate(Station) && (Station.Act==true)
                    select Station.Clone();
             throw new NotImplementedException();
         }
-
+        //add
         public void AddStation(DO.Station station)
         {
-            if (DataSource.List_Station.FirstOrDefault(p => p.Code == station.Code) != null)
-                throw new DO.BadPersonIdException(station.Code, "Duplicate station code");
+            DO.Station a = DataSource.List_Station.FirstOrDefault(p => p.Code == station.Code);
+            if(a != null && a.Act==true)
+                throw new DO.BadStaionCodeException(station.Code, "the station already exsist");
+            if (a != null && a.Act == false)
+            {
+                DataSource.List_Station.Remove(a);
+                a.Act = true;
+                DataSource.List_Station.Add(a.Clone());
+            }
+            if(a==null)
             DataSource.List_Station.Add(station.Clone());
         }
-
-        //public void DeleteStation(int code)
-        //{
-        //    DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
-        //    if (per != null)
-        //    {
-        //        per.Act = false;
-        //        DataSource.List_Station.(per);
-        //    }
-        //    else
-        //        throw new DO.BadPersonIdException(code, $"bad station code: {code}");
-        //}
-
+        //update
         public void UpdateStation(DO.Station station)
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
-            if (per != null)
+            if (per != null && per.Act==true)
             {
                 DataSource.List_Station.Remove(per);
                 DataSource.List_Station.Add(per.Clone());
             }
             else
-                throw new DO.BadPersonIdException(station.Code, $"bad station code: {station.Code}");
+                throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
         }
 
-        public void UpdateStation2(int code, Action<DO.Station> update)
+        public void DeleteStation(int code)
         {
-            throw new NotImplementedException();
+            DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
+            if (per != null)
+            {
+                DataSource.List_Station.Remove(per);
+                per.Act = false;
+                DataSource.List_Station.Add(per.Clone());
+            }
+            else
+                throw new DO.BadStaionCodeException(code, $"bad station code: {code}");
         }
         #endregion Station
 
         #region line station
-        public DO.LineStation GetLneStation(int code, DO.BusLine a)//תחנה של קו מסויים
+        //get
+        public DO.LineStation GetLineStation(int code, DO.BusLine a)//תחנה של קו מסויים
         {
             DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
             if (s != null)
                 return s.Clone();
             else
-                throw new DO.BadPersonIdException(code, $"no found: {code}");
-        }
-        public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנה לקו מסויים
-        {
-            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id == s.Line_Id) != null)
-                throw new DO.BadPersonIdException(linestation.Code, "Duplicate line station code");
-            if (DataSource.List_Line_Station.FirstOrDefault(p => p.Code == linestation.Code && a.Line_Id == p.Line_Id) == null)
-                throw new DO.BadPersonIdException(linestation.Code, "Missing line station code");
-            DataSource.List_Line_Station.Add(linestation.Clone());
+                throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
         public IEnumerable<DO.LineStation> GetAllLineStations()
         {
             return from linestation in DataSource.List_Line_Station
                    select linestation.Clone();
         }
-        //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
-        //{
-        //    return from linestation in DataSource.List_Line_Station
-        //           select generate(linestation.Code, GetStation(linestation.Code));
-        //}
-
         public DO.Station GetStationOfLineStation(LineStation a)
         {
             return DataSource.List_Station.Find(s => s.Code == a.Code);
@@ -119,6 +116,14 @@ namespace DL
             return from linestation in DataSource.List_Line_Station
                    select generate(linestation);
         }
+        //add
+        public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנת קו 
+        {
+            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id == s.Line_Id) != null)
+                throw new DO.BadLineStationCodeException(linestation.Code, "line station is already exsist");
+            DataSource.List_Line_Station.Add(linestation.Clone());
+        }
+      //update
         public void UpdateLineStation(DO.LineStation linestation)
         {
             DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
@@ -128,14 +133,10 @@ namespace DL
                 DataSource.List_Line_Station.Add(stu.Clone());
             }
             else
-                throw new DO.BadPersonIdException(linestation.Code, $"bad line station code: {linestation.Code}");
+                throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
         }
 
-        public void UpdateLineStation(int code, Action<DO.LineStation> update)
-        {
-            throw new NotImplementedException();
-        }
-
+        //delete
         public void DeleteLineStation(int code, BusLine a)
         {
             DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
@@ -143,12 +144,17 @@ namespace DL
             if (s != null)
             {
                 int index = s.Line_Station_Index;
-                DataSource.List_Line_Station.Remove(s);
+                DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
                 DataSource.List_Line_Station.Where(p => p.Code == code && a.Bus_Id == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index++);
             }
             else
-                throw new DO.BadPersonIdException(code, $"bad line station code: {code}");
+                throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
         }
+        //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
+        //{
+        //    return from linestation in DataSource.List_Line_Station
+        //           select generate(linestation.Code, GetStation(linestation.Code));
+        //}
         #endregion
 
         #region BUS
