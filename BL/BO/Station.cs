@@ -13,6 +13,7 @@ namespace BO
         public string Address { get; set; }
         public double Latitude { get; set; }//אווירי
         public double longitude { get; set; }
+        public bool Act { get; set; }
         public IEnumerable<BusLine> Collection_Lines { get; set; }//קווים שעוברים בה
        // public IEnumerable<DateTime>  Arrival_times { get; set; }
        

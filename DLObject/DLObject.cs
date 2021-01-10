@@ -117,11 +117,11 @@ namespace DL
                    select generate(linestation);
         }
         //add
-        public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנת קו 
+        public void AddLineStation(int code,int Line_Id,int line_num, int index)//להוסיף תחנת קו 
         {
-            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id == s.Line_Id) != null)
-                throw new DO.BadLineStationCodeException(linestation.Code, "line station is already exsist");
-            DataSource.List_Line_Station.Add(linestation.Clone());
+            if (DataSource.List_Line_Station.Find(s => s.Code ==code && s.Line_Id == Line_Id && s.Line_Station_Index==index) != null)
+                throw new DO.BadLineStationCodeException(code, "line station is already exsist");
+            DataSource.List_Line_Station.Add(DO.LineStation);
         }
       //update
         public void UpdateLineStation(DO.LineStation linestation)

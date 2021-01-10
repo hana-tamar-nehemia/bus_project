@@ -9,7 +9,6 @@ namespace DO
     public class Bus
     {
         public int License_num { get; set; }
-        public int Line_Id { get; set; }
         public DateTime Start_date { get; set; }
         public double Km { get; set; }
         public double Fuel_tank { get; set; }

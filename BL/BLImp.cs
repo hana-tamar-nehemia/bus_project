@@ -13,60 +13,61 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
         #region Station
+        BO.Station StationDoBoAdapter(DO.Station StationDO)
+            {
+              BO.Station StationBO = new BO.Station();
+            StationDO.CopyPropertiesTo(StationBO);
+
+            StationBO.Collection_Lines = from line in dl.GetAllBusLineBy(line => line.Bus_Id == StationDO.Code)
+                                             //let station = dl.GetStation(line.Bus_Id)
+                                         select (BO.Station)Station.CopyPropertiesToNew(typeof(BO.Station));
+            return StationBO;
+         }
+
+     
         //get
-        public DO.Station GetStation(int code)
+        public BO.Station GetStation(int code)
         {
-            DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
-
-            if (per != null)
-                if (per.Act == true)
-                    return per.Clone();
-                else
-                    throw new DO.BadStaionCodeException(code, $" station code: {code} no act");
-
-            else
-                throw new DO.BadStaionCodeException(code, $"bad station code: {code}");
+            DO.Station stationDO;
+            BO.Station StationBO = new BO.Station();
+            try
+            {
+                stationDO = dl.GetStation(code);
+                return StationDoBoAdapter(stationDO);
+            }
+            catch (DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("station code does not exist or not acting", ex);
+            }
         }
-        public IEnumerable<DO.Station> GetAllStation()
+        public IEnumerable<BO.Station> GetAllStation()
         {
-            return from Station in DataSource.List_Station
-                   where (Station.Act == true)
-                   select Station.Clone();
+            return from StationDO in dl.GetAllStation()
+                   select StationDoBoAdapter(StationDO);//מוסיף גם את רשימת הקווים שעוברים בתחנה הזאת
         }
-        public IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate)
+
+        public IEnumerable<BO.Station> GetAllstationsBy(Predicate<DO.Station> predicate)
         {
-            return from Station in DataSource.List_Station
-                   where predicate(Station) && (Station.Act == true)
-                   select Station.Clone();
-            throw new NotImplementedException();
+            return from Station in GetAllstationsBy(predicate) select StationDoBoAdapter(Station);
         }
         //add
-        public void AddStation(DO.Station station)
+        public void AddStation(int Code, string Name, string Address, double Latitude, double longitude)
         {
-            DO.Station a = DataSource.List_Station.FirstOrDefault(p => p.Code == station.Code);
-            if (a != null && a.Act == true)
-                throw new DO.BadStaionCodeException(station.Code, "the station already exsist");
-            if (a != null && a.Act == false)
-            {
-                DataSource.List_Station.Remove(a);
-                a.Act = true;
-                DataSource.List_Station.Add(a.Clone());
-            }
-            if (a == null)
-                DataSource.List_Station.Add(station.Clone());
+            DO.Station stationDO = new DO.Station() { Code = Code, Name = Name, Address = Address, Latitude = Latitude, longitude = longitude, Act = true };
+            dl.AddStation(stationDO);
         }
         //update
-        public void UpdateStation(DO.Station station)
+        public void UpdateStation()
         {
-            DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
+            //DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
-            if (per != null && per.Act == true)
-            {
-                DataSource.List_Station.Remove(per);
-                DataSource.List_Station.Add(per.Clone());
-            }
-            else
-                throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
+            //if (per != null && per.Act == true)
+            //{
+            //    DataSource.List_Station.Remove(per);
+            //    DataSource.List_Station.Add(per.Clone());
+            //}
+            //else
+            //    throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
         }
 
         public void DeleteStation(int code)
