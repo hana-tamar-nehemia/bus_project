@@ -13,17 +13,17 @@ namespace BLAPI
 
 
         #region Bus Line
-        DO.BusLine GetBusLine(int Bus_Id);
+        BO.BusLine GetBusLine(int Bus_Id);
 
-        IEnumerable<DO.BusLine> GetAllBusLine();
+        IEnumerable<BO.BusLine> GetAllBusLine();
 
-        IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
+        IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
 
-        void AddBusLine(DO.BusLine BusLine);
-        void UpdateBusLine(DO.BusLine BusLine);
-        void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 
+        void AddBusLine();
+        void UpdateBusLine(BO.BusLine BusLine);
+        void UpdateBusLine(int Bus_Id, Action<BO.BusLine> update); //method that knows to updt specific fields 
         void DeleteBusLine(int Bus_Id);
-        IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate);
+        //IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate);
 
         #endregion
 

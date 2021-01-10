@@ -18,10 +18,11 @@ namespace BO
     //    public override string ToString() => this.ToStringProperty();
         public int Line_Number { get; set; }//מספר קו
         public Areas Area { get; set; }
+        public int Line_Id { get; set; }
         public int First_Station { get; set; }
         public int Last_Station { get; set; }
-
-        public IEnumerable<LineStation> LineStations { get; set; }
+        public bool Act { get; set; }
+        public IEnumerable<LineStation> ListLineStations { get; set; }
 
         //public IEnumerable<AdjStation> AdjStations { get; set; }
 
