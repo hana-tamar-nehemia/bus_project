@@ -150,132 +150,201 @@ namespace BL
         #endregion
 
         #region BUS
-        public DO.Bus GetSBus(int License_num_Id)
+        public BO.Bus GetSBus(int License_num_Id)
         {
-            DO.Bus b = DataSource.List_Bus.Find(p => p.License_num == License_num_Id);
+            DO.Bus BusDO;
 
-            if (b != null && b.Act == true)
-                return b.Clone();
-            else
-                throw new DO.BadPersonIdException(License_num_Id, $" bad bus: {License_num_Id}");
+            try
+            {
+                BusDO = dl.GetSBus(License_num_Id);
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus  id does not exist or he is not a Bus ", ex);
+            }
+            return BusDoBoAdapter(BusDO);
         }
         public IEnumerable<DO.Bus> GetAllBuses()
         {
-            return from Bus in DataSource.List_Bus
-                   where Bus.Act == true
-                   select Bus.Clone();
+             return (IEnumerable<DO.Bus>)(from item in dl.GetAllBuses()
+                  select BusDoBoAdapter(item));
         }
-        //public IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate)
-        //{
-        //    return from Bus in DataSource.List_Bus
-        //           select generate(Bus., GetPerson(student.ID).Name);
-        //}
-        public IEnumerable<object> GetBusListWithSelectedFields(Predicate<DO.Bus> predicate)
+    
+        public IEnumerable<object> GetAllBusBy(Predicate<DO.Bus> predicate)
         {
-            //Returns deferred query + clone:
-            return from b in DataSource.List_Bus
-                   where predicate(b) && b.Act == true
-                   select b.Clone();
+            return (IEnumerable<DO.Bus>)(IEnumerable<Bus>)(from Bus in dl.GetAllBusBy(predicate)
+                                              select BusDoBoAdapter(Bus));
+            throw new NotImplementedException();
         }
-        public void AddBus(DO.Bus Bus)
+        public void AddBus(int num ,DateTime st,double k,double f,Bus_status status, bool a)
         {
-            if (DataSource.List_Bus.FirstOrDefault(p => Bus.License_num == Bus.License_num) != null)
-                throw new DO.BadPersonIdException(Bus.License_num, "Duplicate bus license number ");
-            DataSource.List_Bus.Add(Bus.Clone());
+            try
+            {
+                dl.AddBus( num,  st, k,  f, (DO.Bus_status)status,a);
+                
+             }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException(" Bus Not exist", ex);
+            }
         }
         public void UpdateFuelBus(DO.Bus Bus)
         {
-            DO.Bus b = DataSource.List_Bus.Find(p => Bus.License_num == Bus.License_num);
-            if (b != null && b.Act == true)
+
+            DO.Bus BusDO = new DO.Bus();
+            Bus.CopyPropertiesTo(BusDO);
+            try
             {
-                DataSource.List_Bus.Remove(b);
-                DataSource.List_Bus.Add(b.Clone());
+                dl.UpdateFuelBus(BusDO);
             }
-            else
-                throw new DO.BadPersonIdException(Bus.License_num, $"bad Bus license num: {Bus.License_num}");
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus  is illegal", ex);
+            }
         }
 
         public void DeleteBus(int License_num_Id)
         {
-            DO.Bus b = DataSource.List_Bus.Find(bus => bus.License_num == License_num_Id);
-
-            if (b != null)
+            try
             {
-                b.Act = false;
-                DataSource.List_Bus.Remove(b);
-                DataSource.List_Bus.Add(b);
+                dl.DeleteBus(License_num_Id);
+
             }
-            else
-                throw new DO.BadPersonIdException(License_num_Id, $"bad bus license number: {License_num_Id}");
+
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus id does not exist ", ex);
+            }
+        }
+        BO.Bus BusDoBoAdapter(DO.Bus BusDO)
+        {
+            BO.Bus BusBO = new BO.Bus();
+
+            int id = BusDO.License_num;
+            try
+            {
+                BusDO = dl.GetSBus(id);
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus ID is illegal", ex);
+            }
+            BusDO.CopyPropertiesTo(BusBO);
+            BusBO.License_num = BusDO.License_num;
+            BusBO.Bus_status = (Bus_status)BusDO.Bus_status;
+            BusBO.License_num = BusDO.License_num;
+            BusBO.Fuel_tank = BusDO.Fuel_tank;
+            BusBO.Km = BusDO.Km;
+            BusBO.Start_date = BusDO.Start_date;
+
+
+
+            return BusBO;
         }
         #endregion
 
         #region Bus Line
-        public DO.BusLine GetBusLine(int Bus_Id)
+        public BO.BusLine GetBusLine(int Bus_Id)
         {
-            DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
+            DO.BusLine BusLinelDO;  
 
-            if (bl != null && bl.Act == true)
-                return bl.Clone();
-            else
-                throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
+             try
+            {
+                BusLinelDO = dl.GetBusLine(Bus_Id);
+            }
+            catch (DO.BadBusLineCodeException ex)
+            {
+                throw new BO.BadBusLineCodeException("Bus line id does not exist or he is not a Bus line", ex);
+            }
+            return BusLineDoBoAdapter(BusLinelDO);
         }
-        public IEnumerable<DO.BusLine> GetAllBusLine()
+        public IEnumerable<BO.BusLine> GetAllBusLine()
         {
-            return from BusLine in DataSource.List_Bus_Line
-                   where BusLine.Act == true
-                   select BusLine.Clone();
+            return from item in dl.GetAllBusLine()
+                  select BusLineDoBoAdapter(item);
         }
+        
         public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
         {
-            return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
-                                          where predicate(BusLine) && BusLine.Act == true
-                                          select Station.Clone(BusLine));
+            return (IEnumerable<DO.BusLine>)(IEnumerable<BusLine>)(from BusLine in dl.GetAllBusLineBy(predicate)
+                                        select BusLineDoBoAdapter(BusLine)); 
             throw new NotImplementedException();
         }
-        public void AddBusLine(DO.BusLine BusLine)
+        public void AddBusLine( int bus_id ,int Line_Number, Areas Area, int First_Station ,  int Last_Station , IEnumerable<LineStation> LineStations, bool act, int Line_Id)  
         {
-            if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == BusLine.Bus_Id) != null)
-                throw new DO.BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
-            DataSource.List_Bus_Line.Add(BusLine.Clone());
-        }
-        void UpdateBusLine(DO.BusLine BusLine)
-        {
-            BusLine bl = DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);
-            if (bl != null && bl.Act == true)
+            try
             {
-                DataSource.List_Bus_Line.Remove(bl);
-                DataSource.List_Bus_Line.Add(bl.Clone());
+                dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station,act,Line_Number);
+                from s in LineStations
+                select dl.AddLineStation(s, Line_Number)
             }
-            throw new BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
-        }
-
-        public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void DeleteBusLine(int Bus_Id)
-        {
-
-            DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
-
-            if (bl != null)
+            catch (DO.BadBusLineException ex)
             {
-                bl.Act = false;
-                DataSource.List_Bus_Line.Remove(bl);
-                DataSource.List_Bus_Line.Add(bl.Clone());
+                throw new BO.BadBusLineException("Student ID and Course ID is Not exist", ex);
             }
-            else
-                throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
-
-
-        public IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate)
+       void UpdateBusLine(BO.BusLine BusLine)
         {
-            throw new NotImplementedException();
+            DO.BusLine BusLineDO = new DO.BusLine();
+            BusLine.CopyPropertiesTo(BusLineDO);
+            try
+            {
+                dl.UpdateBusLine(BusLineDO);
+            }
+            catch (DO.BadBusLineException ex)
+            {
+                throw new BO.BadBusLineException("Bus line  ID is illegal", ex);
+            }
+       }
+        public void DeleteBusLine(int Bus_Id , int Line_Number)
+        {
+            try
+            {
+                dl.DeleteBusLine(Bus_Id);
+                
+            }
+            
+            catch (DO.BadBusLineException ex)
+            {
+                throw new BO.BadBusLineException("Person id does not exist or he is not a student", ex);
+            }
         }
+         
+        BO.BusLine BusLineDoBoAdapter(DO.BusLine BusLineDO)
+        {
+            BO.BusLine BusLineBO = new BO.BusLine();
+            DO.Bus BusDO;
+            int id = BusLineDO.Bus_Id;
+            try
+            {
+                BusDO = dl.GetSBus(id);
+            }
+            catch (DO.BadBusLineException ex)
+            {
+                throw new BO.BadBusLineException("Student ID is illegal", ex);
+            }
+            BusDO.CopyPropertiesTo(BusLineBO);
+            BusLineBO.Bus_status = (Bus_status)BusDO.Bus_status;
+            BusLineBO.License_num = BusDO.License_num;
+            BusLineBO.Fuel_tank= BusDO.Fuel_tank;
+            BusLineBO.Km= BusDO.Km;
+            BusLineBO.Start_date = BusDO.Start_date;
+             
+
+            BusLineDO.CopyPropertiesTo(BusLineBO);
+            BusLineBO.Act = BusLineDO.Act;
+            BusLineBO.First_Station = BusLineDO.First_Station;
+            BusLineBO.Last_Station = BusLineDO.Last_Station;
+            BusLineBO.Line_Id = BusLineDO.Line_Id;
+            BusLineBO.Line_Number = BusLineDO.Line_Number;
+            BusLineBO.Area = (Areas)BusLineDO.Area;
+            //BusLineBO.ListLineStations = from s in dl.GetAllLineStations()
+            //                          let LineStations = dl.GetLineStation(s.Line_Id)
+            //                          select LineStations.CopyToStudentCours
+             return BusLineBO;
+        }
+
+
 
 
 
@@ -283,21 +352,22 @@ namespace BL
 
         #region AdjStation
 
-        public void AddAdjStation(int code, int code1)
+        public void AddAdjStation(int code, int code1,int d,DateTime t)
         {
-            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
-            if (adj == null)
+            try
             {
-                throw new DO.BadPersonIdException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+                dl.AddAdjStation(code,code1,d,t);
+
             }
-            DataSource.List_Adjstation.Add(adj.Clone());
+            catch (DO.BadAdjStationException ex)
+            {
+                throw new BO.BadAdjStationException(" AdjStation Not exist", ex);
+            }
+
         }
         public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
         {
-            return (IEnumerable<AdjStation>)(from AdjStation in DataSource.List_Adjstation
-                                             where predicate(AdjStation)
-                                             select Station.Clone(AdjStation));
-            throw new NotImplementedException();
+            
         }
         public void UpdateAdjStation(int code, int code1)
         {
@@ -328,47 +398,11 @@ namespace BL
 
         #endregion
         #region Student
-        BO.Student studentDoBoAdapter(DO.Student studentDO)
-        {
-            BO.Student studentBO = new BO.Student();
-            DO.Person personDO;
-            int id = studentDO.ID;
-            try
-            {
-                personDO = dl.GetPerson(id);
-            }
-            catch (DO.BadPersonIdException ex)
-            {
-                throw new BO.BadStudentIdException("Student ID is illegal", ex);
-            }
-            personDO.CopyPropertiesTo(studentBO);
-            //studentBO.ID = personDO.ID;
-            //studentBO.BirthDate = personDO.BirthDate;
-            //studentBO.City = personDO.City;
-            //studentBO.Name = personDO.Name;
-            //studentBO.HouseNumber = personDO.HouseNumber;
-            //studentBO.Street = personDO.Street;
-            //studentBO.PersonalStatus = (BO.PersonalStatus)(int)personDO.PersonalStatus;
+         
 
-            studentDO.CopyPropertiesTo(studentBO);
-            //studentBO.StartYear = studentDO.StartYear;
-            //studentBO.Status = (BO.StudentStatus)(int)studentDO.Status;
-            //studentBO.Graduation = (BO.StudentGraduate)(int)studentDO.Graduation;
+             
 
-            studentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
-                                      let course = dl.GetCourse(sic.CourseId)
-                                      select course.CopyToStudentCourse(sic);
-            //new BO.StudentCourse()
-            //{
-            //    ID = course.ID,
-            //    Number = course.Number,
-            //    Name = course.Name,
-            //    Year = course.Year,
-            //    Semester = (BO.Semester)(int)course.Semester,
-            //    Grade = sic.Grade
-            //};
-
-            return studentBO;
+            return BusBO;
         }
 
         public BO.Student GetStudent(int id)

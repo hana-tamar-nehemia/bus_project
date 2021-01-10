@@ -12,7 +12,8 @@ namespace BO
         public DateTime Start_date { get; set; }
         public double Km { get; set; }
         public double Fuel_tank { get; set; }
-        public int Bus_status { get; set; }
+        public Bus_status Bus_status { get; set; }
+        public bool Act { get; set; }
         public override string ToString() => this.ToStringProperty();
 
 
