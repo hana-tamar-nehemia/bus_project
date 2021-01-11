@@ -336,7 +336,7 @@ namespace DL
 
         #region AdjStation
 
-    public void AddAdjStation(int code, int code1, int d, DateTime t)
+    public void AddAdjStation(int code, int code1, int d, TimeSpan t)
     {
         AdjStation adj = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
         if (adj == null)
