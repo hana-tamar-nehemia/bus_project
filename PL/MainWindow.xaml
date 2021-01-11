@@ -1,0 +1,20 @@
+﻿<Window x:Class="PL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="ways" Height="450" Width="800">
+    <Grid RenderTransformOrigin="0.451,0.59">
+        <Label Content="Welcome to ways time " HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+        <GroupBox Header="I'm a :" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+            <StackPanel Margin="36,47,19,50.333">
+                <RadioButton x:Name ="rbStudents" Content="manager" Height="24" IsChecked="True"/>
+                <RadioButton x:Name ="rbLecturers" Content="passenger" Height="23" Margin="0,0,-11,0"/>
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="btnGO" Content="GO" HorizontalAlignment="Left" Height="42" Margin="319,334,0,0" VerticalAlignment="Top" Width="105"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+
+    </Grid>
+</Window>

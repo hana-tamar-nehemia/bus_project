@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Buses"
+        mc:Ignorable="d"
+        Title="Buses" Height="450" Width="800" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource busViewSource}">
+        <Label Content=" License_num:" HorizontalAlignment="Left" Margin="28,24,0,0" VerticalAlignment="Top" Height="29" Width="94" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.5,0.586"/>
+        <Label Content=" detail:" HorizontalAlignment="Left" Margin="172,24,0,0" VerticalAlignment="Top" Height="29" Width="94" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.486,0.431"/>
+
+        <Button x:Name="btnGO" Content="Add bus" HorizontalAlignment="Left" Height="42" Margin="319,334,0,0" VerticalAlignment="Top" Width="105"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="28,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="busListView" ItemsSource="{Binding}" Margin="172,53,369.333,167.667" SelectionMode="Single" SelectionChanged="busListView_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="bus_statusColumn" Header="the bus is" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Bus_status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="fuel_tankColumn" Header="Fuel" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="kmColumn" Header="Km" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Window>

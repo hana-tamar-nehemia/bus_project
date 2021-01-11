@@ -55,12 +55,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBus.xaml.cs">
+      <DependentUpon>AddBus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddStation.xaml.cs">
+      <DependentUpon>AddStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Buses.xaml.cs">
+      <DependentUpon>Buses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Line.xaml.cs">
+      <DependentUpon>Line.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LineStation.xaml.cs">
+      <DependentUpon>LineStation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stations.xaml.cs">
+      <DependentUpon>Stations.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,6 +99,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\BO.AdjStation.datasource" />
+    <None Include="Properties\DataSources\BO.BadAdjStationException.datasource" />
+    <None Include="Properties\DataSources\BO.BadBusException.datasource" />
+    <None Include="Properties\DataSources\BO.BadBusLineException.datasource" />
+    <None Include="Properties\DataSources\BO.BadStationCodeException.datasource" />
+    <None Include="Properties\DataSources\BO.Bus.datasource" />
+    <None Include="Properties\DataSources\BO.BusLine.datasource" />
+    <None Include="Properties\DataSources\BO.LineStation.datasource" />
+    <None Include="Properties\DataSources\BO.Station.datasource" />
+    <None Include="Properties\DataSources\BO.Tools.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,14 +120,42 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
       <Project>{2256497b-4c6a-485f-8b1b-bfc792e8a372}</Project>
       <Name>BL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AddBus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Buses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Line.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
