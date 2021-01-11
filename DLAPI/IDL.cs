@@ -17,7 +17,6 @@ namespace DLAPI
         #region Bus Line
          DO.BusLine GetBusLine(int Bus_Id);
          DO.BusLine GetBusLineBy(int line_id);
-
          IEnumerable<DO.BusLine> GetAllBusLine();
 
         IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
@@ -63,6 +62,8 @@ namespace DLAPI
         DO.Station GetStation(int code);//מחזיר תחנת אוטובוס פיזית
         IEnumerable<DO.Station> GetAllStation();//מחזיר רשימת תחנות אוטובוס 
         IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);//מחזיר רשימת תחנות אטטובוס לפי פרדיקט
+        DO.Station GetstationsBy(Predicate<DO.Station> predicate);
+
         //add
         void AddStation(DO.Station station);//מוסיף תחנה פיזית
         //update

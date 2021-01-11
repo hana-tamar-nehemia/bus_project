@@ -47,6 +47,14 @@ namespace DL
                    select Station.Clone();
             throw new NotImplementedException();
         }
+        public DO.Station GetstationsBy(Predicate<DO.Station> predicate)
+        {
+            DO.Station a = DataSource.List_Station.Find(predicate);
+            if(a.Act==true)
+            return a.Clone();
+           else
+            throw new NotImplementedException();
+        }
         //add
         public void AddStation(DO.Station station)
         {
@@ -63,16 +71,24 @@ namespace DL
                 DataSource.List_Station.Add(station.Clone());
         }
         //update
-        public void UpdateStation(DO.Station station)
+        public void UpdateStation(DO.Station station)//מעדכן 
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
-            if (per != null && per.Act == true)
+            if (per != null&& per.Act == true)
             {
                 DataSource.List_Station.Remove(per);
+                per.Act = false;
                 DataSource.List_Station.Add(per.Clone());
             }
             else
+                            if (per != null && per.Act == false)
+            {
+                DataSource.List_Station.Remove(per);
+                per.Act = true;
+                DataSource.List_Station.Add(per.Clone());
+            }
+
                 throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
         }
 
