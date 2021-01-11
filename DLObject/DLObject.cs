@@ -50,10 +50,10 @@ namespace DL
         public DO.Station GetstationsBy(Predicate<DO.Station> predicate)
         {
             DO.Station a = DataSource.List_Station.Find(predicate);
-            if(a.Act==true)
-            return a.Clone();
-           else
-            throw new NotImplementedException();
+            if (a.Act == true)
+                return a.Clone();
+            else
+                throw new NotImplementedException();
         }
         //add
         public void AddStation(DO.Station station)
@@ -75,7 +75,7 @@ namespace DL
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
-            if (per != null&& per.Act == true)
+            if (per != null && per.Act == true)
             {
                 DataSource.List_Station.Remove(per);
                 per.Act = false;
@@ -89,7 +89,7 @@ namespace DL
                 DataSource.List_Station.Add(per.Clone());
             }
 
-                throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
+            throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
         }
 
         public void DeleteStation(int code)
@@ -135,10 +135,10 @@ namespace DL
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
-     
-        public DO.LineStation GetLineStation(int code ,int line_id)
+
+        public DO.LineStation GetLineStation(int code, int line_id)
         {
-            DO.LineStation ls =DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id);
+            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id);
             if (ls != null)
                 return ls.Clone();
             else
@@ -156,7 +156,7 @@ namespace DL
         //    if (DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == Line_Id && s.Line_Station_Index == index) != null)
         //        throw new DO.BadLineStationCodeException(code, "line station is already exsist");
         //    DataSource.List_Line_Station.Add(new DO.LineStation() { Line_Id=Line_Id , Code=code, Line_Station_Index = index });
-       // }
+        // }
         public void AddLineStation(DO.LineStation a)//להוסיף תחנת קו 
         {
             if (DataSource.List_Line_Station.Find(s => s.Code == a.Code && s.Line_Id == a.Line_Id && s.Line_Station_Index == a.Line_Station_Index) != null)
@@ -176,7 +176,7 @@ namespace DL
         //    else
         //        throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
         //}
-    
+
         //delete
         public void DeleteLineStationInBus(int code, int id_line)//מחיקת תחנה אחת מקו אחד
         {
@@ -196,7 +196,7 @@ namespace DL
             //כאן בונים רשימה של כל התחנות קו שהתחנה הפיזית הייתה שייכת להם 
             // ואז לפי הline id של התחנה לוגית לשלוח אוטובוס וגם קוד כדי לקצר מסלולים
             IEnumerable<DO.LineStation> stationtoremove = DataSource.List_Line_Station.FindAll(p => p.Code == code);
-            stationtoremove.Select(p=> DeleteLineStation(code,p.Line_Id));//איך עוברים על הרשימה ועושים את הפונקציה הזאת על כל איבר בה
+            stationtoremove.Select(p => DeleteLineStation(code, p.Line_Id));//איך עוברים על הרשימה ועושים את הפונקציה הזאת על כל איבר בה
         }
 
         #endregion
@@ -229,7 +229,7 @@ namespace DL
             if (DataSource.List_Bus.FirstOrDefault(p => p.License_num == num) != null)
                 throw new DO.BadBusException(num, "Duplicate bus license number ");
             DO.Bus b = new DO.Bus() { Act = a, Bus_status = (int)status, License_num = num, Start_date = st, Km = k, Fuel_tank = f };
-               DataSource.List_Bus.Add(b.Clone());
+            DataSource.List_Bus.Add(b.Clone());
 
 
         }
@@ -243,7 +243,7 @@ namespace DL
                 DataSource.List_Bus.Add(b.Clone());
             }
             else
-            { 
+            {
                 throw new DO.BadBusException(Bus.License_num, $"bad Bus license num: {Bus.License_num}");
             }
         }
@@ -291,7 +291,7 @@ namespace DL
 
         public DO.BusLine GetBusLineBy(int line_id)
         {
-           return DataSource.List_Bus_Line.Find(p=>p.Line_Id==line_id);
+            return DataSource.List_Bus_Line.Find(p => p.Line_Id == line_id);
         }
 
         public void AddBusLine(int Bus_Id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
@@ -323,71 +323,71 @@ namespace DL
 
             DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
 
-        if (bl != null)
-        {
-            bl.Act = false;
-            DataSource.List_Bus_Line.Remove(bl);
-            DataSource.List_Bus_Line.Add(bl.Clone());
+            if (bl != null)
+            {
+                bl.Act = false;
+                DataSource.List_Bus_Line.Remove(bl);
+                DataSource.List_Bus_Line.Add(bl.Clone());
+            }
+            else
+                throw new DO.BadBusLineException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
-        else
-            throw new DO.BadBusLineException(Bus_Id, $"bad bus line id: {Bus_Id}");
-    }
-    #endregion
+        #endregion
 
         #region AdjStation
 
-    public void AddAdjStation(int code, int code1, int d, TimeSpan t)
-    {
-        AdjStation adj = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
-        if (adj == null)
+        public void AddAdjStation(int code, int code1, int d, TimeSpan t)
         {
-            throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-        }
+            AdjStation adj = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
+            if (adj == null)
+            {
+                throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            }
             AdjStation a = new AdjStation() { Code_station1 = code, Code_station2 = code1, Distance = d, Time_Between = t };
-                       DataSource.List_Adjstation.Add(a.Clone());
-    }
-    public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
-    {
-        return (IEnumerable<AdjStation>)(from AdjStation in DataSource.List_Adjstation
-                                         where predicate(AdjStation)
-                                         select Station.Clone(AdjStation));
-        throw new NotImplementedException();
-    }
-    IEnumerable<DO.Bus> GetAllAdjStation()
-    {
+            DataSource.List_Adjstation.Add(a.Clone());
+        }
+        public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
+        {
+            return (IEnumerable<AdjStation>)(from AdjStation in DataSource.List_Adjstation
+                                             where predicate(AdjStation)
+                                             select Station.Clone(AdjStation));
+            throw new NotImplementedException();
+        }
+        IEnumerable<DO.Bus> GetAllAdjStation()
+        {
             return from Bus in DataSource.List_Bus
                    select Bus.Clone();
-    }   
-    public void UpdateAdjStation(int code, int code1)
-    {
-        AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
-        if (adj != null)
+        }
+        public void UpdateAdjStation(int code, int code1)
         {
-            DataSource.List_Adjstation.Remove(adj);
-            DataSource.List_Adjstation.Add(adj.Clone());
+            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
+            if (adj != null)
+            {
+                DataSource.List_Adjstation.Remove(adj);
+                DataSource.List_Adjstation.Add(adj.Clone());
 
             }
             throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
 
-    }
-    public void deledteAdjStation(int code, int code1)
-    {
-        AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
-        if (adj != null)
-        {
-            DataSource.List_Adjstation.Remove(adj);
         }
-        throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-    }
-    public DO.AdjStation GetAdjStation(int code, int code1)
-    {
-            DO.AdjStation a = DataSource.List_Adjstation.Find(p => p.Code_station1 == code&& p.Code_station2==code1);
+        public void deledteAdjStation(int code, int code1)
+        {
+            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
+            if (adj != null)
+            {
+                DataSource.List_Adjstation.Remove(adj);
+            }
+            throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+        }
+        public DO.AdjStation GetAdjStation(int code, int code1)
+        {
+            DO.AdjStation a = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
 
-            if (a != null  )
+            if (a != null)
                 return a.Clone();
             else
                 throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-    }
+        }
 
         #endregion
 

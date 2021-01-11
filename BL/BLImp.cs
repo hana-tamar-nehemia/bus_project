@@ -20,8 +20,8 @@ namespace BL
             StationDO.CopyPropertiesTo(StationBO);
             //IEnumerable<DO.LineStation> linestations = dl.GetAllLineStationsby(line => line.Code == StationDO.Code);
             //StationBO.Collection_Lines = from ls in linestations//(busline => busline.Line_Id == StationDO.Code)//אטובוסים שקשורים לתחנה הזאת 
-             //                            let busline = dl.GetBusLineBy(ls.Line_Id)
-               //                          select BusLineDoBoAdapter(busline).CopyPropertiesToNew(BusLine)
+            //                            let busline = dl.GetBusLineBy(ls.Line_Id)
+            //                          select BusLineDoBoAdapter(busline).CopyPropertiesToNew(BusLine)
 
             return StationBO;
         }
@@ -66,13 +66,13 @@ namespace BL
             DO.Station stationDO = new DO.Station() { Code = Code, Name = Name, Address = Address, Latitude = Latitude, longitude = longitude, Act = true };
             dl.AddStation(stationDO);
         }
-        
+
 
         public void DeleteStation(int code)
         {
             DO.Station stationDO;
             stationDO = dl.GetStation(code);
-            if(stationDO!=null)
+            if (stationDO != null)
             {
                 if (dl.GetAllLineStationsby(p => p.Code == code) == null)
                     dl.DeleteStation(code);
@@ -96,8 +96,8 @@ namespace BL
         }
         //get
         public BO.LineStation GetLineStation(int code, int id_line)//תחנה לפי מספר רץ של קן מסןיים וקוד תחנה
-        { 
-            DO.LineStation ls = dl.GetLineStation(code,id_line);
+        {
+            DO.LineStation ls = dl.GetLineStation(code, id_line);
             return LineStationDoBoAdapter(ls);
         }
         public BO.Station GetStationOfLineStation(int code, int id_line)
@@ -107,7 +107,7 @@ namespace BL
         }
         public IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line)// מחזיר רשימת תחנות של קו מסויים
         {
-            return from linestation in dl.GetAllLineStationsby(p=>p.Line_Id==id_line)
+            return from linestation in dl.GetAllLineStationsby(p => p.Line_Id == id_line)
                    select LineStationDoBoAdapter(linestation);
         }
 
@@ -300,8 +300,8 @@ namespace BL
         {
             try
             {
-               dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
-              // DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
+                dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
+                // DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
                 //from li in ListLineStations
                 //select dl.AddLineStation(s, BusLinelDO)
             }
@@ -393,7 +393,7 @@ namespace BL
         public IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate)
         {
             return (IEnumerable<AdjStation>)(IEnumerable<BusLine>)(from AdjStation in dl.GetAdjStationListBy((Predicate<DO.AdjStation>)predicate)
-                                          select AdjStationDoBoAdapter(AdjStation));
+                                                                   select AdjStationDoBoAdapter(AdjStation));
         }
         public void UpdateAdjStation(int code, int code1)
         {
@@ -428,10 +428,10 @@ namespace BL
             }
             catch (DO.BadAdjStationException ex)
             {
-                throw new BO.BadAdjStationException("AdjStation ID is illegal", ex);\
+                throw new BO.BadAdjStationException("AdjStation ID is illegal", ex);
             }
             AdjStationDO.CopyPropertiesTo(AdjStationBO);
         }
-            #endregion
+        #endregion
     }
 }

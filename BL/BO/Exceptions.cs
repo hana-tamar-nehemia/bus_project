@@ -11,12 +11,12 @@ namespace BO
     public class BadStationCodeException : Exception
     {
         public int CODE;
-        public BadStationCodeException(string message, DO.BadStaionCodeException innerException) : 
+        public BadStationCodeException(string message, DO.BadStaionCodeException innerException) :
             base(message, innerException) => CODE = ((DO.BadStaionCodeException)innerException).CODE;
-        public BadStationCodeException(int code, string massage) : base(message, )
+        //public BadStationCodeException(int code, string massage) : base(message)
 
-        public BadStationCodeException(int message, DO.BadStaionCodeException innerException):
-         base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
+        public BadStationCodeException(int message, DO.BadStaionCodeException innerException) :
+        // base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
 
         public override string ToString() => base.ToString() + $", bad station code: {CODE}";
 
@@ -26,7 +26,7 @@ namespace BO
     public class BadLecturerIdException : Exception
     {
         public int ID;
-        public BadLecturerIdException(string message, Exception innerException) : 
+        public BadLecturerIdException(string message, Exception innerException) :
             base(message, innerException) => ID = ((DO.BadPersonIdException)innerException).ID;
         public override string ToString() => base.ToString() + $", bad student id: {ID}";
     }
