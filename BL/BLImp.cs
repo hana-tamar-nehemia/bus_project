@@ -278,10 +278,10 @@ namespace BL
         {
             try
             {
-                dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
-                DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
-                from li in ListLineStations
-                select dl.AddLineStation(s, BusLinelDO)
+                //dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
+                //DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
+                //from li in ListLineStations
+                //select dl.AddLineStation(s, BusLinelDO)
             }
             catch (DO.BadBusLineException ex)
             {
