@@ -379,8 +379,6 @@ namespace DL
             if (a != null)
                 return a.Clone();
             else
-                throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-        }
                 throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
     }
 

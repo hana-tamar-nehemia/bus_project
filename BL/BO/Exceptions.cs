@@ -17,7 +17,6 @@ namespace BO
         public BadStationCodeException(int message, DO.BadStaionCodeException innerException) { }
         public BadStationCodeException(int message, string massage) { }
 
-        public BadStationCodeException(int message, DO.BadStaionCodeException innerException) :
         // base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
         //public BadStationCodeException(int message, DO.BadStaionCodeException innerException):
         // base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
