@@ -11,10 +11,10 @@ namespace BO
     public class BadStationCodeException : Exception
     {
         public int CODE;
-        public BadStationCodeException(string message, Exception innerException) : 
+        public BadStationCodeException(string message, DO.BadStaionCodeException innerException) : 
             base(message, innerException) => CODE = ((DO.BadStaionCodeException)innerException).CODE;
 
-        public BadStationCodeException(int message, Exception innerException):
+        public BadStationCodeException(int message, DO.BadStaionCodeException innerException):
          base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
 
         public override string ToString() => base.ToString() + $", bad station code: {CODE}";

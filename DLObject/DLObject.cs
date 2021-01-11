@@ -10,7 +10,6 @@ using DS;
 namespace DL
 {
     sealed class DLObject : IDL    ///internall
-
     {
         #region singelton
         static readonly DLObject instance = new DLObject();
@@ -106,9 +105,28 @@ namespace DL
             return from linestation in DataSource.List_Line_Station
                    select linestation.Clone();
         }
-        public DO.Station GetStationOfLineStation(LineStation a)
+        public IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate)//מחזיר רשימת תחנות של מסלול מסויים
         {
-            return DataSource.List_Station.Find(s => s.Code == a.Code);
+            return from linestation in DataSource.List_Line_Station
+                   where predicate(linestation)
+                   select linestation.Clone();
+        }
+        public DO.Station GetStationOfLineStation(int code)//תחנה פיזית של תחנה לוגית
+        {
+            DO.Station ls = DataSource.List_Station.Find(s => s.Code == code);
+            if (ls != null)
+                return ls.Clone();
+            else
+                throw new DO.BadLineStationCodeException(code, $"no found: {code}");
+        }
+     
+        public DO.LineStation GetLineStation(int code ,int line_id)
+        {
+            DO.LineStation ls =DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id);
+            if (ls != null)
+                return ls.Clone();
+            else
+                throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
 
         public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
@@ -117,48 +135,58 @@ namespace DL
                    select generate(linestation);
         }
         //add
-        public void AddLineStation(int code,int Line_Id,int line_num, int index)//להוסיף תחנת קו 
+        //public void AddLineStation(int code, int Line_Id, int index)//להוסיף תחנת קו 
+        //{
+        //    if (DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == Line_Id && s.Line_Station_Index == index) != null)
+        //        throw new DO.BadLineStationCodeException(code, "line station is already exsist");
+        //    DataSource.List_Line_Station.Add(new DO.LineStation() { Line_Id=Line_Id , Code=code, Line_Station_Index = index });
+       // }
+        public void AddLineStation(DO.LineStation a)//להוסיף תחנת קו 
         {
-            if (DataSource.List_Line_Station.Find(s => s.Code ==code && s.Line_Id == Line_Id && s.Line_Station_Index==index) != null)
-                throw new DO.BadLineStationCodeException(code, "line station is already exsist");
-            DataSource.List_Line_Station.Add(DO.LineStation);
+            if (DataSource.List_Line_Station.Find(s => s.Code == a.Code && s.Line_Id == a.Line_Id && s.Line_Station_Index == a.Line_Station_Index) != null)
+                throw new DO.BadLineStationCodeException(a.Code, "line station is already exsist");
+            DataSource.List_Line_Station.Add(a);
+            DataSource.List_Line_Station.Where(p => a.Line_Id == p.Line_Id && p.Line_Station_Index >= a.Line_Station_Index).Select(p => p.Line_Station_Index++);//אם לתחנה יש אותו מספר רץ כמו זאת שנוספה והאינדקס שלה גדול ממנה מעלים אינדקס
         }
         //update
-        public void UpdateLineStation(DO.LineStation linestation)
-        {
-            DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
-            if (stu != null)
-            {
-                DataSource.List_Line_Station.Remove(stu);
-                DataSource.List_Line_Station.Add(stu.Clone());
-            }
-            else
-                throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
-        }
-
+        //public void UpdateLineStation(DO.LineStation linestation)
+        //{
+        //    DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
+        //    if (stu != null)
+        //    {
+        //        DataSource.List_Line_Station.Remove(stu);
+        //        DataSource.List_Line_Station.Add(stu.Clone());
+        //    }
+        //    else
+        //        throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
+        //}
+    
         //delete
-        public void DeleteLineStation(int code, BusLine a)
+        public void DeleteLineStationInBus(int code, int id_line)//מחיקת תחנה אחת מקו אחד
         {
-            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
+            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && id_line == p.Line_Id);//התחנה למחיקה
 
             if (s != null)
             {
-                int index = s.Line_Station_Index;
+                int index = s.Line_Station_Index;//אינדקס לעדכון ממנו והלאה
                 DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
-                DataSource.List_Line_Station.Where(p => p.Code == code && a.Bus_Id == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index++);
+                DataSource.List_Line_Station.Where(p => id_line == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index--);//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
             }
             else
                 throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
         }
-        //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
-        //{
-        //    return from linestation in DataSource.List_Line_Station
-        //           select generate(linestation.Code, GetStation(linestation.Code));
-        //}
+        public void DeleteLineStation(int code)//מחיקקת תחנה מכל הקווים
+        {
+            //כאן בונים רשימה של כל התחנות קו שהתחנה הפיזית הייתה שייכת להם 
+            // ואז לפי הline id של התחנה לוגית לשלוח אוטובוס וגם קוד כדי לקצר מסלולים
+            IEnumerable<DO.LineStation> stationtoremove = DataSource.List_Line_Station.FindAll(p => p.Code == code);
+            stationtoremove.Select(p=> DeleteLineStation(code,p.Line_Id));//איך עוברים על הרשימה ועושים את הפונקציה הזאת על כל איבר בה
+        }
+
         #endregion
 
         #region BUS
-        public DO.Bus GetSBus(int License_num_Id)
+        public DO.Bus GetBus(int License_num_Id)
         {
             DO.Bus b = DataSource.List_Bus.Find(p => p.License_num == License_num_Id);
 
@@ -218,59 +246,66 @@ namespace DL
                 throw new DO.BadPersonIdException(License_num_Id, $"bad bus license number: {License_num_Id}");
         }
         #endregion
-    
 
-    #region Bus Line
-    public DO.BusLine GetBusLine(int Bus_Id)
-    {
-        DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
 
-        if (bl != null && bl.Act == true)
-            return bl.Clone();
-        else
-            throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
-    }
-    public IEnumerable<DO.BusLine> GetAllBusLine()
-    {
-        return from BusLine in DataSource.List_Bus_Line
-               where BusLine.Act == true
-               select BusLine.Clone();
-    }
-    public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
-    {
-        return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
-                                      where predicate(BusLine) && BusLine.Act == true
-                                      select Station.Clone(BusLine));
-        throw new NotImplementedException();
-    }
-    public void AddBusLine(int Bus_Id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
-    {
-        if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == Bus_Id) != null)
-            throw new DO.BadBusLineCodeException(Bus_Id, "Duplicate bus line Id");
-        BusLine bus = new BusLine() { Bus_Id = Bus_Id, Line_Number = Line_Number, Area = Area, First_Station = First_Station, Last_Station = Last_Station, Act = act };
-        DataSource.List_Bus_Line.Add(bus.Clone());
-    }
-    void UpdateBusLine(DO.BusLine BusLine)
-    {
-        BusLine bl = DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);
-        if (bl != null && bl.Act == true)
+        #region Bus Line
+
+        public DO.BusLine GetBusLine(int Bus_Id)
         {
-            DataSource.List_Bus_Line.Remove(bl);
-            DataSource.List_Bus_Line.Add(bl.Clone());
+            DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
+
+            if (bl != null && bl.Act == true)
+                return bl.Clone();
+            else
+                throw new DO.BadBusLineCodeException(Bus_Id, $"bad bus line id: {Bus_Id}");
         }
-        throw new BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
-    }
+        public IEnumerable<DO.BusLine> GetAllBusLine()
+        {
+            return from BusLine in DataSource.List_Bus_Line
+                   where BusLine.Act == true
+                   select BusLine.Clone();
+        }
+        public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
+        {
+            return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
+                                          where predicate(BusLine) && BusLine.Act == true
+                                          select Station.Clone(BusLine));
+            throw new NotImplementedException();
+        }
 
-    public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 
-    {
-        throw new NotImplementedException();
-    }
+        public DO.BusLine GetBusLineBy(int line_id)
+        {
+           return DataSource.List_Bus_Line.Find(p=>p.Line_Id==line_id);
+        }
+
+        public void AddBusLine(int Bus_Id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
+        {
+            if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == Bus_Id) != null)
+                throw new DO.BadBusLineCodeException(Bus_Id, "Duplicate bus line Id");
+            BusLine bus = new BusLine() { Bus_Id = Bus_Id, Line_Number = Line_Number, Area = Area, First_Station = First_Station, Last_Station = Last_Station, Act = act };
+            DataSource.List_Bus_Line.Add(bus.Clone());
+        }
+        void UpdateBusLine(DO.BusLine BusLine)
+        {
+            BusLine bl = DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);
+            if (bl != null && bl.Act == true)
+            {
+                DataSource.List_Bus_Line.Remove(bl);
+                DataSource.List_Bus_Line.Add(bl.Clone());
+            }
+            throw new BadBusLineCodeException(BusLine.Bus_Id, "Duplicate bus line Id");
+        }
+
+        public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 
+        {
+            throw new NotImplementedException();
+        }
 
 
-    public void DeleteBusLine(int Bus_Id)
-    {
+        public void DeleteBusLine(int Bus_Id)
+        {
 
-        DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
+            DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
 
         if (bl != null)
         {
@@ -283,7 +318,7 @@ namespace DL
     }
     #endregion
 
-    #region AdjStation
+        #region AdjStation
 
     public void AddAdjStation(int code, int code1, int d, DateTime t)
     {
@@ -315,8 +350,8 @@ namespace DL
             DataSource.List_Adjstation.Remove(adj);
             DataSource.List_Adjstation.Add(adj.Clone());
 
-        }
-        throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            }
+            throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
 
     }
     public void deledteAdjStation(int code, int code1)

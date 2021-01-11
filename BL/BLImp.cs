@@ -13,14 +13,20 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
         #region Station
+
         BO.Station StationDoBoAdapter(DO.Station StationDO)
         {
             BO.Station StationBO = new BO.Station();
             StationDO.CopyPropertiesTo(StationBO);
 
-            StationBO.Collection_Lines = from line in dl.GetAllBusLineBy(line => line.Bus_Id == StationDO.Code)
-                                             //let station = dl.GetStation(line.Bus_Id)
+            StationBO.Collection_Lines = from line in dl.GetAllBusLineBy(line => line.Bus_Id == Stat`ionDO.Code)
+                                             let station = dl.GetStation(line.Line_Id)
                                          select (BO.Station)Station.CopyPropertiesToNew(typeof(BO.Station));
+
+
+            courseBO.Lecturers = from lic in dl.GetLecturersInCourseList(lic => lic.CourseId == id)
+                                 let course = dl.GetCourse(lic.CourseId)
+                                 select (BO.CourseLecturer)course.CopyPropertiesToNew(typeof(BO.CourseLecturer));
             return StationBO;
         }
 
@@ -28,12 +34,9 @@ namespace BL
         //get
         public BO.Station GetStation(int code)
         {
-            DO.Station stationDO;
-            BO.Station StationBO = new BO.Station();
             try
             {
-                stationDO = dl.GetStation(code);
-                return StationDoBoAdapter(stationDO);
+                return StationDoBoAdapter(dl.GetStation(code));
             }
             catch (DO.BadStaionCodeException ex)
             {
@@ -48,7 +51,8 @@ namespace BL
 
         public IEnumerable<BO.Station> GetAllstationsBy(Predicate<DO.Station> predicate)
         {
-            return from Station in GetAllstationsBy(predicate) select StationDoBoAdapter(Station);
+            return from Station in dl.GetAllstationsBy(predicate)
+                   select StationDoBoAdapter(Station);
         }
         //add
         public void AddStation(int Code, string Name, string Address, double Latitude, double longitude)
@@ -57,91 +61,108 @@ namespace BL
             dl.AddStation(stationDO);
         }
         //update
-        public void UpdateStation()
+        public void UpdateListLineBusOfStation(BO.BusLine busLine)
         {
-            //DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
-
-            //if (per != null && per.Act == true)
-            //{
-            //    DataSource.List_Station.Remove(per);
-            //    DataSource.List_Station.Add(per.Clone());
-            //}
-            //else
-            //    throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
+            
         }
 
         public void DeleteStation(int code)
         {
-            DO.Station per = DataSource.List_Station.Find(p => p.Code == code);
-            if (per != null)
+            DO.Station stationDO;
+            stationDO = dl.GetStation(code);
+            if(stationDO!=null)
             {
-                DataSource.List_Station.Remove(per);
-                per.Act = false;
-                DataSource.List_Station.Add(per.Clone());
+                dl.DeleteStation(code);
+                stationDO.Act = false;
+                dl.AddStation(stationDO);
+                //להמשיך מחיקת תחנה פיזית 
+                DeleteLineStation(code);
             }
-            else
-                throw new DO.BadStaionCodeException(code, $"bad station code: {code}");
         }
         #endregion Station
 
         #region line station
+        BO.LineStation LineStationDoBoAdapter(DO.LineStation LineStationDO)
+        {
+            BO.LineStation LineStationBO = new BO.LineStation();
+            LineStationDO.CopyPropertiesTo(LineStationBO);
+            DO.Station stationDO = dl.GetStation(LineStationDO.Code);
+            stationDO.CopyPropertiesTo(LineStationBO);
+            LineStationBO.Collection_Lines = from busline in dl.GetAllBusLine()
+                                             where (busline.Line_Id == LineStationDO.Line_Id)
+                                             select BusLineDoBoAdapter(busline);
+            return LineStationBO;
+        }
         //get
-        public DO.LineStation GetLineStation(int code, DO.BusLine a)//תחנה של קו מסויים
-        {
-            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
-            if (s != null)
-                return s.Clone();
-            else
-                throw new DO.BadLineStationCodeException(code, $"no found: {code}");
+        public BO.LineStation GetLineStation(int code, int id_line)//תחנה לפי מספר רץ של קן מסןיים וקוד תחנה
+        { 
+            DO.LineStation ls = dl.GetLineStation(code,id_line);
+            return LineStationDoBoAdapter(ls);
         }
-        public IEnumerable<DO.LineStation> GetAllLineStations()
+        public BO.Station GetStationOfLineStation(int code, int id_line)
         {
-            return from linestation in DataSource.List_Line_Station
-                   select linestation.Clone();
+
+            return StationDoBoAdapter(dl.GetStationOfLineStation(code));
         }
-        public DO.Station GetStationOfLineStation(LineStation a)
+        public IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line)// מחזיר רשימת תחנות של קו מסויים
         {
-            return DataSource.List_Station.Find(s => s.Code == a.Code);
+            return from linestation in dl.GetAllLineStationsby(p=>p.Line_Id==id_line)
+                   select LineStationDoBoAdapter(linestation);
         }
 
-        public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
-        {
-            return from linestation in DataSource.List_Line_Station
-                   select generate(linestation);
-        }
+
+        //public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
+        //{
+        //    return from linestation in DataSource.List_Line_Station
+        //           select generate(linestation);
+        //}
         //add
-        public void AddLineStation(DO.LineStation linestation, DO.BusLine a)//להוסיף תחנת קו 
+        public void AddLineStation(int code, int Line_Id, int index)//להוסיף תחנת קו 
         {
-            if (DataSource.List_Line_Station.FirstOrDefault(s => s.Code == linestation.Code && a.Line_Id == s.Line_Id) != null)
-                throw new DO.BadLineStationCodeException(linestation.Code, "line station is already exsist");
-            DataSource.List_Line_Station.Add(linestation.Clone());
+            try
+            {
+                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index });
+            }
+            catch (DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("line station is already exsist", ex);
+            }
         }
         //update
-        public void UpdateLineStation(DO.LineStation linestation)
-        {
-            DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
-            if (stu != null)
-            {
-                DataSource.List_Line_Station.Remove(stu);
-                DataSource.List_Line_Station.Add(stu.Clone());
-            }
-            else
-                throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
-        }
+        //public void UpdateLineStation(DO.LineStation linestation)
+        //{
+        //    DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
+        //    if (stu != null)
+        //    {
+        //        DataSource.List_Line_Station.Remove(stu);
+        //        DataSource.List_Line_Station.Add(stu.Clone());
+        //    }
+        //    else
+        //        throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
+        //}
 
         //delete
-        public void DeleteLineStation(int code, BusLine a)
+        public void DeleteLineStation(int code)
         {
-            DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
-
-            if (s != null)
+            try
             {
-                int index = s.Line_Station_Index;
-                DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
-                DataSource.List_Line_Station.Where(p => p.Code == code && a.Bus_Id == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index++);
+                dl.DeleteLineStation(code);
             }
-            else
-                throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
+            catch (DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("line station not exsist", ex);
+            }
+        }
+        public void DeleteLineStationInBus(int code, int line_id)
+        {
+            try
+            {
+                dl.DeleteLineStationInBus(code, line_id);
+            }
+            catch (DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("line station not exsist", ex);
+            }
         }
         //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
         //{
