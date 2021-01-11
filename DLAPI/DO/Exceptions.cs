@@ -31,21 +31,22 @@ namespace DO
 
         public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
     }
-    public class BadBusLineCodeException : Exception
+    public class BadBusLineException : Exception
     {
         public int CODE;
-        public BadBusLineCodeException(int code, int crsID) : base() { CODE = code; }
-        public BadBusLineCodeException(int code, string message) :
+        public BadBusLineException(int code, int crsID) : base() { CODE = code; }
+        public BadBusLineException(int code, string message) :
             base(message)
         { CODE = code; }
         //public BadLineStationCodeException(int perID, int crsID, string message, Exception innerException) :
         //    base(message, innerException) { personID = perID; courseID = crsID; }
 
-        public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
+        public override string ToString() => base.ToString() + $", bad  bus line code: {CODE}";
     }
     public class BadBusAdjStationException : Exception
     {
         public int CODE;
+        public int CODE1;
         public BadBusAdjStationException(int code, int crsID) : base() { CODE = code; }
         public BadBusAdjStationException(int code, int code1, string message) :
             base(message)
@@ -53,7 +54,7 @@ namespace DO
         //public BadLineStationCodeException(int perID, int crsID, string message, Exception innerException) :
         //    base(message, innerException) { personID = perID; courseID = crsID; }
 
-        public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
+        public override string ToString() => base.ToString() + $", bad AdjStation code: {CODE}";
     }
     public class BadBusException : Exception
     {
@@ -65,6 +66,6 @@ namespace DO
         //public BadLineStationCodeException(int perID, int crsID, string message, Exception innerException) :
         //    base(message, innerException) { personID = perID; courseID = crsID; }
 
-        public override string ToString() => base.ToString() + $", bad line station code: {CODE}";
+        public override string ToString() => base.ToString() + $", bad bus code: {CODE}";
     }
  }
