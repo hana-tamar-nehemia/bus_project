@@ -1538,287 +1538,287 @@ namespace DS
                  Code_station1=90,
                  Code_station2=73,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=73,
                  Code_station2=76,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
-              },
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),        
+            },
              new AdjStation
               {
                  Code_station1=76,
                  Code_station2=77,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=77,
                  Code_station2=78,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=78,
                  Code_station2=83,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=83,
                  Code_station2=84,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),,
               },
              new AdjStation
               {
                  Code_station1=84,
                  Code_station2=85,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=85,
                  Code_station2=86,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=86,
                  Code_station2=89,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=89,
                  Code_station2=90,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=91,
                  Code_station2=93,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=93,
                  Code_station2=94,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+               Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=94,
                  Code_station2=95,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=95,
                  Code_station2=97,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=97,
                  Code_station2=102,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=102,
                  Code_station2=103,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=103,
                  Code_station2=105,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=105,
                  Code_station2=106,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=106,
                  Code_station2=108,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=108,
                  Code_station2=91,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1486,
                  Code_station2=1487,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)), 
               },
             new AdjStation
               {
                  Code_station1=1487,
                  Code_station2=1488,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1488,
                  Code_station2=1490,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=1490,
                  Code_station2=1491,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1492,
                  Code_station2=1493,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1493,
                  Code_station2=1510,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1510,
                  Code_station2=1511,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1511,
                  Code_station2=1486,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=1512,
                  Code_station2=1514,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1514,
                  Code_station2=1518,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1518,
                  Code_station2=1522,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1522,
                  Code_station2=1523,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=1523,
                  Code_station2=1524,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=1524,
                  Code_station2=121,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=121,
                  Code_station2=125,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=125,
                  Code_station2=122,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=122,
                  Code_station2=173,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=105,
                  Code_station2=106,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
                  Code_station1=106,
                  Code_station2=108,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=108,
                  Code_station2=91,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             new AdjStation
               {
                  Code_station1=122,
                  Code_station2=73,
                  Distance=r.Next(0,1000),
-                 Time_Between=r.Next(0,3),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
             };
             #endregion

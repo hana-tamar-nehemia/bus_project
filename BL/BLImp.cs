@@ -376,7 +376,7 @@ namespace BL
 
         #region AdjStation
 
-        public void AddAdjStation(int code, int code1, int d, DateTime t)
+        public void AddAdjStation(int code, int code1, int d, TimeSpan t)
         {
             try
             {
