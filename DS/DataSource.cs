@@ -1573,7 +1573,7 @@ namespace DS
                  Code_station1=83,
                  Code_station2=84,
                  Distance=r.Next(0,1000),
-                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),,
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
               },
              new AdjStation
               {
