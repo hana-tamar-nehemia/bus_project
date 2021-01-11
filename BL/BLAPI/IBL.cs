@@ -44,7 +44,7 @@ namespace BLAPI
         DO.Station GetStationOfLineStation(LineStation a);//מחזיר תחנה פיזית של תחנה לוגית
         IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
         void AddLineStation(DO.LineStation linestation, DO.BusLine a);//להוסיף תחנת קו 
-        void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
+        //void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
         void DeleteLineStation(int code, BusLine a);//מחיקת תחנת קו וסידור התחנות הבאות אחריה
 
         #endregion

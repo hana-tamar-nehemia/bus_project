@@ -16,6 +16,7 @@ namespace DLAPI
         
         #region Bus Line
          DO.BusLine GetBusLine(int Bus_Id);
+         DO.BusLine GetBusLineBy(int line_id);
 
          IEnumerable<DO.BusLine> GetAllBusLine();
 
@@ -30,7 +31,7 @@ namespace DLAPI
         #endregion
 
         #region BUS
-        DO.Bus GetSBus(int License_num_Id);
+        DO.Bus GetBus(int License_num_Id);
         IEnumerable<DO.Bus> GetAllBuses();
         //IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
         IEnumerable<DO.Bus> GetAllBusBy(Predicate<DO.Bus> predicate);
@@ -42,14 +43,20 @@ namespace DLAPI
 
         #region line station
         //get
+        DO.LineStation GetLineStation(int code, int line_id);
         DO.LineStation GetLineStation(int code, DO.BusLine a);// מחזיר רשימת תחנות של קו מסויים
         IEnumerable<DO.LineStation> GetAllLineStations();//מחזיר רשימת כל התחנות קווים
-        DO.Station GetStationOfLineStation(LineStation a);//מחזיר תחנה פיזית של תחנה לוגית
-        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
-        void AddLineStation(DO.LineStation linestation, DO.BusLine a);//להוסיף תחנת קו 
-        void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
-        void DeleteLineStation(int code, BusLine a);//מחיקת תחנת קו וסידור התחנות הבאות אחריה
+        IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate);//מחזיר רשימת תחנות של מסלול מסויים
+        void UpdateLineStationAfterAddStation(int code, int id_line);
 
+        DO.Station GetStationOfLineStation(int a);//מחזיר תחנה פיזית של תחנה לוגית
+        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
+                                                                                                        //   void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
+        void AddLineStation(DO.LineStation a);//להוסיף תחנת קו 
+
+       // void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
+        void DeleteLineStationInBus(int code, int line_id);//מחיקת תחנת קו אחת מקו וסידור התחנות הבאות אחריה
+        void DeleteLineStation(int code);//מחיקת תחנת קו מהרשימה וקיצור מסלולים שבה הייתה קיימת
         #endregion
 
         #region STATION
@@ -61,6 +68,8 @@ namespace DLAPI
         void AddStation(DO.Station station);//מוסיף תחנה פיזית
         //update
         void UpdateStation(DO.Station station);//מעדכן תחנה קיימת
+        void DeleteStation(int a);//תחנה לא תהיה פעילה
+
 
         #endregion
 
