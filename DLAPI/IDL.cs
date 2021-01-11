@@ -21,7 +21,7 @@ namespace DLAPI
 
         IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
 
-        void AddBusLine(int Bus_Id, int Line_Number, global::BO.Areas area, Areas Area, int First_Station, int Last_Station,   bool act);
+        void AddBusLine(int Bus_Id, int Line_Number, Areas area, Areas Area, int First_Station, int Last_Station,   bool act);
         void UpdateBusLine(DO.BusLine BusLine);
         void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 
         void DeleteBusLine(int Bus_Id);
@@ -68,10 +68,11 @@ namespace DLAPI
         void AddAdjStation(int code, int code1,int d, DateTime t);
         IEnumerable<DO.BusLine> GetAllAdjStation();
         IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate);
-         
+        DO.AdjStation GetAdjStation(int code, int code1);
         void deledteAdjStation(int Code,int code1);
         void UpdateAdjStation(int Code ,int code1);
-
+         
+        
         #endregion
 
     }

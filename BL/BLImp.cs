@@ -14,17 +14,17 @@ namespace BL
         IDL dl = DLFactory.GetDL();
         #region Station
         BO.Station StationDoBoAdapter(DO.Station StationDO)
-            {
-              BO.Station StationBO = new BO.Station();
+        {
+            BO.Station StationBO = new BO.Station();
             StationDO.CopyPropertiesTo(StationBO);
 
             StationBO.Collection_Lines = from line in dl.GetAllBusLineBy(line => line.Bus_Id == StationDO.Code)
                                              //let station = dl.GetStation(line.Bus_Id)
                                          select (BO.Station)Station.CopyPropertiesToNew(typeof(BO.Station));
             return StationBO;
-         }
+        }
 
-     
+
         //get
         public BO.Station GetStation(int code)
         {
@@ -158,38 +158,39 @@ namespace BL
             try
             {
                 BusDO = dl.GetSBus(License_num_Id);
+                return BusDoBoAdapter(BusDO);
             }
             catch (DO.BadBusException ex)
             {
-                throw new BO.BadBusException("Bus  id does not exist or he is not a Bus ", ex);
+                throw new BO.BadBusException("Bus  id does not exist or he is not a acting ", ex);
             }
-            return BusDoBoAdapter(BusDO);
+
         }
-        public IEnumerable<DO.Bus> GetAllBuses()
+        public IEnumerable<BO.Bus> GetAllBuses()
         {
-             return (IEnumerable<DO.Bus>)(from item in dl.GetAllBuses()
-                  select BusDoBoAdapter(item));
+            return from item in dl.GetAllBuses()
+                   select BusDoBoAdapter(item);
         }
-    
-        public IEnumerable<object> GetAllBusBy(Predicate<DO.Bus> predicate)
+
+        public IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate)
         {
-            return (IEnumerable<DO.Bus>)(IEnumerable<Bus>)(from Bus in dl.GetAllBusBy(predicate)
-                                              select BusDoBoAdapter(Bus));
-            throw new NotImplementedException();
+            return (IEnumerable<Bus>)(from Bus in dl.GetAllBusBy((Predicate<DO.Bus>)predicate)
+                                      select BusDoBoAdapter(Bus));
+
         }
-        public void AddBus(int num ,DateTime st,double k,double f,Bus_status status, bool a)
+        public void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a)
         {
             try
             {
-                dl.AddBus( num,  st, k,  f, (DO.Bus_status)status,a);
-                
-             }
+                dl.AddBus(num, st, k, f, (DO.Bus_status)status, a);
+
+            }
             catch (DO.BadBusException ex)
             {
                 throw new BO.BadBusException(" Bus Not exist", ex);
             }
         }
-        public void UpdateFuelBus(DO.Bus Bus)
+        public void UpdateFuelBus(BO.Bus Bus)
         {
 
             DO.Bus BusDO = new DO.Bus();
@@ -231,12 +232,12 @@ namespace BL
                 throw new BO.BadBusException("Bus ID is illegal", ex);
             }
             BusDO.CopyPropertiesTo(BusBO);
-            BusBO.License_num = BusDO.License_num;
-            BusBO.Bus_status = (Bus_status)BusDO.Bus_status;
-            BusBO.License_num = BusDO.License_num;
-            BusBO.Fuel_tank = BusDO.Fuel_tank;
-            BusBO.Km = BusDO.Km;
-            BusBO.Start_date = BusDO.Start_date;
+            //BusBO.License_num = BusDO.License_num;
+            //BusBO.Bus_status = (Bus_status)BusDO.Bus_status;
+            //BusBO.License_num = BusDO.License_num;
+            //BusBO.Fuel_tank = BusDO.Fuel_tank;
+            //BusBO.Km = BusDO.Km;
+            //BusBO.Start_date = BusDO.Start_date;
 
 
 
@@ -247,44 +248,47 @@ namespace BL
         #region Bus Line
         public BO.BusLine GetBusLine(int Bus_Id)
         {
-            DO.BusLine BusLinelDO;  
+            DO.BusLine BusLinelDO;
 
-             try
+            try
             {
                 BusLinelDO = dl.GetBusLine(Bus_Id);
+                return BusLineDoBoAdapter(BusLinelDO);
             }
             catch (DO.BadBusLineCodeException ex)
             {
-                throw new BO.BadBusLineCodeException("Bus line id does not exist or he is not a Bus line", ex);
+                throw new BO.BadBusLineCodeException("Bus line id does not exist or he is not acting", ex);
             }
-            return BusLineDoBoAdapter(BusLinelDO);
+
         }
         public IEnumerable<BO.BusLine> GetAllBusLine()
         {
             return from item in dl.GetAllBusLine()
-                  select BusLineDoBoAdapter(item);
+                   select BusLineDoBoAdapter(item);
         }
-        
-        public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
+
+        public IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate)
         {
-            return (IEnumerable<DO.BusLine>)(IEnumerable<BusLine>)(from BusLine in dl.GetAllBusLineBy(predicate)
-                                        select BusLineDoBoAdapter(BusLine)); 
-            throw new NotImplementedException();
+            return (IEnumerable<BusLine>)(from BusLine in dl.GetAllBusLineBy((Predicate<DO.BusLine>)predicate)
+                                          select BusLineDoBoAdapter(BusLine));
+
         }
-        public void AddBusLine( int bus_id ,int Line_Number, Areas Area, int First_Station ,  int Last_Station , IEnumerable<LineStation> LineStations, bool act, int Line_Id)  
+        //****************************************************************
+        public void AddBusLine(int bus_id, int Line_Number, Areas Area, int First_Station, int Last_Station, IEnumerable<LineStation> ListLineStations, bool act, int Line_Id)
         {
             try
             {
-                dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station,act,Line_Number);
-                from s in LineStations
-                select dl.AddLineStation(s, Line_Number)
+                dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
+                DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
+                from li in ListLineStations
+                select dl.AddLineStation(s, BusLinelDO)
             }
             catch (DO.BadBusLineException ex)
             {
                 throw new BO.BadBusLineException("Student ID and Course ID is Not exist", ex);
             }
         }
-       void UpdateBusLine(BO.BusLine BusLine)
+        void UpdateBusLine(BO.BusLine BusLine)
         {
             DO.BusLine BusLineDO = new DO.BusLine();
             BusLine.CopyPropertiesTo(BusLineDO);
@@ -296,21 +300,21 @@ namespace BL
             {
                 throw new BO.BadBusLineException("Bus line  ID is illegal", ex);
             }
-       }
-        public void DeleteBusLine(int Bus_Id , int Line_Number)
+        }
+        public void DeleteBusLine(int Bus_Id)
         {
             try
             {
                 dl.DeleteBusLine(Bus_Id);
-                
+
             }
-            
+
             catch (DO.BadBusLineException ex)
             {
-                throw new BO.BadBusLineException("Person id does not exist or he is not a student", ex);
+                throw new BO.BadBusLineException("Bus line  id does not exist or he is not acting", ex);
             }
         }
-         
+        //************************************************************ 
         BO.BusLine BusLineDoBoAdapter(DO.BusLine BusLineDO)
         {
             BO.BusLine BusLineBO = new BO.BusLine();
@@ -325,39 +329,37 @@ namespace BL
                 throw new BO.BadBusLineException("Student ID is illegal", ex);
             }
             BusDO.CopyPropertiesTo(BusLineBO);
-            BusLineBO.Bus_status = (Bus_status)BusDO.Bus_status;
-            BusLineBO.License_num = BusDO.License_num;
-            BusLineBO.Fuel_tank= BusDO.Fuel_tank;
-            BusLineBO.Km= BusDO.Km;
-            BusLineBO.Start_date = BusDO.Start_date;
-             
+            //BusLineBO.Bus_status = (Bus_status)BusDO.Bus_status;
+            //BusLineBO.License_num = BusDO.License_num;
+            //BusLineBO.Fuel_tank= BusDO.Fuel_tank;
+            //BusLineBO.Km= BusDO.Km;
+            //BusLineBO.Start_date = BusDO.Start_date;
+
 
             BusLineDO.CopyPropertiesTo(BusLineBO);
-            BusLineBO.Act = BusLineDO.Act;
-            BusLineBO.First_Station = BusLineDO.First_Station;
-            BusLineBO.Last_Station = BusLineDO.Last_Station;
-            BusLineBO.Line_Id = BusLineDO.Line_Id;
-            BusLineBO.Line_Number = BusLineDO.Line_Number;
-            BusLineBO.Area = (Areas)BusLineDO.Area;
+            //BusLineBO.Act = BusLineDO.Act;
+            //BusLineBO.First_Station = BusLineDO.First_Station;
+            //BusLineBO.Last_Station = BusLineDO.Last_Station;
+            //BusLineBO.Line_Id = BusLineDO.Line_Id;
+            //BusLineBO.Line_Number = BusLineDO.Line_Number;
+            //BusLineBO.Area = (Areas)BusLineDO.Area;
+
+            //********************************************************
             //BusLineBO.ListLineStations = from s in dl.GetAllLineStations()
             //                          let LineStations = dl.GetLineStation(s.Line_Id)
             //                          select LineStations.CopyToStudentCours
-             return BusLineBO;
+            return BusLineBO;
         }
-
-
-
-
 
         #endregion
 
         #region AdjStation
 
-        public void AddAdjStation(int code, int code1,int d,DateTime t)
+        public void AddAdjStation(int code, int code1, int d, DateTime t)
         {
             try
             {
-                dl.AddAdjStation(code,code1,d,t);
+                dl.AddAdjStation(code, code1, d, t);
 
             }
             catch (DO.BadAdjStationException ex)
@@ -366,193 +368,48 @@ namespace BL
             }
 
         }
-        public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
+        public IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate)
         {
-            
+            return (IEnumerable<AdjStation>)(IEnumerable<BusLine>)(from AdjStation in dl.GetAdjStationListBy((Predicate<DO.AdjStation>)predicate)
+                                          select AdjStationDoBoAdapter(AdjStation));
         }
         public void UpdateAdjStation(int code, int code1)
         {
-            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
-            if (adj != null)
+            try
             {
-                DataSource.List_Adjstation.Remove(adj);
-                DataSource.List_Adjstation.Add(adj.Clone());
-
+                dl.UpdateAdjStation(code, code1);
             }
-            throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-
+            catch (DO.BadAdjStationException ex)
+            {
+                throw new BO.BadAdjStationException("AdjStation  ID is illegal", ex);
+            }
         }
         public void deledteAdjStation(int code, int code1)
         {
-            AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
-            if (adj != null)
-            {
-                DataSource.List_Adjstation.Remove(adj);
-            }
-            throw new DO.BadBusAdjStationnException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
-        }
-
-        void IDL.UpdateBusLine(BusLine BusLine)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-        #region Student
-         
-
-             
-
-            return BusBO;
-        }
-
-        public BO.Student GetStudent(int id)
-        {
-            DO.Student studentDO;
             try
             {
-                studentDO = dl.GetStudent(id);
+                dl.deledteAdjStation(code, code1);
             }
-            catch (DO.BadPersonIdException ex)
+            catch (DO.BadAdjStationException ex)
             {
-                throw new BO.BadStudentIdException("Person id does not exist or he is not a student", ex);
+                throw new BO.BadAdjStationException("AdjStation  ID is illegal", ex);
             }
-            return studentDoBoAdapter(studentDO);
         }
-
-        public IEnumerable<BO.Student> GetAllStudents()
+        BO.AdjStation AdjStationDoBoAdapter(DO.AdjStation AdjStationDO)
         {
-            //return from item in dl.GetStudentListWithSelectedFields( (stud) => { return GetStudent(stud.ID); } )
-            //       let student = item as BO.Student
-            //       orderby student.ID
-            //       select student;
-            return from item in dl.GetAllStudents()
-                   select studentDoBoAdapter(item);
-        }
-        public IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<BO.ListedPerson> GetStudentIDNameList()
-        {
-            return from item in dl.GetStudentListWithSelectedFields((Func<DO.Student, object>)((stud) =>
-                    {
-                        try { Thread.Sleep(1500); } catch (ThreadInterruptedException e) { }
-                        return new BO.ListedPerson() { ID = stud.ID, Name = dl.GetPerson(stud.ID).Name };
-                    }))
-                   let student = item as BO.ListedPerson
-                   //orderby student.ID
-                   select student;
-        }
-
-        public void UpdateStudentPersonalDetails(BO.Student student)
-        {
-            //Update DO.Person            
-            DO.Person personDO = new DO.Person();
-            student.CopyPropertiesTo(personDO);
+            BO.AdjStation AdjStationBO = new BO.AdjStation();
+            int code = AdjStationDO.Code_station1;
+            int code1 = AdjStationDO.Code_station2;
             try
             {
-                dl.UpdatePerson(personDO);
+                AdjStationDO = dl.GetAdjStation(code, code1);
             }
-            catch (DO.BadPersonIdException ex)
+            catch (DO.BadAdjStationException ex)
             {
-                throw new BO.BadStudentIdException("Student ID is illegal", ex);
+                throw new BO.BadAdjStationException("AdjStation ID is illegal", ex);
             }
-
-            //Update DO.Student            
-            DO.Student studentDO = new DO.Student();
-            student.CopyPropertiesTo(studentDO);
-            try
-            {
-                dl.UpdateStudent(studentDO);
-            }
-            catch (DO.BadPersonIdException ex)
-            {
-                throw new BO.BadStudentIdException("Student ID is illegal", ex);
-            }
-
+            AdjStationDO.CopyPropertiesTo(AdjStationBO);
         }
-
-        public void DeleteStudent(int id)
-        {
-            try
-            {
-                dl.DeletePerson(id);
-                dl.DeleteStudent(id);
-                dl.DeleteStudentFromAllCourses(id);
-            }
-            catch (DO.BadPersonIdCourseIDException ex)
-            {
-                throw new BO.BadStudentIdCourseIDException("Student ID and Course ID is Not exist", ex);
-            }
-            catch (DO.BadPersonIdException ex)
-            {
-                throw new BO.BadStudentIdException("Person id does not exist or he is not a student", ex);
-            }
-        }
-
-        #endregion
-
-        #region StudentIn Course
-        public void AddStudentInCourse(int perID, int courseID, float grade = 0)
-        {
-            try
-            {
-                dl.AddStudentInCourse(perID, courseID, grade);
-            }
-            catch (DO.BadPersonIdCourseIDException ex)
-            {
-                throw new BO.BadStudentIdCourseIDException("Student ID and Course ID is Not exist", ex);
-            }
-        }
-
-        public void UpdateStudentGradeInCourse(int perID, int courseID, float grade)
-        {
-            try
-            {
-                dl.UpdateStudentGradeInCourse(perID, courseID, grade);
-            }
-            catch (DO.BadPersonIdCourseIDException ex)
-            {
-                throw new BO.BadStudentIdCourseIDException("Student ID and Course ID is Not exist", ex);
-            }
-        }
-
-        public void DeleteStudentInCourse(int perID, int courseID)
-        {
-            try
-            {
-                dl.DeleteStudentInCourse(perID, courseID);
-            }
-            catch (DO.BadPersonIdCourseIDException ex)
-            {
-                throw new BO.BadStudentIdCourseIDException("Student ID and Course ID is Not exist", ex);
-            }
-        }
-        #endregion
-
-        #region Course
-
-        BO.Course courseDoBoAdapter(DO.Course courseDO)
-        {
-            BO.Course courseBO = new BO.Course();
-            int id = courseDO.ID;
-            courseDO.CopyPropertiesTo(courseBO);
-
-            courseBO.Lecturers = from lic in dl.GetLecturersInCourseList(lic => lic.CourseId == id)
-                                 let course = dl.GetCourse(lic.CourseId)
-                                 select (BO.CourseLecturer)course.CopyPropertiesToNew(typeof(BO.CourseLecturer));
-            return courseBO;
-        }
-        public IEnumerable<BO.Course> GetAllCourses()
-        {
-            return from crsDO in dl.GetAllCourses()
-                   select courseDoBoAdapter(crsDO);
-        }
-
-        #endregion
-
-
+            #endregion
     }
 }
