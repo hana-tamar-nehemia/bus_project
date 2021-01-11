@@ -176,7 +176,7 @@ namespace DL
         //    else
         //        throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
         //}
-    
+
         //delete
         public void DeleteLineStationInBus(int code, int id_line)//מחיקת תחנה אחת מקו אחד
         {
@@ -190,13 +190,6 @@ namespace DL
             }
             else
                 throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
-        }
-        public void DeleteLineStation(int code)//מחיקקת תחנה מכל הקווים
-        {
-            //כאן בונים רשימה של כל התחנות קו שהתחנה הפיזית הייתה שייכת להם 
-            // ואז לפי הline id של התחנה לוגית לשלוח אוטובוס וגם קוד כדי לקצר מסלולים
-            IEnumerable<DO.LineStation> stationtoremove = DataSource.List_Line_Station.FindAll(p => p.Code == code);
-            stationtoremove.Select(p=> DeleteLineStation(code,p.Line_Id));//איך עוברים על הרשימה ועושים את הפונקציה הזאת על כל איבר בה
         }
 
         #endregion
@@ -367,7 +360,7 @@ namespace DL
             DataSource.List_Adjstation.Add(adj.Clone());
 
             }
-             throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+             throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
 
     }
     public void deledteAdjStation(int code, int code1)
@@ -377,7 +370,7 @@ namespace DL
         {
             DataSource.List_Adjstation.Remove(adj);
         }
-        throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+        throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
     }
     public DO.AdjStation GetAdjStation(int code, int code1)
     {
@@ -386,11 +379,10 @@ namespace DL
             if (a != null  )
                 return a.Clone();
             else
-                throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+                throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
     }
 
         #endregion
-
 
 
     }

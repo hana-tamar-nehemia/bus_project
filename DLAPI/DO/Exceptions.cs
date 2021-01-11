@@ -68,4 +68,6 @@ namespace DO
 
         public override string ToString() => base.ToString() + $", bad bus code: {CODE}";
     }
- }
+    public class  BadAdjStationException : Exception
+    { }
+}

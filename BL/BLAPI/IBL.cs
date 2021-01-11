@@ -17,8 +17,8 @@ namespace BLAPI
         BO.BusLine GetBusLine(int Bus_Id);
 
         IEnumerable<BO.BusLine> GetAllBusLine();
-        IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
-        void AddBusLine(int bus_id, int Line_Number, BO.Areas Area, int First_Station, int Last_Station, IEnumerable<BO.LineStation> ListLineStations, bool act, int Line_Id);
+        //IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
+        //void AddBusLine(int bus_id, int Line_Number, BO.Areas Area, int First_Station, int Last_Station, IEnumerable<BO.LineStation> ListLineStations, bool act, int Line_Id);
         void UpdateBusLine(BO.BusLine BusLine);
         void DeleteBusLine(int Bus_Id);
 
@@ -28,7 +28,7 @@ namespace BLAPI
         #region BUS
         BO.Bus GetSBus(int License_num_Id);
         IEnumerable<BO.Bus> GetAllBuses();
-        IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate);
+       // IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate);
         void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a);
         void UpdateFuelBus(BO.Bus Bus);
         void DeleteBus(int License_num_Id);
@@ -52,8 +52,6 @@ namespace BLAPI
          void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
 
         //delete
-         void DeleteLineStation(int code);
-
 
          void DeleteLineStationInBus(int code, int line_id);
 
