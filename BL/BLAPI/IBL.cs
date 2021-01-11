@@ -39,26 +39,48 @@ namespace BLAPI
 
         #region line station
         //get
-        DO.LineStation GetLineStation(int code, DO.BusLine a);// מחזיר רשימת תחנות של קו מסויים
-        IEnumerable<DO.LineStation> GetAllLineStations();//מחזיר רשימת כל התחנות קווים
-        DO.Station GetStationOfLineStation(LineStation a);//מחזיר תחנה פיזית של תחנה לוגית
-        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
-        void AddLineStation(DO.LineStation linestation, DO.BusLine a);//להוסיף תחנת קו 
-        //void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
-        void DeleteLineStation(int code, BusLine a);//מחיקת תחנת קו וסידור התחנות הבאות אחריה
+
+        BO.LineStation LineStationDoBoAdapter(DO.LineStation LineStationDO);
+        
+         BO.LineStation GetLineStation(int code, int id_line);//תחנה לפי מספר רץ של קן מסןיים וקוד תחנה
+
+         BO.Station GetStationOfLineStation(int code, int id_line);
+
+         IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line);// מחזיר רשימת תחנות של קו מסויים
+        IEnumerable<BO.LineStation> GetAllLineStations();// מחזיר רשימת תחנות של קו מסויים
+
+        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
+
+        //add
+         void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
+
+        //delete
+         void DeleteLineStation(int code);
+
+
+         void DeleteLineStationInBus(int code, int line_id);
 
         #endregion
 
         #region STATION
         // get
-        DO.Station GetStation(int code);//מחזיר תחנת אוטובוס פיזית
-        IEnumerable<DO.Station> GetAllStation();//מחזיר רשימת תחנות אוטובוס 
-        IEnumerable<DO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);//מחזיר רשימת תחנות אטטובוס לפי פרדיקט
-        //add
-        void AddStation(DO.Station station);//מוסיף תחנה פיזית
-        //update
-        void UpdateStation(DO.Station station);//מעדכן תחנה קיימת
 
+        BO.Station StationDoBoAdapter(DO.Station StationDO);//איך קוראים לכל האוטובוסים שעוברים בתחנה הפיזית? בהמרה לתחנה פיזית של בוו
+
+        //get
+         BO.Station GetStation(int code);//מקבל תחנה לפי קוד תחנה 
+
+         IEnumerable<BO.Station> GetAllStation();//מחזיר את כל התחנות
+
+
+         IEnumerable<BO.Station> GetAllstationsBy(Predicate<DO.Station> predicate);//מחזיר רשימת תחנות לפי פקדיקט מסוים
+
+         BO.Station GetstationsBy(Predicate<DO.Station> predicate);//מחזיר תחנה לפי פקדיקט מסוים
+
+        //add
+         void AddStation(int Code, string Name, string Address, double Latitude, double longitude);//הוספת תחנה פיזית
+
+         void DeleteStation(int code);
         #endregion
 
         #region AdjStation

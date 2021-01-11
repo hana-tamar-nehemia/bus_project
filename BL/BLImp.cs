@@ -110,6 +110,11 @@ namespace BL
             return from linestation in dl.GetAllLineStationsby(p=>p.Line_Id==id_line)
                    select LineStationDoBoAdapter(linestation);
         }
+        IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
+        {
+            return from linestation in dl.GetAllLineStations()
+                   select LineStationDoBoAdapter(linestation);
+        }
 
 
         public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
