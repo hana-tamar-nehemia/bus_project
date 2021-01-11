@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,25 +17,24 @@ namespace BLAPI
         BO.BusLine GetBusLine(int Bus_Id);
 
         IEnumerable<BO.BusLine> GetAllBusLine();
-
-        IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
-
-        void AddBusLine();
+        IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
+        void AddBusLine(int bus_id, int Line_Number, BO.Areas Area, int First_Station, int Last_Station, IEnumerable<BO.LineStation> ListLineStations, bool act, int Line_Id);
         void UpdateBusLine(BO.BusLine BusLine);
-        void UpdateBusLine(int Bus_Id, Action<BO.BusLine> update); //method that knows to updt specific fields 
         void DeleteBusLine(int Bus_Id);
-        //IEnumerable<object> GetBusListWithSelectedFields(Func<Bus, object> generate);
+        BO.BusLine BusLineDoBoAdapter(DO.BusLine BusLineDO);
+
 
         #endregion
 
         #region BUS
-        DO.Bus GetSBus(int License_num_Id);
-        IEnumerable<DO.Bus> GetAllBuses();
-        IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
-        void AddBus(DO.Bus Bus);
-        void UpdateFuelBus(DO.Bus Bus);
-        //void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
-        void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
+        BO.Bus GetSBus(int License_num_Id);
+        IEnumerable<BO.Bus> GetAllBuses();
+        IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate);
+        void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a);
+        void UpdateFuelBus(BO.Bus Bus);
+        void DeleteBus(int License_num_Id);
+
+        BO.Bus BusDoBoAdapter(DO.Bus BusDO);
         #endregion
 
         #region line station
@@ -62,19 +62,16 @@ namespace BLAPI
         #endregion
 
         #region AdjStation
-        void AddAdjStation(int code, int code1);
 
-        IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate);
-        //DO.AdjStation GetCode1(int Code);
-        //DO.AdjStation GetCode2(int Code);
-        //DO.AdjStation distace(int Code);
-        //DO.AdjStation GetTimeBetween(int Code);
-        void deledteAdjStation(int Code, int code1);
-        void UpdateAdjStation(int Code, int code1);
+        void AddAdjStation(int code, int code1, int d, DateTime t);
+        IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
+        void UpdateAdjStation(int code, int code1);
+        void deledteAdjStation(int code, int code1);
+        BO.AdjStation AdjStationDoBoAdapter(DO.AdjStation AdjStationDO);
 
         #endregion
-        
-        
+
+
 
 
 

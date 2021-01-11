@@ -178,7 +178,7 @@ namespace BL
 
             try
             {
-                BusDO = dl.GetSBus(License_num_Id);
+                BusDO = dl.GetBus(License_num_Id);
                 return BusDoBoAdapter(BusDO);
             }
             catch (DO.BadBusException ex)
@@ -246,7 +246,7 @@ namespace BL
             int id = BusDO.License_num;
             try
             {
-                BusDO = dl.GetSBus(id);
+                BusDO = dl.GetBus(id);
             }
             catch (DO.BadBusException ex)
             {
