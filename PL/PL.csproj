@@ -93,9 +93,9 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLObject\DLObject.csproj">
-      <Project>{0cc72c53-46ec-442d-80eb-89c7a36cd5b2}</Project>
-      <Name>DLObject</Name>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{2256497b-4c6a-485f-8b1b-bfc792e8a372}</Project>
+      <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -217,7 +217,7 @@ namespace DL
                    where Bus.Act == true
                    select Bus.Clone();
         }
-        IEnumerable<DO.Bus> GetAllBusBy(Predicate<DO.Bus> predicate)
+        public IEnumerable<DO.Bus> GetAllBusBy(Predicate<DO.Bus> predicate)
         {
             //Returns deferred query + clone:
             return from b in DataSource.List_Bus
@@ -301,7 +301,7 @@ namespace DL
             BusLine bus = new BusLine() { Bus_Id = Bus_Id, Line_Number = Line_Number, Area = Area, First_Station = First_Station, Last_Station = Last_Station, Act = act };
             DataSource.List_Bus_Line.Add(bus.Clone());
         }
-        void UpdateBusLine(DO.BusLine BusLine)
+        public void UpdateBusLine(DO.BusLine BusLine)
         {
             BusLine bl = DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);
             if (bl != null && bl.Act == true)
@@ -341,7 +341,7 @@ namespace DL
         AdjStation adj = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
         if (adj == null)
         {
-            throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+            throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
         }
             AdjStation a = new AdjStation() { Code_station1 = code, Code_station2 = code1, Distance = d, Time_Between = t };
                        DataSource.List_Adjstation.Add(a.Clone());
@@ -353,7 +353,7 @@ namespace DL
                                          select Station.Clone(AdjStation));
         throw new NotImplementedException();
     }
-    IEnumerable<DO.Bus> GetAllAdjStation()
+    public IEnumerable<DO.Bus> GetAllAdjStation()
     {
             return from Bus in DataSource.List_Bus
                    select Bus.Clone();
@@ -367,7 +367,7 @@ namespace DL
             DataSource.List_Adjstation.Add(adj.Clone());
 
             }
-            throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
+             throw new DO.BadBusAdjStationException(AdjStation.Code_station1, AdjStation.Code_station2, "Duplicate Code station 1 and Code station 2");
 
     }
     public void deledteAdjStation(int code, int code1)

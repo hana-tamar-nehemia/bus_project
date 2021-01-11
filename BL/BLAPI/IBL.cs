@@ -21,7 +21,6 @@ namespace BLAPI
         void AddBusLine(int bus_id, int Line_Number, BO.Areas Area, int First_Station, int Last_Station, IEnumerable<BO.LineStation> ListLineStations, bool act, int Line_Id);
         void UpdateBusLine(BO.BusLine BusLine);
         void DeleteBusLine(int Bus_Id);
-        BO.BusLine BusLineDoBoAdapter(DO.BusLine BusLineDO);
 
 
         #endregion
@@ -34,22 +33,20 @@ namespace BLAPI
         void UpdateFuelBus(BO.Bus Bus);
         void DeleteBus(int License_num_Id);
 
-        BO.Bus BusDoBoAdapter(DO.Bus BusDO);
         #endregion
 
         #region line station
         //get
 
-        BO.LineStation LineStationDoBoAdapter(DO.LineStation LineStationDO);
-        
-         BO.LineStation GetLineStation(int code, int id_line);//תחנה לפי מספר רץ של קן מסןיים וקוד תחנה
+        BO.LineStation GetLineStation(int code, int id_line);
+
 
          BO.Station GetStationOfLineStation(int code, int id_line);
 
          IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line);// מחזיר רשימת תחנות של קו מסויים
         IEnumerable<BO.LineStation> GetAllLineStations();// מחזיר רשימת תחנות של קו מסויים
 
-        IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
+       // IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
 
         //add
          void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
@@ -65,7 +62,6 @@ namespace BLAPI
         #region STATION
         // get
 
-        BO.Station StationDoBoAdapter(DO.Station StationDO);//איך קוראים לכל האוטובוסים שעוברים בתחנה הפיזית? בהמרה לתחנה פיזית של בוו
 
         //get
          BO.Station GetStation(int code);//מקבל תחנה לפי קוד תחנה 
@@ -85,17 +81,12 @@ namespace BLAPI
 
         #region AdjStation
 
-        void AddAdjStation(int code, int code1, int d, DateTime t);
+         void AddAdjStation(int code, int code1, int d, TimeSpan t);
         IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
         void UpdateAdjStation(int code, int code1);
         void deledteAdjStation(int code, int code1);
-        BO.AdjStation AdjStationDoBoAdapter(DO.AdjStation AdjStationDO);
 
         #endregion
-
-
-
-
 
     }
 }
