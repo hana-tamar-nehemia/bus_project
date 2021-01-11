@@ -5,7 +5,6 @@ using DLAPI;
 using BLAPI;
 using System.Threading;
 using BO;
-//using BO;
 
 namespace BL
 {
@@ -83,6 +82,7 @@ namespace BL
         #endregion Station
 
         #region line station
+
         BO.LineStation LineStationDoBoAdapter(DO.LineStation LineStationDO)
         {
             BO.LineStation LineStationBO = new BO.LineStation();
@@ -110,13 +110,12 @@ namespace BL
             return from linestation in dl.GetAllLineStationsby(p => p.Line_Id == id_line)
                    select LineStationDoBoAdapter(linestation);
         }
-
-
-        public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)
+        public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
         {
-            return from linestation in DataSource.List_Line_Station
-                   select generate(linestation);
+            return from linestation in dl.GetAllLineStations()
+                   select LineStationDoBoAdapter(linestation);
         }
+
         //add
         public void AddLineStation(int code, int Line_Id, int index)//להוסיף תחנת קו 
         {
@@ -129,18 +128,6 @@ namespace BL
                 throw new BO.BadStationCodeException("line station is already exsist", ex);
             }
         }
-        //update
-        //public void UpdateLineStation(DO.LineStation linestation)
-        //{
-        //    DO.LineStation stu = DataSource.List_Line_Station.Find(p => p.Code == linestation.Code);
-        //    if (stu != null)
-        //    {
-        //        DataSource.List_Line_Station.Remove(stu);
-        //        DataSource.List_Line_Station.Add(stu.Clone());
-        //    }
-        //    else
-        //        throw new DO.BadLineStationCodeException(linestation.Code, $"bad line station code: {linestation.Code}");
-        //}
 
         //delete
         public void DeleteLineStation(int code)
@@ -165,11 +152,7 @@ namespace BL
                 throw new BO.BadStationCodeException("line station not exsist", ex);
             }
         }
-        //public IEnumerable<object> GetLineStationFields(Func<int, object> generate)
-        //{
-        //    return from linestation in DataSource.List_Line_Station
-        //           select generate(linestation.Code, GetStation(linestation.Code));
-        //}
+
         #endregion
 
         #region BUS
@@ -310,7 +293,7 @@ namespace BL
                 throw new BO.BadBusLineException("Student ID and Course ID is Not exist", ex);
             }
         }
-        void UpdateBusLine(BO.BusLine BusLine)
+        public void UpdateBusLine(BO.BusLine BusLine)
         {
             DO.BusLine BusLineDO = new DO.BusLine();
             BusLine.CopyPropertiesTo(BusLineDO);

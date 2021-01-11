@@ -14,8 +14,11 @@ namespace BO
         public BadStationCodeException(string message, DO.BadStaionCodeException innerException) :
             base(message, innerException) => CODE = ((DO.BadStaionCodeException)innerException).CODE;
         //public BadStationCodeException(int code, string massage) : base(message)
+       // public BadStationCodeException(int code, string massage) : base(message, )
 
         public BadStationCodeException(int message, DO.BadStaionCodeException innerException) :
+        // base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
+        //public BadStationCodeException(int message, DO.BadStaionCodeException innerException):
         // base(message, innerException) => CODE = ((DO.BadStaionCodeException) innerException).CODE;
 
         public override string ToString() => base.ToString() + $", bad station code: {CODE}";
