@@ -10,55 +10,96 @@
     <Window.Resources>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
         <CollectionViewSource x:Key="lineStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:LineStation}, CreateList=True}"/>
+        <CollectionViewSource x:Key="adjStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:AdjStation}, CreateList=True}"/>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource busLineViewSource}">
+        
 
-        <Label Content="Line:" HorizontalAlignment="Left" Margin="40,107,0,0" VerticalAlignment="Top" Height="29" Width="40" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.5,0.586"/>
-        <Label Content="phat:" HorizontalAlignment="Left" Margin="392,107,0,0" VerticalAlignment="Top" Height="29" Width="40" FontWeight="Bold" FontStyle="Italic" FontSize="12"/>
-
-        <ListView x:Name="busLineListView" SelectionMode="Single" Margin="140,136,401.333,84.667" ItemsSource="{Binding}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="areaColumn" Width="80" Header="Area">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="first_StationColumn" Width="80" Header="First Station">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding First_Station, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="last_StationColumn" Width="80" Header="Last Station">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Last_Station, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                </GridView>
-            </ListView.View>
+        <ListView x:Name="busLineListView" ItemsSource="{Binding}" Margin="-1,0,608.333,38.667" SelectionMode="Single">
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="line_NumberColumn" Header="Line Number" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="areaColumn" Header="Area" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
         </ListView>
-        <ComboBox x:Name="busLineComboBox" DisplayMemberPath="Act" ItemsSource="{Binding}" Margin="40,136,680.333,255.667" SelectedValuePath="Act">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <Menu x:Name="lineStationMenu" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="392,136,301.333,84.667"/>
+        <ListView x:Name="lineStationListView" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="226,10,240.333,72.667" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="codeColumn" Header="Code" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="nameColumn" Header="Name" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Name}" Margin="-6,-1"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="adjStationListView" ItemsSource="{Binding Source={StaticResource adjStationViewSource}}" Margin="540,10,31.333,72.667" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="distanceColumn" Header="Distance" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="time_BetweenColumn" Header="Time Between" Width="130">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1" Text="{Binding Time_Between, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="btnGO" Content="עדכן קו" HorizontalAlignment="Left" Height="36" Margin="520,360,0,0" VerticalAlignment="Top" Width="117"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO1" Content="מחק קו" HorizontalAlignment="Left" Height="36" Margin="403,360,0,0" VerticalAlignment="Top" Width="117"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="22" Margin="22,389,0,0" VerticalAlignment="Top" Width="127"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO3" Content="»" HorizontalAlignment="Left" Height="31" Margin="767,7,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
 
     </Grid>
 </Window>

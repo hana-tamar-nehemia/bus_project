@@ -15,28 +15,23 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Buses.xaml
+    /// Interaction logic for ManagerEnterCheck.xaml
     /// </summary>
-    public partial class Buses : Window
+    public partial class ManagerEnterCheck : Window
     {
-        public Buses()
+        public ManagerEnterCheck()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            this.Close();
+            ManagerOptions m = new ManagerOptions();
+            m.ShowDialog();
+            
         }
 
-        private void btnGO_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

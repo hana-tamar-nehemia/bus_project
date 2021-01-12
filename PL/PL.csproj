@@ -74,6 +74,12 @@
     <Compile Include="LineStation.xaml.cs">
       <DependentUpon>LineStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManagerEnterCheck.xaml.cs">
+      <DependentUpon>ManagerEnterCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerOptions.xaml.cs">
+      <DependentUpon>ManagerOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stations.xaml.cs">
       <DependentUpon>Stations.xaml</DependentUpon>
     </Compile>
@@ -149,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerEnterCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

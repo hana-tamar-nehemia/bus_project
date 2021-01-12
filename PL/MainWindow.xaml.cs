@@ -23,5 +23,11 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void rbStudents_Checked(object sender, RoutedEventArgs e)
+        {
+            ManagerEnterCheck m = new ManagerEnterCheck();
+            m.ShowDialog();
+        }
     }
 }

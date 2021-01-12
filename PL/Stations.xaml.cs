@@ -36,5 +36,10 @@ namespace PL
         {
 
         }
+
+        private void stationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

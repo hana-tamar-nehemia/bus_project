@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Buses.xaml
+    /// Interaction logic for ManagerOptions.xaml
     /// </summary>
-    public partial class Buses : Window
+    public partial class ManagerOptions : Window
     {
-        public Buses()
+        public ManagerOptions()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
@@ -34,9 +29,11 @@ namespace PL
 
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void rbLines_Checked(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            Line l = new Line();
+            l.ShowDialog();
         }
     }
 }

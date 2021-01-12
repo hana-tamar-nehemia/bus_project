@@ -16,7 +16,7 @@
 
         <Button x:Name="btnGO" Content="Add bus" HorizontalAlignment="Left" Height="42" Margin="319,334,0,0" VerticalAlignment="Top" Width="105"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="28,53,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListView x:Name="busListView" ItemsSource="{Binding}" Margin="172,53,369.333,167.667" SelectionMode="Single" SelectionChanged="busListView_SelectionChanged">
+        <ListView x:Name="busListView" ItemsSource="{Binding}" Margin="172,53,369.333,167.667" >
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>

@@ -39,7 +39,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -48,7 +48,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -57,7 +57,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -66,7 +66,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -75,7 +75,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -84,7 +84,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -93,7 +93,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -102,7 +102,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -111,7 +111,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -120,7 +120,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -129,7 +129,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -138,7 +138,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -147,7 +147,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -156,7 +156,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -165,7 +165,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -174,7 +174,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -183,7 +183,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -192,7 +192,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -201,7 +201,7 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               },
               new Bus
               {
@@ -210,10 +210,8 @@ namespace DS
                   Km=0,
                   Fuel_tank= r.Next(300),
                   Bus_status=r.Next(5),
-                  Act=true
+                  ActBus=true
               }
-
-
 
             };
             #endregion
@@ -692,7 +690,7 @@ namespace DS
             {
             new BusLine
             {
-               Bus_Id=1068393,
+               Bus_Id=3968393,
                Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -703,7 +701,7 @@ namespace DS
             },
                 new BusLine
             {
-               Bus_Id=2068393,
+               Bus_Id=4768393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -713,7 +711,7 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=3068393,
+               Bus_Id=7568393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -723,7 +721,7 @@ namespace DS
             },    
               new BusLine
             {
-               Bus_Id=4068393,
+               Bus_Id=9968393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -733,7 +731,7 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=5068393,
+               Bus_Id=8868393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -743,7 +741,7 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=6068393,
+               Bus_Id=7768393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -753,7 +751,7 @@ namespace DS
             } , 
                 new BusLine
             {
-               Bus_Id=8068393,
+               Bus_Id=6668393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -763,7 +761,7 @@ namespace DS
             },  
                 new BusLine
             {
-               Bus_Id=7068393,
+               Bus_Id=5568393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -773,7 +771,7 @@ namespace DS
             } ,  
                 new BusLine
             {
-               Bus_Id=9068393,
+               Bus_Id=4468393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,
@@ -783,7 +781,7 @@ namespace DS
             }   ,
                 new BusLine
             {
-               Bus_Id=2268393,
+               Bus_Id=3368393,
                 Line_Id=id++,
                Area=(Areas)r.Next(7),
                Line_Number=line_number++,

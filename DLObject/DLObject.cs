@@ -199,7 +199,7 @@ namespace DL
         {
             DO.Bus b = DataSource.List_Bus.Find(p => p.License_num == License_num_Id);
 
-            if (b != null && b.Act == true)
+            if (b != null && b.ActBus == true)
                 return b.Clone();
             else
                 throw new DO.BadBusException(License_num_Id, $" bad bus: {License_num_Id}");
@@ -207,21 +207,21 @@ namespace DL
         public IEnumerable<DO.Bus> GetAllBuses()
         {
             return from Bus in DataSource.List_Bus
-                   where Bus.Act == true
+                   where Bus.ActBus == true
                    select Bus.Clone();
         }
         public IEnumerable<DO.Bus> GetAllBusBy(Predicate<DO.Bus> predicate)
         {
             //Returns deferred query + clone:
             return from b in DataSource.List_Bus
-                   where predicate(b) && b.Act == true
+                   where predicate(b) && b.ActBus == true
                    select b.Clone();
         }
         public void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a)
         {
             if (DataSource.List_Bus.FirstOrDefault(p => p.License_num == num) != null)
                 throw new DO.BadBusException(num, "Duplicate bus license number ");
-            DO.Bus b = new DO.Bus() { Act = a, Bus_status = (int)status, License_num = num, Start_date = st, Km = k, Fuel_tank = f };
+            DO.Bus b = new DO.Bus() { ActBus = a, Bus_status = (int)status, License_num = num, Start_date = st, Km = k, Fuel_tank = f };
             DataSource.List_Bus.Add(b.Clone());
 
 
@@ -230,7 +230,7 @@ namespace DL
         public void UpdateFuelBus(DO.Bus Bus)
         {
             DO.Bus b = DataSource.List_Bus.Find(p => Bus.License_num == Bus.License_num);
-            if (b != null && b.Act == true)
+            if (b != null && b.ActBus == true)
             {
                 DataSource.List_Bus.Remove(b);
                 DataSource.List_Bus.Add(b.Clone());
@@ -247,7 +247,7 @@ namespace DL
 
             if (b != null)
             {
-                b.Act = false;
+                b.ActBus = false;
                 DataSource.List_Bus.Remove(b);
                 DataSource.List_Bus.Add(b);
             }

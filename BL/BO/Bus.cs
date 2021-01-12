@@ -13,7 +13,7 @@ namespace BO
         public double Km { get; set; }
         public double Fuel_tank { get; set; }
         public Bus_status Bus_status { get; set; }
-        public bool Act { get; set; }
+        public bool ActBus { get; set; }
         public override string ToString() => this.ToStringProperty();
 
 
