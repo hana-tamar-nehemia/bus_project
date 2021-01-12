@@ -808,6 +808,8 @@ namespace DS
                     Line_Id=1,
                     Code=76,
                     Line_Station_Index=2,
+                    ActLineStation=true
+                    
 
                 },
                 new LineStation
@@ -815,6 +817,7 @@ namespace DS
                     Line_Id=1,
                     Code=77,
                     Line_Station_Index=3,
+                     ActLineStation=true
 
                 },
                 new LineStation
@@ -822,6 +825,7 @@ namespace DS
                     Line_Id=1,
                     Code=78,
                     Line_Station_Index=4,
+                     ActLineStation=true
 
                 },
                 new LineStation
@@ -829,13 +833,14 @@ namespace DS
                     Line_Id=1,
                     Code=83,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=1,
                     Code=84,
                     Line_Station_Index=6,
+                    ActLineStation=true
 
                 },
                 new LineStation
@@ -843,6 +848,7 @@ namespace DS
                     Line_Id=1,
                     Code=85,
                     Line_Station_Index=7,
+                    ActLineStation=true
 
                 },
                 new LineStation
@@ -850,6 +856,7 @@ namespace DS
                     Line_Id=1,
                     Code=86,
                     Line_Station_Index=8,
+                    ActLineStation=true
 
                 },
                 new LineStation
@@ -857,14 +864,14 @@ namespace DS
                     Line_Id=1,
                     Code=89,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=1,
                     Code=90,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                 #endregion
                
@@ -874,70 +881,70 @@ namespace DS
                     Line_Id=2,
                     Code=91,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=93,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=94,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=95,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=97,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=102,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=103,
                     Line_Station_Index=7,
-
+ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=105,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=106,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=2,
                     Code=108,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -947,27 +954,28 @@ namespace DS
                     Line_Id=3,
                     Code=109,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=110,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=111,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=112,
                     Line_Station_Index=4,
+                    ActLineStation=true
 
                 },
                 new LineStation
@@ -975,42 +983,42 @@ namespace DS
                     Line_Id=3,
                     Code=113,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=115,
                     Line_Station_Index=6,
-
+ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=116,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=117,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=119,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=1485,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1020,70 +1028,70 @@ namespace DS
                     Line_Id=4,
                     Code=1486,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1487,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1488,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1490,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1491,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1492,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1493,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1494,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1510,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=4,
                     Code=1511,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1093,70 +1101,70 @@ namespace DS
                     Line_Id=5,
                     Code=1512,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=1514,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=1518,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=1522,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=1523,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=1524,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=121,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=125,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=122,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=5,
                     Code=73,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1166,14 +1174,14 @@ namespace DS
                     Line_Id=6,
                     Code=73,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=76,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
@@ -1187,49 +1195,49 @@ namespace DS
                     Line_Id=6,
                     Code=78,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=83,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=84,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=85,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=86,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=89,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=6,
                     Code=90,
                     Line_Station_Index=10,
-
+                     ActLineStation=true
                 },
                 #endregion
 
@@ -1239,70 +1247,70 @@ namespace DS
                     Line_Id=7,
                     Code=91,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=93,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=94,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=95,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=97,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=102,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=103,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=105,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=106,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=7,
                     Code=108,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1312,70 +1320,70 @@ namespace DS
                     Line_Id=8,
                     Code=109,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=110,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=111,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=112,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=3,
                     Code=113,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=115,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=116,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=117,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=119,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=8,
                     Code=1485,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1385,70 +1393,70 @@ namespace DS
                     Line_Id=9,
                     Code=1486,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1487,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1488,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1490,
                     Line_Station_Index=4,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1491,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1492,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1493,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1494,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1510,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=9,
                     Code=1511,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1458,70 +1466,70 @@ namespace DS
                     Line_Id=10,
                     Code=1512,
                     Line_Station_Index=1,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=1514,
                     Line_Station_Index=2,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=1518,
                     Line_Station_Index=3,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=1522,
                     Line_Station_Index=4,
-
+                     ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=1523,
                     Line_Station_Index=5,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=1524,
                     Line_Station_Index=6,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=121,
                     Line_Station_Index=7,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=125,
                     Line_Station_Index=8,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=122,
                     Line_Station_Index=9,
-
+                    ActLineStation=true
                 },
                 new LineStation
                 {
                     Line_Id=10,
                     Code=76,
                     Line_Station_Index=10,
-
+                    ActLineStation=true
                 },
                #endregion
 
@@ -1537,13 +1545,16 @@ namespace DS
                  Code_station2=73,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                 Act=true
               },
             new AdjStation
               {
                  Code_station1=73,
                  Code_station2=76,
                  Distance=r.Next(0,1000),
-                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),        
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
             },
              new AdjStation
               {
@@ -1551,6 +1562,8 @@ namespace DS
                  Code_station2=77,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1558,6 +1571,8 @@ namespace DS
                  Code_station2=78,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1565,6 +1580,8 @@ namespace DS
                  Code_station2=83,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1572,6 +1589,8 @@ namespace DS
                  Code_station2=84,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1579,6 +1598,8 @@ namespace DS
                  Code_station2=85,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1586,6 +1607,8 @@ namespace DS
                  Code_station2=86,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1593,6 +1616,8 @@ namespace DS
                  Code_station2=89,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1600,6 +1625,8 @@ namespace DS
                  Code_station2=90,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1607,6 +1634,8 @@ namespace DS
                  Code_station2=93,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1614,6 +1643,8 @@ namespace DS
                  Code_station2=94,
                  Distance=r.Next(0,1000),
                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                Act=true
+
               },
             new AdjStation
               {
@@ -1621,6 +1652,8 @@ namespace DS
                  Code_station2=95,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1628,6 +1661,8 @@ namespace DS
                  Code_station2=97,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1635,6 +1670,8 @@ namespace DS
                  Code_station2=102,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1642,6 +1679,8 @@ namespace DS
                  Code_station2=103,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1649,6 +1688,8 @@ namespace DS
                  Code_station2=105,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1656,6 +1697,8 @@ namespace DS
                  Code_station2=106,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1663,6 +1706,8 @@ namespace DS
                  Code_station2=108,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1670,13 +1715,17 @@ namespace DS
                  Code_station2=91,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
                  Code_station1=1486,
                  Code_station2=1487,
                  Distance=r.Next(0,1000),
-                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)), 
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1684,6 +1733,8 @@ namespace DS
                  Code_station2=1488,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1691,6 +1742,8 @@ namespace DS
                  Code_station2=1490,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1698,6 +1751,8 @@ namespace DS
                  Code_station2=1491,
                  Distance=r.Next(0,1000),
                   Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                   Act=true
+
               },
             new AdjStation
               {
@@ -1705,6 +1760,8 @@ namespace DS
                  Code_station2=1493,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1712,6 +1769,8 @@ namespace DS
                  Code_station2=1510,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1719,6 +1778,8 @@ namespace DS
                  Code_station2=1511,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1726,6 +1787,8 @@ namespace DS
                  Code_station2=1486,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
              new AdjStation
               {
@@ -1733,6 +1796,8 @@ namespace DS
                  Code_station2=1514,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1740,13 +1805,16 @@ namespace DS
                  Code_station2=1518,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
                  Code_station1=1518,
                  Code_station2=1522,
                  Distance=r.Next(0,1000),
-                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),                 Act=true
+
               },
             new AdjStation
               {
@@ -1754,6 +1822,8 @@ namespace DS
                  Code_station2=1523,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1761,6 +1831,8 @@ namespace DS
                  Code_station2=1524,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
              new AdjStation
               {
@@ -1768,6 +1840,8 @@ namespace DS
                  Code_station2=121,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1775,6 +1849,8 @@ namespace DS
                  Code_station2=125,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1782,6 +1858,8 @@ namespace DS
                  Code_station2=122,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1789,6 +1867,8 @@ namespace DS
                  Code_station2=173,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1796,6 +1876,8 @@ namespace DS
                  Code_station2=106,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
              new AdjStation
               {
@@ -1803,6 +1885,8 @@ namespace DS
                  Code_station2=108,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             new AdjStation
               {
@@ -1810,6 +1894,8 @@ namespace DS
                  Code_station2=91,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
               },
             new AdjStation
               {
@@ -1817,6 +1903,8 @@ namespace DS
                  Code_station2=73,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+
               },
             };
             #endregion

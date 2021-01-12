@@ -49,7 +49,7 @@ namespace BLAPI
        // IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
 
         //add
-         void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
+         void AddLineStation(int code, int Line_Id, int index, bool ActLineStation);//להוסיף תחנת קו 
 
         //delete
 
@@ -79,7 +79,7 @@ namespace BLAPI
 
         #region AdjStation
 
-         void AddAdjStation(int code, int code1, int d, TimeSpan t);
+         void AddAdjStation(int code, int code1, int d, TimeSpan t,bool a);
         IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
         void UpdateAdjStation(int code, int code1);
         void deledteAdjStation(int code, int code1);
