@@ -18,6 +18,7 @@ namespace BO
         public int ID_Line { get; set; }
         public int Number_Line { get; set; }//קו שעובר בה
         public int Line_Station_Index { get; set; }
+         public bool ActLineStation { get; set; }
 
         public AdjStation adjStation;//זמני הגעה אליה
         //public int Prev_Station { get; set; }

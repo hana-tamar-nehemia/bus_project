@@ -111,7 +111,7 @@ namespace DL
         public DO.LineStation GetLineStation(int code, DO.BusLine a)//תחנה של קו מסויים
         {
             DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && a.Bus_Id == p.Line_Id);
-            if (s != null)
+            if (s != null&& s.ActLineStation==true)
                 return s.Clone();
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
@@ -119,18 +119,19 @@ namespace DL
         public IEnumerable<DO.LineStation> GetAllLineStations()
         {
             return from linestation in DataSource.List_Line_Station
+                   where linestation.ActLineStation==true
                    select linestation.Clone();
         }
         public IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate)//מחזיר רשימת תחנות של מסלול מסויים
         {
             return from linestation in DataSource.List_Line_Station
-                   where predicate(linestation)
+                   where predicate(linestation)&& linestation.ActLineStation==true
                    select linestation.Clone();
         }
         public DO.Station GetStationOfLineStation(int code)//תחנה פיזית של תחנה לוגית
         {
             DO.Station ls = DataSource.List_Station.Find(s => s.Code == code);
-            if (ls != null)
+            if (ls != null&& ls.Act==true)
                 return ls.Clone();
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
@@ -139,7 +140,7 @@ namespace DL
         public DO.LineStation GetLineStation(int code, int line_id)
         {
             DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id);
-            if (ls != null)
+            if (ls != null && ls.ActLineStation==true)
                 return ls.Clone();
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
@@ -185,7 +186,9 @@ namespace DL
             if (s != null)
             {
                 int index = s.Line_Station_Index;//אינדקס לעדכון ממנו והלאה
+                s.ActLineStation = false;
                 DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
+                DataSource.List_Line_Station.Add(s);
                 DataSource.List_Line_Station.Where(p => id_line == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index--);//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
             }
             else
@@ -329,14 +332,14 @@ namespace DL
 
         #region AdjStation
 
-    public void AddAdjStation(int code, int code1, int d, TimeSpan t)
+    public void AddAdjStation(int code, int code1, int d, TimeSpan t,bool ac)
     {
         AdjStation adj = DataSource.List_Adjstation.Find(p => p.Code_station1 == code && p.Code_station2 == code1);
         if (adj == null)
         {
             throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
         }
-            AdjStation a = new AdjStation() { Code_station1 = code, Code_station2 = code1, Distance = d, Time_Between = t };
+            AdjStation a = new AdjStation() { Code_station1 = code, Code_station2 = code1, Distance = d, Time_Between = t ,Act=ac };
                        DataSource.List_Adjstation.Add(a.Clone());
     }
     public IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate)
@@ -349,6 +352,7 @@ namespace DL
     public IEnumerable<DO.Bus> GetAllAdjStation()
     {
             return from Bus in DataSource.List_Bus
+                   where Bus.Act==true
                    select Bus.Clone();
         }
         public void UpdateAdjStation(int code, int code1)
@@ -368,15 +372,17 @@ namespace DL
         AdjStation adj = DataSource.List_Adjstation.Find(a => a.Code_station1 == code && a.Code_station2 == code1);
         if (adj != null)
         {
+                adj.Act = false;
             DataSource.List_Adjstation.Remove(adj);
-        }
+            DataSource.List_Adjstation.Add(adj.Clone());
+            }
         throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");
     }
     public DO.AdjStation GetAdjStation(int code, int code1)
     {
             DO.AdjStation a = DataSource.List_Adjstation.Find(p => p.Code_station1 == code&& p.Code_station2==code1);
 
-            if (a != null)
+            if (a != null && a.Act == true)
                 return a.Clone();
             else
                 throw new DO.BadBusAdjStationException(code, code1, "Duplicate Code station 1 and Code station 2");

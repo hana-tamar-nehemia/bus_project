@@ -117,11 +117,11 @@ namespace BL
         }
 
         //add
-        public void AddLineStation(int code, int Line_Id, int index)//להוסיף תחנת קו 
+        public void AddLineStation(int code, int Line_Id, int index, bool A)//להוסיף תחנת קו 
         {
             try
             {
-                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index });
+                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation =A});
             }
             catch (DO.BadStaionCodeException ex)
             {
@@ -349,11 +349,11 @@ namespace BL
 
         #region AdjStation
 
-        public void AddAdjStation(int code, int code1, int d, TimeSpan t)
+        public void AddAdjStation(int code, int code1, int d, TimeSpan t, bool a)
         {
             try
             {
-                dl.AddAdjStation(code, code1, d, t);
+                dl.AddAdjStation(code, code1, d, t,a);
 
             }
             catch (DO.BadAdjStationException ex)

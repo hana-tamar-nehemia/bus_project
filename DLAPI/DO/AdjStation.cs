@@ -14,5 +14,6 @@ namespace DO
         public int Distance { get; set; } // automatic number
         public TimeSpan Time_Between { get; set; }
 
+        public bool Act { get; set; }
     }
 }

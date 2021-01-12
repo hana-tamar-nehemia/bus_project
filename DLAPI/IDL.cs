@@ -73,7 +73,7 @@ namespace DLAPI
         #endregion
 
         #region AdjStation
-        void AddAdjStation(int code, int code1,int d, TimeSpan t);
+        void AddAdjStation(int code, int code1,int d, TimeSpan t, bool a);
       //  IEnumerable<DO.BusLine> GetAllAdjStation();
         IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate);
         DO.AdjStation GetAdjStation(int code, int code1);
