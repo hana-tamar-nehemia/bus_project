@@ -26,14 +26,14 @@
 
         <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource stationViewSource}">
-        <TextBox x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="67,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
+    <Grid DataContext="{StaticResource stationViewSource}" Margin="0,0,0.333,-0.333" Height="221" VerticalAlignment="Bottom">
+        <TextBox x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="67,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" />
         <Label Content="line:" HorizontalAlignment="Left" Margin="36,19,0,0" VerticalAlignment="Top"/>
         <Label Content="Area:" HorizontalAlignment="Left" Margin="31,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.064"/>
 
-        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="67,55,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="82" Margin="67,92,0,0" VerticalAlignment="Top" Width="216" ItemTemplate="{StaticResource ResourceKey=My_Station}"  PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown"/>
+        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="67,55,0,0"  VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="82" Margin="67,92,0,0" VerticalAlignment="Top" Width="216" ItemTemplate="{StaticResource ResourceKey=My_Station}"  />
         <Label Content="Phat:" HorizontalAlignment="Left" Margin="31,92,0,0" VerticalAlignment="Top"/>
-        <Button Content="UpDate" HorizontalAlignment="Left" Margin="99,190,0,0" VerticalAlignment="Top" Width="75" Click="update_click"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="107,186,0,0" VerticalAlignment="Top" Width="75" Click="update_click"/>
     </Grid>
 </Window>
