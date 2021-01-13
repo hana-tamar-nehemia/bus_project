@@ -38,5 +38,10 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
+
+        private void line_NumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
