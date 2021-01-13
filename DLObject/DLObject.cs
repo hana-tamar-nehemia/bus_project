@@ -116,11 +116,19 @@ namespace DL
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
-        public IEnumerable<DO.LineStation> GetAllLineStations()
+
+        //public IEnumerable<DO.LineStation> GetAllLineStations()
+        //{
+        //    return from linestation in DataSource.List_Line_Station
+        //           where linestation.ActLineStation==true
+        //           select linestation.Clone();
+        //}
+        public IEnumerable<DO.LineStation> GetAllLineStations(int id_line)
         {
-            return from linestation in DataSource.List_Line_Station
-                   where linestation.ActLineStation==true
-                   select linestation.Clone();
+            return from ls in DataSource.List_Line_Station
+                   where ls.ActLineStation == true 
+                   where ls.Line_Id==id_line
+                   select ls.Clone();
         }
         public IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate)//מחזיר רשימת תחנות של מסלול מסויים
         {
@@ -150,6 +158,14 @@ namespace DL
                 return ls.Clone();
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
+        }
+        public DO.LineStation GetPrevLineStation(DO.LineStation lineStation)
+        {
+            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Line_Station_Index == (lineStation.Line_Station_Index--) && s.Line_Id == lineStation.Line_Id);
+            if (ls != null && ls.ActLineStation == true)
+                return ls.Clone();
+            else
+                throw new DO.BadLineStationCodeException(lineStation.Line_Station_Index--, $"no found: {lineStation.Line_Station_Index--}");
         }
 
         public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)

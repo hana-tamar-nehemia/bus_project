@@ -89,9 +89,19 @@ namespace BL
             LineStationDO.CopyPropertiesTo(LineStationBO);
             DO.Station stationDO = dl.GetStation(LineStationDO.Code);
             stationDO.CopyPropertiesTo(LineStationBO);
-            //LineStationBO.Collection_Lines = from busline in dl.GetAllBusLine()
-            //                                 where (busline.Line_Id == LineStationDO.Line_Id)
-            //                                 select BusLineDoBoAdapter(busline);
+          
+            if (LineStationDO.Line_Station_Index > 1)
+            {
+                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO);
+                DO.AdjStation a = dl.GetAdjStation(prevls.Code, LineStationDO.Code);
+                LineStationBO.distance = a.Distance;
+                LineStationBO.time = a.Time_Between;
+            }
+            else
+            {
+                LineStationBO.distance = 0;
+                LineStationBO.time = new TimeSpan(0, 0, 0);
+            }
             return LineStationBO;
         }
         //get
@@ -107,14 +117,25 @@ namespace BL
         }
         public IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line)// מחזיר רשימת תחנות של קו מסויים
         {
-            return from linestation in dl.GetAllLineStationsby(id_line)
+            return from linestation in dl.GetAllLineStations(id_line)
                    select LineStationDoBoAdapter(linestation);
+
         }
-        public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
+        public BO.LineStation GetPrevLineStation(BO.LineStation lineStation)
         {
-            return from linestation in dl.GetAllLineStations()
-                   select LineStationDoBoAdapter(linestation);
+            DO.LineStation a = new DO.LineStation();
+            lineStation.CopyPropertiesTo(a);
+            DO.LineStation ls = dl.GetPrevLineStation(a);
+            if (ls != null && ls.ActLineStation == true)
+                return LineStationDoBoAdapter(ls);
+            else
+                throw new DO.BadLineStationCodeException(lineStation.Line_Station_Index--, $"no found: {lineStation.Line_Station_Index--}");
         }
+        //public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
+        //{
+        //    return from linestation in dl.GetAllLineStations()
+        //           select LineStationDoBoAdapter(linestation);
+        //}
 
         //add
         public void AddLineStation(int code, int Line_Id, int index, bool A)//להוסיף תחנת קו 
@@ -130,7 +151,6 @@ namespace BL
         }
 
         //delete
-        
         public void DeleteLineStationInBus(int code, int line_id)
         {
             try
@@ -313,10 +333,9 @@ namespace BL
         {
             BO.BusLine BusLineBO = new BO.BusLine();
             DO.Bus BusDO;
-            int id = BusLineDO.Bus_Id;
             try
             {
-                BusDO = dl.GetBus(id);
+                BusDO = dl.GetBus(BusLineDO.Bus_Id);
             }
             catch (DO.BadBusLineException ex)
             {
@@ -337,7 +356,6 @@ namespace BL
             //BusLineBO.Line_Id = BusLineDO.Line_Id;
             //BusLineBO.Line_Number = BusLineDO.Line_Number;
             //BusLineBO.Area = (Areas)BusLineDO.Area;
-
             //********************************************************
             //BusLineBO.ListLineStations = from s in dl.GetAllLineStations()
             //                          let LineStations = dl.GetLineStation(s.Line_Id)

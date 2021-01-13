@@ -22,7 +22,7 @@ namespace BO
         public int First_Station { get; set; }
         public int Last_Station { get; set; }
         public bool Act { get; set; }
-        public IEnumerable<LineStation> ListLineStations { get; set; }
+        public IEnumerable<LineStation> ListLineStations { get; set; }//ממלאים בPL
 
         //public IEnumerable<AdjStation> AdjStations { get; set; }
 

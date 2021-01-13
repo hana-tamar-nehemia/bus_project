@@ -1,0 +1,25 @@
+﻿<Window x:Class="PL.EditT_D"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="EditT_D" Height="300" Width="400">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="44" Margin="10,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" Height="44" Margin="213,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170"/>
+        <Label Content="distance:" HorizontalAlignment="Left" Margin="67,140,0,0" VerticalAlignment="Top"/>
+        <Label Content="time between:" HorizontalAlignment="Left" Margin="44,95,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="23" Margin="185,37,0,0" VerticalAlignment="Top" Width="23">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="תמונה2.jpg"/>
+            </Image.OpacityMask>
+        </Image>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="94,200,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cencel" HorizontalAlignment="Left" Margin="203,200,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

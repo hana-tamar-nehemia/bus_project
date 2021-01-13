@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -19,9 +19,16 @@ namespace PL
     /// </summary>
     public partial class AddLine : Window
     {
+        IBL bl = BLFactory.GetBL("1");
+
         public AddLine()
         {
             InitializeComponent();
+            ComboBox areaComboBox = new ComboBox();
+            ComboBox first_StationComboBox = new ComboBox();
+            first_StationComboBox.ItemsSource = bl.GetAllStation();
+            ComboBox last_StationComboBox = new ComboBox();
+            last_StationComboBox.ItemsSource = bl.GetAllStation();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -16,7 +16,7 @@
     <Grid DataContext="{StaticResource busLineViewSource}">
 
 
-        <ListView x:Name="busLineListView" ItemsSource="{Binding}" Margin="-1,0,608.333,38.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged">
+        <ListView x:Name="busLineListView" ItemsSource="{Binding}" Margin="-1,0,608.333,31.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged">
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -26,7 +26,7 @@
             <ListView.View>
                 <GridView>
 
-                    <GridViewColumn x:Name="line_NumberColumn" Header="Line Number" Width="80">
+                    <GridViewColumn x:Name="line_NumberColumn" Header="Line" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Margin="-6,-1" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -43,63 +43,25 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="lineStationListView" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="226,10,240.333,72.667" SelectionMode="Single" SelectionChanged="lineStationListView_SelectionChanged">
-            <ListView.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="codeColumn" Header="Code" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="nameColumn" Header="Name" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label Content="{Binding Name}" Margin="-6,-1"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="adjStationListView" ItemsSource="{Binding Source={StaticResource adjStationViewSource}}" Margin="540,10,31.333,72.667" SelectionMode="Single">
-            <ListView.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="distanceColumn" Header="Distance" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="time_BetweenColumn" Header="Time Between" Width="130">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Time_Between, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
 
-        <Button x:Name="btnGO" Content="עדכן קו" HorizontalAlignment="Left" Height="22" Margin="540,360,0,0" VerticalAlignment="Top" Width="222"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
-        <Button x:Name="btnGO1" Content="מחק קו" HorizontalAlignment="Left" Height="22" Margin="226,360,0,0" VerticalAlignment="Top" Width="294"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
-        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="22" Margin="22,389,0,0" VerticalAlignment="Top" Width="127"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line"/>
-        <Button x:Name="btnGO3" Content="»" HorizontalAlignment="Left" Height="31" Margin="767,7,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="489,384,0,-0.333" VerticalAlignment="Top" Width="304"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click"/>
+        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="185,384,0,-0.333" VerticalAlignment="Top" Width="304"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"/>
+        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="32" Margin="0,389,0,-0.333" VerticalAlignment="Top" Width="185"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line"/>
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="185,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="384" VerticalAlignment="Top" HorizontalAlignment="Left" Width="608">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="line_Station_IndexColumn1" Binding="{Binding Line_Station_Index}" Header="" Width="20"/>
+                <DataGridTextColumn x:Name="codeColumn1" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="nameColumn1" Header="Name" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="distanceColumn1" Binding="{Binding distance}" Header="distance" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="timeColumn1" Binding="{Binding time}" Header="time" Width="55"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

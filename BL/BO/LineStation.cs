@@ -19,8 +19,8 @@ namespace BO
         public int Number_Line { get; set; }//קו שעובר בה
         public int Line_Station_Index { get; set; }
          public bool ActLineStation { get; set; }
-
-        public AdjStation adjStation;//זמני הגעה אליה
+        public double distance { get; set; }//אווירי
+        public TimeSpan time  { get; set; }
         //public int Prev_Station { get; set; }
         //public int Next_Station { get; set; }
     }

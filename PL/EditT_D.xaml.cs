@@ -15,22 +15,20 @@ using BLAPI;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EditT_D.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditT_D : Window
     {
         IBL bl = BLFactory.GetBL("1");
 
-        public MainWindow()
+        public EditT_D(BO.LineStation a, BO.LineStation b)
         {
             InitializeComponent();
-            BO.AdjStation a = new BO.AdjStation();
         }
 
-        private void rbStudents_Checked(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ManagerEnterCheck m = new ManagerEnterCheck();
-            m.ShowDialog();
+
         }
     }
 }
