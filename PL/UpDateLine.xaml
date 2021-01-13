@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.UpDateLine"
+        mc:Ignorable="d"
+        Title="UpDateLine" Height="250" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="My_Station"
+            DataType="local:Station">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Name}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <TextBlock Grid.Column="0" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <Button  x:Name="change_distance" Content="שנה מרחק/זמן " FontWeight="Bold" Click="Button_Click_2"  Grid.Column="2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <Button  x:Name="remove"  Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="3" />
+            </Grid>
+        </DataTemplate>
+
+        <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource stationViewSource}">
+        <TextBox x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="67,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
+        <Label Content="line:" HorizontalAlignment="Left" Margin="36,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="Area:" HorizontalAlignment="Left" Margin="31,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.064"/>
+
+        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="67,55,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="82" Margin="67,92,0,0" VerticalAlignment="Top" Width="216" ItemTemplate="{StaticResource ResourceKey=My_Station}"  PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown"/>
+        <Label Content="Phat:" HorizontalAlignment="Left" Margin="31,92,0,0" VerticalAlignment="Top"/>
+        <Button Content="UpDate" HorizontalAlignment="Left" Margin="99,190,0,0" VerticalAlignment="Top" Width="75" Click="update_click"/>
+    </Grid>
+</Window>

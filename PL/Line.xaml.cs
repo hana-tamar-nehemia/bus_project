@@ -61,17 +61,33 @@ namespace PL
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btnGO.IsEnabled = true;
             BO.BusLine busLine = new BO.BusLine();
             busLine = (BO.BusLine)busLineListView.SelectedItem;
-           //IEnumerable<BO.LineStation> linestation = from item in bl.GetAllLineStationsOfBusLine(busLine.Line_Id)
-           //                   orderby item.Line_Station_Index
-           //                  select 
-            lineStationListView.DataContext= bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
+            lineStationDataGrid = new DataGrid();
+            lineStationDataGrid.DataContext = bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
         }
 
         private void add_line(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            UpDateLine update = new UpDateLine((BO.BusLine)busLineListView.SelectedItem);
+            update.ShowDialog();
+        }
+
+        private void remove_Click(object sender, RoutedEventArgs e)
+        {
+            BO.BusLine busLine = new BO.BusLine();
+            busLine = (BO.BusLine)busLineListView.SelectedItem;
+            bl.DeleteBusLine(busLine.License_num);
+            busLineListView.ItemsSource = bl.GetAllBusLine();
+            lineStationDataGrid.ItemsSource = null;
+            btnGO.IsEnabled = false;
+            btnGO1.IsEnabled = false;
         }
     }
 }

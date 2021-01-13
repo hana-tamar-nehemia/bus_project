@@ -71,6 +71,9 @@
     <Compile Include="Buses.xaml.cs">
       <DependentUpon>Buses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditT_D.xaml.cs">
+      <DependentUpon>EditT_D.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Line.xaml.cs">
       <DependentUpon>Line.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
     </Compile>
     <Compile Include="Stations.xaml.cs">
       <DependentUpon>Stations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpDateLine.xaml.cs">
+      <DependentUpon>UpDateLine.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +135,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="תמונה2.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
       <Project>{2256497b-4c6a-485f-8b1b-bfc792e8a372}</Project>
@@ -150,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Buses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditT_D.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Stations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpDateLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
