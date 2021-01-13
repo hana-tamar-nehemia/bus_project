@@ -801,6 +801,7 @@ namespace DS
                     Line_Id=1,
                     Code=73,
                     Line_Station_Index=1,
+                    ActLineStation=true
 
                 },
                 new LineStation

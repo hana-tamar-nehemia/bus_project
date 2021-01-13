@@ -53,5 +53,25 @@ namespace PL
             ManagerOptions m = new ManagerOptions();
             m.ShowDialog();
         }
+
+        private void lineStationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BO.BusLine busLine = new BO.BusLine();
+            busLine = (BO.BusLine)busLineListView.SelectedItem;
+           //IEnumerable<BO.LineStation> linestation = from item in bl.GetAllLineStationsOfBusLine(busLine.Line_Id)
+           //                   orderby item.Line_Station_Index
+           //                  select 
+            lineStationListView.DataContext= bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
+        }
+
+        private void add_line(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

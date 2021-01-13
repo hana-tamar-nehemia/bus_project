@@ -89,9 +89,9 @@ namespace BL
             LineStationDO.CopyPropertiesTo(LineStationBO);
             DO.Station stationDO = dl.GetStation(LineStationDO.Code);
             stationDO.CopyPropertiesTo(LineStationBO);
-            LineStationBO.Collection_Lines = from busline in dl.GetAllBusLine()
-                                             where (busline.Line_Id == LineStationDO.Line_Id)
-                                             select BusLineDoBoAdapter(busline);
+            //LineStationBO.Collection_Lines = from busline in dl.GetAllBusLine()
+            //                                 where (busline.Line_Id == LineStationDO.Line_Id)
+            //                                 select BusLineDoBoAdapter(busline);
             return LineStationBO;
         }
         //get
@@ -107,7 +107,7 @@ namespace BL
         }
         public IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line)// מחזיר רשימת תחנות של קו מסויים
         {
-            return from linestation in dl.GetAllLineStationsby(p => p.Line_Id == id_line)
+            return from linestation in dl.GetAllLineStationsby(id_line)
                    select LineStationDoBoAdapter(linestation);
         }
         public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
@@ -121,7 +121,7 @@ namespace BL
         {
             try
             {
-                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation =A});
+                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation = A});
             }
             catch (DO.BadStaionCodeException ex)
             {

@@ -128,6 +128,12 @@ namespace DL
                    where predicate(linestation)&& linestation.ActLineStation==true
                    select linestation.Clone();
         }
+        public IEnumerable<DO.LineStation> GetAllLineStationsby(int id_line)//מחזיר רשימת תחנות של מסלול מסויים
+        {
+            return from linestation in DataSource.List_Line_Station
+                   where linestation.Line_Id==id_line && linestation.ActLineStation == true
+                   select linestation.Clone();
+        }
         public DO.Station GetStationOfLineStation(int code)//תחנה פיזית של תחנה לוגית
         {
             DO.Station ls = DataSource.List_Station.Find(s => s.Code == code);
@@ -352,7 +358,7 @@ namespace DL
     public IEnumerable<DO.Bus> GetAllAdjStation()
     {
             return from Bus in DataSource.List_Bus
-                   where Bus.Act==true
+                   where Bus.ActBus==true
                    select Bus.Clone();
         }
         public void UpdateAdjStation(int code, int code1)
