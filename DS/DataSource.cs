@@ -1910,6 +1910,7 @@ ActLineStation=true
             };
             #endregion
 
+            #region user
             List_User = new List<User>
             {
                new User
@@ -1938,6 +1939,7 @@ ActLineStation=true
                },
 
             };
+            #endregion
 
         }
     }
