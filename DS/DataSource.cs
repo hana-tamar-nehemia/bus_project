@@ -1910,6 +1910,35 @@ ActLineStation=true
             };
             #endregion
 
+            List_User = new List<User>
+            {
+               new User
+               {
+                  User_name="reut",
+                   password="123456",
+                   Admin=true,
+               },
+               new User
+               {
+                  User_name="hana",
+                   password="987654",
+                   Admin=true,
+               },
+               new User
+               {
+                  User_name="reutavitan",
+                   password="1234567",
+                   Admin=false,
+               },
+               new User
+               {
+                  User_name="hananechamya",
+                   password="123456789",
+                   Admin=false,
+               },
+
+            };
+
         }
     }
 }

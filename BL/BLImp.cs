@@ -460,16 +460,16 @@ namespace BL
                 UserDO = dl.GetUser( name,pa);
                 if (UserDO.Admin==true)
                 {
-                    return UserDoBoAdapter(UserDO);
+                    return true;
                 }
-                //else
-                //{
-                //    throw new BO.BadBusException("Bus  id does not exist or he is not a acting " );
-                //}
+                else
+                {
+                    return false;
+                }
             }
             catch (DO.BadBusException ex)
             {
-                throw new BO.BadBusException("Bus  id does not exist or he is not a acting ", ex);
+                throw new BO.BadBusException("user  id does not exist ", ex);
             }
         }
         public bool UserExistsU(string name, string pa)
@@ -481,16 +481,17 @@ namespace BL
                 UserDO = dl.GetUser(name, pa);
                 if (UserDO.Admin == false)
                 {
-                    return UserDoBoAdapter(UserDO);
+                    return true;
                 }
-                //else
-                //{
-                //    throw new BO.BadBusException("Bus  id does not exist or he is not a acting ");
-                //}
+                else
+                {
+                    return false;
+                }
+            
             }
             catch (DO.BadBusException ex)
             {
-                throw new BO.BadBusException("Bus  id does not exist or he is not a acting ", ex);
+                throw new BO.BadBusException("user  id does not exist ", ex);
             }
         }
         BO.User UserDoBoAdapter(DO.User UserDO)
