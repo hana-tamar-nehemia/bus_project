@@ -16,8 +16,8 @@
                 <ImageBrush ImageSource="תמונה2.jpg"/>
             </Image.OpacityMask>
         </Image>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="94,200,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Cencel" HorizontalAlignment="Left" Margin="203,200,0,0" VerticalAlignment="Top" Width="75"/>
 

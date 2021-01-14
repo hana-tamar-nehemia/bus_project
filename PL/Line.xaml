@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Line"
         mc:Ignorable="d"
-        Title="Line" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Line" Height="450" Width="745" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
         <CollectionViewSource x:Key="lineStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:LineStation}, CreateList=True}"/>
@@ -16,11 +16,11 @@
     <Grid DataContext="{StaticResource busLineViewSource}">
 
 
-        <ListView x:Name="busLineListView" ItemsSource="{Binding}" Margin="-1,0,608.333,31.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged">
+        <ListView x:Name="busLineListView"  ItemsSource="{Binding}" Margin="0,0,544.667,36.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged" >
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Bottom"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
@@ -33,7 +33,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="areaColumn" Header="Area" Width="80">
+                    <GridViewColumn x:Name="areaColumn" Header="Area" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Margin="6,-1,-6,-1" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -44,14 +44,14 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="489,384,0,-0.333" VerticalAlignment="Top" Width="304"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click"/>
-        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="185,384,0,-0.333" VerticalAlignment="Top" Width="304"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"/>
-        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="32" Margin="0,389,0,-0.333" VerticalAlignment="Top" Width="185"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line"/>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="185,0,0,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="384" VerticalAlignment="Top" HorizontalAlignment="Left" Width="608">
+        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="466,384,-0.333,-0.333" VerticalAlignment="Top" Width="273"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click"/>
+        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="194,384,0,-0.333" VerticalAlignment="Top" Width="272"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"/>
+        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="37" Margin="0,384,0,-0.333" VerticalAlignment="Top" Width="194"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line"/>
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="194,0,-0.333,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="384" VerticalAlignment="Top" HorizontalAlignment="Left" Width="545" >
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="line_Station_IndexColumn1" Binding="{Binding Line_Station_Index}" Header="" Width="20"/>
-                <DataGridTextColumn x:Name="codeColumn1" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
-                <DataGridTemplateColumn x:Name="nameColumn1" Header="Name" Width="200">
+                <DataGridTextColumn x:Name="line_Station_IndexColumn1" Binding="{Binding Line_Station_Index}"  Header="" Width="25"/>
+                <DataGridTextColumn x:Name="codeColumn1" Binding="{Binding Code}"  Header="Code" Width="60" />
+                <DataGridTemplateColumn x:Name="nameColumn1" Header="Name" Width="300">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Label Content="{Binding Name}"/>
@@ -59,7 +59,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn x:Name="distanceColumn1" Binding="{Binding distance}" Header="distance" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="timeColumn1" Binding="{Binding time}" Header="time" Width="55"/>
+                <DataGridTextColumn x:Name="timeColumn1" Binding="{Binding time}" Header="time" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 

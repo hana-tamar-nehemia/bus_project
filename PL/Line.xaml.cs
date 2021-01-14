@@ -21,11 +21,15 @@ namespace PL
     public partial class Line : Window
     {
         IBL bl = BLFactory.GetBL("1");
+        BO.BusLine busLine = new BO.BusLine();
 
         public Line()
         {
             InitializeComponent();
             busLineListView.DataContext = bl.GetAllBusLine();
+            //BO.LineStation b= new BO.LineStation { Code = 111, Name = "lll", distance = 3, time = new TimeSpan(9, 0, 0), Line_Station_Index = 6 };
+            //lineStationDataGrid.DataContext=b;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -54,23 +58,14 @@ namespace PL
             m.ShowDialog();
         }
 
-        private void lineStationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnGO.IsEnabled = true;
-            BO.BusLine busLine = new BO.BusLine();
+            btnGO1.IsEnabled = true;
             busLine = (BO.BusLine)busLineListView.SelectedItem;
             lineStationDataGrid = new DataGrid();
             lineStationDataGrid.DataContext = bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
-        }
-
-        private void add_line(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
@@ -88,6 +83,11 @@ namespace PL
             lineStationDataGrid.ItemsSource = null;
             btnGO.IsEnabled = false;
             btnGO1.IsEnabled = false;
+        }
+
+        private void add_line(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

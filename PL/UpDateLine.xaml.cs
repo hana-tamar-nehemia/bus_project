@@ -72,16 +72,25 @@ namespace PL
             return;
         }
 
-        private void update_click(object sender, RoutedEventArgs e)
+        private void update_click(object sender, RoutedEventArgs e)//שמירת כל העדכונים שעשה ורענון החלוןשל הקווים בהתאם אחרי שהשתנה קו מסויים
         {
-            //busLineSelected.Area = area_combox.SelectedItem;//כאן הכניס את האיזור הנבחר 
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)//עדכון מרחק או זמן של קו אוטובוס
         {
             BO.LineStation b = new BO.LineStation();
             b = ((sender as Button).DataContext as BO.LineStation);
             EditT_D edit = new EditT_D(b, bl.GetPrevLineStation(b));
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
+        {
+            BO.LineStation b = new BO.LineStation();
+            b = ((sender as Button).DataContext as BO.LineStation);
+            bl.DeleteLineStationInBus(b.Code,b.ID_Line);
+            list_of_station.ItemsSource = bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
+        }
+
+
     }
 }
