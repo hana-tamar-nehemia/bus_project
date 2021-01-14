@@ -299,13 +299,13 @@ namespace DL
                    where BusLine.Act == true
                    select BusLine.Clone();
         }
-        public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
-        {
-            return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
-                                          where predicate(BusLine) && BusLine.Act == true
-                                          select Station.Clone(BusLine));
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate)
+        //{
+        //    return (IEnumerable<BusLine>)(from BusLine in DataSource.List_Bus_Line
+        //                                  where predicate(BusLine) && BusLine.Act == true
+        //                                  select Station.Clone(BusLine));
+        //    throw new NotImplementedException();
+        //}
 
         public DO.BusLine GetBusLineBy(int line_id)
         {
@@ -422,14 +422,14 @@ namespace DL
             else
                 throw new DO.BadUserException(name, $"The username or password is incorrect : {name}");
         }
-        void AddUseru(string name, string pa)
+        public void AddUseru(string name, string pa)
         {
             if (DataSource.List_User.FirstOrDefault(p => p.User_name == name) != null)
                 throw new DO.BadUserException(name, $"Username exists: {name}");
             DO.User u = new DO.User() {  password=pa,User_name=name,Admin=false};
             DataSource.List_User.Add(u.Clone());
         }
-        void AddUserm(string name, string pa)
+        public void AddUserm(string name, string pa)
         {
             if (DataSource.List_User.FirstOrDefault(p => p.User_name == name) != null)
                 throw new DO.BadUserException(name, $"Username exists: {name}");

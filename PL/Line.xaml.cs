@@ -85,9 +85,11 @@ namespace PL
             btnGO1.IsEnabled = false;
         }
 
-        private void add_line(object sender, RoutedEventArgs e)
+        private void add_line_Click(object sender, RoutedEventArgs e)
         {
-
+           this.Close();
+           AddLine m = new AddLine();
+            m.ShowDialog();
         }
     }
 }

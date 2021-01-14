@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,27 +20,42 @@ namespace PL
     /// </summary>
     public partial class ManagerEnterCheck : Window
     {
+        IBL bl = BLFactory.GetBL("1");
         public ManagerEnterCheck()
         {
             InitializeComponent();
         }
 
-        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void log_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             ManagerOptions m = new ManagerOptions();
             m.ShowDialog();
+
+        }
+
+        //private void log_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string name = namel.Text;
+        //    string password = passwordl.Text;
+        //    bool flag = bl.UserExistsM(name, password);
+        //    if (flag==true)
+        //    {
+        //        this.Close();
+        //        ManagerOptions m = new ManagerOptions();
+        //        m.ShowDialog();
+        //    }
+        //}
+        private void sing_Click(object sender, RoutedEventArgs e)
+        {
+           string name = namel.Text;
+           string password = passwordl.Text;
+            bl.AddUserM(name, password);
+           this.Close();
+           ManagerOptions m = new ManagerOptions();
+           m.ShowDialog();
             
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

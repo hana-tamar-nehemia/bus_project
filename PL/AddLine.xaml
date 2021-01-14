@@ -19,26 +19,26 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="1" DisplayMemberPath="Area" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120">
+            <Label  Content="Area" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <ComboBox x:Name="areaComboBox" Grid.Column="1" DisplayMemberPath="Area" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120"  SelectedItem="{Binding Areas}" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="First Station:" Grid.Column="0" Margin="3,3.667,10,3" Grid.Row="2" VerticalAlignment="Center"/>
-            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
+            <Label Content="תחנה ראשונה " Grid.Column="0" Margin="3,3.667,10,3" Grid.Row="2" VerticalAlignment="Center"/>
+            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120"  >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="Last Station:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="תחנה אחרונה" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
             <ComboBox x:Name="last_StationComboBox" Grid.Column="1" DisplayMemberPath="Last_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -46,10 +46,10 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="Line Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="מספר קו " Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="line_NumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Button Content="add" HorizontalAlignment="Left" Margin="74,173,0,0" VerticalAlignment="Top" Width="44"/>
+        <Button Content="add" HorizontalAlignment="Left" Margin="74,173,0,0" VerticalAlignment="Top" Width="44" Click="Button_Click"/>
         <Button Content="cencel" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="172,173,0,0" Width="44"/>
     </Grid>
 </Window>

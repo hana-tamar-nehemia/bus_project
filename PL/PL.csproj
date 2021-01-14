@@ -114,6 +114,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\BL.DeepCopyUtilities.datasource" />
+    <None Include="Properties\DataSources\BLAPI.BLFactory.datasource" />
+    <None Include="Properties\DataSources\BLAPI.IBL.datasource" />
     <None Include="Properties\DataSources\BO.AdjStation.datasource" />
     <None Include="Properties\DataSources\BO.BadAdjStationException.datasource" />
     <None Include="Properties\DataSources\BO.BadBusException.datasource" />
@@ -124,6 +127,7 @@
     <None Include="Properties\DataSources\BO.LineStation.datasource" />
     <None Include="Properties\DataSources\BO.Station.datasource" />
     <None Include="Properties\DataSources\BO.Tools.datasource" />
+    <None Include="Properties\DataSources\BO.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

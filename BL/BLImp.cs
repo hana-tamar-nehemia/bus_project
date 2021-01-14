@@ -284,7 +284,7 @@ namespace BL
         //public IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate)
         //{
         //    return from BusLine in dl.GetAllBusLineBy(predicate)
-        //                                  select BusLineDoBoAdapter(BusLine));
+        //           select BusLineDoBoAdapter(BusLine);
 
         //}
         //****************************************************************

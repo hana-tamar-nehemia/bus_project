@@ -46,7 +46,7 @@
 
         <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="466,384,-0.333,-0.333" VerticalAlignment="Top" Width="273"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click"/>
         <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="194,384,0,-0.333" VerticalAlignment="Top" Width="272"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"/>
-        <Button x:Name="btnGO2" Content="הוספת קו" HorizontalAlignment="Left" Height="37" Margin="0,384,0,-0.333" VerticalAlignment="Top" Width="194"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line"/>
+        <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="37" Margin="0,384,0,-0.333" VerticalAlignment="Top" Width="194"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click"/>
         <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="194,0,-0.333,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="384" VerticalAlignment="Top" HorizontalAlignment="Left" Width="545" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="line_Station_IndexColumn1" Binding="{Binding Line_Station_Index}"  Header="" Width="25"/>
