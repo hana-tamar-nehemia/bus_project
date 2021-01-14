@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         Title="ManagerEnterCheck" Height="300" Width="300">
     <Grid>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="83,38,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="83,124,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="83,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="83,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="sigh in" HorizontalAlignment="Left" Margin="104,209,0,0" VerticalAlignment="Top" Width="75" MouseDoubleClick="Button_MouseDoubleClick" />
-
+        <Label Content="Username" HorizontalAlignment="Left" Margin="35,38,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="הירשם" HorizontalAlignment="Left" Margin="184,209,0,0" VerticalAlignment="Top" Width="75" MouseDoubleClick="Button_MouseDoubleClick" Click="Button_Click" />
+        <Button Content=" התחבר" HorizontalAlignment="Left" Margin="24,209,0,0" VerticalAlignment="Top" Width="75" MouseDoubleClick="Button_MouseDoubleClick" Click="Button_Click" />
+        <Label Content="Username" HorizontalAlignment="Left" Margin="184,38,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="200,124,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="164,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="164,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
