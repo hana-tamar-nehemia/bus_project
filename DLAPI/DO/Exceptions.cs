@@ -70,4 +70,16 @@ namespace DO
     }
     public class  BadAdjStationException : Exception
     { }
+    public class BadUserException : Exception
+    {
+        public string CODE;
+
+        //public BadStaionCodeException(int id,string s) : base() => ID = id;
+        public BadUserException(string code, string message) :
+            base(message) => CODE = code;
+        public BadUserException(string code, string message, Exception innerException) :
+            base(message, innerException) => CODE = code;
+
+        public override string ToString() => base.ToString() + $", bad user: {CODE}";
+    }
 }

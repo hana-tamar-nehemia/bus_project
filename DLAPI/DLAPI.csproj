@@ -51,6 +51,7 @@
     <Compile Include="DO\BusLine.cs" />
     <Compile Include="DO\LineTrip.cs" />
     <Compile Include="DO\Station.cs" />
+    <Compile Include="DO\User.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DO\Enums.cs" />

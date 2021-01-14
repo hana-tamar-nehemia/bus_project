@@ -82,9 +82,14 @@ namespace DLAPI
         DO.AdjStation GetAdjStation(int code, int code1);
         void deledteAdjStation(int Code,int code1);
         void UpdateAdjStation(int Code ,int code1);
-         
-        
+
+
         #endregion
 
+        #region user
+        DO.User GetUser(string name ,string p);
+        void AddUseru(string name, string p);
+        void AddUserm(string name, string p);
+        #endregion
     }
 }

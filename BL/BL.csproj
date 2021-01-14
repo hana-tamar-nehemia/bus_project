@@ -51,6 +51,7 @@
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\Station.cs" />
     <Compile Include="BLAPI\IBL.cs" />
+    <Compile Include="BO\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BO\Tools.cs" />
     <Compile Include="DeepCopyUtilities.cs" />

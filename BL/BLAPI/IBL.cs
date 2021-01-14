@@ -87,5 +87,12 @@ namespace BLAPI
 
         #endregion
 
+        #region user
+        void AddUserM(string name, string pa);
+        void AddUserU(string name, string pa);
+        bool UserExistsM(string name, string pa);
+        bool UserExistsU(string name, string pa);
+        #endregion
+
     }
 }

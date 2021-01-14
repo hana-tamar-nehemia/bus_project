@@ -424,5 +424,93 @@ namespace BL
             return AdjStationBO;
         }
         #endregion
+
+        #region user
+        public void AddUserM(string name, string pa)
+        {
+            try
+            {
+                dl.AddUserm(name,pa);
+
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException(" uesr Not exist", ex);
+            }
+        }
+        public void AddUserU(string name, string pa)
+        {
+            try
+            {
+                dl.AddUseru(name, pa);
+
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException(" uesr Not exist", ex);
+            }
+        }
+
+        public bool UserExistsM(string name, string pa)
+        {
+            DO.User UserDO;
+
+            try
+            {
+                UserDO = dl.GetUser( name,pa);
+                if (UserDO.Admin==true)
+                {
+                    return UserDoBoAdapter(UserDO);
+                }
+                //else
+                //{
+                //    throw new BO.BadBusException("Bus  id does not exist or he is not a acting " );
+                //}
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus  id does not exist or he is not a acting ", ex);
+            }
+        }
+        public bool UserExistsU(string name, string pa)
+        {
+            DO.User UserDO;
+
+            try
+            {
+                UserDO = dl.GetUser(name, pa);
+                if (UserDO.Admin == false)
+                {
+                    return UserDoBoAdapter(UserDO);
+                }
+                //else
+                //{
+                //    throw new BO.BadBusException("Bus  id does not exist or he is not a acting ");
+                //}
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus  id does not exist or he is not a acting ", ex);
+            }
+        }
+        BO.User UserDoBoAdapter(DO.User UserDO)
+        {
+            BO.User UserBO = new BO.User();
+
+            string name = UserDO.User_name;
+            string pa = UserDO.password;
+
+            try
+            {
+                UserDO = dl.GetUser(name,pa);
+            }
+            catch (DO.BadBusException ex)
+            {
+                throw new BO.BadBusException("Bus ID is illegal", ex);
+            }
+            UserDO.CopyPropertiesTo(UserBO);
+            return UserBO;
+        }
+        #endregion
     }
 }

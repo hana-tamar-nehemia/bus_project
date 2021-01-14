@@ -412,6 +412,30 @@ namespace DL
 
         #endregion
 
+        #region user
+        public DO.User GetUser(string name, string pc)
+        {
+            DO.User u = DataSource.List_User.Find(p => p.User_name == name && p.password==pc);
 
+            if (u != null )
+                return u.Clone();
+            else
+                throw new DO.BadUserException(name, $"The username or password is incorrect : {name}");
+        }
+        void AddUseru(string name, string pa)
+        {
+            if (DataSource.List_User.FirstOrDefault(p => p.User_name == name) != null)
+                throw new DO.BadUserException(name, $"Username exists: {name}");
+            DO.User u = new DO.User() {  password=pa,User_name=name,Admin=false};
+            DataSource.List_User.Add(u.Clone());
+        }
+        void AddUserm(string name, string pa)
+        {
+            if (DataSource.List_User.FirstOrDefault(p => p.User_name == name) != null)
+                throw new DO.BadUserException(name, $"Username exists: {name}");
+            DO.User u = new DO.User() { password = pa, User_name = name, Admin = true };
+            DataSource.List_User.Add(u.Clone());
+        }
+        #endregion
     }
 }

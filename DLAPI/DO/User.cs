@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLAPI.DO
+namespace DO
 {
-    class User
+    public class User
     {
+        public string User_name { get; set; }
+        public string password { get; set; }
+        public bool Admin { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace DS
     {
         public static List<Bus> List_Bus;
         public static List<Station> List_Station;
-        //public static List<User> List_User;
+        public static List<User> List_User;
         public static List<AdjStation> List_Adjstation;
         public static List<BusLine> List_Bus_Line;
        // public static List<BusOnTrip> List_Bus_On_Trip;
