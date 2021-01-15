@@ -92,7 +92,7 @@ namespace BL
           
             if (LineStationDO.Line_Station_Index > 1)
             {
-                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO);
+                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id,LineStationDO.Line_Station_Index);
                 DO.AdjStation a = dl.GetAdjStation(prevls.Code, LineStationDO.Code);
                 LineStationBO.distance = a.Distance;
                 LineStationBO.time = a.Time_Between;
@@ -125,7 +125,7 @@ namespace BL
         {
             DO.LineStation a = new DO.LineStation();
             lineStation.CopyPropertiesTo(a);
-            DO.LineStation ls = dl.GetPrevLineStation(a);
+            DO.LineStation ls = dl.GetPrevLineStation(a.Line_Id,a.Line_Station_Index);
             if (ls != null && ls.ActLineStation == true)
                 return LineStationDoBoAdapter(ls);
             else

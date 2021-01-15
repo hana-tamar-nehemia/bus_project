@@ -26,7 +26,7 @@ namespace PL
         {
             _bl = bl;
             InitializeComponent();
-            grid1_add_line.DataContext = BusLine;
+            //grid1_add_line.DataContext = BusLine;
             ComboBox areaComboBox = new ComboBox();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             ComboBox first_StationComboBox = new ComboBox();
