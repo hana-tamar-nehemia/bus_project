@@ -6,12 +6,10 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddLine"
         mc:Ignorable="d"
-        Title="AddLine" Height="250" Width="300" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
-    </Window.Resources>
+        Title="AddLine" Height="250" Width="300" Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen">
+  
     <Grid>
-        <Grid x:Name="grid1_add_line" DataContext="{StaticResource busLineViewSource}" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="135" Width="239">
+        <Grid x:Name="grid1_add_line"  HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="135" Width="239">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -23,7 +21,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label  Content="Area" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto"  Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120" >
+            <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto"  Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120" ItemsSource="{Binding}"  SelectedItem="{Binding Area}" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -31,7 +29,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label Content="תחנה ראשונה " Grid.Column="0" Margin="3,3.667,10,3" Grid.Row="2" VerticalAlignment="Center"/>
-            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120"  >
+            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto"  ItemsSource="{Binding}"  Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120"  >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -47,7 +45,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label Content="מספר קו " Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="line_NumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="line_NumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0"  VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Button Content="add" HorizontalAlignment="Left" Margin="74,173,0,0" VerticalAlignment="Top" Width="44" Click="Button_Click"/>
         <Button Content="cencel" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="172,173,0,0" Width="44"/>

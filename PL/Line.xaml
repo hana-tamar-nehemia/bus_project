@@ -6,15 +6,32 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Line"
         mc:Ignorable="d"
-        Title="Line" Height="450" Width="745" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
-        <CollectionViewSource x:Key="lineStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:LineStation}, CreateList=True}"/>
-        <CollectionViewSource x:Key="adjStationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:AdjStation}, CreateList=True}"/>
-    </Window.Resources>
+        Title="Line" Height="450" Width="745"  WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0.2,-0.8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="382*"/>
+            <RowDefinition Height="39*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="187*"/>
+            <ColumnDefinition Width="552*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="277.333,2,0,-0.333" VerticalAlignment="Top" Width="273"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="10.333,2,0,-0.333" VerticalAlignment="Top" Width="267"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="37" Margin="-2,0,0,0" VerticalAlignment="Top" Width="199"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click" Grid.ColumnSpan="2" Grid.Row="1"/>
 
-    <Grid DataContext="{StaticResource busLineViewSource}">
-        <ListView x:Name="busLineListView"  ItemsSource="{Binding}" Margin="0,0,544.667,36.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged" >
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" DataContext="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0.333,0,-5.333,0" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="line_Station_IndexColumn" Binding="{Binding Line_Station_Index}"  Header="" Width="25"/>
+                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}"  Header="Code" Width="80"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="200"/>
+                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding distance}" Header="distance" Width="100"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding time}" Header="time" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <ListView x:Name="busLineListView" DataContext="{Binding}" ItemsSource="{Binding}" Margin="0,0,4.667,6" SelectionMode="Single"  SelectionChanged="busLineListView_SelectionChanged"  Grid.Column="0" >
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -40,25 +57,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="466,384,-0.333,-0.333" VerticalAlignment="Top" Width="273"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click"/>
-        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="194,384,0,-0.333" VerticalAlignment="Top" Width="272"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"/>
-        <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="37" Margin="0,384,0,-0.333" VerticalAlignment="Top" Width="194"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click"/>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource lineStationViewSource}}" Margin="194,0,-0.333,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="384" VerticalAlignment="Top" HorizontalAlignment="Left" Width="545" >
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="line_Station_IndexColumn1" Binding="{Binding Line_Station_Index}"  Header="" Width="25"/>
-                <DataGridTextColumn x:Name="codeColumn1" Binding="{Binding Code}"  Header="Code" Width="60" />
-                <DataGridTemplateColumn x:Name="nameColumn1" Header="Name" Width="300">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding Name}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="distanceColumn1" Binding="{Binding distance}" Header="distance" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="timeColumn1" Binding="{Binding time}" Header="time" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
 
     </Grid>
 </Window>

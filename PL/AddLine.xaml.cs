@@ -24,22 +24,22 @@ namespace PL
         BO.BusLine BusLine = new BO.BusLine();
         public AddLine(IBL bl)
         {
-            _bl = bl;
             InitializeComponent();
-            grid1_add_line.DataContext = BusLine;
-            ComboBox areaComboBox = new ComboBox();
+            _bl = bl;
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-            ComboBox first_StationComboBox = new ComboBox();
-            first_StationComboBox.ItemsSource = bl.GetAllStation();
-            first_StationComboBox.DisplayMemberPath = "Code"+ "Name";
-            ComboBox last_StationComboBox = new ComboBox();
-            last_StationComboBox.ItemsSource = bl.GetAllStation();
+            first_StationComboBox.DisplayMemberPath = "Code";
+            first_StationComboBox.SelectedIndex = 0; //index of the object to be selected
+            last_StationComboBox.DisplayMemberPath = "Code";
+            last_StationComboBox.SelectedIndex = 0; //index of the object to be selected
+            first_StationComboBox.DataContext = bl.GetAllStation();
+            last_StationComboBox.DataContext = bl.GetAllStation();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+           // System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }

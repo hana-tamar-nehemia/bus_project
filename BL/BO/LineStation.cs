@@ -15,7 +15,7 @@ namespace BO
         //public double longitude { get; set; }
         //public bool Act { get; set; }
 
-        public int ID_Line { get; set; }
+        public int Line_Id { get; set; }
         public int Number_Line { get; set; }//קו שעובר בה
         public int Line_Station_Index { get; set; }
          public bool ActLineStation { get; set; }

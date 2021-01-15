@@ -24,12 +24,14 @@ namespace PL
         BO.BusLine busLineSelected;
         public UpDateLine(IBL lb,BO.BusLine busLine)
         {
+            InitializeComponent();
             _bl = lb;
             busLineSelected = busLine;
             line_num.Text = busLine.Line_Number.ToString();
-            // area_combox.ItemsSource = BO.Areas;
-            list_of_station.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
-            InitializeComponent();
+            area_combox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
+            //stationComboBox = new ComboBox();
+            //stationComboBox.ItemsSource = _bl.GetAllStation();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -88,7 +90,7 @@ namespace PL
         {
             BO.LineStation b = new BO.LineStation();
             b = ((sender as Button).DataContext as BO.LineStation);
-            _bl.DeleteLineStationInBus(b.Code,b.ID_Line);
+            _bl.DeleteLineStationInBus(b.Code,b.Line_Id);
             list_of_station.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
         }
 

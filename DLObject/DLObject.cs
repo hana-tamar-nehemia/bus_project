@@ -117,12 +117,12 @@ namespace DL
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
 
-        //public IEnumerable<DO.LineStation> GetAllLineStations()
-        //{
-        //    return from linestation in DataSource.List_Line_Station
-        //           where linestation.ActLineStation==true
-        //           select linestation.Clone();
-        //}
+        public IEnumerable<DO.LineStation> GetAllLineStations()
+        {
+            return from linestation in DataSource.List_Line_Station
+                   where linestation.ActLineStation == true
+                   select linestation.Clone();
+        }
         public IEnumerable<DO.LineStation> GetAllLineStations(int id_line)
         {
             return from ls in DataSource.List_Line_Station
