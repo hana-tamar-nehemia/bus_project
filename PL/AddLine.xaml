@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label  Content="Area" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="1" DisplayMemberPath="Area" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120"  SelectedItem="{Binding Areas}" >
+            <ComboBox x:Name="areaComboBox" DisplayMemberPath="Area" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="0.8,6,0,3" Grid.Row="1" VerticalAlignment="Center" Width="120"   Grid.Column="1" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -31,7 +31,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label Content="תחנה ראשונה " Grid.Column="0" Margin="3,3.667,10,3" Grid.Row="2" VerticalAlignment="Center"/>
-            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120"  >
+            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120" SelectionChanged="first_StationComboBox_SelectionChanged"  >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
