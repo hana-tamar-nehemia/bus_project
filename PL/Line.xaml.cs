@@ -20,13 +20,14 @@ namespace PL
     /// </summary>
     public partial class Line : Window
     {
-        IBL bl = BLFactory.GetBL("1");
+        IBL _bl;
         BO.BusLine busLine = new BO.BusLine();
 
-        public Line()
+        public Line(IBL lb)
         {
+            _bl = lb;
             InitializeComponent();
-            busLineListView.DataContext = bl.GetAllBusLine();
+            busLineListView.DataContext = _bl.GetAllBusLine();
             //BO.LineStation b= new BO.LineStation { Code = 111, Name = "lll", distance = 3, time = new TimeSpan(9, 0, 0), Line_Station_Index = 6 };
             //lineStationDataGrid.DataContext=b;
 
@@ -54,7 +55,7 @@ namespace PL
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            ManagerOptions m = new ManagerOptions();
+            ManagerOptions m = new ManagerOptions(_bl);
             m.ShowDialog();
         }
 
@@ -65,12 +66,12 @@ namespace PL
             btnGO1.IsEnabled = true;
             busLine = (BO.BusLine)busLineListView.SelectedItem;
             lineStationDataGrid = new DataGrid();
-            lineStationDataGrid.DataContext = bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
+            lineStationDataGrid.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            UpDateLine update = new UpDateLine((BO.BusLine)busLineListView.SelectedItem);
+            UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListView.SelectedItem);
             update.ShowDialog();
         }
 
@@ -78,8 +79,8 @@ namespace PL
         {
             BO.BusLine busLine = new BO.BusLine();
             busLine = (BO.BusLine)busLineListView.SelectedItem;
-            bl.DeleteBusLine(busLine.License_num);
-            busLineListView.ItemsSource = bl.GetAllBusLine();
+            _bl.DeleteBusLine(busLine.License_num);
+            busLineListView.ItemsSource = _bl.GetAllBusLine();
             lineStationDataGrid.ItemsSource = null;
             btnGO.IsEnabled = false;
             btnGO1.IsEnabled = false;
@@ -88,7 +89,7 @@ namespace PL
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
            this.Close();
-           AddLine m = new AddLine();
+           AddLine m = new AddLine(_bl);
             m.ShowDialog();
         }
     }

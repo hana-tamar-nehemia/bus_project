@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -19,8 +19,11 @@ namespace PL
     /// </summary>
     public partial class ManagerOptions : Window
     {
-        public ManagerOptions()
+        IBL _lb;
+
+        public ManagerOptions(IBL lb)
         {
+            _lb = lb;
             InitializeComponent();
         }
 
@@ -32,7 +35,7 @@ namespace PL
         private void rbLines_Checked(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Line l = new Line();
+            Line l = new Line(_lb);
             l.ShowDialog();
         }
     }
