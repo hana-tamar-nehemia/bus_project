@@ -44,27 +44,6 @@ namespace PL
             // busLineViewSource.Source = [generic data source]
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //private void line_NumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-
-        //}
-
-        //private void areaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-        //   // ShowBusLine((cbBusLines.SelectedValue as Bus_line).My_line_number);
-
-
-        //}
-
-        //private void first_StationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-        //}
+        
     }
 }

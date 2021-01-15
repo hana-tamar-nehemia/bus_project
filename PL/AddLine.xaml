@@ -29,7 +29,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label Content="תחנה ראשונה " Grid.Column="0" Margin="3,3.667,10,3" Grid.Row="2" VerticalAlignment="Center"/>
-            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto"  ItemsSource="{Binding}"  Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120"  >
+            <ComboBox x:Name="first_StationComboBox" Grid.Column="1" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120" SelectionChanged="first_StationComboBox_SelectionChanged"  >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
