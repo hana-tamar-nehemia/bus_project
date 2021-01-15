@@ -44,6 +44,29 @@ namespace PL
             // busLineViewSource.Source = [generic data source]
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //BusLine.License_num = _bl.GetFreeBus();צריך ליצור פונקציה כזו
+            BusLine.Line_Number = Convert.ToInt32(line_NumberTextBox.Text);
+            //_bl.AddBusLine(BusLine); צריך ליצור
+            MessageBox.Show("added");
+
+        }
+
+        private void first_StationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BusLine.First_Station = first_StationComboBox.SelectedIndex;
+        }
+
+        private void last_StationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BusLine.Last_Station = first_StationComboBox.SelectedIndex;
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
