@@ -11,7 +11,7 @@
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="grid1" DataContext="{StaticResource busLineViewSource}" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="135" Width="220">
+        <Grid x:Name="grid1_add_line" DataContext="{StaticResource busLineViewSource}" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="135" Width="239">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label  Content="Area" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <ComboBox x:Name="areaComboBox" DisplayMemberPath="Area" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="0.8,6,0,3" Grid.Row="1" VerticalAlignment="Center" Width="120"   Grid.Column="1" >
+            <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto"  Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>

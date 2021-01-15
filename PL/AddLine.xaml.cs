@@ -19,14 +19,19 @@ namespace PL
     /// </summary>
     public partial class AddLine : Window
     {
-        IBL bl = BLFactory.GetBL("1");
+        IBL _bl;
 
-        public AddLine()
+        BO.BusLine BusLine = new BO.BusLine();
+        public AddLine(IBL bl)
         {
+            _bl = bl;
             InitializeComponent();
+            grid1_add_line.DataContext = BusLine;
             ComboBox areaComboBox = new ComboBox();
+            areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             ComboBox first_StationComboBox = new ComboBox();
             first_StationComboBox.ItemsSource = bl.GetAllStation();
+            first_StationComboBox.DisplayMemberPath = "Code"+ "Name";
             ComboBox last_StationComboBox = new ComboBox();
             last_StationComboBox.ItemsSource = bl.GetAllStation();
         }

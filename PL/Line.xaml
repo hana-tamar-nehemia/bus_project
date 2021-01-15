@@ -14,8 +14,6 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource busLineViewSource}">
-
-
         <ListView x:Name="busLineListView"  ItemsSource="{Binding}" Margin="0,0,544.667,36.667" SelectionMode="Single" SelectionChanged="busLineListView_SelectionChanged" >
             <ListView.ItemContainerStyle>
                 <Style>
@@ -25,7 +23,6 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-
                     <GridViewColumn x:Name="line_NumberColumn" Header="Line" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

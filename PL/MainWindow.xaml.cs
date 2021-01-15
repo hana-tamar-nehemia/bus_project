@@ -29,7 +29,7 @@ namespace PL
 
         private void rbStudents_Checked(object sender, RoutedEventArgs e)
         {
-            ManagerEnterCheck m = new ManagerEnterCheck();
+            ManagerEnterCheck m = new ManagerEnterCheck(bl);
             m.ShowDialog();
         }
     }

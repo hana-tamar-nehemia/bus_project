@@ -19,10 +19,11 @@ namespace PL
     /// </summary>
     public partial class EditT_D : Window
     {
-        IBL bl = BLFactory.GetBL("1");
+        IBL _bl;
 
-        public EditT_D(BO.LineStation a, BO.LineStation b)
+        public EditT_D(IBL bl,BO.LineStation a, BO.LineStation b)
         {
+            _bl = bl;
             InitializeComponent();
         }
 

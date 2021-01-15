@@ -159,13 +159,13 @@ namespace DL
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
-        public DO.LineStation GetPrevLineStation(DO.LineStation lineStation)
+        public DO.LineStation GetPrevLineStation(int id_line ,int index)
         {
-            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Line_Station_Index == (lineStation.Line_Station_Index--) && s.Line_Id == lineStation.Line_Id);
+            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Line_Station_Index == index && s.Line_Id == id_line);
             if (ls != null && ls.ActLineStation == true)
                 return ls.Clone();
             else
-                throw new DO.BadLineStationCodeException(lineStation.Line_Station_Index--, $"no found: {lineStation.Line_Station_Index--}");
+                throw new DO.BadLineStationCodeException(index, $"no found: {index}");
         }
 
         public IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate)

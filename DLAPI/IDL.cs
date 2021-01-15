@@ -43,7 +43,7 @@ namespace DLAPI
         #region line station
         //get
         DO.LineStation GetLineStation(int code, int line_id);
-        DO.LineStation GetPrevLineStation(DO.LineStation lineStation);
+        DO.LineStation GetPrevLineStation(int id_line, int index);
 
         DO.LineStation GetLineStation(int code, DO.BusLine a);// מחזיר רשימת תחנות של קו מסויים
         IEnumerable<DO.LineStation> GetAllLineStations(int id_line);

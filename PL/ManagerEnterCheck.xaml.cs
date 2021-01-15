@@ -20,16 +20,17 @@ namespace PL
     /// </summary>
     public partial class ManagerEnterCheck : Window
     {
-        IBL bl = BLFactory.GetBL("1");
-        public ManagerEnterCheck()
+        IBL _bl;
+        public ManagerEnterCheck(IBL bl)
         {
+            _bl = bl;
             InitializeComponent();
         }
 
         private void log_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            ManagerOptions m = new ManagerOptions();
+            ManagerOptions m = new ManagerOptions(_bl);
             m.ShowDialog();
 
         }
@@ -50,9 +51,9 @@ namespace PL
         {
            string name = namel.Text;
            string password = passwordl.Text;
-            bl.AddUserM(name, password);
+            _bl.AddUserM(name, password);
            this.Close();
-           ManagerOptions m = new ManagerOptions();
+           ManagerOptions m = new ManagerOptions(_bl);
            m.ShowDialog();
             
         }
