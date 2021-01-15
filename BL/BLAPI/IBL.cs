@@ -45,7 +45,7 @@ namespace BLAPI
          BO.Station GetStationOfLineStation(int code, int id_line);
 
          IEnumerable<BO.LineStation> GetAllLineStationsOfBusLine(int id_line);// מחזיר רשימת תחנות של קו מסויים
-        //IEnumerable<BO.LineStation> GetAllLineStations();// מחזיר רשימת תחנות של קו מסויים
+        IEnumerable<BO.LineStation> GetAllLineStations();// מחזיר רשימת תחנות של קו מסויים
 
        // IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
 

@@ -89,10 +89,9 @@ namespace BL
             LineStationDO.CopyPropertiesTo(LineStationBO);
             DO.Station stationDO = dl.GetStation(LineStationDO.Code);
             stationDO.CopyPropertiesTo(LineStationBO);
-          
             if (LineStationDO.Line_Station_Index > 1)
             {
-                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id,LineStationDO.Line_Station_Index);
+                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id, LineStationDO.Line_Station_Index-1);
                 DO.AdjStation a = dl.GetAdjStation(prevls.Code, LineStationDO.Code);
                 LineStationBO.distance = a.Distance;
                 LineStationBO.time = a.Time_Between;
@@ -131,11 +130,11 @@ namespace BL
             else
                 throw new DO.BadLineStationCodeException(lineStation.Line_Station_Index--, $"no found: {lineStation.Line_Station_Index--}");
         }
-        //public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
-        //{
-        //    return from linestation in dl.GetAllLineStations()
-        //           select LineStationDoBoAdapter(linestation);
-        //}
+        public IEnumerable<BO.LineStation> GetAllLineStations()// מחזיר רשימת תחנות של קו מסויים
+        {
+            return from linestation in dl.GetAllLineStations()
+                   select LineStationDoBoAdapter(linestation);
+        }
 
         //add
         public void AddLineStation(int code, int Line_Id, int index, bool A)//להוסיף תחנת קו 
@@ -336,6 +335,7 @@ namespace BL
             try
             {
                 BusDO = dl.GetBus(BusLineDO.Bus_Id);
+       
             }
             catch (DO.BadBusLineException ex)
             {
@@ -348,8 +348,8 @@ namespace BL
             //BusLineBO.Km= BusDO.Km;
             //BusLineBO.Start_date = BusDO.Start_date;
 
-
             BusLineDO.CopyPropertiesTo(BusLineBO);
+
             //BusLineBO.Act = BusLineDO.Act;
             //BusLineBO.First_Station = BusLineDO.First_Station;
             //BusLineBO.Last_Station = BusLineDO.Last_Station;
@@ -357,9 +357,7 @@ namespace BL
             //BusLineBO.Line_Number = BusLineDO.Line_Number;
             //BusLineBO.Area = (Areas)BusLineDO.Area;
             //********************************************************
-            //BusLineBO.ListLineStations = from s in dl.GetAllLineStations()
-            //                          let LineStations = dl.GetLineStation(s.Line_Id)
-            //                          select LineStations.CopyToStudentCours
+            BusLineBO.ListLineStations = GetAllLineStationsOfBusLine(BusLineDO.Line_Id);
             return BusLineBO;
         }
 

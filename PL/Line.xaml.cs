@@ -25,32 +25,41 @@ namespace PL
 
         public Line(IBL lb)
         {
-            _bl = lb;
             InitializeComponent();
+            _bl = lb;
             busLineListView.DataContext = _bl.GetAllBusLine();
-            //BO.LineStation b= new BO.LineStation { Code = 111, Name = "lll", distance = 3, time = new TimeSpan(9, 0, 0), Line_Station_Index = 6 };
-            //lineStationDataGrid.DataContext=b;
-
+            busLineListView.SelectedIndex = 0; //index of the object to be selected
+            busLine = (BO.BusLine)busLineListView.SelectedItem;
+            lineStationDataGrid.IsReadOnly = true;
+            lineStationDataGrid.DataContext= busLine.ListLineStations; 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busLineViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource lineStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("lineStationViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // lineStationViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource adjStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("adjStationViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // adjStationViewSource.Source = [generic data source]
+            
+            busLine = (BO.BusLine)busLineListView.SelectedItem;
+            lineStationDataGrid = new DataGrid();
+            lineStationDataGrid.DataContext = busLine.ListLineStations;
         }
 
-        private void busLineListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //    System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // busLineViewSource.Source = [generic data source]
+        //    System.Windows.Data.CollectionViewSource lineStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("lineStationViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // lineStationViewSource.Source = [generic data source]
+        //    //  System.Windows.Data.CollectionViewSource adjStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("adjStationViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // adjStationViewSource.Source = [generic data source]
+        //   // System.Windows.Data.CollectionViewSource lineStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("lineStationViewSource")));
+        //    // Load data by setting the CollectionViewSource.Source property:
+        //    // lineStationViewSource.Source = [generic data source]
+        //}
+
+
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
@@ -60,14 +69,6 @@ namespace PL
         }
 
 
-        private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            btnGO.IsEnabled = true;
-            btnGO1.IsEnabled = true;
-            busLine = (BO.BusLine)busLineListView.SelectedItem;
-            lineStationDataGrid = new DataGrid();
-            lineStationDataGrid.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
-        }
 
         private void update_Click(object sender, RoutedEventArgs e)
         {

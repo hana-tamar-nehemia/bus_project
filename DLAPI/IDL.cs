@@ -47,6 +47,8 @@ namespace DLAPI
 
         DO.LineStation GetLineStation(int code, DO.BusLine a);// מחזיר רשימת תחנות של קו מסויים
         IEnumerable<DO.LineStation> GetAllLineStations(int id_line);
+        IEnumerable<DO.LineStation> GetAllLineStations();
+
         IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate);//מחזיר רשימת תחנות של מסלול מסויים
         IEnumerable<DO.LineStation> GetAllLineStationsby(int id_line);//מחזיר רשימת תחנות של מסלול מסויים
 
