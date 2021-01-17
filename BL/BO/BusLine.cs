@@ -24,7 +24,7 @@ namespace BO
         public bool Act { get; set; }
         public IEnumerable<LineStation> ListLineStations { get; set; }//ממלאים בPL
 
-        //public IEnumerable<AdjStation> AdjStations { get; set; }
+       
 
 
     }

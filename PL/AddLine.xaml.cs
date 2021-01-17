@@ -31,42 +31,48 @@ namespace PL
             BO.Areas a = busLineBO.Area;
             areaComboBox.SelectedIndex = (int)a;
             //**********************************************
-            first_StationComboBox.DisplayMemberPath = "Code";
-            first_StationComboBox.DisplayMemberPath = "Name";
+            first_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
+            first_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
+            first_StationComboBox.SelectedValuePath = "Code";//selection return only specific Property of object
             first_StationComboBox.SelectedIndex = 0; //index of the object to be selected
             first_StationComboBox.DataContext = bl.GetAllStation();
             //***********************************************
-            last_StationComboBox.DisplayMemberPath = "Code";
-            last_StationComboBox.DisplayMemberPath = "Name";
-            last_StationComboBox.SelectedIndex = 0; //index of the object to be selected
+            last_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
+            last_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
+            last_StationComboBox.SelectedValuePath = "Code";//selection return only specific Property of object
+            last_StationComboBox.SelectedItem = 0; //index of the object to be selected
             last_StationComboBox.DataContext = bl.GetAllStation();
-
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-           // System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+            // System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
-        public int GetAllBusId()
-        {
-            IEnumerable<Buses> bus = (IEnumerable<Buses>)_bl.GetAllBuses();
-            IEnumerable<>  
-            foreach (object v in bus)
-            {
+        //public int GetAllBusId()פונקציה שתחזיר מספר רישוי של אוטובוס פנוי
+        //{
+        //}
 
-            }
-        }
+                 
+             
+             
+         
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //BusLine.License_num = _bl.GetFreeBus();צריך ליצור פונקציה כזו
+            //BusLine.License_num = _bl.GetAllBusId();צריך ליצור פונקציה כזו
             BusLine.Line_Number = Convert.ToInt32(line_NumberTextBox.Text);
-            //_bl.AddBusLine(BusLine); צריך ליצור
+            BusLine.Act = true;
+            //BusLine.Line_Id = LineID++;     לבדוק איך הסטטיק עובד
+            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;
+            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;
+            BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
+            _bl.AddBusLine(BusLine);
             MessageBox.Show("added");
+            this.Close();
 
         }
 
