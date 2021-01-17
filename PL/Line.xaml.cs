@@ -72,7 +72,7 @@ namespace PL
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListView.SelectedItem);
+            UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListView.SelectedItem);//שולח את הקו שרוצים לעדכן
             update.ShowDialog();
         }
 

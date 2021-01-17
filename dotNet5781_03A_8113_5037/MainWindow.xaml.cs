@@ -25,10 +25,20 @@ namespace dotNet5781_03A_8113_5037
         // 40 stations
         // 10 lines
         Bus_lines_collection lines = new Bus_lines_collection();
-        private Bus_line currentDisplayBusLine;
+        //private Bus_line currentDisplayBusLine;
 
         public MainWindow()
         {
+        }
+
+        private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

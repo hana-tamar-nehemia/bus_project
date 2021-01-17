@@ -318,12 +318,12 @@ namespace DL
                 throw new DO.BadBusLineException(BusLine.Bus_Id, "Duplicate bus line Id");
           DataSource.List_Bus_Line.Add(BusLine.Clone());
         }
-        public IEnumerable<int> GetAllBusId()
-        {
-            return from BusLine in DataSource.List_Bus_Line
-                   where BusLine.Act == true
-                   select BusLine.Clone();
-        }
+        //public IEnumerable<int> GetAllBusId()
+        //{
+        //    return from BusLine in DataSource.List_Bus_Line
+        //           where BusLine.Act == true
+        //           select BusLine.Clone();
+        //}
         public void UpdateBusLine(DO.BusLine BusLine)
         {
             BusLine bl = DataSource.List_Bus_Line.Find(p => p.Bus_Id == BusLine.Bus_Id);

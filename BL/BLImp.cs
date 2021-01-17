@@ -287,27 +287,27 @@ namespace BL
 
         //}
         //****************************************************************
-        public void AddBusLine(int bus_id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
-        {
-            DO.BusLine busLineDO = new BusLine();
-            busLineDO.Act = act;
-            busLineDO.Area = (DO.Areas)Area;
-            busLineDO.First_Station = First_Station;
-            busLineDO.Last_Station = Last_Station;
-            busLineDO.Bus_Id = bus_id;
-            busLineDO.Line_Number = Line_Number;
+        //public void AddBusLine(int bus_id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
+        //{
+        //    DO.BusLine busLineDO = new BusLine();
+        //    busLineDO.Act = act;
+        //    busLineDO.Area = (DO.Areas)Area;
+        //    busLineDO.First_Station = First_Station;
+        //    busLineDO.Last_Station = Last_Station;
+        //    busLineDO.Bus_Id = bus_id;
+        //    busLineDO.Line_Number = Line_Number;
 
 
-            try
-            {
-                dl.AddBusLine(busLineDO);
+        //    try
+        //    {
+        //        dl.AddBusLine(busLineDO);
                 
-            }
-            catch (DO.BadBusLineException ex)
-            {
-                throw new BO.BadBusLineException(" bus line ID  exist", ex);
-            }
-        }
+        //    }
+        //    catch (DO.BadBusLineException ex)
+        //    {
+        //        throw new BO.BadBusLineException(" bus line ID  exist", ex);
+        //    }
+        //}
         public void UpdateBusLine(BO.BusLine BusLine)
         {
             DO.BusLine BusLineDO = new DO.BusLine();

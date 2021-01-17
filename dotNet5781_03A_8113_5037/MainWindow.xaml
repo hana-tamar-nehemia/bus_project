@@ -24,10 +24,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
             <Label Content="line number:" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,159.333,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Background="#FFE1E1D2" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="18" />
-            <ComboBox Name="cbBusLines"  Grid.Column="1"  HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0"  Width="120" SelectionChanged="cbBusLines_SelectionChanged" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI Semilight" FontStyle="Italic"/>
+            <ComboBox Name="cbBusLines"  Grid.Column="1"  HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0"  Width="120"  FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI Semilight" FontStyle="Italic"/>
             <Label Content="Area:" Grid.Column="1" HorizontalAlignment="Stretch" Margin="159.333,0,39.333,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Background="#FFE1E1D2" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="18"/>
             <TextBox Name ="tbArea" Grid.Column="2" HorizontalAlignment="Stretch"  Margin="158.333,0,-0.333,0" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Grid.ColumnSpan="2" FontFamily="Yu Gothic UI Semilight" FontSize="18" FontWeight="Bold" FontStyle="Italic" TextDecorations="{x:Null}"/>
         </Grid>
-        <ListBox Name="lbBusLineStations"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="545" Margin="0,0,-6.666,-2.333" Grid.Row="1" VerticalAlignment="Stretch" Width="800" Grid.ColumnSpan="2" SelectionChanged="lbBusLineStations_SelectionChanged"/>
+        <ListBox Name="lbBusLineStations"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Height="545" Margin="0,0,-6.666,-2.333" Grid.Row="1" VerticalAlignment="Stretch" Width="800" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

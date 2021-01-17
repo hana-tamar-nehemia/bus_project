@@ -20,7 +20,7 @@ namespace DLAPI
          IEnumerable<DO.BusLine> GetAllBusLine();
 
         // IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
-        IEnumerable<int> GetAllBusId();
+       // IEnumerable<int> GetAllBusId();
          void AddBusLine(DO.BusLine BusLine);
         void UpdateBusLine(DO.BusLine BusLine);
         void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 

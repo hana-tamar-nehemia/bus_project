@@ -20,6 +20,7 @@ namespace PL
     public partial class UpDateLine : Window//צריך לקשר לכאן את האינם של האיזורים לקומבו בוס וגם לקשר את הרשימה של המסלול לתחנות בהם עובר הקו
     {
         IBL _bl;
+        BO.Areas area=new BO.Areas();
 
         BO.BusLine busLineSelected;
         public UpDateLine(IBL lb,BO.BusLine busLine)
@@ -27,7 +28,8 @@ namespace PL
             InitializeComponent();
             _bl = lb;
             busLineSelected = busLine;
-            line_num.Text = busLine.Line_Number.ToString();
+           string str= Convert.ToString(busLine.Line_Number);
+            line_num.Text = str;
             area_combox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             BO.Areas a = busLine.Area;
             area_combox.SelectedIndex = (int)a;
@@ -37,7 +39,7 @@ namespace PL
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
+           // System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // stationViewSource.Source = [generic data source]
         }
@@ -94,6 +96,11 @@ namespace PL
             list_of_station.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
         }
 
+        private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int i = (area_combox.SelectedIndex);
 
+            busLineSelected.Area = area;
+        }
     }
 }

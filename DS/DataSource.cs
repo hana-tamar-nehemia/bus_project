@@ -991,7 +991,7 @@ ActLineStation=true
                     Line_Id=3,
                     Code=115,
                     Line_Station_Index=6,
-ActLineStation=true
+                    ActLineStation=true
                 },
                 new LineStation
                 {
@@ -1988,8 +1988,9 @@ ActLineStation=true
                  Code_station1=106,
                  Code_station2=108,
                  Distance=r.Next(0,1000),
-                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
-                                  Act=true
+                 Time_Between=new
+                 TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
 
               },
             new AdjStation
