@@ -51,15 +51,15 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
-        public int GetAllBusId()
-        {
-            IEnumerable<Buses> bus = (IEnumerable<Buses>)_bl.GetAllBuses();
-            IEnumerable<>  
-            foreach (object v in bus)
-            {
+        //public int GetAllBusId()
+        //{
+        //    IEnumerable<Buses> bus = (IEnumerable<Buses>)_bl.GetAllBuses();
+        //    IEnumerable<>  
+        //    foreach (object v in bus)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

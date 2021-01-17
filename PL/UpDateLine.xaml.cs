@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace PL
     public partial class UpDateLine : Window//צריך לקשר לכאן את האינם של האיזורים לקומבו בוס וגם לקשר את הרשימה של המסלול לתחנות בהם עובר הקו
     {
         IBL _bl;
+
         BO.Areas area=new BO.Areas();
 
         BO.BusLine busLineSelected;
@@ -28,26 +30,17 @@ namespace PL
             InitializeComponent();
             _bl = lb;
             busLineSelected = busLine;
-           string str= Convert.ToString(busLine.Line_Number);
-            line_num.Text = str;
+            line_num.Text = Convert.ToString(busLine.Line_Number);
             area_combox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-            BO.Areas a = busLine.Area;
-            area_combox.SelectedIndex = (int)a;
+            area_combox.SelectedIndex = (int)busLine.Area;
+            list_of_station = new ListBox();
             list_of_station.DataContext = busLine.ListLineStations;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-           // System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // stationViewSource.Source = [generic data source]
-        }
+     
 
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-
-
             TextBox text = sender as TextBox;
             if (text == null) return;
             if (e == null) return;
@@ -90,17 +83,19 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
         {
+
             BO.LineStation b = new BO.LineStation();
             b = ((sender as Button).DataContext as BO.LineStation);
             _bl.DeleteLineStationInBus(b.Code,b.Line_Id);
-            list_of_station.ItemsSource = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
+            _bl.UpdateBusLinePhat(busLineSelected);
+            list_of_station.DataContext = busLineSelected.ListLineStations;
         }
 
         private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int i = (area_combox.SelectedIndex);
 
-            busLineSelected.Area = area;
+            busLineSelected.Area = (BO.Areas)i;
         }
     }
 }

@@ -20,6 +20,8 @@ namespace BLAPI
         //IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
         void AddBusLine(BO.BusLine busLine);
         void UpdateBusLine(BO.BusLine BusLine);
+        BO.BusLine UpdateBusLinePhat(BO.BusLine BusLine);
+
         void DeleteBusLine(int Bus_Id);
 
        

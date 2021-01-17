@@ -315,6 +315,20 @@ namespace BL
                 throw new BO.BadBusLineException("Bus line  ID is illegal", ex);
             }
         }
+
+        public BO.BusLine UpdateBusLinePhat(BO.BusLine BusLine)
+        {
+            DO.BusLine BusLineDO = new DO.BusLine();
+            BusLine.CopyPropertiesTo(BusLineDO);
+            try
+            {
+                return BusLineDoBoAdapter(BusLineDO);
+            }
+            catch (DO.BadBusLineException ex)
+            {
+                throw new BO.BadBusLineException("Bus line  ID is illegal", ex);
+            }
+        }
         public void DeleteBusLine(int Bus_Id)
         {
             try
