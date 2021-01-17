@@ -1731,7 +1731,7 @@ ActLineStation=true
             new AdjStation
               {
                  Code_station1=122,
-                 Code_station2=173,
+                 Code_station2=73,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
                                  Act=true
@@ -2009,6 +2009,70 @@ ActLineStation=true
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
                                   Act=true
 
+              },
+             new AdjStation
+              {
+                 Code_station1=1486,
+                 Code_station2=1487,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+            new AdjStation
+              {
+                 Code_station1=1487,
+                 Code_station2=1488,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+            new AdjStation
+              {
+                 Code_station1=1488,
+                 Code_station2=1490,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+             new AdjStation
+              {
+                 Code_station1=1490,
+                 Code_station2=1491,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+            new AdjStation
+              {
+                 Code_station1=1492,
+                 Code_station2=1493,
+                 Distance=r.Next(0,1000),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+            new AdjStation
+              {
+                 Code_station1=1493,
+                 Code_station2=1510,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+            new AdjStation
+              {
+                 Code_station1=1510,
+                 Code_station2=1511,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+             new AdjStation
+              {
+                 Code_station1=1485,
+                 Code_station2=109,
+                 Distance=r.Next(0,1000),
+                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
               },
             };
             #endregion
