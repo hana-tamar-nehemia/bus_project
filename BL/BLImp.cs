@@ -287,20 +287,27 @@ namespace BL
 
         //}
         //****************************************************************
-        //public void AddBusLine(int bus_id, int Line_Number, Areas Area, int First_Station, int Last_Station, IEnumerable<LineStation> ListLineStations, bool act, int Line_Id)
-        //{
-        //    try
-        //    {
-        //       dl.AddBusLine(bus_id, Line_Number, Area, First_Station, Last_Station, act, Line_Number);
-        //      // DO.BusLine BusLinelDO = dl.GetBusLine(bus_id);
-        //        //from li in ListLineStations
-        //        //select dl.AddLineStation(s, BusLinelDO)
-        //    }
-        //    catch (DO.BadBusLineException ex)
-        //    {
-        //        throw new BO.BadBusLineException("Student ID and Course ID is Not exist", ex);
-        //    }
-        //}
+        public void AddBusLine(int bus_id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
+        {
+            DO.BusLine busLineDO = new BusLine();
+            busLineDO.Act = act;
+            busLineDO.Area = (DO.Areas)Area;
+            busLineDO.First_Station = First_Station;
+            busLineDO.Last_Station = Last_Station;
+            busLineDO.Bus_Id = bus_id;
+            busLineDO.Line_Number = Line_Number;
+
+
+            try
+            {
+                dl.AddBusLine(busLineDO);
+                
+            }
+            catch (DO.BadBusLineException ex)
+            {
+                throw new BO.BadBusLineException(" bus line ID  exist", ex);
+            }
+        }
         public void UpdateBusLine(BO.BusLine BusLine)
         {
             DO.BusLine BusLineDO = new DO.BusLine();

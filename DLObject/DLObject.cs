@@ -312,12 +312,17 @@ namespace DL
             return DataSource.List_Bus_Line.Find(p => p.Line_Id == line_id);
         }
 
-        public void AddBusLine(int Bus_Id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act)
+        public void AddBusLine(DO.BusLine BusLine)
         {
-            if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == Bus_Id) != null)
-                throw new DO.BadBusLineException(Bus_Id, "Duplicate bus line Id");
-            BusLine bus = new BusLine() { Bus_Id = Bus_Id, Line_Number = Line_Number, Area = Area, First_Station = First_Station, Last_Station = Last_Station, Act = act };
-            DataSource.List_Bus_Line.Add(bus.Clone());
+            if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == BusLine.Bus_Id) != null)
+                throw new DO.BadBusLineException(BusLine.Bus_Id, "Duplicate bus line Id");
+          DataSource.List_Bus_Line.Add(BusLine.Clone());
+        }
+        public IEnumerable<int> GetAllBusId()
+        {
+            return from BusLine in DataSource.List_Bus_Line
+                   where BusLine.Act == true
+                   select BusLine.Clone();
         }
         public void UpdateBusLine(DO.BusLine BusLine)
         {

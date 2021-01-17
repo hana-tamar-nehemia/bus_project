@@ -19,9 +19,9 @@ namespace DLAPI
          DO.BusLine GetBusLineBy(int line_id);
          IEnumerable<DO.BusLine> GetAllBusLine();
 
-       // IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
-
-         void AddBusLine(int Bus_Id, int Line_Number, Areas Area, int First_Station, int Last_Station, bool act);
+        // IEnumerable<DO.BusLine> GetAllBusLineBy(Predicate<DO.BusLine> predicate);
+        IEnumerable<int> GetAllBusId();
+         void AddBusLine(DO.BusLine BusLine);
         void UpdateBusLine(DO.BusLine BusLine);
         void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update); //method that knows to updt specific fields 
         void DeleteBusLine(int Bus_Id);

@@ -26,13 +26,21 @@ namespace PL
         {
             InitializeComponent();
             _bl = bl;
+            BO.BusLine busLineBO = new BO.BusLine();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            BO.Areas a = busLineBO.Area;
+            areaComboBox.SelectedIndex = (int)a;
+            //**********************************************
             first_StationComboBox.DisplayMemberPath = "Code";
+            first_StationComboBox.DisplayMemberPath = "Name";
             first_StationComboBox.SelectedIndex = 0; //index of the object to be selected
-            last_StationComboBox.DisplayMemberPath = "Code";
-            last_StationComboBox.SelectedIndex = 0; //index of the object to be selected
             first_StationComboBox.DataContext = bl.GetAllStation();
+            //***********************************************
+            last_StationComboBox.DisplayMemberPath = "Code";
+            last_StationComboBox.DisplayMemberPath = "Name";
+            last_StationComboBox.SelectedIndex = 0; //index of the object to be selected
             last_StationComboBox.DataContext = bl.GetAllStation();
+
 
         }
 
