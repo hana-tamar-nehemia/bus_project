@@ -68,8 +68,6 @@ namespace PL
             m.ShowDialog();
         }
 
-
-
         private void update_Click(object sender, RoutedEventArgs e)
         {
             UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListView.SelectedItem);//שולח את הקו שרוצים לעדכן
@@ -80,16 +78,28 @@ namespace PL
         {
             BO.BusLine busLine = new BO.BusLine();
             busLine = (BO.BusLine)busLineListView.SelectedItem;
-            _bl.DeleteBusLine(busLine.License_num);
-            busLineListView.ItemsSource = _bl.GetAllBusLine();
-            lineStationDataGrid.ItemsSource = null;
-            btnGO.IsEnabled = false;
-            btnGO1.IsEnabled = false;
+            MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+                return;
+            try
+            {
+                if (busLine != null)
+                {
+                    _bl.DeleteBusLine(busLine.License_num);
+                    lineStationDataGrid.ItemsSource = null;
+                    busLineListView.ItemsSource = _bl.GetAllBusLine();
+                    btnGO.IsEnabled = false;
+                    remove.IsEnabled = false;
+                }
+            }
+            catch (BO.BadBusLineException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
+            
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
-           this.Close();
            AddLine m = new AddLine(_bl);
             m.ShowDialog();
         }

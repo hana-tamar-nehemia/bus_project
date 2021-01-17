@@ -17,7 +17,7 @@
             <ColumnDefinition Width="552*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="277.333,2,0,-0.333" VerticalAlignment="Top" Width="273"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="btnGO1" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="10.333,2,0,-0.333" VerticalAlignment="Top" Width="267"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="remove" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="37" Margin="10.333,2,0,-0.333" VerticalAlignment="Top" Width="267"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="197"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click" Grid.ColumnSpan="2" Grid.Row="1"/>
 
         <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" DataContext="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0.333,0,-0.333,0" Grid.Column="1">
