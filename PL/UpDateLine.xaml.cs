@@ -32,6 +32,7 @@ namespace PL
             list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
             //stationComboBox = new ComboBox();
             //stationComboBox.ItemsSource = _bl.GetAllStation();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
