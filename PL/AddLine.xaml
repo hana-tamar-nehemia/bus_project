@@ -37,7 +37,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label Content="תחנה אחרונה" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <ComboBox x:Name="last_StationComboBox" Grid.Column="1" DisplayMemberPath="Last_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="last_StationComboBox" Grid.Column="1" DisplayMemberPath="Last_Station" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120" SelectionChanged="last_StationComboBox_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>

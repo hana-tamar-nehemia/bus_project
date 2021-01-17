@@ -29,10 +29,9 @@ namespace PL
             busLineSelected = busLine;
             line_num.Text = busLine.Line_Number.ToString();
             area_combox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-            list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
-            //stationComboBox = new ComboBox();
-            //stationComboBox.ItemsSource = _bl.GetAllStation();
-
+            BO.Areas a = busLine.Area;
+            area_combox.SelectedIndex = (int)a;
+            list_of_station.DataContext = busLine.ListLineStations;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

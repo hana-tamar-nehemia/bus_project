@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.UpDateLine"
         mc:Ignorable="d"
-        Title="UpDateLine" Height="400" Width="300" Loaded="Window_Loaded">
+        Title="UpDateLine" Height="300" Width="300" Loaded="Window_Loaded">
     <Window.Resources>
         <DataTemplate x:Key="My_Station"
             DataType="local:Station">
@@ -23,17 +23,15 @@
                 <Button  x:Name="remove"  Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="3" />
             </Grid>
         </DataTemplate>
-
-        <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource stationViewSource}" Margin="0,0,0.333,-0.333" Height="221" VerticalAlignment="Bottom">
-        <TextBox x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="45,-103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" />
-        <Label Content="line:" HorizontalAlignment="Left" Margin="15,-107,0,0" VerticalAlignment="Top"/>
-        <Label Content="Area:" HorizontalAlignment="Left" Margin="10,-75,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.064"/>
+    <Grid DataContext="{}" Margin="0,0,0.333,-0.333" Height="221" VerticalAlignment="Bottom">
+        <TextBox x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="45,-13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" />
+        <Label Content="line:" HorizontalAlignment="Left" Margin="15,-18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Area:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.064"/>
 
-        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="46,-71,0,0"  VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="82" Margin="46,-34,0,0" VerticalAlignment="Top" Width="216" ItemTemplate="{StaticResource ResourceKey=My_Station}"  />
-        <Label Content="Phat:" HorizontalAlignment="Left" Margin="10,-34,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="46,18,0,0"  VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="82" Margin="46,55,0,0" VerticalAlignment="Top" Width="216" ItemTemplate="{StaticResource ResourceKey=My_Station}"  />
+        <Label Content="Phat:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="107,186,0,0" VerticalAlignment="Top" Width="75" Click="update_click"/>
     </Grid>
 </Window>
