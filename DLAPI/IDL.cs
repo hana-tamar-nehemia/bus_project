@@ -54,7 +54,8 @@ namespace DLAPI
 
         DO.Station GetStationOfLineStation(int a);//מחזיר תחנה פיזית של תחנה לוגית
         IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);//מחזיר אובייקט חדש עם שדות נבחרים
-                                                                                                        //   void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
+        void UpDateLineStationD_T(DO.LineStation lsDO);
+                                                                         //   void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
         void AddLineStation(DO.LineStation a);//להוסיף תחנת קו 
 
        // void UpdateLineStation(DO.LineStation linestation);//עדכון תחנת קו שקיימת
@@ -83,7 +84,9 @@ namespace DLAPI
         IEnumerable<DO.AdjStation> GetAdjStationListBy(Predicate<DO.AdjStation> predicate);
         DO.AdjStation GetAdjStation(int code, int code1);
         void deledteAdjStation(int Code,int code1);
-        void UpdateAdjStation(int Code ,int code1);
+        void UpdateAdjStation(int code, int code1);
+
+        void UpdateAdjStationT_D(DO.AdjStation adj);
 
 
         #endregion

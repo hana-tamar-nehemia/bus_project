@@ -6,49 +6,62 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddLine"
         mc:Ignorable="d"
-        Title="AddLine" Height="300" Width="400" Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen">
-
+        Title="AddLine" Height="450" Width="800"   WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Key="station"
+            DataType="local:LineStation">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Code}" Width="25" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" Width="100" HorizontalAlignment="Left"  />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <Grid x:Name="grid1_add_line"  HorizontalAlignment="Left" Margin="55,62,0,0" VerticalAlignment="Top" Height="135" Width="311">
+        <Grid x:Name="grid1_add_line"  HorizontalAlignment="Left" Margin="182,103,0,0" VerticalAlignment="Top" Height="188" Width="525">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MinWidth="212"/>
-                <ColumnDefinition Width="Auto" MinWidth="134.667"/>
+                <ColumnDefinition Width="Auto" MinWidth="322"/>
+                <ColumnDefinition Width="Auto" MinWidth="112"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="37.333"/>
+                <RowDefinition Height="Auto" MinHeight="56"/>
                 <RowDefinition/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="46.667"/>
             </Grid.RowDefinitions>
-            <Label  Content="איזור" Grid.Column="1" HorizontalAlignment="Left" Margin="46,5,0,1" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="35"/>
-            <ComboBox x:Name="areaComboBox" Grid.Column="0"  HorizontalAlignment="Left" Height="22"  Margin="3,5,0,5" Grid.Row="1" VerticalAlignment="Center" Width="188" ItemsSource="{Binding}"  SelectedItem="{Binding Area}" >
+            <Label  Content="איזור" Grid.Column="1" HorizontalAlignment="Left" Margin="44.333,15.667,0,14.333" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="35"/>
+            <ComboBox x:Name="areaComboBox" Grid.Column="0"  HorizontalAlignment="Left" Height="22"  Margin="3,15.667,0,18.333" Grid.Row="1" VerticalAlignment="Center" Width="309"  >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="תחנה ראשונה " Grid.Column="1" Margin="0,7,12.667,5.667" Grid.Row="2" VerticalAlignment="Center" Height="26"/>
-            <ComboBox x:Name="first_StationComboBox" Grid.Column="0" DisplayMemberPath="First_Station" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding}" Margin="3,8,0,8.667" Grid.Row="2" VerticalAlignment="Center" Width="188"     >
+            <Label Content="תחנת יציאה" Margin="10.333,10.667,23.333,10" Grid.Row="2" VerticalAlignment="Center" Height="26" Grid.Column="1"/>
+            <ComboBox x:Name="first_StationComboBox" ItemsSource="{Binding}" Grid.Column="0"  ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="22"  Margin="3,11.667,0,13" Grid.Row="2" VerticalAlignment="Center" Width="309"     >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="תחנה אחרונה" Grid.Column="1" HorizontalAlignment="Left" Margin="0,3.333,0,2.667" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="81"/>
-            <ComboBox x:Name="last_StationComboBox" Grid.Column="0" DisplayMemberPath="Last_Station" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding}" Margin="3,5.333,0,4.667" Grid.Row="3" VerticalAlignment="Center" Width="188" SelectionChanged="last_StationComboBox_SelectionChanged">
+            <Label Content="תחנה יעד" HorizontalAlignment="Left" Margin="15.333,13,0,9" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="81" Grid.Column="1"/>
+            <ComboBox x:Name="last_StationComboBox" ItemsSource="{Binding}" Grid.Column="0"  ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="22"  Margin="3,13,0,13" Grid.Row="3" VerticalAlignment="Center" Width="309" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="מספר קו " Grid.Column="1" HorizontalAlignment="Left" Margin="23,6,0,0" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="58"/>
-            <TextBox x:Name="line_NumberTextBox" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="0" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0"  VerticalAlignment="Center" Width="188"/>
+
+            <Label Content="מספר קו " Grid.Column="1" HorizontalAlignment="Left" Margin="21.333,9,0,2.333" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="58"/>
+            <TextBox x:Name="line_NumberTextBox"  Text="הזן מספר קו" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="0"   HorizontalAlignment="Left" Height="24" Margin="3,7,0,6.333" Grid.Row="0"  VerticalAlignment="Center" Width="309"/>
         </Grid>
-        <Button Content="הוסף" HorizontalAlignment="Left" Margin="67,225,0,0" VerticalAlignment="Top" Width="60"  />
-        <Button Content="בטל" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="190,225,0,0" Width="60"/>
-        <TextBlock HorizontalAlignment="Left" Margin="94,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="23"><Run FlowDirection="RightToLeft" Text="פרטים של האוטובוס החדש:"/></TextBlock>
+        <Button Content="הוסף" HorizontalAlignment="Left" Margin="164,326,0,0" VerticalAlignment="Top" Width="60" Click="Button_Click" />
+        <Button Content="בטל" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="513,326,0,0" Width="60" Click="Button_Click_1" />
+        <TextBlock HorizontalAlignment="Left" Margin="288,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="23"><Run FlowDirection="RightToLeft" Text="פרטים של האוטובוס החדש:"/></TextBlock>
     </Grid>
 </Window>

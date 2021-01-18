@@ -28,19 +28,18 @@ namespace PL
             _bl = bl;
             BO.BusLine busLineBO = new BO.BusLine();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-            BO.Areas a = busLineBO.Area;
-            areaComboBox.SelectedIndex = (int)a;
+            areaComboBox.SelectedIndex = 0;
             //**********************************************
-            first_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
-            first_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
+            //first_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
+            //first_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
             first_StationComboBox.SelectedValuePath = "Code";//selection return only specific Property of object
             first_StationComboBox.SelectedIndex = 0; //index of the object to be selected
             first_StationComboBox.DataContext = bl.GetAllStation();
             //***********************************************
-            last_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
-            last_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
+            //last_StationComboBox.DisplayMemberPath = "Code";//show only specific Property of object
+            //  last_StationComboBox.DisplayMemberPath = "Name";//show only specific Property of object
             last_StationComboBox.SelectedValuePath = "Code";//selection return only specific Property of object
-            last_StationComboBox.SelectedItem = 0; //index of the object to be selected
+            last_StationComboBox.SelectedIndex = 0; //index of the object to be selected
             last_StationComboBox.DataContext = bl.GetAllStation();
 
         }
@@ -48,42 +47,24 @@ namespace PL
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            // System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busLineViewSource.Source = [generic data source]
+            //System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+           //  Load data by setting the CollectionViewSource.Source property:
+           // busLineViewSource.Source = [generic data source]
         }
-        //public int GetAllBusId()פונקציה שתחזיר מספר רישוי של אוטובוס פנוי
-        //{
-        //}
 
-                 
-             
-             
-         
-
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //BusLine.License_num = _bl.GetAllBusId();צריך ליצור פונקציה כזו
             BusLine.Line_Number = Convert.ToInt32(line_NumberTextBox.Text);
+            BusLine.License_num= _bl.GetFreeBus().License_num;
             BusLine.Act = true;
             //BusLine.Line_Id = LineID++;     לבדוק איך הסטטיק עובד
-            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;
-            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;
+            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//לא עושים ככה צריך לקחת את המספר תחנה של מה שנבחר לא סתם ככה מה שנבחר
+            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//גם כאן
             BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
             _bl.AddBusLine(BusLine);
             MessageBox.Show("added");
             this.Close();
-
-        }
-
-        private void first_StationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            BusLine.First_Station = first_StationComboBox.SelectedIndex;
-        }
-
-        private void last_StationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            BusLine.Last_Station = first_StationComboBox.SelectedIndex;
 
         }
 
@@ -122,6 +103,11 @@ namespace PL
             //forbid letters and signs (#,$, %, ...)
             e.Handled = true; //ignore this key. mark event as handled, will not be routed to other controls
             return;
+        }
+
+        private void line_NumberTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            line_NumberTextBox.Text = "";
         }
     }
 

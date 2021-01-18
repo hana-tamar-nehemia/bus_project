@@ -20,19 +20,25 @@ namespace PL
     public partial class EditT_D : Window
     {
         IBL _bl;
+        BO.BusLine busline;
+        BO.LineStation firststation;
+        BO.LineStation selectedstation;
+        BO.AdjStation adj = new BO.AdjStation();
 
-        public EditT_D(IBL bl,BO.LineStation a, BO.LineStation b)
+        public EditT_D(IBL bl,BO.LineStation a, BO.LineStation b, BO.BusLine line)//משנים את b
         {
             _bl = bl;
             InitializeComponent();
+            busline = line;
+            firststation = a;
+            selectedstation = b;
             code1.Text = (a.Code).ToString();
             code2.Text = (b.Code).ToString();
             name1.Text = (a.Name);
             name2.Text = (b.Name);
-            BO.AdjStation adj = new BO.AdjStation();
             adj = _bl.GetAdjStation(a.Code, b.Code);
-            time.Text = (adj.Time_Between).ToString();
-            distance.Text = (adj.Distance).ToString();
+            timeTextBox.Text = (adj.Time_Between).ToString();
+            distanceTextBox.Text = (adj.Distance).ToString();
         }
 
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -70,12 +76,26 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //הכפתור יאושר רק כשמילאו או שינו את הזמן או המרחק
+            selectedstation.distance = Convert.ToInt32(distanceTextBox.Text);
+            //selectedstation.time = (TimeSpan)timeTextBox.Text;
+              _bl.UpDateLineStationD_T(selectedstation);
+            adj.Distance = Convert.ToInt32(distanceTextBox.Text);
+            //adj.Time_Between=(TimeSpan)timeTextBox.Text;
+            _bl.UpDateLineStationD_T(selectedstation);
+            _bl.UpdateAdjStation(adj);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource lineStationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("lineStationViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // lineStationViewSource.Source = [generic data source]
         }
     }
 }

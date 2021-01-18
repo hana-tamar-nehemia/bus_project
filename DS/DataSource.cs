@@ -1870,6 +1870,15 @@ ActLineStation=true
             new AdjStation
               {
                  Code_station1=1493,
+                 Code_station2=1494,
+                 Distance=r.Next(0,1000),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                 Act=true
+
+              },
+               new AdjStation
+              {
+                 Code_station1=1494,
                  Code_station2=1510,
                  Distance=r.Next(0,1000),
                 Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
@@ -2042,6 +2051,14 @@ ActLineStation=true
                  Code_station2=1491,
                  Distance=r.Next(0,1000),
                  Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
+                                  Act=true
+              },
+                new AdjStation
+              {
+                 Code_station1=1491,
+                 Code_station2=1492,
+                 Distance=r.Next(0,1000),
+                Time_Between=new TimeSpan(0, r.Next(0, 4), r.Next(0, 60)),
                                   Act=true
               },
             new AdjStation

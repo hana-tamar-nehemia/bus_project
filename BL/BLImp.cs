@@ -137,16 +137,23 @@ namespace BL
         }
 
         //add
-        public void AddLineStation(int code, int Line_Id, int index, bool A)//להוסיף תחנת קו 
+        public void AddLineStation(int code, int Line_Id, int index)//להוסיף תחנת קו 
         {
             try
             {
-                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation = A });
+                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index ,ActLineStation=true });
             }
             catch (DO.BadStaionCodeException ex)
             {
                 throw new BO.BadStationCodeException("line station is already exsist", ex);
             }
+        }
+
+        public void UpDateLineStationD_T(BO.LineStation selectedstation)
+        {
+            DO.LineStation lsDO= new DO.LineStation();
+            selectedstation.CopyPropertiesTo(lsDO);
+            dl.UpDateLineStationD_T(lsDO);
         }
 
         //delete
@@ -180,6 +187,18 @@ namespace BL
             }
 
         }
+        public BO.Bus GetFreeBus()//פונקציה שתחזיר מספר רישוי של אוטובוס פנוי
+        {
+            IEnumerable<BO.Bus> buses = GetAllBuses();
+            IEnumerable<BO.BusLine> lines = GetAllBusLine();
+
+            IEnumerable<BO.Bus> bus = from num in buses
+                                      from num2 in lines
+                                      where num.License_num != num2.License_num
+                                      select num;
+            return bus.First();//מחזיר אוטובוס שלם
+        }
+
         public IEnumerable<BO.Bus> GetAllBuses()
         {
             return from item in dl.GetAllBuses()
@@ -320,6 +339,7 @@ namespace BL
         {
             DO.BusLine BusLineDO = new DO.BusLine();
             BusLine.CopyPropertiesTo(BusLineDO);
+            BusLineDO.Bus_Id = BusLine.License_num;
             try
             {
                 return BusLineDoBoAdapter(BusLineDO);
@@ -350,7 +370,6 @@ namespace BL
             try
             {
                 BusDO = dl.GetBus(BusLineDO.Bus_Id);
-
             }
             catch (DO.BadBusLineException ex)
             {
@@ -423,6 +442,12 @@ namespace BL
             {
                 throw new BO.BadAdjStationException("AdjStation  ID is illegal", ex);
             }
+        }
+        public void UpdateAdjStation(BO.AdjStation adj)
+        {
+            DO.AdjStation adjDO = new DO.AdjStation();
+            adj.CopyPropertiesTo(adjDO);
+            dl.UpdateAdjStationT_D(adjDO);
         }
         BO.AdjStation AdjStationDoBoAdapter(DO.AdjStation AdjStationDO)
         {

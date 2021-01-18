@@ -12,7 +12,7 @@ namespace BO
         public int Code_station1 { get; set; } // automatic number
         public int Code_station2 { get; set; }
         public int Distance { get; set; } // automatic number
-        public DateTime Time_Between { get; set; }
+        public TimeSpan Time_Between { get; set; }
         public bool Act{ get; set; } // automatic number
 
 

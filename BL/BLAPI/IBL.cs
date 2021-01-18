@@ -15,7 +15,6 @@ namespace BLAPI
 
         #region Bus Line
         BO.BusLine GetBusLine(int Bus_Id);
-
         IEnumerable<BO.BusLine> GetAllBusLine();
         //IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
         void AddBusLine(BO.BusLine busLine);
@@ -30,6 +29,8 @@ namespace BLAPI
         #region BUS
         BO.Bus GetSBus(int License_num_Id);
         IEnumerable<BO.Bus> GetAllBuses();
+        BO.Bus GetFreeBus();//פונקציה שתחזיר מספר רישוי של אוטובוס פנוי
+
        // IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate);
         void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a);
         void UpdateFuelBus(BO.Bus Bus);
@@ -52,11 +53,13 @@ namespace BLAPI
        // IEnumerable<object> GetlinestationListWithSelectedFields(Func<DO.LineStation, object> generate);
 
         //add
-         void AddLineStation(int code, int Line_Id, int index, bool ActLineStation);//להוסיף תחנת קו 
+         void AddLineStation(int code, int Line_Id, int index);//להוסיף תחנת קו 
+
+        void UpDateLineStationD_T(BO.LineStation selectedstation);
 
         //delete
 
-         void DeleteLineStationInBus(int code, int line_id);
+        void DeleteLineStationInBus(int code, int line_id);
 
         #endregion
 
@@ -85,6 +88,7 @@ namespace BLAPI
          void AddAdjStation(int code, int code1, int d, TimeSpan t,bool a);
         IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
         BO.AdjStation GetAdjStation(int code1,int code2);
+        void UpdateAdjStation(BO.AdjStation adj);
 
         void UpdateAdjStation(int code, int code1);
         void deledteAdjStation(int code, int code1);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="ManagerOptions" Height="450" Width="800">
+        Title="ManagerOptions" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid RenderTransformOrigin="0.451,0.59">
         <Label Content="Welcome to ways time " HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
         <GroupBox Header="choose:" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
