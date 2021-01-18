@@ -91,7 +91,7 @@ namespace BL
             stationDO.CopyPropertiesTo(LineStationBO);
             if (LineStationDO.Line_Station_Index > 1)
             {
-                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id, LineStationDO.Line_Station_Index-1);
+                DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id, LineStationDO.Line_Station_Index - 1);
                 DO.AdjStation a = dl.GetAdjStation(prevls.Code, LineStationDO.Code);
                 LineStationBO.distance = a.Distance;
                 LineStationBO.time = a.Time_Between;
@@ -124,7 +124,7 @@ namespace BL
         {
             DO.LineStation a = new DO.LineStation();
             lineStation.CopyPropertiesTo(a);
-            DO.LineStation ls = dl.GetPrevLineStation(a.Line_Id,a.Line_Station_Index);
+            DO.LineStation ls = dl.GetPrevLineStation(a.Line_Id, a.Line_Station_Index);
             if (ls != null && ls.ActLineStation == true)
                 return LineStationDoBoAdapter(ls);
             else
@@ -141,7 +141,7 @@ namespace BL
         {
             try
             {
-                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation = A});
+                dl.AddLineStation(new DO.LineStation { Code = code, Line_Id = Line_Id, Line_Station_Index = index, ActLineStation = A });
             }
             catch (DO.BadStaionCodeException ex)
             {
@@ -294,14 +294,14 @@ namespace BL
             try
             {
                 dl.AddBusLine(busLineDO);
-                
+
             }
             catch (DO.BadBusLineException ex)
             {
                 throw new BO.BadBusLineException(" bus line ID  exist", ex);
             }
         }
-        
+
         public void UpdateBusLine(BO.BusLine BusLine)
         {
             DO.BusLine BusLineDO = new DO.BusLine();
@@ -350,7 +350,7 @@ namespace BL
             try
             {
                 BusDO = dl.GetBus(BusLineDO.Bus_Id);
-       
+
             }
             catch (DO.BadBusLineException ex)
             {
@@ -384,7 +384,7 @@ namespace BL
         {
             try
             {
-                dl.AddAdjStation(code, code1, d, t,a);
+                dl.AddAdjStation(code, code1, d, t, a);
 
             }
             catch (DO.BadAdjStationException ex)
@@ -392,6 +392,10 @@ namespace BL
                 throw new BO.BadAdjStationException(" AdjStation Not exist", ex);
             }
 
+        }
+        public BO.AdjStation GetAdjStation(int code1, int code2)
+        {
+            return AdjStationDoBoAdapter(dl.GetAdjStation(code1, code2));
         }
         public IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate)
         {

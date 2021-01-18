@@ -89,7 +89,7 @@ namespace PL
                     lineStationDataGrid.ItemsSource = null;
                     busLineListView.ItemsSource = _bl.GetAllBusLine();
                     btnGO.IsEnabled = false;
-                    remove.IsEnabled = false;
+                   // remove.IsEnabled = false;
                 }
             }
             catch (BO.BadBusLineException ex)

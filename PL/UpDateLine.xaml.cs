@@ -22,7 +22,6 @@ namespace PL
     {
         IBL _bl;
 
-        BO.Areas area=new BO.Areas();
 
         BO.BusLine busLineSelected;
         public UpDateLine(IBL lb,BO.BusLine busLine)
@@ -35,6 +34,7 @@ namespace PL
             area_combox.SelectedIndex = (int)busLine.Area;
             list_of_station = new ListBox();
             list_of_station.DataContext = busLine.ListLineStations;
+            addstationlist.DataContext = _bl.GetAllStation();
         }
 
      
@@ -72,9 +72,12 @@ namespace PL
 
         private void update_click(object sender, RoutedEventArgs e)//שמירת כל העדכונים שעשה ורענון החלוןשל הקווים בהתאם אחרי שהשתנה קו מסויים
         {
+            int i = (area_combox.SelectedIndex);
+
+            busLineSelected.Area = (BO.Areas)i;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)//עדכון מרחק או זמן של קו אוטובוס
+        private void Button_Click_2(object sender, RoutedEventArgs e)//עדכון מרחק או זמן של תחנה בקו אוטובוס
         {
             BO.LineStation b = new BO.LineStation();
             b = ((sender as Button).DataContext as BO.LineStation);
@@ -83,19 +86,19 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
         {
-
-            BO.LineStation b = new BO.LineStation();
-            b = ((sender as Button).DataContext as BO.LineStation);
-            _bl.DeleteLineStationInBus(b.Code,b.Line_Id);
-            _bl.UpdateBusLinePhat(busLineSelected);
-            list_of_station.DataContext = busLineSelected.ListLineStations;
+            MessageBoxResult res = MessageBox.Show("are you want to delete this station?", "Verification" ,MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                BO.LineStation b = new BO.LineStation();
+                b = ((sender as Button).DataContext as BO.LineStation);
+                _bl.DeleteLineStationInBus(b.Code, b.Line_Id);
+                _bl.UpdateBusLinePhat(busLineSelected);
+                list_of_station.DataContext = busLineSelected.ListLineStations;
+            }
+            
         }
 
-        private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int i = (area_combox.SelectedIndex);
+        
 
-            busLineSelected.Area = (BO.Areas)i;
-        }
     }
 }

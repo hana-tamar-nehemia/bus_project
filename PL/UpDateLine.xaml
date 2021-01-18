@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.UpDateLine"
         mc:Ignorable="d"
-        Title="UpDateLine" Height="300" Width="300" >
+        Title="UpDateLine" Height="300" Width="600" >
     <Window.Resources>
         <DataTemplate x:Key="My_Stations"
             DataType="local:LineStation">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
                 <TextBlock Grid.Column="1" Text="{Binding Path=Name}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
@@ -23,15 +23,29 @@
                 <Button  x:Name="remove" Grid.Column="3" Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
             </Grid>
         </DataTemplate>
+
+        <DataTemplate x:Key="stationAdd"
+            DataType="local:LineStation">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Code}" Width="25" FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Name}" Width="100"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            </Grid>
+        </DataTemplate>
+
     </Window.Resources>
-    
-    <Grid Margin="0,0,0.333,-0.333" Height="221" VerticalAlignment="Bottom">
-        <TextBlock x:Name="line_num" HorizontalAlignment="Left" Height="23" Margin="52,-15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" />
-        <Label Content="line:" HorizontalAlignment="Left" Margin="15,-18,0,0" VerticalAlignment="Top"/>
-        <Label Content="Area:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.064"/>
-        <ComboBox Name="area_combox" HorizontalAlignment="Left" Margin="46,18,0,0"  VerticalAlignment="Top" Width="120" SelectionChanged="area_combox_SelectionChanged"/>
-        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="130" Margin="45,55,0,0" VerticalAlignment="Top" Width="238" DataContext="{Binding}"  ItemTemplate="{StaticResource ResourceKey=My_Stations}" ItemsSource="{Binding}"  />
-        <Label Content="Phat:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="109,190,0,0" VerticalAlignment="Top" Width="75" Click="update_click"/>
+
+    <Grid Margin="0,0,0.333,-0.333" Height="271" VerticalAlignment="Bottom">
+        
+        <TextBlock x:Name="line_num" HorizontalAlignment="Left" Height="41" Margin="268,10,0,0" TextWrapping="Wrap" FontSize="25" VerticalAlignment="Top" Width="62" />
+        <ComboBox Name="area_combox" ItemsSource="{Binding}"  SelectedItem="{Binding Area}" HorizontalAlignment="Left" Margin="66,29,0,0"  VerticalAlignment="Top" Width="120" />
+        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="130" Margin="34,96,0,0" VerticalAlignment="Top" Width="355" DataContext="{Binding}"  ItemTemplate="{StaticResource ResourceKey=My_Stations}" ItemsSource="{Binding}"  />
+        <Label Content="Phat:" HorizontalAlignment="Left" Margin="34,65,0,0" VerticalAlignment="Top"/>
+        <Label Content="add station:" HorizontalAlignment="Left" Margin="407,65,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="283,231,0,0" VerticalAlignment="Top" Width="74" Click="update_click" Height="30"/>
+        <ListBox x:Name="addstationlist" HorizontalAlignment="Left" Height="130" SelectionMode="Multiple" Margin="407,96,0,0" VerticalAlignment="Top" DataContext="{Binding}" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=stationAdd}" Width="176"/>
     </Grid>
 </Window>

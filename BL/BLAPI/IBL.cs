@@ -84,6 +84,8 @@ namespace BLAPI
 
          void AddAdjStation(int code, int code1, int d, TimeSpan t,bool a);
         IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
+        BO.AdjStation GetAdjStation(int code1,int code2);
+
         void UpdateAdjStation(int code, int code1);
         void deledteAdjStation(int code, int code1);
 

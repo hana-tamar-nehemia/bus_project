@@ -25,6 +25,14 @@ namespace PL
         {
             _bl = bl;
             InitializeComponent();
+            code1.Text = (a.Code).ToString();
+            code2.Text = (b.Code).ToString();
+            name1.Text = (a.Name);
+            name2.Text = (b.Name);
+            BO.AdjStation adj = new BO.AdjStation();
+            adj = _bl.GetAdjStation(a.Code, b.Code);
+            time.Text = (adj.Time_Between).ToString();
+            distance.Text = (adj.Distance).ToString();
         }
 
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -58,6 +66,16 @@ namespace PL
             //forbid letters and signs (#,$, %, ...)
             e.Handled = true; //ignore this key. mark event as handled, will not be routed to other controls
             return;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //הכפתור יאושר רק כשמילאו או שינו את הזמן או המרחק
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
