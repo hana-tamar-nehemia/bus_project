@@ -44,5 +44,10 @@ namespace PL
             Buses buses = new Buses(_lb);
             buses.ShowDialog();
         }
+        private void rbStations_Checked(object sender, RoutedEventArgs e)
+        {
+            Stations s = new Stations(_lb);
+            s.ShowDialog();
+        }
     }
 }

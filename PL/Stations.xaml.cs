@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace PL
 {
     /// <summary>
@@ -19,8 +21,10 @@ namespace PL
     /// </summary>
     public partial class Stations : Window
     {
-        public Stations()
+        IBL _lb;
+        public Stations(IBL lb)
         {
+            _lb = lb;
             InitializeComponent();
         }
 
@@ -41,5 +45,10 @@ namespace PL
         {
 
         }
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -60,6 +60,6 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-
+        <Button x:Name="back" Content="»" HorizontalAlignment="Left" Height="31" Margin="767,7,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click"/>
     </Grid>
 </Window>

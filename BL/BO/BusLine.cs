@@ -16,7 +16,7 @@ namespace BO
     //    public double Fuel_tank { get; set; }
     //    public int Bus_status { get; set; }
     //    public override string ToString() => this.ToStringProperty();
-        public int Line_Number { get; set; }//מספר קו
+        public string Line_Number { get; set; }//מספר קו
         public Areas Area { get; set; }
         public int Line_Id { get; set; }
         public int First_Station { get; set; }
