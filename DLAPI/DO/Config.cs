@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    static class Config
+    public static class Config
     {
         //for running numbers
-        public static int LineID = 10; /* {get ; set;}*/
-        
+        public static int LineID = 10;
+
         //for consts
         //public static int MAX_LICENSE_NUM = 8;
         //...
