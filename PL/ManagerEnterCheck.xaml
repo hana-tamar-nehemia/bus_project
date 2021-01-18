@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="ManagerEnterCheck" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="254,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="סיסמא" HorizontalAlignment="Left" Margin="254,190,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="namel" HorizontalAlignment="Left" Height="23" Margin="254,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordl" HorizontalAlignment="Left" Height="23" Margin="254,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="sing" Content="הירשם" HorizontalAlignment="Left" Margin="428,275,0,0" VerticalAlignment="Top" Width="75"   Click="sing_Click" />
-        <Button x:Name="log" Content=" התחבר" HorizontalAlignment="Left" Margin="268,275,0,0" VerticalAlignment="Top" Width="75"   Click="log_Click" />
-        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="408,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="סיסמא" HorizontalAlignment="Left" Margin="408,190,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="names" HorizontalAlignment="Left" Height="23" Margin="408,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwords" HorizontalAlignment="Left" Height="23" Margin="408,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+    <Grid Background="White">
+        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="196,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="סיסמה" HorizontalAlignment="Left" Margin="225,190,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="namel" HorizontalAlignment="Left" Height="23" Margin="577,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwordl" HorizontalAlignment="Left" Height="23" Margin="577,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="sing" Content="הירשם" HorizontalAlignment="Left" Margin="181,284,0,0" VerticalAlignment="Top" Width="75"   Click="sing_Click" Foreground="#FFFAF7F7" Background="#FF1B0909" />
+        <Button x:Name="log" Content=" התחבר" HorizontalAlignment="Left" Margin="604,284,0,0" VerticalAlignment="Top" Width="75"   Click="log_Click" Background="#FF120404" Foreground="#FFFCF7F7" />
+        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="622,99,0,0" VerticalAlignment="Top" FontFamily="Imprint MT Shadow" Background="Transparent"/>
+        <Label Content="סיסמה" HorizontalAlignment="Left" Margin="652,190,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="names" HorizontalAlignment="Left" Height="23" Margin="151,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwords" HorizontalAlignment="Left" Height="23" Margin="151,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
