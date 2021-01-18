@@ -39,7 +39,8 @@ namespace PL
 
         private void btnGO_Click(object sender, RoutedEventArgs e)//הוספת אוטובוס
         {
-
+            AddBus add = new AddBus();
+            add.Show();
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
@@ -60,7 +61,8 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            UpDateBus up = new UpDateBus(bus, _bl);
+            up.ShowDialog();
         }
     }
 }

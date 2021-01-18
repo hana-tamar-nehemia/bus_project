@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLAPI;
 
 namespace PL
 {
@@ -19,10 +20,14 @@ namespace PL
     /// </summary>
     public partial class UpDateBus : Window
     {
-        public UpDateBus(BO.Bus bus)
+        BO.Bus Bus = new BO.Bus();
+        public UpDateBus(BO.Bus bus, IBL bl)
         {
-            busdetail.DataContext = bus;
             InitializeComponent();
+            busdetail = new Grid();
+            bus_statusTextBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+
+            busdetail.DataContext = bus;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -31,6 +36,12 @@ namespace PL
             System.Windows.Data.CollectionViewSource busViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // busViewSource.Source = [generic data source]
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           Bus = (BO.Bus)busdetail.DataContext;
+            this.Close();
         }
     }
 }
