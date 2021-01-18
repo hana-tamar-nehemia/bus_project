@@ -6,46 +6,44 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddBus"
         mc:Ignorable="d"
-        Title="AddBus" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="AddBus" Height="500" Width="400" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Label Content="enter detail of the new bus" HorizontalAlignment="Left" Margin="239,27,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+        <Label Content="enter detail of the new bus" HorizontalAlignment="Left" Margin="21,22,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold"  FontSize="20"/>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="272,101,0,0" HorizontalAlignment="Left" DataContext="{StaticResource busViewSource}">
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="72,82,0,0" HorizontalAlignment="Left" DataContext="{StaticResource busViewSource}" Height="328" Width="276">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55" MinHeight="72" />
+                <RowDefinition Height="55" MinHeight="86" />
+                <RowDefinition Height="55" MinHeight="86" />
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Act:"/>
-            <CheckBox x:Name="actCheckBox" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding Act, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Bus status:"/>
-            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Center" Grid.Row="1" Margin="3" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Bus_status" Grid.Column="1">
+            <Label VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,-71,21" HorizontalAlignment="Right" Content="סטטוס" Height="26" Width="57" Grid.Column="1"/>
+            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,29,0,21" ItemsSource="{Binding}" HorizontalAlignment="Left" Grid.Column="0" DisplayMemberPath="Bus_status">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Fuel tank:"/>
-            <TextBox x:Name="fuel_tankTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Km:"/>
-            <TextBox x:Name="kmTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="License num:"/>
-            <TextBox x:Name="license_numTextBox" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Start date:"/>
-            <DatePicker x:Name="start_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Stretch" Grid.Row="4" Margin="75.333,0,-70,60" Content="דלק" Grid.Column="1"/>
+            <TextBox x:Name="fuel_tankTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0,1,0,62" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" Grid.Row="3" Margin="0,15,-70,45" HorizontalAlignment="Right" Content="קילומטר" Width="60" Grid.Column="1"/>
+            <TextBox x:Name="kmTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0,19,0,44" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" Margin="0,5,-70,5.333" HorizontalAlignment="Right" Content="לוחית רישוי" Width="79" Grid.Column="1"/>
+            <TextBox x:Name="license_numTextBox" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,0,0,13.667" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" Margin="0,13.667,-83.333,10" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
+            <DatePicker x:Name="start_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,13.667,0,13" HorizontalAlignment="Left" Height="28" Width="120"/>
         </Grid>
-        <Button x:Name="btnGO" Content="DONE" HorizontalAlignment="Left" Height="30" Margin="325,348,0,0" VerticalAlignment="Top" Width="90"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO" Content="הוסף למערכת" HorizontalAlignment="Left" Height="30" Margin="133,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
 
     </Grid>
 </Window>

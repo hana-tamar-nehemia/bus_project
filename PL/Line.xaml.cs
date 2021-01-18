@@ -22,24 +22,24 @@ namespace PL
     {
         IBL _bl;
         BO.BusLine busLine = new BO.BusLine();
-
+        int selectindex=0;
         public Line(IBL lb)
         {
             InitializeComponent();
             _bl = lb;
-            busLineListView.DataContext = _bl.GetAllBusLine();
-            busLineListView.SelectedIndex = 0; //index of the object to be selected
-            busLine = (BO.BusLine)busLineListView.SelectedItem;
-            lineStationDataGrid.IsReadOnly = true;
-            lineStationDataGrid.DataContext= busLine.ListLineStations; 
+            busLineListBox.DataContext = _bl.GetAllBusLine();
+            busLineListBox.SelectedIndex = 0; //index of the object to be selected
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+            //linestationListBox.IsReadOnly = true;
+            linestationListBox.DataContext= busLine.ListLineStations; 
         }
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-            busLine = (BO.BusLine)busLineListView.SelectedItem;
-            lineStationDataGrid = new DataGrid();
-            lineStationDataGrid.DataContext = busLine.ListLineStations;
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+            linestationListBox = new ListBox();
+            linestationListBox.DataContext = busLine.ListLineStations;
         }
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -59,7 +59,13 @@ namespace PL
         //    // lineStationViewSource.Source = [generic data source]
         //}
 
-
+        private void refreshScreen()
+        {
+            busLineListBox.DataContext = _bl.GetAllBusLine();
+            busLineListBox.SelectedIndex = selectindex;
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+            linestationListBox.DataContext = busLine.ListLineStations;
+        }
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
@@ -70,14 +76,16 @@ namespace PL
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListView.SelectedItem);//שולח את הקו שרוצים לעדכן
+            UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListBox.SelectedItem);//שולח את הקו שרוצים לעדכן
             update.ShowDialog();
+            refreshScreen();
+
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
             BO.BusLine busLine = new BO.BusLine();
-            busLine = (BO.BusLine)busLineListView.SelectedItem;
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
             MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.No)
                 return;
@@ -86,8 +94,8 @@ namespace PL
                 if (busLine != null)
                 {
                     _bl.DeleteBusLine(busLine.License_num);
-                    lineStationDataGrid.ItemsSource = null;
-                    busLineListView.ItemsSource = _bl.GetAllBusLine();
+                    linestationListBox.ItemsSource = null;
+                    busLineListBox.ItemsSource = _bl.GetAllBusLine();
                     btnGO.IsEnabled = false;
                    // remove.IsEnabled = false;
                 }
@@ -102,6 +110,14 @@ namespace PL
         {
            AddLine m = new AddLine(_bl);
             m.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // busLineViewSource.Source = [generic data source]
         }
     }
 }
