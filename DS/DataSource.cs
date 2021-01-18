@@ -39,7 +39,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -48,7 +48,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -57,7 +57,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -66,7 +66,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -75,7 +75,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -84,7 +84,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -93,7 +93,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -102,7 +102,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -111,7 +111,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -120,7 +120,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -129,7 +129,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -138,7 +138,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -147,7 +147,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -156,7 +156,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -165,7 +165,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -174,7 +174,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -183,7 +183,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -192,7 +192,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -201,7 +201,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               },
               new Bus
@@ -210,7 +210,7 @@ namespace DS
                   Start_date= DateTime.Now,
                   Km=0,
                   Fuel_tank= r.Next(300),
-                  Bus_status=r.Next(5),
+                  Bus_status=r.Next(4),
                   ActBus=true
               }
 

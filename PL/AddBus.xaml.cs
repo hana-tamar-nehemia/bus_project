@@ -19,8 +19,11 @@ namespace PL
     /// </summary>
     public partial class AddBus : Window
     {
+        BO.Bus Bus = new BO.Bus();
         public AddBus()
         {
+            Addbus = new Grid();
+            Addbus.DataContext = Bus;
             InitializeComponent();
         }
 
@@ -34,7 +37,10 @@ namespace PL
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
-
+            Bus = (BO.Bus)Addbus.DataContext;
+            //לבדוק מה מגיע ואם מגיע משהו טוב
+            //אז לעדכן את זה ברשימות של הדטה סורס
+            this.Close();
         }
     }
 }
