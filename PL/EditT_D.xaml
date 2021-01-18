@@ -25,10 +25,10 @@
 
     </Window.Resources>
     <Grid DataContext="{StaticResource lineStationViewSource}">
-        <TextBlock  x:Name="code2" HorizontalAlignment="Left"  Height="24" Margin="28,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
-        <TextBlock  x:Name="name1" HorizontalAlignment="Left"  Height="33" Margin="213,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <TextBlock  x:Name="code1" HorizontalAlignment="Left"  Height="24" Margin="238,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
-        <TextBlock x:Name="name2" HorizontalAlignment="Left" Height="32" Margin="10,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+        <TextBlock  x:Name="code2" HorizontalAlignment="Center"  Height="24" Margin="28,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
+        <TextBlock  x:Name="name1" HorizontalAlignment="Center"  Height="33" Margin="213,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBlock  x:Name="code1" HorizontalAlignment="Center"  Height="24" Margin="238,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
+        <TextBlock x:Name="name2" HorizontalAlignment="Center" Height="33" Margin="10,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
         <Image HorizontalAlignment="Left" Height="23" Margin="180,10,0,0" VerticalAlignment="Top" Width="23">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="תמונה2.jpg"/>

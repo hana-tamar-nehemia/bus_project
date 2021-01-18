@@ -36,7 +36,7 @@ namespace PL
             area_combox.SelectedIndex = (int)busLine.Area;
             list_of_station = new ListBox();
             List<BO.LineStation> ls = busLineSelected.ListLineStations.ToList();
-            list_of_station.DataContext = ls;//לא מוצג הרשימה של האוטובוס בליסט
+            list_of_station.DataContext = ls;                                                   //לא מוצג הרשימה של האוטובוס בליסט
             addstationlist.DataContext = _bl.GetAllStation();
         }
 
@@ -82,6 +82,7 @@ namespace PL
             busLineSelected.First_Station = ls[0].Code;
             busLineSelected.Last_Station = ls[ls.Count()-1].Code;
             _bl.UpdateBusLine(busLineSelected);//מכניס אותו לרשימת אוטובוסים בדטה סורס
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)//עדכון מרחק או זמן של תחנה בקו אוטובוס
@@ -128,6 +129,12 @@ namespace PL
         private void addstationlist_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             addstationbuttom.IsEnabled = true;
+        }
+
+        private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int i = area_combox.SelectedIndex;
+            busLineSelected.Area = (BO.Areas)i;
         }
     }
 }

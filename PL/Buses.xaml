@@ -6,49 +6,66 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Buses"
         mc:Ignorable="d"
-        Title="Buses" Height="450" Width="800" Loaded="Window_Loaded_1">
+        Title="Buses" Height="450" Width="500" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded_1">
     <Window.Resources>
+        <DataTemplate x:Key="detailsbus"
+            DataType="local:LineStation">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="תאריך עלייה לכביש" FontWeight="Bold"   FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="סטטוס" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="1"  Grid.Row="2" Text="קילומטר" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="דלק" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Path=Start_date}" Width="25" FontWeight="Bold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="0"  Grid.Row="1" Text="{Binding Path=Bus_status}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="0" Grid.Row="2"  Text="{Binding Path=Km}" Width="25" FontWeight="Bold"   FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="0"  Grid.Row="3"  Text="{Binding Path=distance}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <Button Grid.Column="0"  Grid.Row="4"  Content="שלח לטיפול" HorizontalAlignment="Left" Margin="583,195,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button Grid.Column="1"  Grid.Row="4"  Content="שלח לתידלוק" HorizontalAlignment="Left" Margin="583,108,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            </Grid>
+        </DataTemplate>
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource busViewSource}">
-        <Label Content=" License_num:" HorizontalAlignment="Left" Margin="28,24,0,0" VerticalAlignment="Top" Height="29" Width="94" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.5,0.586"/>
-        <Label Content=" detail:" HorizontalAlignment="Left" Margin="172,24,0,0" VerticalAlignment="Top" Height="29" Width="94" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.486,0.431"/>
+        <Label Content=" License numbers:" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Height="29" Width="114" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.5,0.586"/>
 
-        <Button x:Name="btnGO" Content="Add bus" HorizontalAlignment="Left" Height="42" Margin="319,334,0,0" VerticalAlignment="Top" Width="105"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="28,53,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListView x:Name="busListView" ItemsSource="{Binding}" Margin="172,53,369.333,167.667" >
-            <ListView.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="bus_statusColumn" Header="the bus is" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Bus_status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="fuel_tankColumn" Header="Fuel" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="kmColumn" Header="Km" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="387" VerticalAlignment="Center" Margin="0,34,338.333,-0.333"/>
+        <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="188,36,0,0" VerticalAlignment="Top" Height="175" Width="305">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="134"/>
+                <ColumnDefinition Width="Auto" MinWidth="122.667"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="47.333"/>
+                <RowDefinition Height="Auto" MinHeight="40"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="סטטוס" Grid.Column="1" HorizontalAlignment="Left" Margin="56.333,10.333,0,11" Grid.Row="1" VerticalAlignment="Stretch" Width="66"/>
+            <Label x:Name="bus_statusLabel" Content="{Binding Bus_status}" Grid.Column="0" HorizontalAlignment="Left" Margin="10,6.333,0,9" Grid.Row="1" VerticalAlignment="Stretch" Width="83"/>
+            <Label Content="דלק" Grid.Column="1" HorizontalAlignment="Left" Margin="69.333,5,0,10.333" Grid.Row="3" VerticalAlignment="Stretch" Width="31"/>
+            <Label x:Name="fuel_tankLabel" Content="{Binding Fuel_tank}" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,3.333" Grid.Row="3" VerticalAlignment="Stretch" Width="83"/>
+            <Label Content="ק&quot;מ" Grid.Column="1" HorizontalAlignment="Left" Margin="69.333,4,0,10" Grid.Row="2" VerticalAlignment="Stretch" Width="30"/>
+            <Label x:Name="kmLabel" Content="{Binding Km}" Grid.Column="0" HorizontalAlignment="Left" Margin="10,4,0,1" Grid.Row="2" VerticalAlignment="Stretch" Width="83"/>
+            <Label Content="תאריך עלייה לכביש" HorizontalAlignment="Left" Margin="8.333,4,0,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="110" Grid.Column="1"/>
+            <Label x:Name="start_dateLabel" Content="{Binding Start_date}" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="115"/>
+        </Grid>
+        <Button Content="מחק אוטובוס" HorizontalAlignment="Left" Height="33" Margin="277,322,0,0" VerticalAlignment="Top" Width="75" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold"/>
+        <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="33" Margin="379,322,0,0" VerticalAlignment="Top" Width="75" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_1"/>
+        <Button x:Name="btnGO" Content="הוסף אוטובוס" HorizontalAlignment="Left" Height="33" Margin="174,322,0,65.667" VerticalAlignment="Center" Width="72"  FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click" RenderTransformOrigin="2.606,0.201"/>
+
 
 
     </Grid>

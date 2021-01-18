@@ -6,8 +6,41 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Line"
         mc:Ignorable="d"
-        Title="Line" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0.2,-0.8">
+        Title="Line" Height="450" Width="800"  WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="lines"
+            DataType="local:LineStation">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Text="{Binding Path=Area}" Width="25" FontWeight="Bold"   FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Row="0" Text="{Binding Path=Line_Number}" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="station"
+            DataType="local:LineStation">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Line_Station_Index}" Width="25" FontWeight="Bold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Code}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="2" Text="{Binding Path=Name}" Width="25" FontWeight="Bold"   FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="3" Text="{Binding Path=distance}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="4" Text="{Binding Path=time}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+            </Grid>
+        </DataTemplate>
+        <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
+    </Window.Resources>
+    
+    <Grid Margin="0,0,0.2,-0.8" DataContext="{StaticResource busLineViewSource}">
         <Grid.RowDefinitions>
             <RowDefinition Height="382*"/>
             <RowDefinition Height="39*"/>
@@ -20,43 +53,11 @@
         <Button x:Name="remove" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="101,10,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click" Grid.Row="1"/>
 
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" DataContext="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,-0.667,0" Grid.Column="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="line_Station_IndexColumn" Binding="{Binding Line_Station_Index}"  Header="" Width="25"/>
-                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}"  Header="Code" Width="80"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="200"/>
-                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding distance}" Header="distance" Width="100"/>
-                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding time}" Header="time" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        
+        <ListBox x:Name="busLineListBox" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=lines}" SelectionChanged="busLineListView_SelectionChanged"  Grid.Column="0"   />
+        <ListBox x:Name="linestationListBox" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Extended" ItemTemplate="{StaticResource ResourceKey=station}"   Grid.Column="1"   />
 
 
-        <ListView x:Name="busLineListView" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single"  SelectionChanged="busLineListView_SelectionChanged"  Grid.Column="0" >
-            <ListView.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Bottom"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="line_NumberColumn" Header="Line" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="areaColumn" Header="Area" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
 
     </Grid>
 </Window>

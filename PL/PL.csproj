@@ -89,6 +89,9 @@
     <Compile Include="Stations.xaml.cs">
       <DependentUpon>Stations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpDateBus.xaml.cs">
+      <DependentUpon>UpDateBus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpDateLine.xaml.cs">
       <DependentUpon>UpDateLine.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Stations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpDateBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

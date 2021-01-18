@@ -38,5 +38,11 @@ namespace PL
             Line l = new Line(_lb);
             l.ShowDialog();
         }
+
+        private void rbStudents_Checked(object sender, RoutedEventArgs e)
+        {
+            Buses buses = new Buses(_lb);
+            buses.ShowDialog();
+        }
     }
 }
