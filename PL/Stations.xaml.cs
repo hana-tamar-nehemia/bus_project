@@ -104,7 +104,7 @@ namespace PL
         
         private void stationListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            station = (Station)stationListView.SelectedItem;
+            station = (Station)ListStation.SelectedItem;
             DetailsStation.IsEnabled = true;
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
