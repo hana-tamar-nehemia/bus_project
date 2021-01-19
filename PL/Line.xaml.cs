@@ -30,16 +30,15 @@ namespace PL
             busLineListBox.DataContext = _bl.GetAllBusLine();
             busLineListBox.SelectedIndex = 0; //index of the object to be selected
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
-            //linestationListBox.IsReadOnly = true;
-            linestationListBox.DataContext= busLine.ListLineStations; 
+            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
         }
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
-            linestationListBox = new ListBox();
-            linestationListBox.DataContext = busLine.ListLineStations;
+            //linestationListBox = new ListBox();
+            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
         }
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -94,7 +93,7 @@ namespace PL
                 if (busLine != null)
                 {
                     _bl.DeleteBusLine(busLine.License_num);
-                    linestationListBox.ItemsSource = null;
+                    //linestationListBox.ItemsSource = null;
                     busLineListBox.ItemsSource = _bl.GetAllBusLine();
                     btnGO.IsEnabled = false;
                    // remove.IsEnabled = false;

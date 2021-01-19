@@ -14,13 +14,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Right" />
-                <TextBlock Grid.Column="1" Text="{Binding Path=Name}"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Right" />
-                <Button  x:Name="change_distance" Grid.Column="2" Content="שנה מרחק/זמן " FontWeight="Bold" Click="Button_Click_2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-                <Button  x:Name="remove" Grid.Column="3" Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                <TextBlock Grid.Column="2" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Name}"   VerticalAlignment="Center" HorizontalAlignment="Right" />
+                <Button  x:Name="remove" Grid.Column="0" Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"  />
             </Grid>
         </DataTemplate>
 
@@ -41,12 +39,13 @@
     <Grid Margin="0,0,0.333,-0.333" Height="421" VerticalAlignment="Bottom">
 
         <TextBlock x:Name="line_num" HorizontalAlignment="Left" Height="41" Margin="706,10,0,0" TextWrapping="Wrap" FontSize="25" VerticalAlignment="Top" Width="62" />
-        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="206" Margin="318,110,0,0" VerticalAlignment="Top" Width="465"  ItemTemplate="{StaticResource ResourceKey=My_Stations}"   />
+        <ListBox x:Name="list_of_station" HorizontalAlignment="Left" Height="206" Margin="318,110,0,0" VerticalAlignment="Top" Width="465" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=My_Stations}"   />
         <Label Content="מסלול הקו" HorizontalAlignment="Left" Margin="706,75,0,0" VerticalAlignment="Top" Height="40" Width="87"/>
         <Label Content="בחר תחנה להוספה" HorizontalAlignment="Left" Margin="205,80,0,0" VerticalAlignment="Top" Height="35" Width="128"/>
-        <Button Content="עדכן" HorizontalAlignment="Left" Margin="262,370,0,0" VerticalAlignment="Top" Width="199" Click="update_click" Height="28"/>
-        <ListBox x:Name="addstationlist" SelectionMode="Single" Margin="13,110,480,105" DataContext="{Binding}" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=stationAdd}" SelectionChanged="addstationlist_SelectionChanged"/>
+        <Button x:Name="update" Content="עדכן" IsEnabled="{Binding}" HorizontalAlignment="Left" Margin="262,370,0,0" VerticalAlignment="Top" Width="199" Click="update_click" Height="28"/>
+        <ListBox x:Name="addstationlist" SelectionMode="Single" Margin="13,110,480,105" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=stationAdd}" SelectionChanged="addstationlist_SelectionChanged"/>
         <Button x:Name="addstationbuttom" Content="הוסף" IsEnabled="{Binding}" HorizontalAlignment="Left" Margin="53,334,0,0" VerticalAlignment="Top" Width="163" Click="Button_Click" Height="27"/>
         <ComboBox x:Name="area_combox" HorizontalAlignment="Left" Margin="26,31,0,0" VerticalAlignment="Top" Width="176" Height="37" SelectionChanged="area_combox_SelectionChanged"/>
+        <Label Content="קו" HorizontalAlignment="Left" Margin="744,13,0,0" VerticalAlignment="Top" Height="40" Width="24"/>
     </Grid>
 </Window>
