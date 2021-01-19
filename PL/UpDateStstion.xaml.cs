@@ -24,7 +24,9 @@ namespace PL
         {
             InitializeComponent();
             _bl = bl;
-
+            grid1.DataContext = station;
+            grid2.DataContext= station;
+            grid3.DataContext = station;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

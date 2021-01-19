@@ -53,7 +53,9 @@ namespace PL
             latitudeTextBox.DataContext = station.Latitude;
             longitudeTextBox.DataContext = station.longitude;
             busLineListView.IsEnabled = true;
-         
+            
+
+
             busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
              
         }
@@ -89,20 +91,21 @@ namespace PL
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            //AddStation m = new AddStation();
-            //m.ShowDialog();
+            AddStation m = new AddStation(_lb);
+            m.ShowDialog();
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            UpDateStstion update = new UpDateStstion(_lb, (BO.Station)busLineListView.SelectedItem); 
+            BO.Station st = ListStation.SelectedItem as BO.Station;
+            UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
             //refreshScreen();
 
         }
 
         
-        private void stationListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ListStation_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             station = (Station)ListStation.SelectedItem;
             DetailsStation.IsEnabled = true;
@@ -110,7 +113,8 @@ namespace PL
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
             busLineListView.IsEnabled = true;
-            busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            List<BusLine> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
+             busLineListView.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
         }
     }
 }

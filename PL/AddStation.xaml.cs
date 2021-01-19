@@ -39,7 +39,8 @@ namespace PL
         private void add_Click(object sender, RoutedEventArgs e)//לבדוק איך אפשר לעשות עם try pars ולא covert
         {
             string Address = addressTextBox.Text;
-            int Code = Convert.ToInt32(codeTextBox.Text);
+
+            int Code = int.Parse(codeTextBox.Text); //Convert.ToInt32(codeTextBox.Text);
             Double Latitude = Convert.ToDouble(latitudeTextBox.Text);
             Double longitude = Convert.ToDouble(latitudeTextBox.Text);
             string Name = nameTextBox.Text;
