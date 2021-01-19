@@ -311,6 +311,11 @@ namespace DL
 
         #region Bus Line
 
+        public int GEt_Line_Id()
+        {
+            return Config.Line_Id++;
+        }
+
         public DO.BusLine GetBusLine(int Bus_Id)
         {
             DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);
@@ -343,7 +348,7 @@ namespace DL
         {
             if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == BusLine.Bus_Id) != null)
                 throw new DO.BadBusLineException(BusLine.Bus_Id, "Duplicate bus line Id");
-            BusLine.Line_Id = Config.LineID++;
+            BusLine.Line_Id = Config.Line_Id++;
             DataSource.List_Bus_Line.Add(BusLine.Clone());
         }
 

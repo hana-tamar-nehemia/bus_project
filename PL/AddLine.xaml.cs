@@ -60,6 +60,7 @@ namespace PL
             BusLine.Line_Number = line_NumberTextBox.Text;
             BusLine.License_num= _bl.GetFreeBus().License_num;
             BusLine.Act = true;
+            BusLine.Line_Id = _bl.GEt_Line_Id();    //מספר רץ
             Station station = new Station();
             station= (Station)first_StationComboBox.SelectedItem;
             BusLine.First_Station = station.Code; 

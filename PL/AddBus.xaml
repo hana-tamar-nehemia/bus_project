@@ -13,7 +13,7 @@
     <Grid>
         <Label Content="enter detail of the new bus" HorizontalAlignment="Left" Margin="21,22,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold"  FontSize="20"/>
 
-        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,82,0,0" HorizontalAlignment="Left" DataContext="{Binding}" Height="328" Width="276">
+        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,82,0,0" HorizontalAlignment="Left"  Height="328" Width="276">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="65.333"/>
@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,-71.333,21.333" HorizontalAlignment="Right" Content="סטטוס" Height="26" Width="57" Grid.Column="1"/>
-            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,28.667,0,21.333" ItemsSource="{Binding}" HorizontalAlignment="Left" Grid.Column="0" DisplayMemberPath="Bus_status">
+            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,28.667,0,21.333" SelectedItem="{Binding Bus_status}" HorizontalAlignment="Left" Grid.Column="0" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>

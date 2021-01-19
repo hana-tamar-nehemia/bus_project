@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace PL
 {
     /// <summary>
@@ -24,6 +23,8 @@ namespace PL
         public UpDateStstion(IBL bl , BO.Station station)
         {
             InitializeComponent();
+            _bl = bl;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

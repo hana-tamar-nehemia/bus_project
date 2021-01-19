@@ -42,7 +42,7 @@
         <Label Content=" License numbers:" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Top" Height="29" Width="114" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.5,0.586"/>
 
         <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="387" VerticalAlignment="Center" Margin="0,34,338.333,-0.333"/>
-        <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="178,47,0,0" VerticalAlignment="Top" Height="175" Width="305">
+        <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="168,58,0,0" VerticalAlignment="Top" Height="175" Width="305">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="134"/>
                 <ColumnDefinition Width="Auto" MinWidth="122.667"/>
@@ -62,7 +62,7 @@
             <Label Content="תאריך עלייה לכביש" HorizontalAlignment="Left" Margin="8.333,4,0,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="110" Grid.Column="1"/>
             <Label x:Name="start_dateLabel" Content="{Binding Start_date}" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="115"/>
         </Grid>
-        <Button Content="מחק אוטובוס" HorizontalAlignment="Left" Height="33" Margin="291,352,0,0" VerticalAlignment="Top" Width="75" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold"/>
+        <Button Content="מחק אוטובוס" HorizontalAlignment="Left" Height="33" Margin="291,352,0,0" VerticalAlignment="Top" Width="75" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_2"/>
         <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="33" Margin="393,352,0,0" VerticalAlignment="Top" Width="75" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_1"/>
         <Button x:Name="btnGO" Content="הוסף אוטובוס" HorizontalAlignment="Left" Height="33" Margin="188,352,0,35.667" VerticalAlignment="Center" Width="72"  FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click" RenderTransformOrigin="2.606,0.201"/>
 

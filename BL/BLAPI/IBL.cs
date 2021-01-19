@@ -12,9 +12,10 @@ namespace BLAPI
     public interface IBL
     {
 
-
         #region Bus Line
         BO.BusLine GetBusLine(int Bus_Id);
+        int GEt_Line_Id();
+
         IEnumerable<BO.BusLine> GetAllBusLine();
         //IEnumerable<BO.BusLine> GetAllBusLineBy(Predicate<BO.BusLine> predicate);
         void AddBusLine(BO.BusLine busLine);

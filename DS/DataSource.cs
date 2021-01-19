@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using DO;
 namespace DS
 {
@@ -25,7 +24,6 @@ namespace DS
             InitAllLists();
         }
         static Random r = new Random();
-        static int id = 1;
         static int line_number = 1;
        
         static void InitAllLists()
@@ -700,7 +698,7 @@ namespace DS
             new BusLine
             {
                Bus_Id=3968393,
-               Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
         
                 Line_Number=Convert.ToString(line_number++),
@@ -712,7 +710,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=4768393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=91,
@@ -722,7 +720,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=7568393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=109,
@@ -732,7 +730,7 @@ namespace DS
               new BusLine
             {
                Bus_Id=9968393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=1486,
@@ -742,7 +740,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=8868393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=1512,
@@ -752,7 +750,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=7768393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=73,
@@ -762,7 +760,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=6668393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=91,
@@ -772,7 +770,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=5568393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=109,
@@ -782,7 +780,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=4468393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=1486,
@@ -792,7 +790,7 @@ namespace DS
                 new BusLine
             {
                Bus_Id=3368393,
-                Line_Id=id++,
+               Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
                Line_Number=Convert.ToString(line_number++),
                First_Station=1512,

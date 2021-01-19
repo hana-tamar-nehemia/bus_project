@@ -25,8 +25,9 @@ namespace PL
         {
             InitializeComponent();
             busdetail = new Grid();
-            bus_statusTextBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-
+            Bus = bus;
+            bus_statusTextBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
+            bus_statusTextBox.SelectedIndex = (int)bus.Bus_status;
             busdetail.DataContext = bus;
         }
 

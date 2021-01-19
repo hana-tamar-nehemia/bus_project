@@ -28,9 +28,9 @@ namespace PL
         {
             _lb = lb;
             InitializeComponent();
-            stationListView.DataContext = _lb.GetAllStation();
-            stationListView.SelectedIndex = 0;
-            station = (Station)stationListView.SelectedItem;
+            ListStation.DataContext = _lb.GetAllStation();
+            ListStation.SelectedIndex = 0;
+            station = (Station)ListStation.SelectedItem;
              
         }
 
@@ -44,10 +44,10 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
-        private void stationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
+        private void stationList_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
         {
 
-            station = (Station)stationListView.SelectedItem;
+            station = (Station)ListStation.SelectedItem;
             DetailsStation.IsEnabled = true;
             addressTextBox.DataContext = station.Address;
             latitudeTextBox.DataContext = station.Latitude;
@@ -66,7 +66,7 @@ namespace PL
         private void remove_Click(object sender, RoutedEventArgs e)
         {
 
-            station = (Station)stationListView.SelectedItem;
+            station = (Station)ListStation.SelectedItem;
             MessageBoxResult res = MessageBox.Show("Delete selected station ?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.No)
                 return;
@@ -76,7 +76,7 @@ namespace PL
                 {
                     _lb.DeleteStation(station.Code);
                     DetailsStation.IsEnabled = false;
-                    stationListView.DataContext = _lb.GetAllStation();
+                    ListStation.DataContext = _lb.GetAllStation();
                     busLineListView.IsEnabled = false;
                     remove.IsEnabled = false;
                 }
@@ -89,8 +89,8 @@ namespace PL
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            AddStation m = new AddStation();
-            m.ShowDialog();
+            //AddStation m = new AddStation();
+            //m.ShowDialog();
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
