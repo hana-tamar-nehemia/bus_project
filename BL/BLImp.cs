@@ -202,7 +202,9 @@ namespace BL
             LineStationDO.CopyPropertiesTo(LineStationBO);
             DO.Station stationDO = dl.GetStation(LineStationDO.Code);
             stationDO.CopyPropertiesTo(LineStationBO);
-            if (LineStationDO.Line_Station_Index > 1)
+            BO.BusLine l = BusLineDoBoAdapter(dl.GetBusLineBy(LineStationDO.Line_Id));
+            LineStationBO.Number_Line = l.Line_Number;
+                if (LineStationDO.Line_Station_Index > 1)
             {
                 DO.LineStation prevls = dl.GetPrevLineStation(LineStationDO.Line_Id, LineStationDO.Line_Station_Index - 1);
                 DO.AdjStation a = dl.GetAdjStation(prevls.Code, LineStationDO.Code);
@@ -214,6 +216,9 @@ namespace BL
                 LineStationBO.distance = 0;
                 LineStationBO.time = new TimeSpan(0, 0, 0);
             }
+            LineStationBO.Collection_Lines = from line in dl.GetAllBusLine() 
+                                             where (line.Line_Id == LineStationDO.Line_Id) 
+                                             select BusLineDoBoAdapter(line);
             return LineStationBO;
         }
         //get

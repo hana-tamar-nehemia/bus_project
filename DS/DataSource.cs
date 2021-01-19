@@ -700,8 +700,7 @@ namespace DS
                Bus_Id=3968393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-        
-                Line_Number=Convert.ToString(line_number++),
+               Line_Number=Convert.ToString(line_number++),
                First_Station=73,
                Last_Station=90,
                   Act=true

@@ -16,7 +16,7 @@ namespace BO
         //public bool Act { get; set; }
 
         public int Line_Id { get; set; }
-        public int Number_Line { get; set; }//קו שעובר בה
+        public string Number_Line { get; set; }//קו שעובר בה
         public int Line_Station_Index { get; set; }
          public bool ActLineStation { get; set; }
         public double distance { get; set; }//אווירי
