@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="284,105,0,0" HorizontalAlignment="Left" DataContext="{StaticResource stationViewSource}">
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="284,105,0,0" HorizontalAlignment="Left" DataContext="{StaticResource stationViewSource}" Height="166">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -35,6 +35,7 @@
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Name:"/>
             <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
-
+        <Button Content="הוסף" HorizontalAlignment="Left" Margin="182,332,0,0" VerticalAlignment="Top" Width="99" Click="add_Click" />
+        <Button Content="ביטול" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="407,332,0,0" Width="93" Click="Close_Click" />
     </Grid>
 </Window>

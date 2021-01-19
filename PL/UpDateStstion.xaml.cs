@@ -1,5 +1,4 @@
 ﻿using BLAPI;
-using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +16,12 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for AddStation.xaml
+    /// Interaction logic for UpDateStstion.xaml
     /// </summary>
-    public partial class AddStation : Window
+    public partial class UpDateStstion : Window
     {
         IBL _bl;
-
-        Station station = new Station();
-        public AddStation()
+        public UpDateStstion(IBL bl , BO.Station station)
         {
             InitializeComponent();
         }
@@ -36,22 +33,11 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // stationViewSource.Source = [generic data source]
         }
-        private void add_Click(object sender, RoutedEventArgs e)//לבדוק איך אפשר לעשות עם try pars ולא covert
-        {
-            string Address = addressTextBox.Text;
-            int Code = Convert.ToInt32(codeTextBox.Text);
-            Double Latitude = Convert.ToDouble(latitudeTextBox.Text);
-            Double longitude = Convert.ToDouble(latitudeTextBox.Text);
-            string Name = nameTextBox.Text;
-             _bl.AddStation(Code,Name,Address,Latitude,longitude);
-            MessageBox.Show("Added");
-            this.Close();
-
-        }
-
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Stations m = new Stations(_bl);
+            m.ShowDialog();
         }
     }
 }

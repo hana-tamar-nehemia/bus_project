@@ -82,11 +82,13 @@ namespace BLAPI
          void AddStation(int Code, string Name, string Address, double Latitude, double longitude);//הוספת תחנה פיזית
 
          void DeleteStation(int code);
+
+        IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code);
         #endregion
 
         #region AdjStation
 
-         void AddAdjStation(int code, int code1, int d, TimeSpan t,bool a);
+        void AddAdjStation(int code, int code1, int d, TimeSpan t,bool a);
         IEnumerable<BO.AdjStation> GetAdjStationListBy(Predicate<BO.AdjStation> predicate);
         BO.AdjStation GetAdjStation(int code1,int code2);
         void UpdateAdjStation(BO.AdjStation adj);

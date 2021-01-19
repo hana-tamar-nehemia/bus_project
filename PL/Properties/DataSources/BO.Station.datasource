@@ -6,6 +6,22 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="Station" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <Children>
+      <GenericObjectDataSource DisplayName="Collection_Lines" Version="1.0">
+         <TypeInfo>System.Collections.Generic.IEnumerable`1[[BO.BusLine, BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="Station.Collection_Lines">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+   </Children>
    <TypeInfo>BO.Station, BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
    <TypeUISetting>
       <PropertyUISettings>
@@ -19,18 +35,32 @@
          <PropertyUISetting Name="Latitude">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
-                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                  <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
          <PropertyUISetting Name="Address">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
-                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                  <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
          <PropertyUISetting Name="longitude">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Code">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="Name">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
                   <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />

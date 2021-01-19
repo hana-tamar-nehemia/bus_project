@@ -26,6 +26,12 @@ namespace BL
             return StationBO;
         }
         //get
+        public IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code)
+        {
+            return from item in dl.GetAllBusLimeByStation(code)
+                   select BusLineDoBoAdapter(item);
+        }
+
         public BO.Station GetStation(int code)//מקבל תחנה לפי קוד תחנה 
         {
             try
@@ -377,20 +383,11 @@ namespace BL
                 throw new BO.BadBusLineException("Student ID is illegal", ex);
             }
             BusDO.CopyPropertiesTo(BusLineBO);
-            //BusLineBO.Bus_status = (Bus_status)BusDO.Bus_status;
-            //BusLineBO.License_num = BusDO.License_num;
-            //BusLineBO.Fuel_tank= BusDO.Fuel_tank;
-            //BusLineBO.Km= BusDO.Km;
-            //BusLineBO.Start_date = BusDO.Start_date;
+            
 
             BusLineDO.CopyPropertiesTo(BusLineBO);
 
-            //BusLineBO.Act = BusLineDO.Act;
-            //BusLineBO.First_Station = BusLineDO.First_Station;
-            //BusLineBO.Last_Station = BusLineDO.Last_Station;
-            //BusLineBO.Line_Id = BusLineDO.Line_Id;
-            //BusLineBO.Line_Number = BusLineDO.Line_Number;
-            //BusLineBO.Area = (Areas)BusLineDO.Area;
+            
             //********************************************************
             BusLineBO.ListLineStations = GetAllLineStationsOfBusLine(BusLineDO.Line_Id);
             return BusLineBO;

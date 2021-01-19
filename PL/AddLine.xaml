@@ -62,7 +62,7 @@
             </ComboBox>
 
             <Label Content="מספר קו " Grid.Column="1" HorizontalAlignment="Left" FontSize="13" Margin="21.333,9,0,2.333" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="58"/>
-            <TextBox x:Name="line_NumberTextBox"  Text="00" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="0"   HorizontalAlignment="Left" Height="24" Margin="3,7,0,0" Grid.Row="0"  VerticalAlignment="Top" Width="309"/>
+            <TextBox x:Name="line_NumberTextBox"  Text="" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="0"   HorizontalAlignment="Left" Height="24" Margin="3,7,0,6.333" Grid.Row="0"  VerticalAlignment="Center" Width="309"/>
         </Grid>
         <Button Content="הוסף" HorizontalAlignment="Left" Margin="182,332,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click" />
         <Button Content="בטל" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="407,332,0,0" Width="93" Click="Button_Click_1" />

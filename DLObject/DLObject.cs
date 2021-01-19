@@ -31,6 +31,19 @@ namespace DL
             else
                 throw new DO.BadStaionCodeException(code, $"bad station code: {code}");
         }
+        public IEnumerable<DO.BusLine> GetAllBusLimeByStation(int code)
+        {
+
+            IEnumerable<int> Line_Id = from Station in DataSource.List_Line_Station
+                              where (Station.Code == code)
+                             select Station.Line_Id.Clone();
+            IEnumerable<DO.BusLine> busLines= from num in Line_Id
+                                              from num2 in DataSource.List_Bus_Line
+                                              where num == num2.Line_Id
+                                              select num2;
+            return busLines;
+
+        }
         public IEnumerable<DO.Station> GetAllStation()
         {
             return from Station in DataSource.List_Station
@@ -335,6 +348,7 @@ namespace DL
         {
             if (DataSource.List_Bus_Line.FirstOrDefault(b => b.Bus_Id == BusLine.Bus_Id) != null)
                 throw new DO.BadBusLineException(BusLine.Bus_Id, "Duplicate bus line Id");
+            BusLine.Line_Id = Config.LineID++;
             DataSource.List_Bus_Line.Add(BusLine.Clone());
         }
 
@@ -475,5 +489,9 @@ namespace DL
             DataSource.List_User.Add(u.Clone());
         }
         #endregion
+
+        
+       
+
     }
 }

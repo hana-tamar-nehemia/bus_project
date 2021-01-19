@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLAPI;
+using BO;
+
 namespace PL
 {
     /// <summary>
@@ -55,15 +57,17 @@ namespace PL
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BusLine.Line_Number = Convert.ToInt32(line_NumberTextBox.Text);
+            BusLine.Line_Number = line_NumberTextBox.Text;
             BusLine.License_num= _bl.GetFreeBus().License_num;
             BusLine.Act = true;
-            BusLine.Line_Id = _bl.GEt_Line_Id();    //מספר רץ
-            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//לא עושים ככה צריך לקחת את המספר תחנה של מה שנבחר לא סתם ככה מה שנבחר
-            BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//גם כאן
+            Station station = new Station();
+            station= (Station)first_StationComboBox.SelectedItem;
+            BusLine.First_Station = station.Code; 
+            station = (Station)last_StationComboBox.SelectedItem;
+            BusLine.First_Station = station.Code; 
             BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
             _bl.AddBusLine(BusLine);
-            MessageBox.Show("added");
+            MessageBox.Show("Added");
             this.Close();
 
         }

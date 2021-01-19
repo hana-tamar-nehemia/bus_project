@@ -11,7 +11,7 @@
         <GroupBox Header="choose:" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
             <StackPanel Margin="36,47,19,50.333">
                 <RadioButton x:Name ="rbStudents" Content="Buses" Height="24" Checked="rbStudents_Checked" IsChecked="False"/>
-                <RadioButton x:Name ="rbLecturers" Content="Stations" Height="23" Margin="0,0,-11,0"/>
+                <RadioButton x:Name ="rbStations" Content="Stations" Height="23" Margin="0,0,-11,0" Checked="rbStations_Checked"/>
                 <RadioButton x:Name ="rbLines" Content="Lines" Height="35" IsChecked= "False" Checked="rbLines_Checked"/>
 
             </StackPanel>
