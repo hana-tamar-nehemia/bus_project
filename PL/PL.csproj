@@ -71,14 +71,8 @@
     <Compile Include="Buses.xaml.cs">
       <DependentUpon>Buses.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditT_D.xaml.cs">
-      <DependentUpon>EditT_D.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Line.xaml.cs">
       <DependentUpon>Line.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LineStation.xaml.cs">
-      <DependentUpon>LineStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManagerEnterCheck.xaml.cs">
       <DependentUpon>ManagerEnterCheck.xaml</DependentUpon>
@@ -146,9 +140,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="תמונה2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
       <Project>{2256497b-4c6a-485f-8b1b-bfc792e8a372}</Project>
       <Name>BL</Name>
@@ -171,15 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditT_D.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Line.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LineStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

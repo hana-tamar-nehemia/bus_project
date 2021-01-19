@@ -24,11 +24,12 @@ namespace PL
         public UpDateBus(BO.Bus bus, IBL bl)
         {
             InitializeComponent();
-            busdetail = new Grid();
+           // busdetail = new Grid();
             Bus = bus;
             bus_statusTextBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
             bus_statusTextBox.SelectedIndex = (int)bus.Bus_status;
             busdetail.DataContext = bus;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -29,14 +29,14 @@ namespace PL
         {
             InitializeComponent();
             _bl = lb;
+            update.IsEnabled = false;
+
             addstationbuttom.IsEnabled = false;
             busLineSelected = busLine;
             line_num.Text = Convert.ToString(busLine.Line_Number);
             area_combox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             area_combox.SelectedIndex = (int)busLine.Area;
-            list_of_station = new ListBox();
-            List<BO.LineStation> ls = busLineSelected.ListLineStations.ToList();
-            list_of_station.DataContext = ls;                                                   //לא מוצג הרשימה של האוטובוס בליסט
+            list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id);
             addstationlist.DataContext = _bl.GetAllStation();
         }
 
@@ -85,12 +85,6 @@ namespace PL
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)//עדכון מרחק או זמן של תחנה בקו אוטובוס
-        {
-            BO.LineStation b = new BO.LineStation();
-            b = ((sender as Button).DataContext as BO.LineStation);
-            EditT_D edit = new EditT_D(_bl, b, _bl.GetPrevLineStation(b),busLineSelected);
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
         {
@@ -101,7 +95,7 @@ namespace PL
                 b = ((sender as Button).DataContext as BO.LineStation);
                 _bl.DeleteLineStationInBus(b.Code, b.Line_Id);
                 _bl.UpdateBusLinePhat(busLineSelected);
-               list_of_station.DataContext = busLineSelected.ListLineStations;
+               list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
             }
             
         }
@@ -133,6 +127,7 @@ namespace PL
 
         private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            update.IsEnabled = true;
             int i = area_combox.SelectedIndex;
             busLineSelected.Area = (BO.Areas)i;
         }
