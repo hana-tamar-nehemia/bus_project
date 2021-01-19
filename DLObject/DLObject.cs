@@ -298,6 +298,11 @@ namespace DL
 
         #region Bus Line
 
+        public int GEt_Line_Id()
+        {
+            return Config.Line_Id++;
+        }
+
         public DO.BusLine GetBusLine(int Bus_Id)
         {
             DO.BusLine bl = DataSource.List_Bus_Line.Find(b => b.Bus_Id == Bus_Id);

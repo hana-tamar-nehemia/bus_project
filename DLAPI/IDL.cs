@@ -13,9 +13,10 @@ namespace DLAPI
     // Delete - delete an instance
     public interface IDL
     {
-        
+
         #region Bus Line
-         DO.BusLine GetBusLine(int Bus_Id);
+        int GEt_Line_Id();
+        DO.BusLine GetBusLine(int Bus_Id);
          DO.BusLine GetBusLineBy(int line_id);
          IEnumerable<DO.BusLine> GetAllBusLine();
 

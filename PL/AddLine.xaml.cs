@@ -58,7 +58,7 @@ namespace PL
             BusLine.Line_Number = Convert.ToInt32(line_NumberTextBox.Text);
             BusLine.License_num= _bl.GetFreeBus().License_num;
             BusLine.Act = true;
-            //BusLine.Line_Id = LineID++;     לבדוק איך הסטטיק עובד
+            BusLine.Line_Id = _bl.GEt_Line_Id();    //מספר רץ
             BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//לא עושים ככה צריך לקחת את המספר תחנה של מה שנבחר לא סתם ככה מה שנבחר
             BusLine.First_Station = (int)last_StationComboBox.SelectedItem;//גם כאן
             BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
