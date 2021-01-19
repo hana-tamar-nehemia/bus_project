@@ -53,6 +53,7 @@ namespace PL
             latitudeTextBox.DataContext = station.Latitude;
             longitudeTextBox.DataContext = station.longitude;
             busLineListView.IsEnabled = true;
+         
             busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
              
         }
@@ -98,6 +99,18 @@ namespace PL
             update.ShowDialog();
             //refreshScreen();
 
+        }
+
+        
+        private void stationListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            station = (Station)stationListView.SelectedItem;
+            DetailsStation.IsEnabled = true;
+            addressTextBox.Text = station.Address;
+            latitudeTextBox.Text = Convert.ToString(station.Latitude);
+            longitudeTextBox.Text = Convert.ToString(station.longitude);
+            busLineListView.IsEnabled = true;
+            busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
         }
     }
 }
