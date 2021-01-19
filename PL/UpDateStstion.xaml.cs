@@ -1,4 +1,5 @@
 ﻿using BLAPI;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 namespace PL
 {
     /// <summary>
@@ -20,13 +22,15 @@ namespace PL
     public partial class UpDateStstion : Window
     {
         IBL _bl;
+        Station s = new Station();
+
         public UpDateStstion(IBL bl , BO.Station station)
         {
             InitializeComponent();
             _bl = bl;
             grid1.DataContext = station;
             grid2.DataContext= station;
-            grid3.DataContext = station;
+            s = station;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,8 +43,13 @@ namespace PL
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Stations m = new Stations(_bl);
-            m.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Station s = new Station();
+            s.Name = nameTextBox.Text;
+            _bl.UpdateStation(s);
         }
     }
 }

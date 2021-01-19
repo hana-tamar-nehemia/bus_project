@@ -68,11 +68,30 @@ namespace PL
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            _bl.DeleteBus(bus.License_num);
+             
+            MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+                return;
+            try
+            {
+                _bl.DeleteBus(bus.License_num);
+                busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
+                busListBox.SelectedIndex = 0;
+                dataBus.DataContext = busListBox.SelectedItem;
+                bus = (BO.Bus)busListBox.SelectedItem;
+                refreshScreen();
+            }
+            catch (BO.BadBusLineException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+        }
+        private void refreshScreen()
+        {
             busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
             busListBox.SelectedIndex = 0;
             dataBus.DataContext = busListBox.SelectedItem;
             bus = (BO.Bus)busListBox.SelectedItem;
-        }
-    }
+    }   }
 }

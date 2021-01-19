@@ -44,20 +44,17 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
-        private void stationList_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
+        private void ListStation_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
         {
 
             station = (Station)ListStation.SelectedItem;
             DetailsStation.IsEnabled = true;
-            addressTextBox.DataContext = station.Address;
-            latitudeTextBox.DataContext = station.Latitude;
-            longitudeTextBox.DataContext = station.longitude;
+            addressTextBox.Text = station.Address;
+            latitudeTextBox.Text = Convert.ToString(station.Latitude);
+            longitudeTextBox.Text = Convert.ToString(station.longitude);
             busLineListView.IsEnabled = true;
-            
-
-
-            busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
-             
+            List<BusLine> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
+            busLineListView.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +66,7 @@ namespace PL
         {
 
             station = (Station)ListStation.SelectedItem;
-            MessageBoxResult res = MessageBox.Show("Delete selected station ?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult res = MessageBox.Show(" ? למחוק את התחנה  ", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.No)
                 return;
             try
@@ -97,6 +94,7 @@ namespace PL
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
+           
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
@@ -105,16 +103,10 @@ namespace PL
         }
 
         
-        private void ListStation_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            station = (Station)ListStation.SelectedItem;
-            DetailsStation.IsEnabled = true;
-            addressTextBox.Text = station.Address;
-            latitudeTextBox.Text = Convert.ToString(station.Latitude);
-            longitudeTextBox.Text = Convert.ToString(station.longitude);
-            busLineListView.IsEnabled = true;
-            List<BusLine> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
-             busLineListView.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
-        }
+        
+
+        
+
+        
     }
 }

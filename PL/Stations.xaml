@@ -34,14 +34,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="addressTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,5,-141.6,4.8" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266"/>
-            <Label Content="Latitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="latitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="longitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="longitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content=" :כתובת" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.2,3,-205.4,7" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="addressTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22.2,6,-149,7" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266" IsEnabled="False"/>
+            <Label Content="  :קו רוחב" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.2,0,-215.4,0" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="latitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="168.2,10,-146.6,31" Grid.Row="1" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"   Grid.RowSpan="2"/>
+            <Label Content=" :קו אורך " IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.2,0,-224.2,6" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="longitudeTextBox" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="168.2,10,-145.8,0" Grid.Row="2" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <ListView x:Name="busLineListView"  Margin="184,103,4.6,39" SelectionMode="Single">
+        <ListView x:Name="busLineListView"  Margin="466,121,240.6,38" SelectionMode="Single"  >
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -53,16 +53,16 @@
                     <GridViewColumn x:Name="line_NumberColumn" Header="Line Number" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBox   Margin="6,-1,-6,-1" Text="{Binding Line_Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Update" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="298,388,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" />
-        <Button x:Name="remove" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="542,388,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"  />
+        <Button x:Name="Update" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="558,386,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" />
+        <Button x:Name="remove" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="286,388,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"  />
         <Button x:Name="addline" Content="הוספת תחנה" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold"  Margin="0,381,0,0" Click="add_Click"/>
-        <ListBox x:Name="ListStation" SelectionChanged="stationList_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184" MouseDoubleClick="ListStation_MouseDoubleClick"/>
+        <ListBox x:Name="ListStation" SelectionChanged="ListStation_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184"  />
     </Grid>
 </Window>

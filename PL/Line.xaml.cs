@@ -27,7 +27,7 @@ namespace PL
         {
             InitializeComponent();
             _bl = lb;
-            busLineListBox.DataContext = _bl.GetAllBusLine();
+            busLineListBox.DataContext = _bl.GetAllBus();
             busLineListBox.SelectedIndex = 0; //index of the object to be selected
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
             linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
@@ -60,7 +60,7 @@ namespace PL
 
         private void refreshScreen()
         {
-            busLineListBox.DataContext = _bl.GetAllBusLine();
+            busLineListBox.DataContext = _bl.GetAllBus();
             busLineListBox.SelectedIndex = selectindex;
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
             linestationListBox.DataContext = busLine.ListLineStations;
@@ -94,7 +94,7 @@ namespace PL
                 {
                     _bl.DeleteBusLine(busLine.License_num);
                     //linestationListBox.ItemsSource = null;
-                    busLineListBox.ItemsSource = _bl.GetAllBusLine();
+                    busLineListBox.ItemsSource = _bl.GetAllBus();
                     btnGO.IsEnabled = false;
                    // remove.IsEnabled = false;
                 }

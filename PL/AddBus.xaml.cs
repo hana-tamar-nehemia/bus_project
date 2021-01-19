@@ -44,9 +44,8 @@ namespace PL
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
             Bus = (BO.Bus)Addbus.DataContext;
-            //לבדוק מה מגיע ואם מגיע משהו טוב
-            //אז לעדכן את זה ברשימות של הדטה סורס
-            
+            bool a = true;
+            bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
             this.Close();
         }
     }

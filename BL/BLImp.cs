@@ -72,7 +72,12 @@ namespace BL
             DO.Station stationDO = new DO.Station() { Code = Code, Name = Name, Address = Address, Latitude = Latitude, longitude = longitude, Act = true };
             dl.AddStation(stationDO);
         }
-
+        public void UpdateStation(BO.Station station )
+        {
+            DO.Station sDO = new DO.Station();
+            station.CopyPropertiesTo(sDO);
+             dl.UpdateStation(sDO);
+        }
 
         public void DeleteStation(int code)
         {
@@ -107,7 +112,7 @@ namespace BL
         public BO.Bus GetFreeBus()//פונקציה שתחזיר מספר רישוי של אוטובוס פנוי
         {
             IEnumerable<BO.Bus> buses = GetAllBuses();
-            IEnumerable<BO.BusLine> lines = GetAllBusLine();
+            IEnumerable<BO.BusLine> lines = GetAllBus();
 
             IEnumerable<BO.Bus> bus = from num in buses
                                       from num2 in lines
@@ -300,7 +305,7 @@ namespace BL
             }
 
         }
-        public IEnumerable<BO.BusLine> GetAllBusLine()
+        public IEnumerable<BO.BusLine> GetAllBus()
         {
             return from item in dl.GetAllBusLine()
                    select BusLineDoBoAdapter(item);

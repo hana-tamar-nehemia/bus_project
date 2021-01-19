@@ -4,6 +4,7 @@ using DS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+ 
 namespace DL
 {
     sealed class DLObject : IDL    ///internall
@@ -81,27 +82,19 @@ namespace DL
                 DataSource.List_Station.Add(station.Clone());
         }
         //update
-        public void UpdateStation(DO.Station station)//מעדכן 
+        public void UpdateStation(DO.Station station )//מעדכן 
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == station.Code);
 
             if (per != null && per.Act == true)
             {
                 DataSource.List_Station.Remove(per);
-                per.Act = false;
+                per.Name = station.Name;
                 DataSource.List_Station.Add(per.Clone());
             }
             else
-                            if (per != null && per.Act == false)
-            {
-                DataSource.List_Station.Remove(per);
-                per.Act = true;
-                DataSource.List_Station.Add(per.Clone());
-            }
-
-            throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
+                throw new DO.BadStaionCodeException(station.Code, $"bad station code: {station.Code}");
         }
-
         public void DeleteStation(int code)
         {
             DO.Station per = DataSource.List_Station.Find(p => p.Code == code);

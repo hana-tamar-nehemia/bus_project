@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BO;
 
 namespace PL
 {
@@ -22,7 +23,7 @@ namespace PL
     {
         IBL _bl;
 
-        //Station station = new Station();
+         
         public AddStation(IBL bl)
         {
             _bl = bl;
@@ -36,15 +37,16 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // stationViewSource.Source = [generic data source]
         }
-        private void add_Click(object sender, RoutedEventArgs e)//לבדוק איך אפשר לעשות עם try pars ולא covert
+        private void add_Click(object sender, RoutedEventArgs e) 
         {
-            string Address = addressTextBox.Text;
 
-            int Code = int.Parse(codeTextBox.Text); //Convert.ToInt32(codeTextBox.Text);
-            Double Latitude = Convert.ToDouble(latitudeTextBox.Text);
-            Double longitude = Convert.ToDouble(latitudeTextBox.Text);
+
+            int Code = int.Parse(codeTextBox.Text);
+            Double Latitude = double.Parse(latitudeTextBox.Text);
+            Double longitude = double.Parse(latitudeTextBox.Text);
+            string Address = addressTextBox.Text;
             string Name = nameTextBox.Text;
-             _bl.AddStation(Code,Name,Address,Latitude,longitude);
+            _bl.AddStation(Code, Name, Address, Latitude, longitude);
             MessageBox.Show("Added");
             this.Close();
 
