@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BLAPI;
 namespace PL
 {
     /// <summary>
@@ -19,11 +19,17 @@ namespace PL
     /// </summary>
     public partial class AddBus : Window
     {
+        IBL bl;
         BO.Bus Bus = new BO.Bus();
-        public AddBus()
+        public AddBus(IBL _bl)
+
         {
+            bl = _bl;
             Addbus = new Grid();
+            bus_statusComboBox = new ComboBox();
+            bus_statusComboBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
             Addbus.DataContext = Bus;
+
             InitializeComponent();
         }
 
@@ -40,6 +46,7 @@ namespace PL
             Bus = (BO.Bus)Addbus.DataContext;
             //לבדוק מה מגיע ואם מגיע משהו טוב
             //אז לעדכן את זה ברשימות של הדטה סורס
+            
             this.Close();
         }
     }

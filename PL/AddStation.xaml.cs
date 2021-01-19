@@ -1,5 +1,4 @@
 ﻿using BLAPI;
-using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +22,10 @@ namespace PL
     {
         IBL _bl;
 
-        Station station = new Station();
-        public AddStation()
+        //Station station = new Station();
+        public AddStation(IBL bl)
         {
+            _bl = bl;
             InitializeComponent();
         }
 

@@ -39,7 +39,7 @@ namespace PL
 
         private void btnGO_Click(object sender, RoutedEventArgs e)//הוספת אוטובוס
         {
-            AddBus add = new AddBus();
+            AddBus add = new AddBus(_bl);
             add.Show();
         }
 
@@ -50,6 +50,7 @@ namespace PL
 
         private void busListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             dataBus.DataContext = busListBox.SelectedItem;
             bus = (BO.Bus)busListBox.SelectedItem;
         }
@@ -63,6 +64,15 @@ namespace PL
         {
             UpDateBus up = new UpDateBus(bus, _bl);
             up.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            _bl.DeleteBus(bus.License_num);
+            busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
+            busListBox.SelectedIndex = 0;
+            dataBus.DataContext = busListBox.SelectedItem;
+            bus = (BO.Bus)busListBox.SelectedItem;
         }
     }
 }

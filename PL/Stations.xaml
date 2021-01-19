@@ -8,37 +8,22 @@
         mc:Ignorable="d"
         Title="Stations" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
-        <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
+            <DataTemplate x:Key="station"
+            DataType="local:LineStation">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Text="{Binding Path=Name}" Width="30" FontWeight="Bold"   FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Row="0" Text="{Binding Path=Code}" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                </Grid>
+            </DataTemplate>
+            <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource stationViewSource}">
         <Button x:Name="back" Content="»" HorizontalAlignment="Left" Height="31" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click" RenderTransformOrigin="-0.446,2.74"/>
-        <ListView x:Name="stationListView" ItemsSource="{Binding}" Margin="0,0,609.6,37" SelectionMode="Single" SelectionChanged="stationListView_SelectionChanged">
-            <ListView.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="codeColumn" Header="Code" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="nameColumn" Header="Name" Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <Grid x:Name="DetailsStation" HorizontalAlignment="Left" Margin="189,0,-0.4,0" VerticalAlignment="Top" Width="605" Height="100">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -78,5 +63,6 @@
         <Button x:Name="Update" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="298,388,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" />
         <Button x:Name="remove" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="542,388,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"  />
         <Button x:Name="addline" Content="הוספת תחנה" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold"  Margin="0,381,0,0" Click="add_Click"/>
+        <ListBox x:Name="ListStation" SelectionChanged="stationList_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184"/>
     </Grid>
 </Window>
