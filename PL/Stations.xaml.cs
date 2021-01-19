@@ -1,4 +1,5 @@
 ﻿using BLAPI;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,15 @@ namespace PL
     public partial class Stations : Window
     {
         IBL _lb;
+        Station station = new Station();
         public Stations(IBL lb)
         {
             _lb = lb;
             InitializeComponent();
+            stationListView.DataContext = _lb.GetAllStation();
+            stationListView.SelectedIndex = 0;
+            station = (Station)stationListView.SelectedItem;
+             
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -34,21 +40,64 @@ namespace PL
             System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // stationViewSource.Source = [generic data source]
+            System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // busLineViewSource.Source = [generic data source]
         }
-
-        private void choose(object sender, DependencyPropertyChangedEventArgs e)
+        private void stationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
         {
 
-        }
-
-        private void stationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            station = (Station)stationListView.SelectedItem;
+            DetailsStation.IsEnabled = true;
+            addressTextBox.DataContext = station.Address;
+            latitudeTextBox.DataContext = station.Latitude;
+            longitudeTextBox.DataContext = station.longitude;
+            busLineListView.IsEnabled = true;
+            busLineListView.DataContext = _lb.GetAllBusLimeByStation(station.Code);//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+             
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+            ManagerOptions m = new ManagerOptions(_lb);
+            m.ShowDialog();
+        }
+        private void remove_Click(object sender, RoutedEventArgs e)
+        {
 
+            station = (Station)stationListView.SelectedItem;
+            MessageBoxResult res = MessageBox.Show("Delete selected station ?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+                return;
+            try
+            {
+                if (station != null)
+                {
+                    _lb.DeleteStation(station.Code);
+                    DetailsStation.IsEnabled = false;
+                    stationListView.DataContext = _lb.GetAllStation();
+                    busLineListView.IsEnabled = false;
+                    remove.IsEnabled = false;
+                }
+            }
+            catch (BO.BadBusLineException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            AddStation m = new AddStation();
+            m.ShowDialog();
+        }
+
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            UpDateStstion update = new UpDateStstion(_lb, (BO.Station)busLineListView.SelectedItem); 
+            update.ShowDialog();
+            //refreshScreen();
+
+        }
     }
 }
