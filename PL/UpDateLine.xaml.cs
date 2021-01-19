@@ -94,7 +94,7 @@ namespace PL
                 BO.LineStation b = new BO.LineStation();
                 b = ((sender as Button).DataContext as BO.LineStation);
                 _bl.DeleteLineStationInBus(b.Code, b.Line_Id);
-                _bl.UpdateBusLinePhat(busLineSelected);
+                busLineSelected = _bl.UpdateBusLinePhat(busLineSelected);
                list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
             }
             

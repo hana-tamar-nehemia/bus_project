@@ -129,8 +129,7 @@ namespace DL
         public IEnumerable<DO.LineStation> GetAllLineStations(int id_line)
         {
             return from ls in DataSource.List_Line_Station
-                   where ls.ActLineStation == true
-                   where ls.Line_Id == id_line
+                   where (ls.ActLineStation == true  && ls.Line_Id == id_line)
                    select ls.Clone();
         }
         public IEnumerable<DO.LineStation> GetAllLineStationsby(Predicate<DO.LineStation> predicate)//מחזיר רשימת תחנות של מסלול מסויים
@@ -156,16 +155,16 @@ namespace DL
 
         public DO.LineStation GetLineStation(int code, int line_id)
         {
-            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id);
-            if (ls != null && ls.ActLineStation == true)
+            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Code == code && s.Line_Id == line_id && s.ActLineStation == true);
+            if (ls != null )
                 return ls.Clone();
             else
                 throw new DO.BadLineStationCodeException(code, $"no found: {code}");
         }
         public DO.LineStation GetPrevLineStation(int id_line, int index)
         {
-            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Line_Station_Index == index && s.Line_Id == id_line);
-            if (ls != null && ls.ActLineStation == true)
+            DO.LineStation ls = DataSource.List_Line_Station.Find(s => s.Line_Station_Index == index && s.Line_Id == id_line && s.ActLineStation == true);
+            if (ls != null)
                 return ls.Clone();
             else
                 throw new DO.BadLineStationCodeException(index, $"no found: {index}");
@@ -228,11 +227,10 @@ namespace DL
 
             if (s != null)
             {
-                int index = s.Line_Station_Index;//אינדקס לעדכון ממנו והלאה
+                DataSource.List_Line_Station.Where(p => id_line == p.Line_Id && p.Line_Station_Index > s.Line_Station_Index).Select(p => p.Line_Station_Index--);//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
+                DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
                 s.ActLineStation = false;
-                //DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
-                // DataSource.List_Line_Station.Add(s);
-                DataSource.List_Line_Station.Where(p => id_line == p.Line_Id && p.Line_Station_Index > index).Select(p => p.Line_Station_Index--);//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
+                DataSource.List_Line_Station.Add(s);
             }
             else
                 throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
