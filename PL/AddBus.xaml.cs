@@ -25,12 +25,13 @@ namespace PL
 
         {
             bl = _bl;
-            Addbus = new Grid();
-            bus_statusComboBox = new ComboBox();
-            bus_statusComboBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
-            Addbus.DataContext = Bus;
-
             InitializeComponent();
+            //Addbus.DataContext = Bus;
+            bus_statusComboBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
+            bus_statusComboBox.SelectedIndex = 0;
+            
+             
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -43,9 +44,17 @@ namespace PL
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
+             
             Bus = (BO.Bus)Addbus.DataContext;
+            Bus.Fuel_tank = int.Parse(fuel_tankTextBox.Text);
+            Bus.ActBus = true;
+            Bus.Bus_status = (BO.Bus_status)bus_statusComboBox.SelectedIndex;
+            Bus.Km = int.Parse(kmTextBox.Text);
+            Bus.License_num = int.Parse(license_numTextBox.Text);
+            Bus.Start_date = start_dateDatePicker.DisplayDate;
             bool a = true;
             bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
+            MessageBox.Show("Added");
             this.Close();
         }
     }

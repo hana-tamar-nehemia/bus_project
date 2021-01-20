@@ -114,6 +114,8 @@ namespace PL
         {
             line_NumberTextBox.Text = "";
         }
+
+        
     }
 
 }

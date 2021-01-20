@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BO;
 
 namespace PL
 {
@@ -22,14 +21,10 @@ namespace PL
     public partial class AddStation : Window
     {
         IBL _bl;
-
-         
         public AddStation(IBL bl)
         {
-            _bl = bl;
             InitializeComponent();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -37,7 +32,7 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // stationViewSource.Source = [generic data source]
         }
-        private void add_Click(object sender, RoutedEventArgs e) 
+        private void add_Click(object sender, RoutedEventArgs e)
         {
 
 
@@ -49,9 +44,7 @@ namespace PL
             _bl.AddStation(Code, Name, Address, Latitude, longitude);
             MessageBox.Show("Added");
             this.Close();
-
         }
-
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -20,11 +20,12 @@ namespace PL
     /// </summary>
     public partial class UpDateBus : Window
     {
+        IBL _bl;
         BO.Bus Bus = new BO.Bus();
         public UpDateBus(BO.Bus bus, IBL bl)
         {
             InitializeComponent();
-           // busdetail = new Grid();
+            _bl = bl;
             Bus = bus;
             bus_statusTextBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
             bus_statusTextBox.SelectedIndex = (int)bus.Bus_status;
@@ -42,7 +43,9 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           Bus = (BO.Bus)busdetail.DataContext;
+             Bus = (BO.Bus)busdetail.DataContext;
+            _bl.UpdateBus(Bus);
+            MessageBox.Show("UpDateStstion");
             this.Close();
         }
     }

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="162*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="77,106,0,0" HorizontalAlignment="Left" DataContext="{StaticResource stationViewSource}" Height="166">
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="77,106,0,0" HorizontalAlignment="Left"   Height="166">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

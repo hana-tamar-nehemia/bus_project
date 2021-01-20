@@ -79,17 +79,22 @@ namespace BL
              dl.UpdateStation(sDO);
         }
 
-        public void DeleteStation(int code)
+        public bool DeleteStation(int code)
         {
             DO.Station stationDO;
             stationDO = dl.GetStation(code);
             if (stationDO != null)
             {
                 if (dl.GetAllLineStationsby(p => p.Code == code) == null)
+                {
                     dl.DeleteStation(code);
+                    return true;
+                }
                 else
-                    throw new BO.BadStationCodeException(code, "the station cant remove");
+                    return false;
             }
+            else
+                return false;
         }
         #endregion Station
 
@@ -144,14 +149,14 @@ namespace BL
                 throw new BO.BadBusException(" Bus Not exist", ex);
             }
         }
-        public void UpdateFuelBus(BO.Bus Bus)
+        public void UpdateBus(BO.Bus Bus)
         {
 
             DO.Bus BusDO = new DO.Bus();
             Bus.CopyPropertiesTo(BusDO);
             try
             {
-                dl.UpdateFuelBus(BusDO);
+                dl.UpdateBus(BusDO);
             }
             catch (DO.BadBusException ex)
             {

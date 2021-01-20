@@ -271,13 +271,13 @@ namespace DL
 
         }
 
-        public void UpdateFuelBus(DO.Bus Bus)
+        public void UpdateBus(DO.Bus Bus)
         {
             DO.Bus b = DataSource.List_Bus.Find(p => Bus.License_num == Bus.License_num);
             if (b != null && b.ActBus == true)
             {
                 DataSource.List_Bus.Remove(b);
-                DataSource.List_Bus.Add(b.Clone());
+                DataSource.List_Bus.Add(Bus.Clone());
             }
             else
             {

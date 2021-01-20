@@ -47,9 +47,10 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Station s = new Station();
-            s.Name = nameTextBox.Text;
+             s.Name = nameTextBox.Text;
             _bl.UpdateStation(s);
+            MessageBox.Show("UpDateStstion");
+            this.Close();
         }
     }
 }

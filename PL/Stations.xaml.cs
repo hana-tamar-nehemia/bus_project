@@ -71,13 +71,20 @@ namespace PL
                 return;
             try
             {
-                if (station != null)
+                if (station != null )
                 {
-                    _lb.DeleteStation(station.Code);
-                    DetailsStation.IsEnabled = false;
-                    ListStation.DataContext = _lb.GetAllStation();
-                    busLineListView.IsEnabled = false;
-                    remove.IsEnabled = false;
+                    bool flag;
+                    flag  =  _lb.DeleteStation(station.Code);
+                    if (flag == true)
+                    {
+                        DetailsStation.IsEnabled = false;
+                        ListStation.DataContext = _lb.GetAllStation();
+                        busLineListView.IsEnabled = false;
+                        remove.IsEnabled = false;
+                        refreshScreen();
+                    }
+                    else
+                        MessageBox.Show(" Unable to delete station ");
                 }
             }
             catch (BO.BadBusLineException ex)
@@ -98,15 +105,19 @@ namespace PL
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
-            //refreshScreen();
+            refreshScreen();
 
         }
+        private void refreshScreen()
+        {
+            ListStation.DataContext = _lb.GetAllStation();
+            ListStation.SelectedIndex = 0;
+        }
 
-        
-        
 
-        
 
-        
+
+
+
     }
 }

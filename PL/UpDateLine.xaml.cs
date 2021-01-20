@@ -131,5 +131,6 @@ namespace PL
             int i = area_combox.SelectedIndex;
             busLineSelected.Area = (BO.Areas)i;
         }
+        
     }
 }

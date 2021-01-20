@@ -36,7 +36,7 @@ namespace DLAPI
         //IEnumerable<object> GetBusListWithSelectedFields(Func<DO.Bus, object> generate);
         IEnumerable<DO.Bus> GetAllBusBy(Predicate<DO.Bus> predicate);
         void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a);
-        void UpdateFuelBus(DO.Bus Bus);
+        void UpdateBus(DO.Bus Bus);
         //void UpdateFieldsBus(int License_num_Id, Action<DO.Bus> update); //method that knows to updt specific fields 
         void DeleteBus(int License_num_Id); // removes only Student, does not remove the appropriate Person...
         #endregion

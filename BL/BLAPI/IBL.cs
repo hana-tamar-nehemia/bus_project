@@ -34,7 +34,7 @@ namespace BLAPI
 
        // IEnumerable<BO.Bus> GetAllBusBy(Predicate<BO.Bus> predicate);
         void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a);
-        void UpdateFuelBus(BO.Bus Bus);
+        void UpdateBus(BO.Bus Bus);
         void DeleteBus(int License_num_Id);
 
         #endregion
@@ -81,7 +81,7 @@ namespace BLAPI
         //add
          void AddStation(int Code, string Name, string Address, double Latitude, double longitude);//הוספת תחנה פיזית
 
-         void DeleteStation(int code);
+        bool DeleteStation(int code);
         void UpdateStation(BO.Station station);
         IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code);
         #endregion
