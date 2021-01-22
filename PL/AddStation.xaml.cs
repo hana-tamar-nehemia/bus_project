@@ -20,7 +20,7 @@ namespace PL
     /// </summary>
     public partial class AddStation : Window
     {
-        IBL _bl;
+         IBL _bl;
         public AddStation(IBL bl)
         {
             InitializeComponent();
