@@ -52,9 +52,9 @@ namespace PL
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
-            busLineListView.IsEnabled = true;
+            Listlinenumber.IsEnabled = true;
             List<BusLine> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
-            busLineListView.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            Listlinenumber.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +79,7 @@ namespace PL
                     {
                         DetailsStation.IsEnabled = false;
                         ListStation.DataContext = _lb.GetAllStation();
-                        busLineListView.IsEnabled = false;
+                        Listlinenumber.IsEnabled = false;
                         remove.IsEnabled = false;
                         refreshScreen();
                     }

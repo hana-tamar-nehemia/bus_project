@@ -479,10 +479,15 @@ namespace DL
             DO.User u = new DO.User() { password = pa, User_name = name, Admin = true };
             DataSource.List_User.Add(u.Clone());
         }
+
+        public void UpdateFuelBus(Bus Bus)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
-        
-       
+
+
 
     }
 }

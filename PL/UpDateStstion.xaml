@@ -6,11 +6,19 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.UpDateStstion"
         mc:Ignorable="d"
-        Title="UpDateStstion" Height="400" Width="325" Loaded="Window_Loaded">
+        Title="UpDateStstion" Height="301" Width="325" Loaded="Window_Loaded">
     <Window.Resources>
+        <Style x:Key="myButtonStyle"   TargetType="Button">
+            <Setter Property="FontFamily"
+              Value="Segoe UI Semibold" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+            <Setter Property="Background"
+              Value="#FFFFDFCA" />
+        </Style>
         <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource stationViewSource}">
+    <Grid DataContext="{StaticResource stationViewSource}" Margin="0,0,-0.333,0" Height="272" VerticalAlignment="Top">
         <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="73,64,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -19,10 +27,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content=" :מספר תחנה" Grid.Column="1" HorizontalAlignment="Left" Margin="124,4,-74,2" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Right" Height="24" Margin="0,4,3.4,4" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" RenderTransformOrigin="0.606,0.559" IsEnabled="False"/>
+            <Label Content=" :מספר תחנה" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="141,4,-90.333,2" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="codeTextBox" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Right" Height="24" Margin="-51,4,-9.667,4" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="192" RenderTransformOrigin="0.606,0.559" IsEnabled="False"/>
         </Grid>
-        <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="73,118,0,0" VerticalAlignment="Top">
+        <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="73,118,0,0" VerticalAlignment="Top" Width="144">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -30,7 +38,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content=" :שם תחנה " Grid.Column="1" Margin="132,2,-69.6,4" Grid.Row="0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Label Content=" :שם תחנה " FontFamily="Segoe UI Semibold" Grid.Column="1" Margin="148,5,-85.333,1" Grid.Row="0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -40,9 +48,9 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="-55,0,-0.2,0" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="188"/>
+            <TextBox x:Name="nameTextBox" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="32" Margin="-54,0,-10,0" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="198" Grid.ColumnSpan="2"/>
         </Grid>
-        <Button Content="עדכון" HorizontalAlignment="Left" Margin="26,188,0,0" VerticalAlignment="Top" Width="93"   Height="28" Click="Button_Click"/>
-        <Button Content="ביטול" HorizontalAlignment="Left" Margin="188,188,0,0" VerticalAlignment="Top" Width="96"   Height="28" Click="Close_Click"/>
+        <Button Content="עדכון" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="26,188,0,0" VerticalAlignment="Top" Width="93"   Height="28" Click="Button_Click"/>
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="188,188,0,0" VerticalAlignment="Top" Width="96"   Height="28" Click="Close_Click"/>
     </Grid>
 </Window>

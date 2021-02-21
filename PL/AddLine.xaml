@@ -8,6 +8,14 @@
         mc:Ignorable="d"
         Title="AddLine" Height="450" Width="800"   WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <Style x:Key="myButtonStyle"   TargetType="Button">
+            <Setter Property="FontFamily"
+              Value="Segoe UI Semibold" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+            <Setter Property="Background"
+              Value="#FFFFDFCA" />
+        </Style>
         <DataTemplate x:Key="station"
             DataType="local:LineStation">
             <Grid>
@@ -64,8 +72,8 @@
             <Label Content="מספר קו " Grid.Column="1" HorizontalAlignment="Left" FontSize="13" Margin="21.333,9,0,2.333" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="58"/>
             <TextBox x:Name="line_NumberTextBox"  Text="" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" Grid.Column="0"   HorizontalAlignment="Left" Height="24" Margin="3,7,0,6.333" Grid.Row="0"  VerticalAlignment="Center" Width="309"/>
         </Grid>
-        <Button Content="הוסף" HorizontalAlignment="Left" Margin="182,332,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click" />
-        <Button Content="בטל" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="407,332,0,0" Width="93" Click="Button_Click_1" />
+        <Button Content="הוסף" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="182,332,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click" />
+        <Button Content="בטל" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="407,332,0,0" Width="93" Click="Button_Click_1" />
         <TextBlock HorizontalAlignment="Left" FontSize="20" Margin="222,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="47"><Run FlowDirection="RightToLeft" Text="פרטים של האוטובוס החדש:"/></TextBlock>
     </Grid>
 </Window>

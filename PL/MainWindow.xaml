@@ -10,8 +10,8 @@
         <Label Content="Welcome to ways time " HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
         <GroupBox Header="I'm a :" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
             <StackPanel Margin="36,47,19,50.333">
-                <RadioButton x:Name ="manager" Content="manager" Height="24" IsChecked="False" Checked="rbStudents_Checked"/>
-                <RadioButton x:Name ="passenger" Content="passenger" Height="23" IsChecked="False" Margin="0,0,-11,0"/>
+                <RadioButton x:Name ="manager" FontFamily="Segoe UI Semibold" Content="manager" Height="24" IsChecked="False" Checked="rbStudents_Checked"/>
+                <RadioButton x:Name ="passenger"  Content="passenger" Height="23" IsChecked="False" Margin="0,0,-11,0"/>
             </StackPanel>
         </GroupBox>
     </Grid>

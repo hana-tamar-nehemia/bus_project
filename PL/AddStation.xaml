@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="AddStation" Height="450" Width="400">
-    <Grid>
+    <Window.Resources>
+        <Style x:Key="myButtonStyle"   TargetType="Button">
+            <Setter Property="FontFamily"
+              Value="Segoe UI Semibold" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+            <Setter Property="Background"
+              Value="#FFFFDFCA" />
+        </Style>
+    </Window.Resources>
+            <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="631*"/>
             <ColumnDefinition Width="162*"/>
@@ -24,18 +34,18 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="160,3.6,-57.6,5.8" HorizontalAlignment="Left" Grid.Column="1" Content=" כתובת" RenderTransformOrigin="0.894,0.295"/>
-            <TextBox x:Name="addressTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="153,3.4,-66.6,3.4" HorizontalAlignment="Left" Grid.Column="1" Content=" קוד תחנה"/>
-            <TextBox x:Name="codeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="153,3.8,-80.6,-25.6" HorizontalAlignment="Left" Grid.Column="1" Content=" קו רוחב" Width="78"/>
-            <TextBox x:Name="latitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,5,0,-27.2" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="160,7.2,-94.6,4.4" HorizontalAlignment="Left" Grid.Column="1" Content=" קו אורך" Width="85"/>
-            <TextBox x:Name="longitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Top" Grid.Row="0" Margin="160,3,-80.6,0" Grid.Column="1" Content= "שם תחנה " HorizontalAlignment="Left" Width="71"/>
-            <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Grid.Row="2" Margin="160,3.6,-57.6,5.8" HorizontalAlignment="Left" Grid.Column="1" Content=" כתובת" RenderTransformOrigin="0.894,0.295"/>
+            <TextBox x:Name="addressTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" FontFamily="Segoe UI Semibold" Margin="153,3.4,-66.6,3.4" HorizontalAlignment="Left" Grid.Column="1" Content=" קוד תחנה"/>
+            <TextBox x:Name="codeTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" FontFamily="Segoe UI Semibold" Margin="153,3.8,-80.6,-25.6" HorizontalAlignment="Left" Grid.Column="1" Content=" קו רוחב" Width="78"/>
+            <TextBox x:Name="latitudeTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,5,0,-27.2" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" FontFamily="Segoe UI Semibold" Margin="160,7.2,-94.6,4.4" HorizontalAlignment="Left" Grid.Column="1" Content=" קו אורך" Width="85"/>
+            <TextBox x:Name="longitudeTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Top" Grid.Row="0" FontFamily="Segoe UI Semibold" Margin="160,3,-80.6,0" Grid.Column="1" Content= "שם תחנה " HorizontalAlignment="Left" Width="71"/>
+            <TextBox x:Name="nameTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
-        <Button Content="הוסף" HorizontalAlignment="Left" Margin="215,311,0,0" VerticalAlignment="Top" Width="99" Click="add_Click" />
-        <Button Content="ביטול" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="38,311,0,0" Width="93" Click="Close_Click" />
+        <Button Content="הוסף" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="215,311,0,0" VerticalAlignment="Top" Width="99" Click="add_Click" />
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="38,311,0,0" Width="93" Click="Close_Click" />
     </Grid>
 </Window>

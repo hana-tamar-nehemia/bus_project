@@ -8,15 +8,23 @@
         mc:Ignorable="d"
         Title="AddBus" Height="500" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
+        <Style x:Key="myButtonStyle"   TargetType="Button">
+            <Setter Property="FontFamily"
+              Value="Segoe UI Semibold" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+            <Setter Property="Background"
+              Value="#FFFFDFCA" />
+        </Style>
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Label Content="enter detail of the new bus" HorizontalAlignment="Left" Margin="21,22,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold"  FontSize="20"/>
+        <Label Content="enter detail " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="122,22,0,0" VerticalAlignment="Top" Height="41" Width="121" FontWeight="Bold"  FontSize="20"/>
 
-        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,82,0,0" HorizontalAlignment="Left"  Height="328" Width="276">
+        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,86,0,0" HorizontalAlignment="Left"   Height="324" Width="265">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="65.333"/>
+                <RowDefinition Height="49.333"/>
+                <RowDefinition Height="56"/>
                 <RowDefinition Height="72" MinHeight="72" />
                 <RowDefinition Height="86" MinHeight="86" />
                 <RowDefinition Height="91.333" MinHeight="86" />
@@ -25,7 +33,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,-71.333,21.333" HorizontalAlignment="Right" Content="סטטוס" Height="26" Width="57" Grid.Column="1"/>
+            <Label VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,-71,21.333" HorizontalAlignment="Right" Content="סטטוס" Height="26" Width="57" Grid.Column="1"/>
             <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,28.667,0,21.333" SelectedItem="{Binding Bus_status}" HorizontalAlignment="Left" Grid.Column="0" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -33,16 +41,16 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label VerticalAlignment="Stretch" Grid.Row="3" Margin="75.333,85.667,-70.333,60.667" Content="דלק" Grid.Column="1" Grid.RowSpan="2"/>
-            <TextBox x:Name="fuel_tankTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0,2.667,0,65.667" Height="23" HorizontalAlignment="Left"/>
-            <Label VerticalAlignment="Stretch" Grid.Row="3" Margin="0,14.667,-70.333,45.333" HorizontalAlignment="Right" Content="קילומטר" Width="60" Grid.Column="1"/>
-            <TextBox x:Name="kmTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0,17.667,0,45.333" Height="23" HorizontalAlignment="Left"/>
-            <Label VerticalAlignment="Stretch" Margin="0,5,-70.333,5" HorizontalAlignment="Right" Content="לוחית רישוי" Width="79" Grid.Column="1"/>
-            <TextBox x:Name="license_numTextBox" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,2,0,15" Height="23" HorizontalAlignment="Left"/>
-            <Label VerticalAlignment="Stretch" Margin="0,14,-83.333,10.333" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
-            <DatePicker x:Name="start_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,19,0,18.333" HorizontalAlignment="Left" Height="28" Width="120"/>
+            <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Grid.Row="3" Margin="75.333,85.667,-70,60.667" Content="דלק" Grid.Column="1" Grid.RowSpan="2"/>
+            <TextBox x:Name="fuel_tankTextBox" FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0,2.667,0,65.667" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Grid.Row="3" Margin="0,14.667,-70,45.333" HorizontalAlignment="Right" Content="קילומטר" Width="60" Grid.Column="1"/>
+            <TextBox x:Name="kmTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0,17.667,0,45.333" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,5,-70,5.333" HorizontalAlignment="Right" Content="לוחית רישוי" Width="79" Grid.Column="1"/>
+            <TextBox x:Name="license_numTextBox" FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,7,0,19.333" Height="23" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,13.667,-83,10.333" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
+            <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,14.667,0,13.333" HorizontalAlignment="Left" Height="28" Width="120"/>
         </Grid>
-        <Button x:Name="btnGO" Content="הוסף למערכת" HorizontalAlignment="Left" Height="30" Margin="133,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click"/>
+        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף למערכת" HorizontalAlignment="Left" Height="30" Margin="133,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16"   FontWeight="Bold" Click="btnGO_Click"/>
 
     </Grid>
 </Window>

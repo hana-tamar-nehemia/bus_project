@@ -23,6 +23,7 @@ namespace PL
          IBL _bl;
         public AddStation(IBL bl)
         {
+            _bl = bl;
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

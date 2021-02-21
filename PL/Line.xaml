@@ -8,6 +8,15 @@
         mc:Ignorable="d"
         Title="Line" Height="450" Width="800"  WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
+        <Style x:Key="myButtonStyle"   TargetType="Button">
+            <Setter Property="FontFamily"
+              Value="Segoe UI Semibold" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+            <Setter Property="Background"
+              Value="#FFFFDFCA" />
+        </Style>
+
         <DataTemplate x:Key="lines"
             DataType="local:LineStation">
             <Grid>
@@ -15,8 +24,8 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" Text="{Binding Path=Area}" Width="25" FontWeight="Bold"   FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock Grid.Row="0" Text="{Binding Path=Line_Number}" Width="100" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Row="1" Text="{Binding Path=Area}" Width="25"  FontFamily="Segoe UI Semibold" FontWeight="Bold"   FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Row="0" Text="{Binding Path=Line_Number}" FontFamily="Segoe UI Semibold" Width="150" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" />
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="station"
@@ -29,17 +38,17 @@
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Path=Line_Station_Index}" Width="25" FontWeight="Bold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock Grid.Column="1" Text="{Binding Path=Code}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock Grid.Column="2" Text="{Binding Path=Name}" Width="25" FontWeight="Bold"   FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock Grid.Column="3" Text="{Binding Path=distance}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock Grid.Column="4" Text="{Binding Path=time}" Width="100" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="0" Text="{Binding Path=Line_Station_Index}" FontFamily="Segoe UI Semibold" Width="25" FontWeight="Bold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Code}" Width="100" FontFamily="Segoe UI Semibold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="2" Text="{Binding Path=Name}" Width="150" FontFamily="Segoe UI Semibold"  FontWeight="Bold"   FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="3" Text="{Binding Path=distance}" Width="100" FontFamily="Segoe UI Semibold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock Grid.Column="4" Text="{Binding Path=time}" Width="100" FontFamily="Segoe UI Semibold"  FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" />
 
             </Grid>
         </DataTemplate>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>
     </Window.Resources>
-    
+
     <Grid Margin="0,0,0.2,-0.8" DataContext="{StaticResource busLineViewSource}">
         <Grid.RowDefinitions>
             <RowDefinition Height="382*"/>
@@ -49,13 +58,17 @@
             <ColumnDefinition Width="184*"/>
             <ColumnDefinition Width="609*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnGO" Content="עדכן קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="349,10,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="remove" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="101,10,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="addline" Content="הוספת קו" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="add_line_Click" Grid.Row="1"/>
+        <Button x:Name="btnGO" Content="עדכן קו" Style="{StaticResource myButtonStyle}" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="39" Margin="349,0,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="update_Click" Grid.Column="1" Grid.Row="1" Background="#FFFFDFCA"/>
+        <Button x:Name="remove" Style="{StaticResource myButtonStyle}" Content="מחק קו" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="39" Margin="101,0,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="remove_Click" Grid.Column="1" Grid.Row="1" Background="#FFFFDFCA" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="addline" Style="{StaticResource myButtonStyle}" Background="#FFFFDFCA" Content="הוספת קו" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="add_line_Click" Grid.Row="1"/>
 
-        
-        <ListBox x:Name="busLineListBox" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=lines}" SelectionChanged="busLineListView_SelectionChanged"  Grid.Column="0"   />
-        <ListBox x:Name="linestationListBox" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Extended" ItemTemplate="{StaticResource ResourceKey=station}"   Grid.Column="1"   />
+
+        <ListBox x:Name="busLineListBox" FontFamily="Segoe UI Semibold" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=lines}" SelectionChanged="busLineListView_SelectionChanged"  Grid.Column="0"   />
+        <ListBox x:Name="linestationListBox" FontFamily="Segoe UI Semibold" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Extended" ItemTemplate="{StaticResource ResourceKey=station}"   Grid.Column="1" Margin="0,29,0.333,0"   />
+        <Label Content="km" Grid.Column="1" HorizontalAlignment="Left" Margin="278,3,0,0" VerticalAlignment="Top"/>
+        <Label Content="code" Grid.Column="1" HorizontalAlignment="Left" Margin="29,3,0,0" VerticalAlignment="Top" Width="42"/>
+        <Label Content="name" Grid.Column="1" HorizontalAlignment="Left" Margin="114,3,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label Content="time" Grid.Column="1" HorizontalAlignment="Left" Margin="395,3,0,0" VerticalAlignment="Top"/>
 
 
 
