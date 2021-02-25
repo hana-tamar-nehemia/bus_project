@@ -97,6 +97,7 @@ namespace PL
         {
             AddStation m = new AddStation(_lb);
             m.ShowDialog();
+            refreshScreen();
         }
 
         private void update_Click(object sender, RoutedEventArgs e)

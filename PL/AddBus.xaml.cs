@@ -21,6 +21,13 @@ namespace PL
     {
         IBL bl;
         BO.Bus Bus = new BO.Bus();
+        bool lincegood(int a)
+        {
+            if (a <= 100000000 && a > 9999999)
+                return true;
+            else
+                return false;
+        }
         public AddBus(IBL _bl)
 
         {
@@ -30,8 +37,8 @@ namespace PL
             bus_statusComboBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
             bus_statusComboBox.SelectedIndex = 0;
             
-             
-            
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +52,7 @@ namespace PL
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
              
-            Bus = (BO.Bus)Addbus.DataContext;
+            //Bus = (BO.Bus)Addbus.DataContext;
             Bus.Fuel_tank = int.Parse(fuel_tankTextBox.Text);
             Bus.ActBus = true;
             Bus.Bus_status = (BO.Bus_status)bus_statusComboBox.SelectedIndex;
@@ -53,15 +60,24 @@ namespace PL
             Bus.License_num = int.Parse(license_numTextBox.Text);
             Bus.Start_date = start_dateDatePicker.DisplayDate;
             bool a = true;
-            try
+            if (lincegood(Bus.License_num) == false)
             {
-                bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
-                MessageBox.Show("Added");
-                this.Close();
+                MessageBox.Show("worong licens plate\n enter again");
+
             }
-            catch (BO.BadBusException ex)
+            else
             {
-                MessageBox.Show(ex.Message, "התחנה קימת", MessageBoxButton.OK, MessageBoxImage.Error);
+                try
+                {
+
+                    bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
+                    MessageBox.Show("Added");
+                    this.Close();
+                }
+                catch (BO.BadBusException ex)
+                {
+                    MessageBox.Show(ex.Message, "התחנה קימת", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }
