@@ -11,7 +11,8 @@ namespace DO
     {
         public int CODE;
 
-        //public BadStaionCodeException(int id,string s) : base() => ID = id;
+         
+        public BadStaionCodeException(int code) : base() => CODE = code;
         public BadStaionCodeException(int code, string message) : 
             base(message) => CODE = code;
         public BadStaionCodeException(int code, string message, Exception innerException) : 

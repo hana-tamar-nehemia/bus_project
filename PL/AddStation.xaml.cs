@@ -42,9 +42,16 @@ namespace PL
             Double longitude = double.Parse(latitudeTextBox.Text);
             string Address = addressTextBox.Text;
             string Name = nameTextBox.Text;
-            _bl.AddStation(Code, Name, Address, Latitude, longitude);
-            MessageBox.Show("Added");
-            this.Close();
+            try
+            {
+                _bl.AddStation(Code, Name, Address, Latitude, longitude);
+                MessageBox.Show("Added");
+                this.Close();
+            }
+            catch (BO.BadStationCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "the bus exsist", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {

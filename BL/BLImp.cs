@@ -70,7 +70,14 @@ namespace BL
         public void AddStation(int Code, string Name, string Address, double Latitude, double longitude)//הוספת תחנה פיזית
         {
             DO.Station stationDO = new DO.Station() { Code = Code, Name = Name, Address = Address, Latitude = Latitude, longitude = longitude, Act = true };
-            dl.AddStation(stationDO);
+            try
+            {
+                dl.AddStation(stationDO);
+            }
+            catch(DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("the station already exsist", ex);
+             }
         }
         public void UpdateStation(BO.Station station )
         {

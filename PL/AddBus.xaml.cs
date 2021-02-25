@@ -53,9 +53,16 @@ namespace PL
             Bus.License_num = int.Parse(license_numTextBox.Text);
             Bus.Start_date = start_dateDatePicker.DisplayDate;
             bool a = true;
-            bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
-            MessageBox.Show("Added");
-            this.Close();
+            try
+            {
+                bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
+                MessageBox.Show("Added");
+                this.Close();
+            }
+            catch (BO.BadBusException ex)
+            {
+                MessageBox.Show(ex.Message, "התחנה קימת", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

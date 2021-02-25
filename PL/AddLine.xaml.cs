@@ -67,10 +67,16 @@ namespace PL
             station = (Station)last_StationComboBox.SelectedItem;
             BusLine.First_Station = station.Code; 
             BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
-            _bl.AddBusLine(BusLine);
-            MessageBox.Show("Added");
-            this.Close();
-
+            try
+            {
+                _bl.AddBusLine(BusLine);
+                MessageBox.Show("Added");
+                this.Close();
+            }
+            catch (BO.BadBusLineException ex)
+            {
+                MessageBox.Show(ex.Message, " the bus line exsist", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -11,7 +11,10 @@ namespace BO
     public class BadStationCodeException : Exception
     {
         public int CODE;
-        public BadStationCodeException(string message, DO.BadStaionCodeException innerException) :
+         
+    public BadStationCodeException(string message, Exception innerException) :
+             base(message, innerException) => CODE = ((DO.BadStaionCodeException)innerException).CODE;
+    public BadStationCodeException(string message, DO.BadStaionCodeException innerException) :
             base(message, innerException) => CODE = ((DO.BadStaionCodeException)innerException).CODE;
         // public BadStationCodeException(int code, string massage) : base(message, )
         public BadStationCodeException(int message, DO.BadStaionCodeException innerException) { }
