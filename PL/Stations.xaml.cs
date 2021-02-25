@@ -106,6 +106,7 @@ namespace PL
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
+            //נירא לי בגלל 
             refreshScreen();
 
         }
