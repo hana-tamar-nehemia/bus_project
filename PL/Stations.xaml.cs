@@ -44,7 +44,7 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busLineViewSource.Source = [generic data source]
         }
-        private void ListStation_SelectionChanged(object sender, SelectionChangedEventArgs e)//שהקישור בין תחנה שנבחרה לפרטים יעבוד
+        private void ListStation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
             station = (Station)ListStation.SelectedItem;
@@ -52,9 +52,11 @@ namespace PL
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
-            Listlinenumber.IsEnabled = true;
-            List<BusLine> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
-            Listlinenumber.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            // Listlinenumber.IsEnabled = true;
+             List<string> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
+            linspast.IsEnabled = true;
+            linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +81,7 @@ namespace PL
                     {
                         DetailsStation.IsEnabled = false;
                         ListStation.DataContext = _lb.GetAllStation();
-                        Listlinenumber.IsEnabled = false;
+                        linspast.IsEnabled = false;
                         remove.IsEnabled = false;
                         refreshScreen();
                     }

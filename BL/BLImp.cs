@@ -26,10 +26,10 @@ namespace BL
             return StationBO;
         }
         //get
-        public IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code)
+        public IEnumerable<string> GetAllBusLimeByStation(int code)
         {
-            return from item in dl.GetAllBusLimeByStation(code)
-                   select BusLineDoBoAdapter(item);
+            return dl.GetAllBusLimeByStation(code);
+                    
         }
 
         public BO.Station GetStation(int code)//מקבל תחנה לפי קוד תחנה 
@@ -307,6 +307,10 @@ namespace BL
         #endregion
 
         #region Bus Line
+
+
+
+
         public BO.BusLine GetBusLine(int Bus_Id)
         {
             DO.BusLine BusLinelDO;
@@ -418,7 +422,7 @@ namespace BL
         #endregion
 
         #region AdjStation
-       public int GEt_Line_Id()
+        public int GEt_Line_Id()
         {
             return dl.GEt_Line_Id();
         }
