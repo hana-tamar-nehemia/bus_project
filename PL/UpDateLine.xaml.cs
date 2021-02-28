@@ -86,7 +86,7 @@ namespace PL
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
+        private void remove(object sender, RoutedEventArgs e)//מחיקת תחנת קו מקו אוטובוס
         {
             MessageBoxResult res = MessageBox.Show("are you want to delete this station?", "Verification" ,MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.Yes)
@@ -94,8 +94,9 @@ namespace PL
                 BO.LineStation b = new BO.LineStation();
                 b = ((sender as Button).DataContext as BO.LineStation);
                 _bl.DeleteLineStationInBus(b.Code, b.Line_Id);
+                //אחרי שמוחקים תחנה ממסלול אז צריך להוסיף תחנה עוקבת בהתאם זאת אומרת לחבר בין 2 תחנות שעד עכשיו לא היו
                 busLineSelected = _bl.UpdateBusLinePhat(busLineSelected);
-               list_of_station.DataContext = _bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
+                list_of_station.DataContext = busLineSelected.ListLineStations;//_bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
             }
             
         }
@@ -105,17 +106,17 @@ namespace PL
             BO.Station s = new BO.Station();
             s = (BO.Station)addstationlist.SelectedItem;
             BO.LineStation newls = new BO.LineStation();
-            List<BO.LineStation> ls = busLineSelected.ListLineStations.ToList();
-            ///אפשר להוסיף אם התחנה כבר קיימת אז תוציא מסג שקיים
-            _bl.AddLineStation(s.Code, busLineSelected.Line_Id, ls.Count()+1);// בונה תחנת קו
+            List<BO.LineStation> ls = busLineSelected.ListLineStations.ToList();//תחנות קו בהן עובר האוטובוס
+            _bl.AddLineStation(s.Code, busLineSelected.Line_Id, ls.Count()+1); //בונה תחנת קו ומוסיף לסוף המסלול
             _bl.AddAdjStation
                  ( ls[ls.Count()-1].Code,//בונה תחנה עוקבת
                 s.Code,
                 r.Next(0, 1000),
                 new TimeSpan(0, r.Next(0, 4), r.Next(0, 59)),
                  true);
-            busLineSelected = _bl.UpdateBusLinePhat(busLineSelected);
+            busLineSelected = _bl.UpdateBusLinePhat(busLineSelected);//מעדכן את המסלול של האוטובוס 
             list_of_station.DataContext = busLineSelected.ListLineStations;//תחנות קו מחדש אחרי הרענון באוטובוס
+
             string str = (busLineSelected.Line_Number).ToString();
             MessageBox.Show("the station add to line: " + str);
         }
@@ -125,12 +126,12 @@ namespace PL
             addstationbuttom.IsEnabled = true;
         }
 
-        private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            update.IsEnabled = true;
-            int i = area_combox.SelectedIndex;
-            busLineSelected.Area = (BO.Areas)i;
-        }
+        //private void area_combox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    update.IsEnabled = true;
+        //    int i = area_combox.SelectedIndex;
+        //    busLineSelected.Area = (BO.Areas)i;
+        //}
         
     }
 }

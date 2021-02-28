@@ -22,7 +22,6 @@ namespace PL
     {
         IBL _bl;
         BO.BusLine busLine = new BO.BusLine();
-        int selectindex=0;
         public Line(IBL lb)
         {
             InitializeComponent();
@@ -38,6 +37,10 @@ namespace PL
             
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
             //linestationListBox = new ListBox();
+            if (busLine == null)
+            {
+                busLine = _bl.GetAllBus().First();
+            }
             linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
         }
 
@@ -58,13 +61,12 @@ namespace PL
         //    // lineStationViewSource.Source = [generic data source]
         //}
 
-        private void refreshScreen()
-        {
-            busLineListBox.DataContext = _bl.GetAllBus();
-            busLineListBox.SelectedIndex = selectindex;
-            busLine = (BO.BusLine)busLineListBox.SelectedItem;
-            linestationListBox.DataContext = busLine.ListLineStations;
-        }
+        //private void refreshScreen()
+        //{
+
+        //    busLineListBox.DataContext = _bl.GetAllBus();
+        //    busLineListBox.SelectedIndex = selectindex;
+        //}
 
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
@@ -77,14 +79,13 @@ namespace PL
         {
             UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListBox.SelectedItem);//שולח את הקו שרוצים לעדכן
             update.ShowDialog();
-            refreshScreen();
+            //refreshScreen();
 
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
-            BO.BusLine busLine = new BO.BusLine();
-            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+
             MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.No)
                 return;
@@ -93,10 +94,8 @@ namespace PL
                 if (busLine != null)
                 {
                     _bl.DeleteBusLine(busLine.License_num);
-                    //linestationListBox.ItemsSource = null;
-                    busLineListBox.ItemsSource = _bl.GetAllBus();
+                    busLineListBox.DataContext = _bl.GetAllBus();
                     btnGO.IsEnabled = false;
-                   // remove.IsEnabled = false;
                 }
             }
             catch (BO.BadBusLineException ex)

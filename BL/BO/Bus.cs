@@ -14,7 +14,7 @@ namespace BO
         public double Fuel_tank { get; set; }
         public Bus_status Bus_status { get; set; }
         public bool ActBus { get; set; }
-        public override string ToString() => this.ToStringProperty();
+        //public override string ToString() => this.ToStringProperty();
 
 
 

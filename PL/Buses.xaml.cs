@@ -41,6 +41,8 @@ namespace PL
         {
             AddBus add = new AddBus(_bl);
             add.Show();
+           // this.Close();
+            //refreshScreen();
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)

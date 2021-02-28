@@ -45,38 +45,6 @@ namespace PL
             last_StationComboBox.DataContext = bl.GetAllStation();
 
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            //System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
-           //  Load data by setting the CollectionViewSource.Source property:
-           // busLineViewSource.Source = [generic data source]
-        }
-
-      
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            BusLine.Line_Number = line_NumberTextBox.Text;
-            BusLine.License_num= _bl.GetFreeBus().License_num;
-            BusLine.Act = true;
-            BusLine.Line_Id = _bl.GEt_Line_Id();    //מספר רץ
-            Station station = new Station();
-            station= (Station)first_StationComboBox.SelectedItem;
-            BusLine.First_Station = station.Code; 
-            station = (Station)last_StationComboBox.SelectedItem;
-            BusLine.First_Station = station.Code; 
-            BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
-            _bl.AddBusLine(BusLine);
-            MessageBox.Show("Added");
-            this.Close();
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
         private void TextBox_OnlyNumbers_PreviewKeyDown(object sender, KeyEventArgs e)
         {
 
@@ -109,6 +77,39 @@ namespace PL
             e.Handled = true; //ignore this key. mark event as handled, will not be routed to other controls
             return;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            //System.Windows.Data.CollectionViewSource busLineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busLineViewSource")));
+           //  Load data by setting the CollectionViewSource.Source property:
+           // busLineViewSource.Source = [generic data source]
+        }
+
+      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BusLine.Line_Number = line_NumberTextBox.Text;
+            BusLine.License_num= _bl.GetFreeBus().License_num;
+            BusLine.Act = true;
+            BusLine.Line_Id = _bl.GEt_Line_Id();    //מספר רץ
+            Station station = new Station();
+            station= (Station)first_StationComboBox.SelectedItem;
+            BusLine.First_Station = station.Code; 
+            station = (Station)last_StationComboBox.SelectedItem;
+            BusLine.First_Station = station.Code; 
+            BusLine.Area = (BO.Areas)areaComboBox.SelectedIndex;
+            _bl.AddBusLine(BusLine);
+            MessageBox.Show("Added");
+            this.Close();
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        
 
         private void line_NumberTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="ManagerEnterCheck" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="ManagerEnterCheck" Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="myButtonStyle"   TargetType="Button">
             <Setter Property="FontFamily"
@@ -17,15 +17,15 @@
         </Style>
     </Window.Resources>
     <Grid Background="White">
-        <Label Content="שם משתמש" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="196,99,0,0" VerticalAlignment="Top"/>
-        <Label Content="סיסמה" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="225,190,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="namel" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="577,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordl" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="577,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="sing" Style="{StaticResource myButtonStyle}" Content="הירשם" HorizontalAlignment="Left" Margin="181,284,0,0" VerticalAlignment="Top" Width="75"   Click="sing_Click" />
-        <Button x:Name="log" Style="{StaticResource myButtonStyle}" Content=" התחבר" HorizontalAlignment="Left" Margin="604,284,0,0" VerticalAlignment="Top" Width="75"   Click="log_Click"  />
-        <Label Content="שם משתמש" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="622,99,0,0" VerticalAlignment="Top" Background="Transparent"/>
-        <Label Content="סיסמה" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="652,190,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="names" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="151,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwords" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="151,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="שם משתמש" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="77,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="סיסמה" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="106,190,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="namel" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="232,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwordl" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="232,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="sing" Style="{StaticResource myButtonStyle}" Content="הירשם" HorizontalAlignment="Left" Margin="62,284,0,0" VerticalAlignment="Top" Width="75"   Click="sing_Click" />
+        <Button x:Name="log" Style="{StaticResource myButtonStyle}" Content=" התחבר" HorizontalAlignment="Left" Margin="259,284,0,0" VerticalAlignment="Top" Width="75"   Click="log_Click"  />
+        <Label Content="שם משתמש" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="277,99,0,0" VerticalAlignment="Top" Background="Transparent"/>
+        <Label Content="סיסמה" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="307,190,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="names" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="32,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwords" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="32,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

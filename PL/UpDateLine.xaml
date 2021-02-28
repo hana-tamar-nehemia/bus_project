@@ -26,7 +26,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="2" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBlock Grid.Column="1" Text="{Binding Path=Name}"   VerticalAlignment="Center" HorizontalAlignment="Right" />
-                <Button  x:Name="remove" Grid.Column="0" Content="מחק תחנה" Click="Button_Click_1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                <Button  x:Name="remove" Grid.Column="0" Content="מחק תחנה" Click="remove"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"  />
             </Grid>
         </DataTemplate>
 
@@ -53,7 +53,8 @@
         <Button x:Name="update" Content="עדכן" Style="{StaticResource myButtonStyle}" IsEnabled="{Binding}" HorizontalAlignment="Left" Margin="262,370,0,0" VerticalAlignment="Top" Width="199" Click="update_click" Height="28"/>
         <ListBox x:Name="addstationlist" FontFamily="Segoe UI Semibold" SelectionMode="Single" Margin="13,110,480,105" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=stationAdd}" SelectionChanged="addstationlist_SelectionChanged"/>
         <Button x:Name="addstationbuttom" Style="{StaticResource myButtonStyle}" Content="הוסף" IsEnabled="{Binding}" HorizontalAlignment="Left" Margin="53,334,0,0" VerticalAlignment="Top" Width="163" Click="Button_Click" Height="27"/>
-        <ComboBox x:Name="area_combox" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="26,31,0,0" VerticalAlignment="Top" Width="176" Height="37" SelectionChanged="area_combox_SelectionChanged"/>
+
+        <ComboBox x:Name="area_combox"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="26,31,0,0" VerticalAlignment="Top" Width="176" Height="37" />
         <Label Content="קו" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="744,13,0,0" VerticalAlignment="Top" Height="40" Width="24"/>
     </Grid>
 </Window>

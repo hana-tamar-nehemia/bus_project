@@ -28,7 +28,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content=" :מספר תחנה" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="141,4,-90.333,2" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="codeTextBox" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Right" Height="24" Margin="-51,4,-9.667,4" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="192" RenderTransformOrigin="0.606,0.559" IsEnabled="False"/>
+            <TextBox x:Name="codeTextBox" Grid.Column="1" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" 
+MaxLength="5"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Right" Height="24" Margin="-51,4,-9.667,4" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="192" RenderTransformOrigin="0.606,0.559" IsEnabled="False"/>
         </Grid>
         <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="73,118,0,0" VerticalAlignment="Top" Width="144">
             <Grid.ColumnDefinitions>

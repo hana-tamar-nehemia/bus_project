@@ -42,11 +42,14 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Grid.Row="3" Margin="75.333,85.667,-70,60.667" Content="דלק" Grid.Column="1" Grid.RowSpan="2"/>
-            <TextBox x:Name="fuel_tankTextBox" FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0,2.667,0,65.667" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="fuel_tankTextBox" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" 
+MaxLength="2" FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0,2.667,0,65.667" Height="23" HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Grid.Row="3" Margin="0,14.667,-70,45.333" HorizontalAlignment="Right" Content="קילומטר" Width="60" Grid.Column="1"/>
-            <TextBox x:Name="kmTextBox" Width="120" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0,17.667,0,45.333" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="kmTextBox" Width="120" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" 
+MaxLength="4" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0,17.667,0,45.333" Height="23" HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,5,-70,5.333" HorizontalAlignment="Right" Content="לוחית רישוי" Width="79" Grid.Column="1"/>
-            <TextBox x:Name="license_numTextBox" FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,7,0,19.333" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="license_numTextBox" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" 
+MaxLength="8"  FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Center" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,7,0,19.333" Height="23" HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,13.667,-83,10.333" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
             <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,14.667,0,13.333" HorizontalAlignment="Left" Height="28" Width="120"/>
         </Grid>

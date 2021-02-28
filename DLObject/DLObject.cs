@@ -15,7 +15,7 @@ namespace DL
         DLObject() { } // default => private
         public static DLObject Instance { get => instance; }// The public Instance property to use
         #endregion
-
+        static Random r = new Random();
         //Implement IDL methods, CRUD
         #region Station
         //get
@@ -224,13 +224,25 @@ namespace DL
         public void DeleteLineStationInBus(int code, int id_line)//מחיקת תחנה אחת מקו אחד
         {
             DO.LineStation s = DataSource.List_Line_Station.Find(p => p.Code == code && id_line == p.Line_Id);//התחנה למחיקה
-
+           
             if (s != null)
             {
-                DataSource.List_Line_Station.Where(p => id_line == p.Line_Id && p.Line_Station_Index > s.Line_Station_Index).Select(p => p.Line_Station_Index--);//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
+                if (s.Line_Station_Index != 1)
+                {
+                    AddAdjStation(
+                    GetLineStation(s.Line_Id, s.Line_Station_Index - 1).Code,//בונה תחנה עוקבת
+                   GetLineStation(s.Line_Id, s.Line_Station_Index + 1).Code,
+                   r.Next(0, 1000),
+                   new TimeSpan(0, r.Next(0, 4), r.Next(0, 59)),
+                    true);
+                }
+                foreach (var p in DataSource.List_Line_Station)
+                {
+                    if (id_line == p.Line_Id && p.Line_Station_Index > s.Line_Station_Index)
+                        p.Line_Station_Index--;
+                }//אם לתחנה יש אותו מספר רץ כמו זאת שנמחקה והאינדקס שלה גדול ממנה מורידים אינדקס
                 DataSource.List_Line_Station.Remove(s);// מחיקת תחנת קו וסידור האינדקסים של התחנות הבאות אחריו
-                s.ActLineStation = false;
-                DataSource.List_Line_Station.Add(s);
+
             }
             else
                 throw new DO.BadLineStationCodeException(code, $"bad line station code: {code}");
@@ -263,7 +275,7 @@ namespace DL
         }
         public void AddBus(int num, DateTime st, double k, double f, Bus_status status, bool a)
         {
-            if (DataSource.List_Bus.FirstOrDefault(p => p.License_num == num) != null)
+            if (DataSource.List_Bus.Find(p => p.License_num == num) != null)
                 throw new DO.BadBusException(num, "Duplicate bus license number ");
             DO.Bus b = new DO.Bus() { ActBus = a, Bus_status = (int)status, License_num = num, Start_date = st, Km = k, Fuel_tank = f };
             DataSource.List_Bus.Add(b.Clone());
