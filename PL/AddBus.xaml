@@ -19,7 +19,6 @@
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Label Content="enter detail " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="122,22,0,0" VerticalAlignment="Top" Height="41" Width="121" FontWeight="Bold"  FontSize="20"/>
 
         <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,86,0,0" HorizontalAlignment="Left"   Height="324" Width="265">
             <Grid.RowDefinitions>
@@ -50,7 +49,7 @@
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,13.667,-83,10.333" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
             <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,14.667,0,13.333" HorizontalAlignment="Left" Height="28" Width="120"/>
         </Grid>
-        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף למערכת" HorizontalAlignment="Left" Height="30" Margin="133,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16"   FontWeight="Bold" Click="btnGO_Click"/>
-
+        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף " HorizontalAlignment="Left" Height="30" Margin="226,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16"   FontWeight="Bold" Click="btnGO_Click"/>
+        <Button Content="בטל" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="54,415,0,0" Width="112" Click="Button_Click_1" Height="30" />
     </Grid>
 </Window>

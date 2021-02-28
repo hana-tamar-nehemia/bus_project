@@ -19,12 +19,12 @@
         </Window.Resources>
 
             <Grid RenderTransformOrigin="0.451,0.59">
-        <Label Content="Welcome to ways time " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <GroupBox Header="choose:" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+        <Label Content="  " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+        <GroupBox Header="" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
             <StackPanel Margin="36,47,19,50.333">
-                <RadioButton x:Name ="rbStudents" FontFamily="Segoe UI Semibold" Content="Buses" Height="24" Checked="rbStudents_Checked" IsChecked="False"/>
-                <RadioButton x:Name ="rbStations" FontFamily="Segoe UI Semibold" Content="Stations" Height="23" Margin="0,0,-11,0" Checked="rbStations_Checked"/>
-                <RadioButton x:Name ="rbLines" FontFamily="Segoe UI Semibold" Content="Lines" Height="35" IsChecked= "False" Checked="rbLines_Checked"/>
+                <RadioButton x:Name ="rbStudents" FontFamily="Segoe UI Semibold" Content="אוטובוסים" Height="24" Checked="rbStudents_Checked" IsChecked="False"/>
+                <RadioButton x:Name ="rbStations" FontFamily="Segoe UI Semibold" Content="תחנות" Height="23" Margin="0,0,-11,0" Checked="rbStations_Checked"/>
+                <RadioButton x:Name ="rbLines" FontFamily="Segoe UI Semibold" Content="קווים" Height="35" IsChecked= "False" Checked="rbLines_Checked"/>
 
             </StackPanel>
         </GroupBox>

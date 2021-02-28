@@ -48,7 +48,10 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // busViewSource.Source = [generic data source]
         }
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         private void btnGO_Click(object sender, RoutedEventArgs e)
         {
              

@@ -19,8 +19,8 @@
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="103,223,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-
+        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="175,218,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="23,218,0,0" VerticalAlignment="Top" Width="82"   Height="19" Click="Close_Click"/>
         <Grid x:Name="busdetail" HorizontalAlignment="Left" Margin="49,25,0,0" VerticalAlignment="Top" Width="221">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
