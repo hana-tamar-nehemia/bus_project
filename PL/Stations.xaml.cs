@@ -118,10 +118,6 @@ namespace PL
             ListStation.SelectedIndex = 0;
         }
 
-
-
-
-
-
+         
     }
 }

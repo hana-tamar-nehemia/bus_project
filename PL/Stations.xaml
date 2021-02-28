@@ -39,8 +39,8 @@
         <!--<CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>-->
     </Window.Resources>
-    <Grid >
-        <Button x:Name="back" Content="»" Style="{StaticResource myButtonStyle}"  HorizontalAlignment="Left" Height="31" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click" RenderTransformOrigin="-0.446,2.74"/>
+    <Grid Background="#FFFCE8DF" >
+        <Button x:Name="back" Content="»" Style="{StaticResource myButtonStyle}"  HorizontalAlignment="Left" Height="31" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click" RenderTransformOrigin="-0.446,2.74" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
         <Grid x:Name="DetailsStation" HorizontalAlignment="Left" Margin="330,104,0,0" VerticalAlignment="Top" Width="418" Height="147">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -52,16 +52,16 @@
                 <RowDefinition Height="Auto" MinHeight="45.333"/>
             </Grid.RowDefinitions>
             <Label Content=" :כתובת" FontFamily="Segoe UI Semibold" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.333,3,-193.333,13.667" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="51"/>
-            <TextBox x:Name="addressTextBox" FontFamily="Segoe UI Semibold" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22.333,6,-126.333,13.667" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266" IsEnabled="False"/>
+            <TextBox x:Name="addressTextBox" FontFamily="Segoe UI Semibold" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22.333,6,-126.333,13.667" Grid.Row="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266" IsEnabled="False" BorderBrush="#FFF9F9FA"/>
             <Label Content="  :קו רוחב"  FontFamily="Segoe UI Semibold" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.333,0,-200.667,17.333" Grid.Row="1" VerticalAlignment="Bottom" Height="26" Width="59"/>
-            <TextBox x:Name="latitudeTextBox"  FontFamily="Segoe UI Semibold" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22.333,18.333,-126.333,17.333" Grid.Row="1" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266"/>
+            <TextBox x:Name="latitudeTextBox"  FontFamily="Segoe UI Semibold" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22.333,18.333,-126.333,17.333" Grid.Row="1" Text="{Binding Latitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266" IsEnabled="False" BorderBrush="#FFF3F5FA"/>
             <Label Content=" :קו אורך " FontFamily="Segoe UI Semibold" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="304.333,8.667,-201.333,10.667" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="59"/>
-            <TextBox x:Name="longitudeTextBox" FontFamily="Segoe UI Semibold" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="22.333,18.667,-126.333,4.667" Grid.Row="2" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266"/>
+            <TextBox x:Name="longitudeTextBox" FontFamily="Segoe UI Semibold" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="22.333,18.667,-126.333,4.667" Grid.Row="2" Text="{Binding longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="266" BorderBrush="#FFFCFCFD"/>
         </Grid>
-        <Button x:Name="Update" Style="{StaticResource myButtonStyle}" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="554,387,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="update_Click" />
-        <Button x:Name="remove" Style="{StaticResource myButtonStyle}" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="330,387,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click"  />
-        <Button x:Name="addline" Style="{StaticResource myButtonStyle}" Content="הוספת תחנה" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold"  Margin="0,381,0,0" Click="add_Click"/>
-        <ListBox x:Name="ListStation" FontFamily="Segoe UI Semibold" SelectionChanged="ListStation_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184"  />
-        <ListBox x:Name="linspast" HorizontalAlignment="Left" Height="420" Margin="184,0,0,0" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="Update" Style="{StaticResource myButtonStyle}" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="590,381,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Lucida Fax" FontWeight="Bold" Click="update_Click" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0" />
+        <Button x:Name="remove" Style="{StaticResource myButtonStyle}" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="356,381,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"  />
+        <Button x:Name="addline"  Style="{StaticResource myButtonStyle}" Content="הוספת תחנה" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold"  Margin="0,381,0,0" Click="add_Click" BorderBrush="#FFFAF4F4" Background="#FFFFD2C0"/>
+        <ListBox x:Name="ListStation" FontFamily="Segoe UI Semibold" SelectionChanged="ListStation_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184" BorderBrush="#FFF9FAFD"  />
+        <ListBox x:Name="linspast" HorizontalAlignment="Left" Height="420" Margin="184,0,0,0" VerticalAlignment="Top" Width="128" IsEnabled="False"   BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
     </Grid>
 </Window>
