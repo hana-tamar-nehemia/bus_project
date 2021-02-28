@@ -19,8 +19,14 @@
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="175,218,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="23,218,0,0" VerticalAlignment="Top" Width="82"   Height="19" Click="Close_Click"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFC0BFBF" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="187,218,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" BorderBrush="#FFFAF7F7"/>
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="33,218,0,0" VerticalAlignment="Top" Width="82"   Height="19" Click="Close_Click" BorderBrush="#FFF9F6F6"/>
         <Grid x:Name="busdetail" HorizontalAlignment="Left" Margin="49,25,0,0" VerticalAlignment="Top" Width="221">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -36,13 +42,22 @@
             <Label Content="סטטוס" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="bus_statusTextBox" FontFamily="Segoe UI Semibold" Grid.Column="0" Height="24" Margin="3,4,3.667,4" Grid.Row="0" SelectedItem="{Binding Bus_status}" VerticalAlignment="Center"/>
             <Label Content="דלק" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="fuel_tankTextBox" FontFamily="Segoe UI Semibold" Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="fuel_tankTextBox" FontFamily="Segoe UI Semibold" Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Fuel_tank, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFC5C6C7"/>
             <Label Content="ק&quot;מ" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="kmTextBox" Grid.Column="0" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="kmTextBox" Grid.Column="0" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFC9CBD1"/>
             <Label Content="לוחית רישוי" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <TextBox x:Name="license_numTextBox" Grid.Column="0" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="license_numTextBox" Grid.Column="0" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding License_num, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFE5E6E8"/>
             <Label Content="עלייה לכביש" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center">
+                <DatePicker.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FFF3F5F7" Offset="1"/>
+                    </LinearGradientBrush>
+                </DatePicker.BorderBrush>
+            </DatePicker>
         </Grid>
 
     </Grid>

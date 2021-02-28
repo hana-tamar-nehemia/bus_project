@@ -39,7 +39,13 @@
         <!--<CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
         <CollectionViewSource x:Key="busLineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:BusLine}, CreateList=True}"/>-->
     </Window.Resources>
-    <Grid Background="#FFFCE8DF" >
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCAC7C7" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Button x:Name="back" Content="»" Style="{StaticResource myButtonStyle}"  HorizontalAlignment="Left" Height="31" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click" RenderTransformOrigin="-0.446,2.74" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
         <Grid x:Name="DetailsStation" HorizontalAlignment="Left" Margin="330,104,0,0" VerticalAlignment="Top" Width="418" Height="147">
             <Grid.ColumnDefinitions>
@@ -61,7 +67,15 @@
         <Button x:Name="Update" Style="{StaticResource myButtonStyle}" Content="עדכן תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="590,381,0,0" VerticalAlignment="Top" Width="142"  FontSize="16" FontFamily="Lucida Fax" FontWeight="Bold" Click="update_Click" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0" />
         <Button x:Name="remove" Style="{StaticResource myButtonStyle}" Content="מחק תחנה" IsEnabled="{Binding}" HorizontalAlignment="Left" Height="24" Margin="356,381,0,0" VerticalAlignment="Top" Width="149"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="remove_Click" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"  />
         <Button x:Name="addline"  Style="{StaticResource myButtonStyle}" Content="הוספת תחנה" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="184"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold"  Margin="0,381,0,0" Click="add_Click" BorderBrush="#FFFAF4F4" Background="#FFFFD2C0"/>
-        <ListBox x:Name="ListStation" FontFamily="Segoe UI Semibold" SelectionChanged="ListStation_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184" BorderBrush="#FFF9FAFD"  />
-        <ListBox x:Name="linspast" HorizontalAlignment="Left" Height="420" Margin="184,0,0,0" VerticalAlignment="Top" Width="128" IsEnabled="False"   BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <ListBox x:Name="ListStation" FontFamily="Segoe UI Semibold" SelectionChanged="ListStation_SelectionChanged" DataContext="{Binding}" ItemsSource="{Binding}" SelectionMode="Single" ItemTemplate="{StaticResource ResourceKey=station}"  HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="184" BorderBrush="#FFF9FAFD"  >
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFC3C1C1" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+        </ListBox>
+        <ListBox x:Name="linspast" HorizontalAlignment="Left" Height="219" Margin="197,79,0,0" VerticalAlignment="Top" Width="128" IsEnabled="False"   BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <Label Content="קווים שעוברים בתחנה" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
     </Grid>
 </Window>

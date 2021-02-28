@@ -49,13 +49,20 @@
     <Grid DataContext="{StaticResource busViewSource}" RenderTransformOrigin="0.651,0.341">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFF7E4DB" Offset="0.233"/>
-                <GradientStop Color="#FFF7AC85" Offset="0.006"/>
+                <GradientStop Color="#FFF9F7F6" Offset="1"/>
+                <GradientStop Color="#FFDDDDDC"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Label Content=" מספר רישוי"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="41,5,0,0" VerticalAlignment="Top" Height="29" Width="114" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.682,0.727" IsEnabled="False"/>
 
-        <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  FontFamily="Segoe UI Semibold" SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="387" VerticalAlignment="Center" Margin="0,34,338.333,-0.333" BorderBrush="#FFFDFDFD" Background="#FFFDE6DB"/>
+        <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  FontFamily="Segoe UI Semibold" SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="387" VerticalAlignment="Center" Margin="0,34,338.333,-0.333" BorderBrush="#FFFDFDFD">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFDFDCDC" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+        </ListBox>
         <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="178,49,0,0" VerticalAlignment="Top" Height="186" Width="305">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="134"/>

@@ -19,8 +19,14 @@
         </Window.Resources>
 
             <Grid RenderTransformOrigin="0.451,0.59">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCDCCCB" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label Content="  " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <GroupBox Header="" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+        <GroupBox Header="" HorizontalAlignment="Left" Height="200" Margin="243,94,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
             <StackPanel Margin="36,47,19,50.333">
                 <RadioButton x:Name ="rbStudents" FontFamily="Segoe UI Semibold" Content="אוטובוסים" Height="24" Checked="rbStudents_Checked" IsChecked="False"/>
                 <RadioButton x:Name ="rbStations" FontFamily="Segoe UI Semibold" Content="תחנות" Height="23" Margin="0,0,-11,0" Checked="rbStations_Checked"/>
