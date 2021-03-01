@@ -41,9 +41,11 @@ namespace PL
         {
             AddBus add = new AddBus(_bl);
             add.Show();
-            //busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
-            // this.Close();
-            //refreshScreen();
+            busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
+            busListBox.SelectedIndex = 0;
+            dataBus.DataContext = busListBox.SelectedItem;
+            bus = (BO.Bus)busListBox.SelectedItem;
+            
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
@@ -72,6 +74,10 @@ namespace PL
         {
             UpDateBus up = new UpDateBus(bus, _bl);
             up.ShowDialog();
+            busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
+            busListBox.SelectedIndex = 0;
+            dataBus.DataContext = busListBox.SelectedItem;
+            //bus = (BO.Bus)busListBox.SelectedItem;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)//מחק

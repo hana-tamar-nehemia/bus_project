@@ -81,6 +81,10 @@ namespace PL
             UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListBox.SelectedItem);//שולח את הקו שרוצים לעדכן
             update.ShowDialog();
             linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
+            busLineListBox.DataContext = _bl.GetAllBus();
+            busLineListBox.SelectedIndex = 0; //index of the object to be selected
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
 
 
         }
@@ -100,6 +104,10 @@ namespace PL
                     btnGO.IsEnabled = false;
                     remove.IsEnabled = false;
 
+                    busLineListBox.DataContext = _bl.GetAllBus();
+                    busLineListBox.SelectedIndex = 0; //index of the object to be selected
+                    busLine = (BO.BusLine)busLineListBox.SelectedItem;
+                    linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
                 }
             }
             catch (BO.BadBusLineException ex)
@@ -113,6 +121,10 @@ namespace PL
            AddLine m = new AddLine(_bl);
             m.ShowDialog();
             busLineListBox.DataContext = _bl.GetAllBus();
+            busLineListBox.DataContext = _bl.GetAllBus();
+            busLineListBox.SelectedIndex = 0; //index of the object to be selected
+            busLine = (BO.BusLine)busLineListBox.SelectedItem;
+            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
 
         }
 
