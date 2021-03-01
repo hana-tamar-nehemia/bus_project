@@ -34,19 +34,18 @@ namespace PL
             string name = namel.Text;
             string password = passwordl.Text;
             bool flag;
-            try
-            {
+              
                  flag = _bl.UserExistsM(name, password);
-            }
-            finally
-            {
-                MessageBox.Show(" שם המשתמש או הסיסמא אינם נכונים ");
-            }
+            
             if (flag == true)
             {
                 this.Close();
                 ManagerOptions m = new ManagerOptions(_bl);
                 m.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(" שם המשתמש או הסיסמא אינם נכונים ");
             }
         }
         private void sing_Click(object sender, RoutedEventArgs e)
