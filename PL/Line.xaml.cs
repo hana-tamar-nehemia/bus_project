@@ -29,7 +29,6 @@ namespace PL
             busLineListBox.DataContext = _bl.GetAllBus();
             busLineListBox.SelectedIndex = 0; //index of the object to be selected
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
-            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
         }
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -31,7 +31,9 @@ namespace PL
             ListStation.DataContext = _lb.GetAllStation();
             ListStation.SelectedIndex = 0;
             station = (Station)ListStation.SelectedItem;
-             
+            linspast.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
