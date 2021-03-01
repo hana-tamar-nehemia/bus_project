@@ -7,11 +7,23 @@
         mc:Ignorable="d"
         Title="ways" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid RenderTransformOrigin="0.451,0.59">
-        <Label Content="Welcome to ways time " HorizontalAlignment="Left" Margin="243,48,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <GroupBox Header="I'm a :" HorizontalAlignment="Left" Height="200" Margin="205,113,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFD0CECD" Offset="0"/>
+                <GradientStop Color="#FFFFFEFD" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="    ברוך הבא  לדרכים בזמן  " HorizontalAlignment="Left" Margin="256,81,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+        <GroupBox Header="אני " HorizontalAlignment="Left" Height="200" Margin="235,127,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+            <GroupBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE7E5E4" Offset="0"/>
+                    <GradientStop Color="#FFF9F9F9" Offset="1"/>
+                </LinearGradientBrush>
+            </GroupBox.Background>
             <StackPanel Margin="36,47,19,50.333">
-                <RadioButton x:Name ="manager" FontFamily="Segoe UI Semibold" Content="manager" Height="24" IsChecked="False" Checked="rbStudents_Checked"/>
-                <RadioButton x:Name ="passenger"  Content="passenger" Height="23" IsChecked="False" Margin="0,0,-11,0"/>
+                <RadioButton x:Name ="manager" FontFamily="Segoe UI Semibold" Content="מנהל" Height="24" IsChecked="False" Checked="rbStudents_Checked"/>
+                <RadioButton x:Name ="passenger"  Content="נוסע" Height="23" IsChecked="False" Margin="0,0,-11,0"/>
             </StackPanel>
         </GroupBox>
     </Grid>

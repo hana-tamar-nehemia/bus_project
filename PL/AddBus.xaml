@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddBus"
         mc:Ignorable="d"
-        Title="AddBus" Height="500" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="AddBus" Height="450" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="myButtonStyle"   TargetType="Button">
             <Setter Property="FontFamily"
@@ -19,9 +19,14 @@
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <Label Content="enter detail " FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="122,22,0,0" VerticalAlignment="Top" Height="41" Width="121" FontWeight="Bold"  FontSize="20"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDAD8D8" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="72,86,0,0" HorizontalAlignment="Left"   Height="324" Width="265">
+        <Grid x:Name="Addbus" VerticalAlignment="Top" Margin="74,31,0,0" HorizontalAlignment="Left"   Height="324" Width="265">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49.333"/>
                 <RowDefinition Height="56"/>
@@ -34,7 +39,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,-71,21.333" HorizontalAlignment="Right" Content="סטטוס" Height="26" Width="57" Grid.Column="1"/>
-            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,28.667,0,21.333" SelectedItem="{Binding Bus_status}" HorizontalAlignment="Left" Grid.Column="0" >
+            <ComboBox x:Name="bus_statusComboBox" Width="120" VerticalAlignment="Stretch" Grid.Row="2" Margin="0,28.667,0,21.333" SelectedItem="{Binding Bus_status}" HorizontalAlignment="Left" Grid.Column="0" BorderBrush="#FFDFDEDE" >
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -53,7 +58,7 @@ MaxLength="8"  FontFamily="Segoe UI Semibold" Width="120" VerticalAlignment="Cen
             <Label VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" Margin="0,13.667,-83,10.333" HorizontalAlignment="Right" Content="תאריך עלייה לכביש" Width="128" Grid.Row="1" Grid.Column="1"/>
             <DatePicker x:Name="start_dateDatePicker" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" SelectedDate="{Binding Start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="0,14.667,0,13.333" HorizontalAlignment="Left" Height="28" Width="120"/>
         </Grid>
-        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף למערכת" HorizontalAlignment="Left" Height="30" Margin="133,415,0,0" VerticalAlignment="Top" Width="127"  FontSize="16"   FontWeight="Bold" Click="btnGO_Click"/>
-
+        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף " HorizontalAlignment="Left" Height="30" Margin="238,360,0,0" VerticalAlignment="Top" Width="127"  FontSize="16"   FontWeight="Bold" Click="btnGO_Click" Background="#FFFDD6BB" BorderBrush="#FFFCE1D4"/>
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="35,360,0,0" Width="128" Click="Button_Click_1" Height="30" Background="#FFFDD6BB" BorderBrush="#FFFCE1D4" />
     </Grid>
 </Window>
