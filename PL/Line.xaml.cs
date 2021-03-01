@@ -35,7 +35,7 @@ namespace PL
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnGO.IsEnabled = true;
-
+            remove.IsEnabled = true;
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
             //linestationListBox = new ListBox();
             if (busLine == null)
@@ -98,6 +98,8 @@ namespace PL
                     _bl.DeleteBusLine(busLine.License_num);
                     busLineListBox.DataContext = _bl.GetAllBus();
                     btnGO.IsEnabled = false;
+                    remove.IsEnabled = false;
+
                 }
             }
             catch (BO.BadBusLineException ex)
