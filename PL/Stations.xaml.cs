@@ -61,6 +61,7 @@ namespace PL
             linspast.IsEnabled = true;
             linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
             //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
@@ -118,6 +119,7 @@ namespace PL
         }
         private void refreshScreen()
         {
+
             ListStation.ItemsSource = _lb.GetAllStation().Where(p => p.Act == true).ToList();
             ListStation.SelectedIndex = 0;
             ListStation.DataContext = _lb.GetAllStation();

@@ -41,7 +41,8 @@ namespace PL
         {
             AddBus add = new AddBus(_bl);
             add.Show();
-           // this.Close();
+            //busListBox.ItemsSource = _bl.GetAllBuses().Where(p => p.ActBus == true).ToList();
+            // this.Close();
             //refreshScreen();
         }
 
@@ -56,7 +57,7 @@ namespace PL
             dataBus.DataContext = busListBox.SelectedItem;
             bus = (BO.Bus)busListBox.SelectedItem;
         }
-        private void back_Click(object sender, RoutedEventArgs e)
+        private void back_Click(object sender, RoutedEventArgs e)//חזור
         {
             this.Close();
             ManagerOptions m = new ManagerOptions(_bl);
@@ -73,7 +74,7 @@ namespace PL
             up.ShowDialog();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)//מחק
         {
              
             MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
