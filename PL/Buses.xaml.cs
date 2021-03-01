@@ -59,7 +59,7 @@ namespace PL
             dataBus.DataContext = busListBox.SelectedItem;
             bus = (BO.Bus)busListBox.SelectedItem;
         }
-        private void back_Click(object sender, RoutedEventArgs e)
+        private void back_Click(object sender, RoutedEventArgs e)//חזור
         {
             this.Close();
             ManagerOptions m = new ManagerOptions(_bl);
@@ -80,7 +80,7 @@ namespace PL
             //bus = (BO.Bus)busListBox.SelectedItem;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)//מחק
         {
              
             MessageBoxResult res = MessageBox.Show("Delete selected bus line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);

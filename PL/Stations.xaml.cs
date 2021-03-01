@@ -53,9 +53,9 @@ namespace PL
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
             linspast.IsEnabled = true;
-            IEnumerable<string> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
-            linspast.DataContext= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
-              
+            linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
