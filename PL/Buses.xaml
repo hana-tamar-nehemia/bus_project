@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Buses"
         mc:Ignorable="d"
-        Title="Buses" Height="450" Width="500" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded_1">
+        Title="Buses" Height="450" Width="800" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded_1">
     <Window.Resources>
         <Style x:Key="myButtonStyle"   TargetType="Button">
             <Setter Property="FontFamily"
@@ -53,9 +53,17 @@
                 <GradientStop Color="#FFDDDDDC"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label Content=" מספר רישוי"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="41,5,0,0" VerticalAlignment="Top" Height="29" Width="114" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.682,0.727" IsEnabled="False"/>
-
-        <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  FontFamily="Segoe UI Semibold" SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="387" VerticalAlignment="Center" Margin="0,34,338.333,-0.333" BorderBrush="#FFFDFDFD">
+        <Label Content=" מספר רישוי"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Height="29" Width="114" FontWeight="Bold" FontStyle="Italic" FontSize="12" RenderTransformOrigin="0.682,0.727" IsEnabled="False"/>
+        <Button x:Name="back" Content="»" Style="{StaticResource myButtonStyle}"  HorizontalAlignment="Left" Height="31" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"  FontSize="16" FontFamily="Kristen ITC" FontWeight="Bold" Click="back_Click" RenderTransformOrigin="-0.446,2.74" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <ListBox x:Name="busListBox" DataContext="{Binding}" SelectionMode="Single" DisplayMemberPath="License_num" ItemsSource="{Binding}"  FontFamily="Segoe UI Semibold" SelectedValuePath="ActBus" SelectionChanged="busListBox_SelectionChanged" Height="341" VerticalAlignment="Center" Margin="-6,35,591.6,44" BorderBrush="#FFFDFDFD" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.382"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.517"/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFDFDCDC" Offset="0"/>
@@ -63,7 +71,7 @@
                 </LinearGradientBrush>
             </ListBox.Background>
         </ListBox>
-        <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="178,49,0,0" VerticalAlignment="Top" Height="186" Width="305">
+        <Grid x:Name="dataBus"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="367,66,0,0" VerticalAlignment="Top" Height="200" Width="334">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="134"/>
                 <ColumnDefinition Width="Auto" MinWidth="122.667"/>
@@ -83,9 +91,9 @@
             <Label Content=":תאריך עלייה לכביש" FontWeight="Bold" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold" Margin="8.333,4,-19.333,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="135" Grid.Column="1" IsEnabled="False"/>
             <Label x:Name="start_dateLabel" FontWeight="Bold" Content="{Binding Start_date}" FontFamily="Segoe UI Semibold" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,10.667" Grid.Row="0" VerticalAlignment="Stretch" Width="125" Grid.ColumnSpan="2" IsEnabled="False"/>
         </Grid>
-        <Button Content="מחק אוטובוס" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Height="33" Margin="274,378,0,0" VerticalAlignment="Top" Width="92" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_2" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
-        <Button Content="עדכן פרטים" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Height="33" Margin="384,378,0,0" VerticalAlignment="Top" Width="99" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_1" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
-        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף אוטובוס" HorizontalAlignment="Left" Height="33" Margin="160.267,378,0,0" VerticalAlignment="Top" Width="98"  FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click" RenderTransformOrigin="2.606,0.201" Padding="1" UseLayoutRounding="False" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <Button Content="מחק אוטובוס" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Height="33" Margin="318,345,0,0" VerticalAlignment="Top" Width="172" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_2" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <Button Content="עדכן פרטים" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Height="33" Margin="543,345,0,0" VerticalAlignment="Top" Width="158" FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="Button_Click_1" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
+        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="הוסף אוטובוס" HorizontalAlignment="Left" Height="50.111" Margin="0,369.889,0,0" VerticalAlignment="Top" Width="199.581"  FontSize="10" FontFamily="Kristen ITC" FontWeight="Bold" Click="btnGO_Click" RenderTransformOrigin="2.606,0.201" Padding="1" UseLayoutRounding="False" BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
 
 
 

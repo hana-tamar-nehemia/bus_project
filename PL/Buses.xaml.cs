@@ -54,7 +54,12 @@ namespace PL
             dataBus.DataContext = busListBox.SelectedItem;
             bus = (BO.Bus)busListBox.SelectedItem;
         }
-
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManagerOptions m = new ManagerOptions(_bl);
+            m.ShowDialog();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //למלא דלק לאוטובוס שנבחר

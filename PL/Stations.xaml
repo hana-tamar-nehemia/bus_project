@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Stations"
         mc:Ignorable="d"
-        Title="Stations" Height="450" Width="800" >
+        Title="Stations" Height="450" Width="800" WindowStartupLocation="CenterScreen" >
     <Window.Resources>
         <Style x:Key="myButtonStyle"   TargetType="Button">
             <Setter Property="FontFamily"
