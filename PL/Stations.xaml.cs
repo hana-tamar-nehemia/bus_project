@@ -48,6 +48,10 @@ namespace PL
         {
 
             station = (Station)ListStation.SelectedItem;
+            if(station==null)
+            {
+                station= _lb.GetAllStation().First();
+            }
             DetailsStation.IsEnabled = true;
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
@@ -99,8 +103,7 @@ namespace PL
         {
             AddStation m = new AddStation(_lb);
             m.ShowDialog();
-            refreshScreen();
-
+            ListStation.DataContext = _lb.GetAllStation();
 
         }
 
