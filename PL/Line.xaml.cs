@@ -110,6 +110,8 @@ namespace PL
         {
            AddLine m = new AddLine(_bl);
             m.ShowDialog();
+            busLineListBox.DataContext = _bl.GetAllBus();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

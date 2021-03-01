@@ -14,7 +14,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Label Content="    ברוך הבא  לדרכים בזמן  " HorizontalAlignment="Left" Margin="256,81,0,0" VerticalAlignment="Top" Height="41" Width="348" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <GroupBox Header="אני " HorizontalAlignment="Left" Height="200" Margin="235,127,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
+        <GroupBox Header=":אני " HorizontalAlignment="Left" Height="200" Margin="235,127,0,0" VerticalAlignment="Top" Width="310" FontSize="16" FontStyle="Italic" FontWeight="SemiBold" RenderTransformOrigin="0.471,0.5">
             <GroupBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFE7E5E4" Offset="0"/>
