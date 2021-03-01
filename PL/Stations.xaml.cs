@@ -31,9 +31,8 @@ namespace PL
             ListStation.DataContext = _lb.GetAllStation();
             ListStation.SelectedIndex = 0;
             station = (Station)ListStation.SelectedItem;
-            linspast.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();
-
-
+            //linspast.IsEnabled = true;
+            //linspast.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -50,18 +49,12 @@ namespace PL
         {
 
             station = (Station)ListStation.SelectedItem;
-            if(station==null)
-            {
-                station= _lb.GetAllStation().First();
-            }
             DetailsStation.IsEnabled = true;
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
-            //Lstlinenumber.IsEnabled = true;
-             //List<string> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
-            linspast.IsEnabled = true;
-            linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            //linspast.IsEnabled = true;
+            //linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
             //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
 
         }
@@ -88,7 +81,7 @@ namespace PL
                     {
                         DetailsStation.IsEnabled = false;
                         ListStation.DataContext = _lb.GetAllStation();
-                        linspast.IsEnabled = false;
+                        //linspast.IsEnabled = false;
                         remove.IsEnabled = false;
                         refreshScreen();
                     }
@@ -106,7 +99,8 @@ namespace PL
         {
             AddStation m = new AddStation(_lb);
             m.ShowDialog();
-            ListStation.DataContext = _lb.GetAllStation();
+             
+
 
         }
 
@@ -116,7 +110,7 @@ namespace PL
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
-            refreshScreen();
+             
 
 
 
