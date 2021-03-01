@@ -27,13 +27,7 @@ namespace PL
             InitializeComponent();
         }
 
-        //private void log_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //    ManagerOptions m = new ManagerOptions(_bl);
-        //    m.ShowDialog();
-
-        //}
+         
 
         private void log_Click(object sender, RoutedEventArgs e)
         {

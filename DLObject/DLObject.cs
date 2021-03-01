@@ -43,10 +43,7 @@ namespace DL
                                               where num == num2.Line_Id
                                               select num2.Line_Number;
 
-            //return (IEnumerable<string>)(from Bus in busLines
-            //       where (Bus.Act == true)
-            //       select Bus.Line_Number.Clone());
-
+             
 
 
 
