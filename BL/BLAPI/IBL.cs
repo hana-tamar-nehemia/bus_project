@@ -83,7 +83,7 @@ namespace BLAPI
 
         bool DeleteStation(int code);
         void UpdateStation(BO.Station station);
-        IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code);
+        IEnumerable<string> GetAllBusLimeByStation(int code);
         #endregion
 
         #region AdjStation

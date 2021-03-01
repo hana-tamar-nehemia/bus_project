@@ -21,6 +21,13 @@ namespace PL
     {
         IBL bl;
         BO.Bus Bus = new BO.Bus();
+        bool lincegood(int a)
+        {
+            if (a <= 100000000 && a > 9999999)
+                return true;
+            else
+                return false;
+        }
         public AddBus(IBL _bl)
 
         {
@@ -30,6 +37,8 @@ namespace PL
             bus_statusComboBox.ItemsSource = Enum.GetValues(typeof(BO.Bus_status));
             bus_statusComboBox.SelectedIndex = 0;
             
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -82,11 +91,25 @@ namespace PL
             Bus.License_num = int.Parse(license_numTextBox.Text);
             Bus.Start_date = start_dateDatePicker.DisplayDate;
             bool a = true;
-            bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
+            if (lincegood(Bus.License_num) == false)
+            {
+                MessageBox.Show("worong licens plate\n enter again");
 
-            MessageBox.Show("Added");
-            //Buses b = new Buses(bl);
-            this.Close();
+            }
+            else
+            {
+                try
+                {
+
+                    bl.AddBus(Bus.License_num, Bus.Start_date, Bus.Km, Bus.Fuel_tank, Bus.Bus_status, a);
+                    MessageBox.Show("Added");
+                    this.Close();
+                }
+                catch (BO.BadBusException ex)
+                {
+                    MessageBox.Show(ex.Message, "התחנה קימת", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }

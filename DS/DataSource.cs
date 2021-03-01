@@ -700,7 +700,7 @@ namespace DS
                Bus_Id=3968393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="1",
                First_Station=73,
                Last_Station=90,
                   Act=true
@@ -711,7 +711,7 @@ namespace DS
                Bus_Id=4768393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="2",
                First_Station=91,
                Last_Station=108,
                 Act=true
@@ -721,7 +721,7 @@ namespace DS
                Bus_Id=7568393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="3",
                First_Station=109,
                Last_Station=1485,
                 Act=true
@@ -731,7 +731,7 @@ namespace DS
                Bus_Id=9968393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="4",
                First_Station=1486,
                Last_Station=1511,
                 Act=true
@@ -741,7 +741,7 @@ namespace DS
                Bus_Id=8868393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="5",
                First_Station=1512,
                Last_Station=73,
                 Act=true
@@ -751,7 +751,7 @@ namespace DS
                Bus_Id=7768393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="6",
                First_Station=73,
                Last_Station=90,
                 Act=true
@@ -761,7 +761,7 @@ namespace DS
                Bus_Id=6668393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="7",
                First_Station=91,
                Last_Station=108,
                 Act=true
@@ -771,7 +771,7 @@ namespace DS
                Bus_Id=5568393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="8",
                First_Station=109,
                Last_Station=1485,
                 Act=true
@@ -781,7 +781,7 @@ namespace DS
                Bus_Id=4468393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="9",
                First_Station=1486,
                Last_Station=1511,
                 Act=true
@@ -791,7 +791,7 @@ namespace DS
                Bus_Id=3368393,
                Line_Id= Config.Line_Id++,
                Area=(Areas)r.Next(7),
-               Line_Number=Convert.ToString(line_number++),
+               Line_Number="10",
                First_Station=1512,
                Last_Station=76,
                 Act=true

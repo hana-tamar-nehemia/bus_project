@@ -28,6 +28,5 @@
 
             </StackPanel>
         </GroupBox>
-        <Button x:Name="btnGO" Style="{StaticResource myButtonStyle}" Content="GO" HorizontalAlignment="Left" Height="42" Margin="319,334,0,0" VerticalAlignment="Top" Width="105"  FontSize="16" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnGO_Click"/>
     </Grid>
 </Window>

@@ -26,10 +26,10 @@ namespace BL
             return StationBO;
         }
         //get
-        public IEnumerable<BO.BusLine> GetAllBusLimeByStation(int code)
+        public IEnumerable<string> GetAllBusLimeByStation(int code)
         {
-            return from item in dl.GetAllBusLimeByStation(code)
-                   select BusLineDoBoAdapter(item);
+            return dl.GetAllBusLimeByStation(code);
+                    
         }
 
         public BO.Station GetStation(int code)//מקבל תחנה לפי קוד תחנה 
@@ -70,7 +70,14 @@ namespace BL
         public void AddStation(int Code, string Name, string Address, double Latitude, double longitude)//הוספת תחנה פיזית
         {
             DO.Station stationDO = new DO.Station() { Code = Code, Name = Name, Address = Address, Latitude = Latitude, longitude = longitude, Act = true };
-            dl.AddStation(stationDO);
+            try
+            {
+                dl.AddStation(stationDO);
+            }
+            catch(DO.BadStaionCodeException ex)
+            {
+                throw new BO.BadStationCodeException("the station already exsist", ex);
+             }
         }
         public void UpdateStation(BO.Station station )
         {
@@ -300,6 +307,10 @@ namespace BL
         #endregion
 
         #region Bus Line
+
+
+
+
         public BO.BusLine GetBusLine(int Bus_Id)
         {
             DO.BusLine BusLinelDO;
@@ -411,7 +422,7 @@ namespace BL
         #endregion
 
         #region AdjStation
-       public int GEt_Line_Id()
+        public int GEt_Line_Id()
         {
             return dl.GEt_Line_Id();
         }

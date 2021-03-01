@@ -75,7 +75,7 @@ namespace DLAPI
         //update
         void UpdateStation(DO.Station station);//מעדכן תחנה קיימת
         void DeleteStation(int a);//תחנה לא תהיה פעילה
-        IEnumerable<DO.BusLine> GetAllBusLimeByStation(int code);
+        IEnumerable<string> GetAllBusLimeByStation(int code);
 
         #endregion
 
