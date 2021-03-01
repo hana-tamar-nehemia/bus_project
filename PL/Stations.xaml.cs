@@ -99,7 +99,9 @@ namespace PL
         {
             AddStation m = new AddStation(_lb);
             m.ShowDialog();
-             
+            refreshScreen();
+
+
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
@@ -108,15 +110,15 @@ namespace PL
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
-            
+            refreshScreen();
+
+
 
         }
         private void refreshScreen()
         {
-            ListStation.ItemsSource = _lb.GetAllStation().Where(p => p.Act == true).ToList();
-            ListStation.SelectedIndex = 0;
             ListStation.DataContext = _lb.GetAllStation();
-
+            ListStation.SelectedIndex = 0;
             station = (Station)ListStation.SelectedItem;
         }
 
