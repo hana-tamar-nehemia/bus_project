@@ -369,7 +369,10 @@ namespace DL
                 DataSource.List_Bus_Line.Remove(bl);
                 DataSource.List_Bus_Line.Add(BusLine.Clone());
             }
-            throw new BadBusLineException(BusLine.Bus_Id, "Duplicate bus line Id");
+            else
+            {
+                throw new BadBusLineException(BusLine.Bus_Id, "worng bus line Id");
+            }
         }
 
         public void UpdateBusLine(int Bus_Id, Action<DO.BusLine> update) //method that knows to updt specific fields 

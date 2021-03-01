@@ -16,7 +16,14 @@
               Value="#FFFFDFCA" />
         </Style>
     </Window.Resources>
-    <Grid Background="White">
+    <Grid >
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCDCCCB" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label Content="שם משתמש" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="77,99,0,0" VerticalAlignment="Top"/>
         <Label Content="סיסמה" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="106,190,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="namel" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="23" Margin="232,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

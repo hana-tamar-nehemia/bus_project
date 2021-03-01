@@ -24,7 +24,7 @@ namespace DS
             InitAllLists();
         }
         static Random r = new Random();
-        static int line_number = 1;
+        //static int line_number = 1;
        
         static void InitAllLists()
         {

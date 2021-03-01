@@ -24,9 +24,9 @@
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="2" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                <TextBlock Grid.Column="2" x:Name="code" Text="{Binding Path=Code}"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBlock Grid.Column="1" Text="{Binding Path=Name}"   VerticalAlignment="Center" HorizontalAlignment="Right" />
-                <Button  x:Name="remove" Grid.Column="0" Content="מחק תחנה" Click="remove"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                <Button  x:Name="remove" Grid.Column="0"  Content="מחק תחנה" Click="remove"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"  />
             </Grid>
         </DataTemplate>
 
@@ -35,7 +35,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1" Text="{Binding Path=Code}" Width="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBlock Grid.Column="0" Text="{Binding Path=Name}" Width="100"  VerticalAlignment="Stretch" HorizontalAlignment="Left" />
@@ -45,7 +45,12 @@
     </Window.Resources>
 
     <Grid Margin="0,0,0.333,-0.333" Height="421" VerticalAlignment="Bottom">
-
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFD7D3D3" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <TextBlock x:Name="line_num" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="41" Margin="706,10,0,0" TextWrapping="Wrap" FontSize="25" VerticalAlignment="Top" Width="62" />
         <ListBox x:Name="list_of_station" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Height="206" Margin="318,110,0,0" VerticalAlignment="Top" Width="465" ItemsSource="{Binding}" ItemTemplate="{StaticResource ResourceKey=My_Stations}"   />
         <Label Content="מסלול הקו" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="706,75,0,0" VerticalAlignment="Top" Height="40" Width="87"/>

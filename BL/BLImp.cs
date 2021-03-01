@@ -358,6 +358,7 @@ namespace BL
         {
             DO.BusLine BusLineDO = new DO.BusLine();
             BusLine.CopyPropertiesTo(BusLineDO);
+            BusLineDO.Bus_Id = BusLine.License_num;
             try
             {
                 dl.UpdateBusLine(BusLineDO);

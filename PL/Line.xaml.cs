@@ -34,7 +34,8 @@ namespace PL
 
         private void busLineListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            btnGO.IsEnabled = true;
+
             busLine = (BO.BusLine)busLineListBox.SelectedItem;
             //linestationListBox = new ListBox();
             if (busLine == null)
@@ -79,7 +80,8 @@ namespace PL
         {
             UpDateLine update = new UpDateLine(_bl,(BO.BusLine)busLineListBox.SelectedItem);//שולח את הקו שרוצים לעדכן
             update.ShowDialog();
-            //refreshScreen();
+            linestationListBox.DataContext = _bl.GetAllLineStationsOfBusLine(busLine.Line_Id); //busLine.ListLineStations; 
+
 
         }
 

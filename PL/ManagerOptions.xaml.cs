@@ -34,7 +34,7 @@ namespace PL
 
         private void rbLines_Checked(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            
             Line l = new Line(_lb);
             l.ShowDialog();
         }

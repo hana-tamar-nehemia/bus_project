@@ -18,7 +18,7 @@
         </Style>
         <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource stationViewSource}" Margin="0,0,-0.6,-121" Height="541" VerticalAlignment="Top">
+    <Grid DataContext="{StaticResource stationViewSource}" Margin="0,0,-0.333,0" Height="419" VerticalAlignment="Top">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFD7D3D3" Offset="0"/>
@@ -36,7 +36,6 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content=" :מספר תחנה" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="141,31,-89.8,-25" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="codeTextBox" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Right" Height="24" Margin="-51,31,-9.8,-23" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="192" RenderTransformOrigin="0.606,0.559" IsEnabled="False" Background="#FFEBE7E7"/>
             <Label Content=" :מספר תחנה" Grid.Column="1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Margin="141,4,-90.333,2" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="codeTextBox" Grid.Column="1" PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" 
 MaxLength="5"  FontFamily="Segoe UI Semibold" HorizontalAlignment="Right" Height="24" Margin="-51,4,-9.667,4" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="192" RenderTransformOrigin="0.606,0.559" IsEnabled="False"/>

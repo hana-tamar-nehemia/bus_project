@@ -93,12 +93,13 @@ namespace PL
             {
                 BO.LineStation b = new BO.LineStation();
                 b = ((sender as Button).DataContext as BO.LineStation);
+                //_bl.AddAdjStation()
                 _bl.DeleteLineStationInBus(b.Code, b.Line_Id);
                 //אחרי שמוחקים תחנה ממסלול אז צריך להוסיף תחנה עוקבת בהתאם זאת אומרת לחבר בין 2 תחנות שעד עכשיו לא היו
                 busLineSelected = _bl.UpdateBusLinePhat(busLineSelected);
                 list_of_station.DataContext = busLineSelected.ListLineStations;//_bl.GetAllLineStationsOfBusLine(busLineSelected.Line_Id);
             }
-            
+            update.IsEnabled = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)//מוסיף תחנה למסלול
@@ -119,6 +120,8 @@ namespace PL
 
             string str = (busLineSelected.Line_Number).ToString();
             MessageBox.Show("the station add to line: " + str);
+            update.IsEnabled = true;
+
         }
 
         private void addstationlist_SelectionChanged(object sender, SelectionChangedEventArgs e)
