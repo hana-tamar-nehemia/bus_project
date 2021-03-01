@@ -31,7 +31,8 @@ namespace PL
             ListStation.DataContext = _lb.GetAllStation();
             ListStation.SelectedIndex = 0;
             station = (Station)ListStation.SelectedItem;
-             
+            //linspast.IsEnabled = true;
+            //linspast.ItemsSource = _lb.GetAllBusLimeByStation(station.Code).ToList();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -52,8 +53,8 @@ namespace PL
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
-            linspast.IsEnabled = true;
-            linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
+            //linspast.IsEnabled = true;
+            //linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
             //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
 
         }
@@ -80,7 +81,7 @@ namespace PL
                     {
                         DetailsStation.IsEnabled = false;
                         ListStation.DataContext = _lb.GetAllStation();
-                        linspast.IsEnabled = false;
+                        //linspast.IsEnabled = false;
                         remove.IsEnabled = false;
                         refreshScreen();
                     }

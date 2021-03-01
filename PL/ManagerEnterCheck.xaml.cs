@@ -33,7 +33,15 @@ namespace PL
         {
             string name = namel.Text;
             string password = passwordl.Text;
-            bool flag = _bl.UserExistsM(name, password);
+            bool flag;
+            try
+            {
+                 flag = _bl.UserExistsM(name, password);
+            }
+            finally
+            {
+                MessageBox.Show(" שם המשתמש או הסיסמא אינם נכונים ");
+            }
             if (flag == true)
             {
                 this.Close();

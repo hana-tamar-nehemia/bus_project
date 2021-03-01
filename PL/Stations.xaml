@@ -75,7 +75,5 @@
                 </LinearGradientBrush>
             </ListBox.Background>
         </ListBox>
-        <ListBox x:Name="linspast"    ItemsSource="{Binding}" HorizontalAlignment="Left" Height="221" Margin="197,74,0,0" VerticalAlignment="Top" Width="128" IsEnabled="False"   BorderBrush="#FFFCE8DF" Background="#FFFFD2C0"/>
-        <Label Content="קווים שעוברים בתחנה" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
     </Grid>
 </Window>
