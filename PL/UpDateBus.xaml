@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.UpDateBus"
         mc:Ignorable="d"
-        Title="UpDateBus" Height="300" Width="300" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="UpDateBus" Height="450" Width="300" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="myButtonStyle"   TargetType="Button">
             <Setter Property="FontFamily"
@@ -25,9 +25,9 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="187,218,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" BorderBrush="#FFFAF7F7"/>
-        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="33,218,0,0" VerticalAlignment="Top" Width="82"   Height="19" Click="Close_Click" BorderBrush="#FFF9F6F6"/>
-        <Grid x:Name="busdetail" HorizontalAlignment="Left" Margin="49,25,0,0" VerticalAlignment="Top" Width="221">
+        <Button Content="עדכן" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="171,336,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click" BorderBrush="#FFFAF7F7" Height="19"/>
+        <Button Content="ביטול" Style="{StaticResource myButtonStyle}" HorizontalAlignment="Left" Margin="32,336,0,0" VerticalAlignment="Top" Width="94"   Height="19" Click="Close_Click" BorderBrush="#FFF9F6F6"/>
+        <Grid x:Name="busdetail" HorizontalAlignment="Left" Margin="41,99,0,0" VerticalAlignment="Top" Width="221">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

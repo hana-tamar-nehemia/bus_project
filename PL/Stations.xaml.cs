@@ -52,8 +52,8 @@ namespace PL
             addressTextBox.Text = station.Address;
             latitudeTextBox.Text = Convert.ToString(station.Latitude);
             longitudeTextBox.Text = Convert.ToString(station.longitude);
-            // Listlinenumber.IsEnabled = true;
-             List<string> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
+            //Lstlinenumber.IsEnabled = true;
+             //List<string> ls = _lb.GetAllBusLimeByStation(station.Code).ToList();
             linspast.IsEnabled = true;
             linspast.ItemsSource= _lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
             //Listlinenumber.ItemsSource =_lb.GetAllBusLimeByStation(station.Code).ToList();//פונקציה שמחזירה את כל הקווים של שעוברים בתחנה
@@ -99,7 +99,7 @@ namespace PL
         {
             AddStation m = new AddStation(_lb);
             m.ShowDialog();
-            refreshScreen();
+             
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
@@ -108,16 +108,18 @@ namespace PL
             BO.Station st = ListStation.SelectedItem as BO.Station;
             UpDateStstion update = new UpDateStstion(_lb, st); 
             update.ShowDialog();
-            //נירא לי בגלל 
-            refreshScreen();
+            
 
         }
         private void refreshScreen()
         {
-            ListStation.DataContext = _lb.GetAllStation();
+            ListStation.ItemsSource = _lb.GetAllStation().Where(p => p.Act == true).ToList();
             ListStation.SelectedIndex = 0;
+            ListStation.DataContext = _lb.GetAllStation();
+
+            station = (Station)ListStation.SelectedItem;
         }
 
-         
+
     }
 }
